@@ -80,7 +80,7 @@ def _(mo):
             "",
             xy=tip,
             xytext=tail,
-            arrowprops={"arrowstyle": "-|>", "color": color, "lw": lw, "mutation_scale": 11, "shrinkA": 0, "shrinkB": 0, **kw},
+            arrowprops={"arrowstyle": "-|>,head_width=0.15,head_length=0.35", "color": color, "lw": lw, "shrinkA": 0, "shrinkB": 0, **kw},
         )
         if label:
             pos = tip if at_tip else ((tail[0] + tip[0]) / 2, (tail[1] + tip[1]) / 2)
@@ -108,11 +108,20 @@ def _(mo):
         ax.axis("off")
         return fig, ax
 
+    def blob(cx, cy, rx, ry, wobble=0.07, seed=0, n=400):
+        """Closed organic curve around (cx, cy): an ellipse with a few low harmonics."""
+        import numpy as _np
+
+        rng = _np.random.default_rng(seed)
+        t = _np.linspace(0, 2 * _np.pi, n)
+        r = 1 + sum(wobble / k * rng.uniform(0.4, 1.0) * _np.cos(k * t + rng.uniform(0, 2 * _np.pi)) for k in (2, 3, 4, 5))
+        return cx + rx * r * _np.cos(t), cy + ry * r * _np.sin(t)
+
     def table(rows):
         """Fixed-label readout table: rows are (label, value) pairs of markdown strings."""
         return mo.md("\n".join(["| | |", "|:--|--:|"] + [f"| {k} | {v} |" for k, v in rows]))
 
-    return BLUE, FULL, GREEN, GREY, HALF, LIGHT, ORANGE, RED, arrow, blank, corollary, definition, header, note, plane, postulate, proposition, table, theorem
+    return BLUE, FULL, GREEN, GREY, HALF, LIGHT, ORANGE, RED, arrow, blank, blob, corollary, definition, header, note, plane, postulate, proposition, table, theorem
 
 
 @app.cell(hide_code=True)
@@ -219,89 +228,132 @@ def _(BLUE, FULL, Figure, GREEN, GREY, arrow, fig_surfaces, mo, np):
     - for $\varphi_\alpha$ and $\varphi_\beta$: &nbsp; $\varphi_\beta \circ \varphi_\alpha^{-1} : V_\alpha \subseteq \mathbb{R}^m \overset{\sim}{\longrightarrow} V_\beta \subseteq \mathbb{R}^m$ &nbsp; (bijective at least in some subset of $V_\alpha$)
 
     **Example.** 2-sphere $\mathbb{S}^2$, &nbsp; 2-torus $\mathbb{T}^2$, &nbsp; genus 2 surface $\Sigma_2$
-
-    What does congruence mean on the sphere?
     """
             ),
             fig_surfaces,
+            mo.md(r"""What does congruence mean on the sphere?"""),
+            fig_congruence,
         ]
     )
     return
 
 
 @app.cell(hide_code=True)
-def _(BLUE, FULL, Figure, GREEN, ORANGE, RED, arrow, np):
-    # Surfaces of genus 0, 1, 2 and the failure of congruence on the sphere
-    fig_surfaces = Figure(figsize=(FULL, 2.6), layout="constrained")
-    _sf, _cg = fig_surfaces.subplots(1, 2, width_ratios=[1.6, 1])
-    for _ax in (_sf, _cg):
+def _(BLUE, Figure, GREEN, GREY, HALF, ORANGE, RED, arrow, math, np, shade_sphere):
+    # Surfaces of genus 0, 1, 2 as line drawings: true silhouettes, with a few surface curves (hidden parts dashed)
+    _az, _el = math.radians(-30), math.radians(22)
+    _d = np.array([math.cos(_el) * math.cos(_az), math.cos(_el) * math.sin(_az), math.sin(_el)])  # scene to eye
+    _r = np.array([-math.sin(_az), math.cos(_az), 0.0])
+    _u = np.cross(_d, _r)
+
+    def _silhouette(ax, F, half, res=(240, 180), steps=140):
+        xs, ys = np.linspace(-half, half, res[0]), np.linspace(-half, half, res[1])
+        X, Y = np.meshgrid(xs, ys)
+        o = X[..., None] * _r + Y[..., None] * _u + 2.2 * half * _d
+        fmin = np.full(X.shape, np.inf)
+        for t in np.linspace(0, 4.4 * half, steps):
+            P = o - t * _d
+            fmin = np.minimum(fmin, F(P[..., 0], P[..., 1], P[..., 2]))
+        ax.contour(xs, ys, fmin, levels=[0.0], colors="black", linewidths=1.1)  # the silhouette, interpolated between samples
+
+    def _surface_curve(ax, F, P, half, color="black", lw=0.9, steps=160):
+        """Draw the visible part of the space curve P (n x 3) lying on F = 0."""
+        X, Y = P @ _r, P @ _u
+        o = P + 2.2 * half * _d  # start of the ray from the eye towards each point
+        hidden = np.zeros(len(P), dtype=bool)
+        for t in np.linspace(0, 2.2 * half, steps)[:-3]:
+            Q = o - t * _d
+            hidden |= F(Q[:, 0], Q[:, 1], Q[:, 2]) < -1e-3
+        ax.plot(np.where(hidden, np.nan, X), np.where(hidden, np.nan, Y), color=color, lw=lw)
+
+    def _torus(x, y, z, R=1.0, a=0.42):
+        return (np.sqrt(x * x + y * y) - R) ** 2 + z * z - a * a
+
+    def _genus2(x, y, z):  # two tori, smoothly joined, side by side on the screen
+        xr, yr = x * _r[0] + y * _r[1], x * _d[0] + y * _d[1]
+        t1, t2 = _torus(xr - 0.95, yr, z, 0.62, 0.3), _torus(xr + 0.95, yr, z, 0.62, 0.3)
+        k = 0.18
+        return -k * np.log(np.exp(-t1 / k) + np.exp(-t2 / k))
+
+    _sphereF = lambda x, y, z: x * x + y * y + z * z - 1.0
+    _t = np.linspace(0, 2 * np.pi, 300)
+    fig_surfaces = Figure(figsize=(6.2, 2.4), layout="constrained")
+    _s1, _s2, _s3 = fig_surfaces.subplots(1, 3, width_ratios=[1, 1.35, 1.65])
+    fig_congruence = Figure(figsize=(HALF, 3.4), layout="constrained")
+    _cg = fig_congruence.subplots()
+    for _ax, _F, _half, _name in ((_s1, _sphereF, 1.1, r"$\mathbb{S}^2$"), (_s2, _torus, 1.55, r"$\mathbb{T}^2$"), (_s3, _genus2, 1.9, r"$\Sigma_2$")):
+        _silhouette(_ax, _F, _half)
+        _ax.set_xlim(-_half, _half)
+        _ax.set_ylim(-1.5 * _half, _half)
+        _ax.text(0, -1.12 * _half, _name, fontsize=13, ha="center", va="top")
         _ax.set_aspect("equal")
         _ax.axis("off")
-    _t = np.linspace(0, 2 * np.pi, 300)
-    # sphere
-    _sf.plot(1.0 * np.cos(_t), 1.0 * np.sin(_t), color="black")
-    _sf.plot(1.0 * np.cos(_t[np.sin(_t) <= 0]), 0.25 * np.sin(_t[np.sin(_t) <= 0]), color="black", lw=1.0)
-    _sf.plot(1.0 * np.cos(_t[np.sin(_t) > 0]), 0.25 * np.sin(_t[np.sin(_t) > 0]), "--", color="black", lw=0.8)
-    _sf.text(0, -1.45, r"$\mathbb{S}^2$", fontsize=13, ha="center")
-    # torus
-    _sf.plot(3.4 + 1.3 * np.cos(_t), 0.75 * np.sin(_t), color="black")
-    _sf.plot(3.4 + 0.45 * np.cos(_t[np.sin(_t) <= 0.2]), 0.12 + 0.18 * np.sin(_t[np.sin(_t) <= 0.2]), color="black")
-    _sf.plot(3.4 + 0.33 * np.cos(_t[np.sin(_t) > 0.4]), 0.0 + 0.14 * np.sin(_t[np.sin(_t) > 0.4]), color="black")
-    _sf.text(3.4, -1.45, r"$\mathbb{T}^2$", fontsize=13, ha="center")
-    # genus 2: two lobes joined by a waist
-    _th = np.linspace(0, 2 * np.pi, 400)
-    _r = 1.0 + 0.55 * np.cos(2 * _th)
-    _sf.plot(6.9 + 1.25 * _r * np.cos(_th), 0.62 * _r * np.sin(_th), color="black")
-    for _cx in (6.0, 7.8):
-        _sf.plot(_cx + 0.33 * np.cos(_t[np.sin(_t) <= 0.2]), 0.1 + 0.14 * np.sin(_t[np.sin(_t) <= 0.2]), color="black")
-        _sf.plot(_cx + 0.24 * np.cos(_t[np.sin(_t) > 0.4]), 0.0 + 0.1 * np.sin(_t[np.sin(_t) > 0.4]), color="black")
-    _sf.text(6.9, -1.45, r"$\Sigma_2$", fontsize=13, ha="center")
-    _sf.set_xlim(-1.3, 9.3)
-    _sf.set_ylim(-1.8, 1.4)
+    _E = np.column_stack([np.cos(_t), np.sin(_t), 0 * _t]) @ np.column_stack([_r, _u])  # the equator of the sphere, projected
+    _front = (np.column_stack([np.cos(_t), np.sin(_t), 0 * _t]) @ _d) >= 0
+    _s1.plot(np.where(_front, _E[:, 0], np.nan), np.where(_front, _E[:, 1], np.nan), color="black", lw=0.9)
+    _s1.plot(np.where(_front, np.nan, _E[:, 0]), np.where(_front, np.nan, _E[:, 1]), color="black", lw=0.7, ls=(0, (3, 3)))
+
+    def _hole(ax, cx, cy, w, tilt=0.1):  # a hole drawn by hand: a smile whose ends curl up, with a small frown nested above it
+        a = np.linspace(-0.08 * np.pi, 1.08 * np.pi, 120)
+        ax.plot(cx + 1.12 * w * np.cos(a), cy - 0.56 * w * np.sin(np.clip(a, 0, np.pi)) + 0.28 * w * np.maximum(0, -np.sin(a)) + tilt * w * np.cos(a), color="black", lw=1.1, solid_capstyle="round")
+        a = np.linspace(0.12 * np.pi, 0.88 * np.pi, 60)
+        ax.plot(cx + 0.72 * w * np.cos(a), cy - 0.24 * w + 0.34 * w * np.sin(a) + 0.7 * tilt * w * np.cos(a), color="black", lw=1.1, solid_capstyle="round")
+
+    _hole(_s2, 0.0, 0.15, 0.55)
+    for _sgn in (-1, 1):
+        _c0 = _sgn * 0.95 * _r
+        _hole(_s3, _c0[0] * _r[0] + _c0[1] * _r[1], 0.1, 0.36)
     # congruence on the sphere: vectors copied along the equator, then carried up to the pole
     _cg.plot(np.cos(_t), np.sin(_t), color="black")
-    _eq = _t[np.sin(_t) <= 0]
-    _cg.plot(np.cos(_eq), 0.3 * np.sin(_eq), color="black", lw=1.0)
-    _cg.plot(np.cos(_t[np.sin(_t) > 0]), 0.3 * np.sin(_t[np.sin(_t) > 0]), "--", color="black", lw=0.8)
-    _ph = np.linspace(0, np.pi / 2, 80)  # meridians from the equator points p, q up to the pole r = (0, 1)
-    _y0 = -0.3 * np.sqrt(1 - 0.62**2)
-    for _x0, _col in ((-0.62, BLUE), (0.62, RED)):
+    _cg.plot(np.cos(_t), np.where(np.sin(_t) <= 0, 0.42 * np.sin(_t), np.nan), color="black", lw=0.9)
+    _cg.plot(np.cos(_t), np.where(np.sin(_t) > 0, 0.42 * np.sin(_t), np.nan), color="black", lw=0.7, ls=(0, (3, 3)))
+    _ph = np.linspace(0, np.pi / 2, 80)  # meridians from the equator up to the pole r = (0, 1)
+    for _x0 in (-0.9, 0.9):
+        _y0 = -0.42 * np.sqrt(1 - _x0**2)
+        _cg.plot(_x0 * np.cos(_ph), _y0 + (1 - _y0) * np.sin(_ph), color=GREY, lw=0.8)
+    _y0 = -0.42 * np.sqrt(1 - 0.6**2)
+    for _x0, _col in ((-0.6, BLUE), (0.6, RED)):
         _cg.plot(_x0 * np.cos(_ph), _y0 + (1 - _y0) * np.sin(_ph), color=_col)
-    for _x0 in np.linspace(-0.62, 0.62, 6):
-        _y0 = -0.3 * np.sqrt(1 - _x0**2)
-        arrow(_cg, (_x0, _y0), (_x0, _y0 + 0.35), GREEN)
-    _cg.plot([-0.62, 0.62], [-0.3 * np.sqrt(1 - 0.62**2)] * 2, "o", color="black", ms=3.5)
-    _cg.text(-0.62, -0.55, "$p$", fontsize=12, ha="center")
-    _cg.text(0.62, -0.55, "$q$", fontsize=12, ha="center")
-    _cg.text(-0.72, -0.02, "$v$", color=GREEN, fontsize=12, ha="right")
-    _cg.text(0.72, -0.02, "$v' = v$", color=GREEN, fontsize=12, ha="left")
+    for _x0 in np.linspace(-0.6, 0.6, 6):
+        _yy = -0.42 * np.sqrt(1 - _x0**2)
+        arrow(_cg, (_x0, _yy), (_x0, _yy + 0.4), GREEN)
+    _cg.plot([-0.6, 0.6], [_y0] * 2, "o", color="black", ms=3.5, zorder=4)
+    _cg.text(-0.6, _y0 - 0.1, "$p$", fontsize=12, ha="center", va="top")
+    _cg.text(0.6, _y0 - 0.1, "$q$", fontsize=12, ha="center", va="top")
+    _cg.text(-0.67, _y0 + 0.1, "$v$", color=GREEN, fontsize=12, ha="right", va="center")
+    _cg.text(0.67, _y0 + 0.1, "$v' = v$", color=GREEN, fontsize=12, ha="left", va="center")
     arrow(_cg, (0, 1), (-0.42, 1.32), GREEN)
     arrow(_cg, (0, 1), (0.42, 1.32), ORANGE)
-    _cg.text(-0.55, 1.35, "$v$", color=GREEN, fontsize=12, ha="right")
-    _cg.text(0.55, 1.35, "$v'$", color=ORANGE, fontsize=12)
-    _cg.plot(0, 1, "o", color="black", ms=3.5)
-    _cg.text(0.08, 0.8, "$r$", fontsize=12)
-    _cg.set_xlim(-1.3, 1.3)
-    _cg.set_ylim(-1.2, 1.6)
+    _cg.text(-0.5, 1.38, "$v$", color=GREEN, fontsize=12, ha="right")
+    _cg.text(0.5, 1.38, "$v'$", color=ORANGE, fontsize=12)
+    _cg.plot(0, 1, "o", color="black", ms=3.5, zorder=4)
+    _cg.text(0.1, 0.78, "$r$", fontsize=12)
+    _cg.set_xlim(-1.35, 1.35)
+    _cg.set_ylim(-1.15, 1.55)
+    _cg.set_aspect("equal")
+    _cg.axis("off")
     _ = None  # no cell output: the figures are returned, not displayed here
-    return (fig_surfaces,)
+    return fig_congruence, fig_surfaces
 
 
 @app.cell(hide_code=True)
-def _(BLUE, FULL, LIGHT, RED, arrow, blank, definition, mo, np):
+def _(BLUE, FULL, LIGHT, RED, arrow, blank, blob, definition, mo, np):
     _fig, _ax = blank(FULL, 2.9, (-0.2, 10.2), (-0.3, 3.7))
-    _th = np.linspace(0, 2 * np.pi, 200)
-    _ax.plot(5 + 1.7 * np.cos(_th), 2.0 + 1.5 * np.sin(_th), color="black")
+    from matplotlib.path import Path as _Path
+
+    _ax.plot(*blob(5.0, 2.0, 1.75, 1.45, wobble=0.09, seed=3), color="black")
     _ax.text(3.2, 3.4, "$M$", fontsize=14)
+    _Ua, _Ub = blob(4.55, 2.1, 0.78, 0.62, seed=1), blob(5.45, 2.0, 0.78, 0.7, seed=2)
     _g = np.linspace(0, 1, 300)
     _X, _Y = np.meshgrid(3 + 4 * _g, 0.4 + 3.2 * _g)
-    _A = ((_X - 4.55) / 0.75) ** 2 + ((_Y - 2.1) / 0.6) ** 2 < 1
-    _B = ((_X - 5.45) / 0.75) ** 2 + ((_Y - 2.0) / 0.7) ** 2 < 1
+    _pts = np.column_stack([_X.ravel(), _Y.ravel()])
+    _A = _Path(np.column_stack(_Ua)).contains_points(_pts).reshape(_X.shape)
+    _B = _Path(np.column_stack(_Ub)).contains_points(_pts).reshape(_X.shape)
     _ax.contourf(_X, _Y, (_A & _B).astype(float), levels=[0.5, 1.5], colors=[LIGHT], alpha=0.9)
-    _ax.plot(4.55 + 0.75 * np.cos(_th), 2.1 + 0.6 * np.sin(_th), color=RED)
-    _ax.plot(5.45 + 0.75 * np.cos(_th), 2.0 + 0.7 * np.sin(_th), color=BLUE)
-    _ax.text(3.85, 2.75, r"$U_\alpha$", color=RED, fontsize=13)
-    _ax.text(5.9, 2.75, r"$U_\beta$", color=BLUE, fontsize=13)
+    _ax.plot(*_Ua, color=RED)
+    _ax.plot(*_Ub, color=BLUE)
+    _ax.text(3.8, 2.8, r"$U_\alpha$", color=RED, fontsize=13)
+    _ax.text(5.95, 2.8, r"$U_\beta$", color=BLUE, fontsize=13)
     for _x0, _col, _name, _lab in ((0.3, RED, r"$V_\alpha \subseteq \mathbb{R}^2$", r"$\varphi_\alpha$"), (8.0, BLUE, r"$V_\beta \subseteq \mathbb{R}^2$", r"$\varphi_\beta$")):
         _ax.plot([_x0, _x0 + 1.7, _x0 + 1.7, _x0, _x0], [0.5, 0.5, 2.0, 2.0, 0.5], color=_col)
         _ax.text(_x0, 0.1, _name, color=_col, fontsize=12)
@@ -384,10 +436,7 @@ def _(BLUE, FULL, LIGHT, RED, arrow, blank, definition, mo, np):
     $$
 
     $$
-    \begin{aligned}
-    D_x (f \circ \varphi^{-1})(v) &= \lim_{h \to 0} \frac{(f \circ \varphi^{-1})(x + h v) - (f \circ \varphi^{-1})(x)}{h} \\
-    &= v^\mu\, \frac{\partial}{\partial x^\mu} (f \circ \varphi^{-1})(x)
-    \end{aligned}
+    D_x (f \circ \varphi^{-1})(v) = \lim_{h \to 0} \frac{(f \circ \varphi^{-1})(x + h v) - (f \circ \varphi^{-1})(x)}{h} = v^\mu\, \frac{\partial}{\partial x^\mu} (f \circ \varphi^{-1})(x)
     $$
 
     $\Longrightarrow$ &nbsp; given two charts $\varphi : U \longrightarrow V \subseteq \mathbb{R}^m \ni x$, &nbsp; $\tilde{\varphi} : \tilde{U} \longrightarrow \tilde{V} \subseteq \mathbb{R}^m \ni \tilde{x}$
