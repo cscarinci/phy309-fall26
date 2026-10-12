@@ -44,7 +44,7 @@ def _(mo):
       <div class="bs-inst">Daegu Gyeongbuk Institute of Science and Technology<br>School of Undergraduate Studies</div>
       <div class="bs-meta">
         <b>Document</b><span>{document}</span><b>Course</b><span>PHY309</span>
-        <b>Date</b><span>{date}</span><b>Instructor</b><span>Professor Scarinci</span>
+        <b>Week</b><span>{date.removeprefix('Week ')}</span><b>Instructor</b><span>Professor Scarinci</span>
       </div>
     </div>
     """
@@ -349,7 +349,7 @@ def _(corollary, definition, fig_compare, mo, theorem):
     $$
 
     $$
-    \left( \Gamma = \frac{1}{\sqrt{1 - \lVert v \rVert^2}} = \frac{1}{\sqrt{1 - (4/5)^2}} = \frac{5}{3} \right)
+    \left( \Gamma = \frac{1}{\sqrt{1 - \lVert \nu \rVert^2}} = \frac{1}{\sqrt{1 - (4/5)^2}} = \frac{5}{3} \right)
     $$
     """
             ),

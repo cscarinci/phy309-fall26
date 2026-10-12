@@ -46,6 +46,7 @@ PAGE = """<!doctype html>
   .meta {{ display: grid; grid-template-columns: auto 1fr auto 1fr; gap: .5rem 1.5rem; margin: 2rem 0;
           padding: 1rem 1.2rem; text-align: right; border-top: 1px solid #1b458f; border-bottom: 1px solid #1b458f; }}
   .meta b {{ text-align: left; }}
+  @media (max-width: 600px) {{ .meta {{ grid-template-columns: auto 1fr; }} }}
   h2 {{ font-size: 1.2rem; margin: 1.8rem 0 .4rem; }}
   ul {{ list-style: none; padding: 0; margin: 0; }}
   li {{ padding: .15rem 0; }}
@@ -64,9 +65,10 @@ PAGE = """<!doctype html>
 NAV_CSS = """<style>
   .phy-nav { position: fixed; left: 1.1rem; bottom: 1.1rem; z-index: 50; display: flex; gap: .35rem;
              font-family: "KaTeX_Main", "Latin Modern Roman", "CMU Serif", Georgia, serif; font-size: .9rem; }
-  .phy-nav a { color: #1b458f; text-decoration: none; opacity: .45; padding: .25rem .55rem; border-radius: .3rem;
+  .phy-nav a { color: #1b458f; text-decoration: none; opacity: .75; padding: .25rem .55rem; border-radius: .3rem;
                background: rgba(255,255,255,.85); border: 1px solid rgba(27,69,143,.25); transition: opacity .15s; }
-  .phy-nav a:hover { opacity: 1; }
+  .phy-nav a:hover, .phy-nav a:focus-visible { opacity: 1; }
+  .phy-nav a:focus-visible { outline: 2px solid #1b458f; outline-offset: 2px; }
   #root { padding-bottom: 3.5rem; }
   @media print { .phy-nav { display: none; } }
 </style>"""
@@ -102,6 +104,10 @@ def main():
         html = re.sub(r'<nav class="phy-nav">.*?</nav>', "", page.read_text(encoding="utf-8"), flags=re.S)
         html = html.replace("</body>", nav_html(number, notebooks) + "</body>", 1)
         page.write_text(html, encoding="utf-8")
+
+    covered = {n for _, first, last in PARTS for n in range(first, last + 1)}
+    for number in sorted(set(notebooks) - covered):
+        print(f"warning: lecture {number:02d} is outside every part in PARTS and will not appear on the index")
 
     sections = []
     for name, first, last in PARTS:

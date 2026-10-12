@@ -44,7 +44,7 @@ def _(mo):
       <div class="bs-inst">Daegu Gyeongbuk Institute of Science and Technology<br>School of Undergraduate Studies</div>
       <div class="bs-meta">
         <b>Document</b><span>{document}</span><b>Course</b><span>PHY309</span>
-        <b>Date</b><span>{date}</span><b>Instructor</b><span>Professor Scarinci</span>
+        <b>Week</b><span>{date.removeprefix('Week ')}</span><b>Instructor</b><span>Professor Scarinci</span>
       </div>
     </div>
     """
@@ -159,7 +159,7 @@ def _(BLUE, GREEN, GREY, HALF, ORANGE, RED, arrow, blank, np):
     _ax.plot([-1.3, 1.9], [0, 0], color=GREY, lw=1.0)
     _ax.text(1.9, -0.08, r"$S_p^u$", color=GREY, fontsize=12, ha="right", va="top")
     _s = np.linspace(-0.9, 1.7, 80)
-    _ax.plot(0.1 * np.sin(2 * _s), _s, color=BLUE)
+    _ax.plot(0.1 * (1 - np.cos(2 * _s)), _s, color=BLUE)  # vertical at p, tangent to u
     _ax.plot(_b * _s + 0.1 * _s**2, _s, color=RED)
     _ax.text(-0.3, 1.6, r"$\gamma$", color=BLUE, fontsize=12)
     _ax.text(1.25, 1.5, r"$\sigma$", color=RED, fontsize=12)
