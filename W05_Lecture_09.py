@@ -480,7 +480,7 @@ def _(mo):
 
 
 @app.cell(hide_code=True)
-def _(BLUE, FULL, Figure, GREEN, HALF, RED, arrow, math, mo, np, s_t, shade_sphere, table):
+def _(BLUE, FULL, Figure, GREEN, HALF, RED, arrow, math, mo, np, s_t, table):
     _az, _el = math.radians(-30), math.radians(16)
 
     def _pr(x, y, z):

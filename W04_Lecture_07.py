@@ -149,7 +149,7 @@ def _(header):
 
 
 @app.cell(hide_code=True)
-def _(BLUE, FULL, Figure, GREEN, GREY, arrow, fig_surfaces, mo, np):
+def _(BLUE, FULL, Figure, GREEN, GREY, arrow, fig_congruence, fig_surfaces, mo, np):
     _fig = Figure(figsize=(FULL, 2.4), layout="constrained")
     _l, _r = _fig.subplots(1, 2)
     for _ax in (_l, _r):
@@ -239,7 +239,7 @@ def _(BLUE, FULL, Figure, GREEN, GREY, arrow, fig_surfaces, mo, np):
 
 
 @app.cell(hide_code=True)
-def _(BLUE, Figure, GREEN, GREY, HALF, ORANGE, RED, arrow, math, np, shade_sphere):
+def _(BLUE, Figure, GREEN, GREY, HALF, ORANGE, RED, arrow, math, np):
     # Surfaces of genus 0, 1, 2 as line drawings: true silhouettes, with a few surface curves (hidden parts dashed)
     _az, _el = math.radians(-30), math.radians(22)
     _d = np.array([math.cos(_el) * math.cos(_az), math.cos(_el) * math.sin(_az), math.sin(_el)])  # scene to eye

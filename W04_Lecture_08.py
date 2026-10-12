@@ -248,7 +248,7 @@ def _(fig_angles, mo):
 
 
 @app.cell(hide_code=True)
-def _(BLUE, FULL, GREEN, GREY, HALF, LIGHT, RED, arrow, blank, blob, math, np, plane, shade_sphere):
+def _(BLUE, FULL, GREEN, GREY, HALF, LIGHT, RED, arrow, blank, blob, math, np, plane):
     # Polar angle phi from n and azimuthal angle theta from e_1, drawn in perspective
     _az, _el = math.radians(-30), math.radians(20)
 
