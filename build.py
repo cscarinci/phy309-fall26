@@ -5,7 +5,6 @@ Preview: python -m http.server --directory site
 """
 import re
 import subprocess
-import sys
 from pathlib import Path
 
 HERE = Path(__file__).parent
@@ -93,7 +92,7 @@ def main():
     for number, path in notebooks.items():
         print(f"exporting {path.name}")
         subprocess.run(
-            [sys.executable, "-m", "marimo", "export", "html-wasm", str(path), "-o", str(SITE / f"Lecture_{number:02d}"), "--mode", "run", "-f"],
+            ["marimo", "export", "html-wasm", str(path), "-o", str(SITE / f"Lecture_{number:02d}"), "--mode", "run", "-f"],
             check=True,
             cwd=HERE,
         )
