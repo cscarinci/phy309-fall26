@@ -251,7 +251,7 @@ def _(BLUE, GREY, RED, arrow, blank, definition, mo):
     - Euclidean space $\mathbb{E}^3$ = affine space $(\mathbb{A}, \mathbb{V}, -)$ &nbsp; ($-$: difference between points = displacement vector) &nbsp; + Euclidean inner product $\langle\ ,\ \rangle$ &nbsp; (measurements)
     - a choice of origin $o \in \mathbb{E}^3$ and orthonormal basis $\vec{e}_1, \vec{e}_2, \vec{e}_3 \in \mathbb{V}$ &nbsp; $\Longrightarrow$ &nbsp; Cartesian coordinates
 
-    **Today:** the same construction for spacetime: Galilean spacetime and Newtonian mechanics
+    **In this lecture:** the same construction for spacetime: Galilean spacetime and Newtonian mechanics
 
     ## I.2 &nbsp; Galilean geometry
 
@@ -299,7 +299,7 @@ def _(BLUE, GREY, RED, arrow, blank, definition, mo):
                 r"""
     ### The spatial inner product
 
-    **(iv′)** there is an Euclidean inner-product on $\ker \tau$ &nbsp; ($\dim = 3$!)
+    **(iv′)** there is a Euclidean inner-product on $\ker \tau$ &nbsp; ($\dim = 3$!)
 
     $$
     \langle\ ,\ \rangle : \ker \tau \times \ker \tau \longrightarrow \mathbb{R}
@@ -588,8 +588,10 @@ def _(fig_addition, fig_gravity, mo, theorem):
             mo.md(
                 r"""
     $$
-    \text{triangle inequality} \quad \Longrightarrow \quad \lVert \vec{v}(\gamma, \xi) \rVert \leq \lVert \vec{v}(\gamma, \sigma) \rVert + \lVert \vec{v}(\sigma, \xi) \rVert
-    \qquad \text{with equality if and only if one of the two vectors is a non-negative multiple of the other}
+    \begin{gathered}
+    \text{triangle inequality} \quad \Longrightarrow \quad \lVert \vec{v}(\gamma, \xi) \rVert \leq \lVert \vec{v}(\gamma, \sigma) \rVert + \lVert \vec{v}(\sigma, \xi) \rVert \\[4pt]
+    \text{with equality if and only if one of the two vectors is a non-negative multiple of the other}
+    \end{gathered}
     $$
 
     $\gamma, \sigma$ are inertial particles and $\xi$ is a light particle moving along same direction

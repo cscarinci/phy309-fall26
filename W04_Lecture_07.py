@@ -189,7 +189,7 @@ def _(BLUE, FULL, Figure, GREEN, GREY, arrow, fig_congruence, fig_surfaces, mo, 
             _fig,
             mo.md(
                 r"""
-    **Today:** generalize geometry so that it does *not need congruence* (drop the affine structure)
+    **In this lecture:** generalize geometry so that it does *not need congruence* (drop the affine structure)
 
     ## II.2 &nbsp; Manifolds
 
@@ -460,7 +460,7 @@ def _(BLUE, FULL, LIGHT, RED, arrow, blank, blob, definition, mo, np):
 
     ($\tilde{x} = \tilde{\varphi} \circ \varphi^{-1}(x)$ &nbsp; $\leadsto$ &nbsp; smooth by the diffeo assumption!)
 
-    $\therefore$ &nbsp; the notion of smoothness for $f : M \longrightarrow \mathbb{R}$ via charts is well-defined because change of charts are always smooth!
+    $\therefore$ &nbsp; the notion of smoothness for $f : M \longrightarrow \mathbb{R}$ via charts is well-defined because changes of charts are always smooth!
 
     ### Stereographic charts on the sphere
 

@@ -208,7 +208,7 @@ def _(fig_paths, mo):
     - The derivative of a smooth map $f : M \longrightarrow N$ at $p$ is $Df_p : T_pM \longrightarrow T_{f(p)}N$, $Df_p[\gamma] = [f \circ \gamma]$.
     - For a smooth function $f : M \longrightarrow \mathbb{R}$, the affine structure of $\mathbb{R}$ gives $T_{f(p)}\mathbb{R} \approx \mathbb{R}$ and $Df_p(v_p) = \dfrac{d}{dt}\Big|_{t=0} f \circ \gamma(t)$, the directional derivative of $f$ at $p$ in the direction $v_p$.
 
-    **Today:** tangent vectors as derivations, the vector space structure of $T_pM$, and the coordinate basis $\partial_i|_p$.
+    **In this lecture:** tangent vectors as derivations, the vector space structure of $T_pM$, and the coordinate basis $\partial_i|_p$.
     """
             ),
             fig_paths,
@@ -248,7 +248,10 @@ def _(BLUE, Figure, GREY, HALF, RED, mo, np):
     **Example.** &nbsp; On $\mathbb{S}^2 = \{\, (x, y, z) \in \mathbb{R}^3 \mid x^2 + y^2 + z^2 = 1 \,\}$ take again the height function, the point $p$ and the two paths
 
     $$
-    h : \mathbb{S}^2 \longrightarrow \mathbb{R}, \qquad h(x, y, z) = z, \qquad p = (1, 0, 0), \qquad \gamma(t) = \big( \cos(t),\ \sin(t),\ 0 \big), \qquad \sigma(t) = \big( \cos(t),\ 0,\ \sin(t) \big)
+    \begin{gathered}
+    h : \mathbb{S}^2 \longrightarrow \mathbb{R}, \qquad h(x, y, z) = z, \qquad p = (1, 0, 0), \\[4pt]
+    \gamma(t) = \big( \cos(t),\ \sin(t),\ 0 \big), \qquad \sigma(t) = \big( \cos(t),\ 0,\ \sin(t) \big)
+    \end{gathered}
     $$
 
     In the chart $\varphi_n$ and its inverse (the local coordinate parametrization)

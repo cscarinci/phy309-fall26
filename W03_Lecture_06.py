@@ -159,7 +159,7 @@ def _(definition, mo, postulate, theorem):
     - relativistic dynamics: a particle $\sigma : \mathbb{R} \longrightarrow \mathbb{M}^4$ with mass $m > 0$ has 4-velocity $\sigma'$, 4-momentum $P = m\sigma'$ and 4-acceleration $\sigma''$
     - equations of motion $m\, \sigma'' = \kappa\, F(\sigma, \sigma')$: a second order system of ODEs with coupling constant (charge) $\kappa$ and force rule $F$
 
-    **Today:** why gravity is not one more force rule: the equivalence principle
+    **In this lecture:** why gravity is not one more force rule: the equivalence principle
 
     ## II.1 &nbsp; The equivalence principle
 

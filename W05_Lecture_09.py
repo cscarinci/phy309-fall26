@@ -157,7 +157,7 @@ def _(mo):
     - A change of coordinates $x \longmapsto \tilde{x}(x)$ has an invertible Jacobian $\dfrac{\partial \tilde{x}^\mu}{\partial x^\nu}$ on $\varphi(U \cap \tilde{U})$.
     - $f : M \longrightarrow N$ is smooth if every coordinate expression $\psi \circ f \circ \varphi^{-1}$, $x \longmapsto y^\alpha(x)\, e_\alpha$, is smooth.
 
-    **Today:** velocities of paths, the tangent space $T_pM$, and the derivative $Df_p$ of a smooth map.
+    **In this lecture:** velocities of paths, the tangent space $T_pM$, and the derivative $Df_p$ of a smooth map.
     """)
     return
 

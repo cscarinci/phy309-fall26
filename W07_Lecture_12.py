@@ -160,7 +160,7 @@ def _(mo):
     - An integral curve of $X$ satisfies $\gamma'(t) = X_{\gamma(t)}$, a first order system $(x^i \circ \gamma)' = X^i \circ \gamma$ in any chart; through each point passes a unique maximal integral curve.
     - The tangent bundle $TM$ is the collection of all tangent spaces.
 
-    **Today:** a review of calculus on manifolds, from charts to differential equations, with every step carried out on $\mathbb{S}^2$.
+    **In this lecture:** a review of calculus on manifolds, from charts to differential equations, with every step carried out on $\mathbb{S}^2$.
     """)
     return
 

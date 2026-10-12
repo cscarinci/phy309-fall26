@@ -156,7 +156,7 @@ def _(fig_angles, mo):
     - a manifold is a set of points $M \ni p$ with charts $\varphi_\alpha : U_\alpha \subseteq M \longrightarrow V_\alpha \subseteq \mathbb{R}^m$: the $U_\alpha$ cover $M$, the $V_\alpha$ and $\varphi_\alpha(U_\alpha \cap U_\beta)$ are open, the $\varphi_\alpha$ are bijections and the changes of chart $\varphi_\beta \circ \varphi_\alpha^{-1}$ are smooth with smooth inverse
     - a function $f : M \longrightarrow \mathbb{R}$ is smooth if $f \circ \varphi_\alpha^{-1}$ is smooth for every chart; the sphere with its two stereographic charts is a 2-manifold
 
-    **Today:** the atlas of the sphere in full, smooth maps between manifolds, and tangent vectors
+    **In this lecture:** the atlas of the sphere in full, smooth maps between manifolds, and tangent vectors
 
     ## II.3 &nbsp; Charts on the sphere, smooth maps, tangent vectors
 

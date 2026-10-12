@@ -194,7 +194,7 @@ def _(corollary, definition, fig_compare, mo, theorem):
     - causal structure: $q$ in the future / past of $p$ if $q - p$ is timelike or lightlike in the future / past cone; $p, q$ spacelike separated otherwise; no absolute simultaneity
     - proper time $\mathrm{time}(p, q) = \sqrt{-\lVert q - p \rVert^2}$ and proper distance $\mathrm{dist}(p, q) = \sqrt{\lVert q - p \rVert^2}$; particles are future oriented timelike curves
 
-    **Today:** proper time along a particle, the reversed inequalities behind the twin paradox, and relative velocity in coordinates
+    **In this lecture:** proper time along a particle, the reversed inequalities behind the twin paradox, and relative velocity in coordinates
 
     ## I.4 &nbsp; Proper time, reversed inequalities, relative velocity
 
@@ -423,7 +423,7 @@ def _(definition, mo):
 
     For the twins: &nbsp; $u = \begin{bmatrix} 1 \\ 0 \end{bmatrix}, \ v = \begin{bmatrix} 5/3 \\ 4/3 \end{bmatrix}$ &nbsp; $\Longrightarrow$ &nbsp; $\eta(u, v) = -5/3$ &nbsp; $\Longrightarrow$ &nbsp; $\nu = \begin{bmatrix} 0 \\ 4/5 \end{bmatrix}$ &nbsp; $\Longrightarrow$ &nbsp; $\lVert \nu \rVert^2 = \tfrac{16}{25}$
 
-    In $\mathbb{G}^4$: &nbsp; $\nu(u, v) = v - u \in \ker \tau$ &nbsp; (the same subspace for every $u$, unlike $u^\perp$ &nbsp; $\Longrightarrow$ &nbsp; simple formula addition of relative velocities &nbsp; $\Longrightarrow$ &nbsp; broke Maxwell)
+    In $\mathbb{G}^4$: &nbsp; $\nu(u, v) = v - u \in \ker \tau$ &nbsp; (the same subspace for every $u$, unlike $u^\perp$ &nbsp; $\Longrightarrow$ &nbsp; simple formula for the addition of relative velocities &nbsp; $\Longrightarrow$ &nbsp; broke Maxwell)
 
     $$
     \Longrightarrow \quad \lVert \nu(u, v) \rVert^2 = \frac{\lVert v \rVert^2}{\eta(u, v)^2} + \lVert u \rVert^2 + 2\, \frac{\eta(u, v)}{\eta(u, v)} = 1 + \frac{\lVert v \rVert^2}{\eta(u, v)^2} < 1
@@ -513,11 +513,13 @@ def _(definition, mo):
     **Remark.** Maxwell's equations
 
     $$
+    \begin{gathered}
     \begin{cases}
     \underbrace{\partial_i B^i}_{\nabla \cdot B} = 0, \qquad \underbrace{\epsilon^{ijk} \partial_j E_k}_{\nabla \times E} + \partial_0 B^i = 0 \\[10pt]
     \partial_i E^i = \rho, \qquad \epsilon^{ijk} \partial_j B_k - \partial_0 E^i = J^i
-    \end{cases}
-    \qquad \text{not invariant under change of Galilean inertial frames… (Galilean transformations)}
+    \end{cases} \\[8pt]
+    \text{not invariant under change of Galilean inertial frames… (Galilean transformations)}
+    \end{gathered}
     $$
 
     have a very “simple” formulation in Minkowski spacetime

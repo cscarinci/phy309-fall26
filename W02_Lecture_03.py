@@ -160,7 +160,7 @@ def _(definition, mo):
     - Newton's law $\gamma'' = \vec{F} / m$ with $\vec{F} \in \ker \tau$: inertial motion, uniform acceleration ($\vec{F} = m\vec{g}$) and central motion (conics) all fit
     - Maxwell's equations do not: they single out a speed $c$, but relative velocities add, $\vec{v}(\gamma, \xi) = \vec{v}(\gamma, \sigma) + \vec{v}(\sigma, \xi)$, so a light particle $\xi$ moving with speed $c$ relative to $\gamma$ and to $\sigma$ forces $c = \lVert \vec{v}(\gamma, \sigma) \rVert + c$
 
-    **Today:** a new geometry for spacetime in which the speed of light is the same for every inertial observer
+    **In this lecture:** a new geometry for spacetime in which the speed of light is the same for every inertial observer
 
     ## I.3 &nbsp; Minkowski geometry
 
@@ -196,9 +196,9 @@ def _(definition, mo):
             ),
             mo.md(
                 r"""
-    In $\mathbb{G}^4$, $\ker(\tau)$ had an Euclidean inner product &nbsp; $\Longrightarrow$ &nbsp; we had copies of $\mathbb{E}^3$ through each $p \in \mathbb{G}^4$: &nbsp; $S_p = p + \ker(\tau) \approx \mathbb{E}^3$
+    In $\mathbb{G}^4$, $\ker(\tau)$ had a Euclidean inner product &nbsp; $\Longrightarrow$ &nbsp; we had copies of $\mathbb{E}^3$ through each $p \in \mathbb{G}^4$: &nbsp; $S_p = p + \ker(\tau) \approx \mathbb{E}^3$
 
-    Now, in $\mathbb{M}^4$, $\vec{u}^\perp$ has an Euclidean inner product for each $\vec{u} \in \mathbb{V}^4$ with $\eta(\vec{u}, \vec{u}) = \lVert \vec{u} \rVert^2 < 0$ &nbsp; $\Longrightarrow$ &nbsp; we get copies of $\mathbb{E}^3$ through each $p \in \mathbb{M}^4$, for each such vector $\vec{u} \in \mathbb{V}^4$, $\lVert \vec{u} \rVert^2 < 0$
+    Now, in $\mathbb{M}^4$, $\vec{u}^\perp$ has a Euclidean inner product for each $\vec{u} \in \mathbb{V}^4$ with $\eta(\vec{u}, \vec{u}) = \lVert \vec{u} \rVert^2 < 0$ &nbsp; $\Longrightarrow$ &nbsp; we get copies of $\mathbb{E}^3$ through each $p \in \mathbb{M}^4$, for each such vector $\vec{u} \in \mathbb{V}^4$, $\lVert \vec{u} \rVert^2 < 0$
 
     $$
     S_p^{\vec{u}} = p + \vec{u}^\perp \approx \mathbb{E}^3

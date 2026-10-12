@@ -159,7 +159,7 @@ def _(mo):
     - $T_pM$ is an $m$-dimensional vector space; a chart $\varphi$ gives the coordinate basis $\partial_i|_p$, with $\partial_i|_p f = \dfrac{\partial}{\partial x^i}(f \circ \varphi^{-1})\Big|_{\varphi(p)}$, and every $X_p = X^i(p)\, \partial_i|_p$ with $X^i(p) = X_p(x^i)$.
     - On a manifold the tangent space $T_pM$ takes the place of the vector space $\mathbb{V}$ of an affine space, but each point has its own.
 
-    **Today:** vector fields, integral curves and the tangent bundle.
+    **In this lecture:** vector fields, integral curves and the tangent bundle.
     """)
     return
 

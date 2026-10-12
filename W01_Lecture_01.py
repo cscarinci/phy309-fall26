@@ -479,7 +479,7 @@ def _(Arc, BLUE, FULL, GREEN, arrow, definition, mo, np):
     \mathbb{E}^3 = (\mathbb{A}, \mathbb{V}, -)
     $$
 
-    together with an Euclidean inner product on $\mathbb{V}$
+    together with a Euclidean inner product on $\mathbb{V}$
 
     $$
     \langle\ ,\ \rangle : \mathbb{V} \times \mathbb{V} \longrightarrow \mathbb{R}

@@ -192,7 +192,7 @@ def _(corollary, definition, fig_decomp, mo, theorem):
     - particles in Minkowski spacetime: $\gamma : \mathbb{R} \longrightarrow \mathbb{M}^4$ with $\gamma'(t)$ timelike and future oriented, parameterized by proper time, $\lVert \gamma'(t) \rVert^2 = -1$
     - inertial particles maximize proper time (reversed triangle inequality); relative velocity $\nu(u, v) = v / (-\eta(u, v)) - u \in u^\perp$ with $\lVert \nu \rVert^2 < 1$, and $= 1$ for photons
 
-    **Today:** the Lorentz factor, photons as limits of particles, and relativistic dynamics
+    **In this lecture:** the Lorentz factor, photons as limits of particles, and relativistic dynamics
 
     ## I.5 &nbsp; Lorentz factor, photons, relativistic dynamics
 
