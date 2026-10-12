@@ -80,7 +80,7 @@ def _(mo):
             "",
             xy=tip,
             xytext=tail,
-            arrowprops={"arrowstyle": "-|>", "color": color, "lw": lw, "mutation_scale": 11, "shrinkA": 0, "shrinkB": 0, **kw},
+            arrowprops={"arrowstyle": "-|>,head_width=0.15,head_length=0.35", "color": color, "lw": lw, "shrinkA": 0, "shrinkB": 0, **kw},
         )
         if label:
             pos = tip if at_tip else ((tail[0] + tip[0]) / 2, (tail[1] + tip[1]) / 2)
@@ -108,11 +108,20 @@ def _(mo):
         ax.axis("off")
         return fig, ax
 
+    def blob(cx, cy, rx, ry, wobble=0.07, seed=0, n=400):
+        """Closed organic curve around (cx, cy): an ellipse with a few low harmonics."""
+        import numpy as _np
+
+        rng = _np.random.default_rng(seed)
+        t = _np.linspace(0, 2 * _np.pi, n)
+        r = 1 + sum(wobble / k * rng.uniform(0.4, 1.0) * _np.cos(k * t + rng.uniform(0, 2 * _np.pi)) for k in (2, 3, 4, 5))
+        return cx + rx * r * _np.cos(t), cy + ry * r * _np.sin(t)
+
     def table(rows):
         """Fixed-label readout table: rows are (label, value) pairs of markdown strings."""
         return mo.md("\n".join(["| | |", "|:--|--:|"] + [f"| {k} | {v} |" for k, v in rows]))
 
-    return BLUE, FULL, GREEN, GREY, HALF, LIGHT, ORANGE, RED, arrow, blank, corollary, definition, header, note, plane, postulate, proposition, table, theorem
+    return BLUE, FULL, GREEN, GREY, HALF, LIGHT, ORANGE, RED, arrow, blank, blob, corollary, definition, header, note, plane, postulate, proposition, table, theorem
 
 
 @app.cell(hide_code=True)
@@ -353,7 +362,7 @@ def _(BLUE, FULL, Figure, GREEN, GREY, RED, arrow, mo, np, s_a, s_b, s_u, s_v, t
 
 
 @app.cell(hide_code=True)
-def _(BLUE, FULL, Figure, GREEN, RED, arrow, definition, mo, np):
+def _(BLUE, FULL, Figure, GREEN, RED, arrow, blob, definition, mo, np):
     _fig = Figure(figsize=(FULL, 2.6), layout="constrained")
     _ax = _fig.subplots()
     _ax.set_xlim(-2.9, 10.2)
@@ -363,7 +372,7 @@ def _(BLUE, FULL, Figure, GREEN, RED, arrow, definition, mo, np):
     _c = np.linspace(0, 2 * np.pi, 200)
     _t = np.linspace(-1.0, 1.0, 100)
     for _x0, _name, _lab in ((0.0, "$M$", "$p$"), (7.2, "$N$", "$f(p)$")):
-        _ax.plot(_x0 + 2.4 * np.cos(_c) + 0.15 * np.cos(2 * _c), 1.25 * np.sin(_c) + 0.12 * np.sin(3 * _c), color="black")
+        _ax.plot(*blob(_x0, 0.0, 2.45, 1.3, wobble=0.1, seed=6 if _x0 == 0 else 7), color="black")
         _ax.plot(_x0 + _t, 0.2 - 0.35 * _t**2, color=BLUE)
         _ax.plot(_x0 + _t, 0.2 - 1.1 * _t**2, color=RED)
         arrow(_ax, (_x0, 0.2), (_x0 + 0.7, 0.2), GREEN)
@@ -471,7 +480,7 @@ def _(mo):
 
 
 @app.cell(hide_code=True)
-def _(BLUE, FULL, Figure, GREEN, HALF, RED, arrow, math, mo, np, s_t, table):
+def _(BLUE, FULL, Figure, GREEN, HALF, RED, arrow, math, mo, np, s_t, shade_sphere, table):
     _az, _el = math.radians(-30), math.radians(16)
 
     def _pr(x, y, z):

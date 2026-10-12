@@ -80,7 +80,7 @@ def _(mo):
             "",
             xy=tip,
             xytext=tail,
-            arrowprops={"arrowstyle": "-|>", "color": color, "lw": lw, "mutation_scale": 11, "shrinkA": 0, "shrinkB": 0, **kw},
+            arrowprops={"arrowstyle": "-|>,head_width=0.15,head_length=0.35", "color": color, "lw": lw, "shrinkA": 0, "shrinkB": 0, **kw},
         )
         if label:
             pos = tip if at_tip else ((tail[0] + tip[0]) / 2, (tail[1] + tip[1]) / 2)
@@ -108,11 +108,20 @@ def _(mo):
         ax.axis("off")
         return fig, ax
 
+    def blob(cx, cy, rx, ry, wobble=0.07, seed=0, n=400):
+        """Closed organic curve around (cx, cy): an ellipse with a few low harmonics."""
+        import numpy as _np
+
+        rng = _np.random.default_rng(seed)
+        t = _np.linspace(0, 2 * _np.pi, n)
+        r = 1 + sum(wobble / k * rng.uniform(0.4, 1.0) * _np.cos(k * t + rng.uniform(0, 2 * _np.pi)) for k in (2, 3, 4, 5))
+        return cx + rx * r * _np.cos(t), cy + ry * r * _np.sin(t)
+
     def table(rows):
         """Fixed-label readout table: rows are (label, value) pairs of markdown strings."""
         return mo.md("\n".join(["| | |", "|:--|--:|"] + [f"| {k} | {v} |" for k, v in rows]))
 
-    return BLUE, FULL, GREEN, GREY, HALF, LIGHT, ORANGE, RED, arrow, blank, corollary, definition, header, note, plane, postulate, proposition, table, theorem
+    return BLUE, FULL, GREEN, GREY, HALF, LIGHT, ORANGE, RED, arrow, blank, blob, corollary, definition, header, note, plane, postulate, proposition, table, theorem
 
 
 @app.cell(hide_code=True)
@@ -140,23 +149,23 @@ def _(header):
 
 
 @app.cell(hide_code=True)
-def _(BLUE, Figure, GREEN, GREY, ORANGE, RED, arrow, np):
+def _(BLUE, Figure, GREEN, GREY, ORANGE, RED, arrow, blob, np):
     # Paths through p with the same velocity, seen on M and in a chart
     fig_paths = Figure(figsize=(5.4, 4.2), layout="constrained")
     _ax = fig_paths.subplots()
     _ax.set_aspect("equal")
     _ax.axis("off")
     _t = np.linspace(0, 2 * np.pi, 300)
-    _ax.plot(3.2 + 2.0 * np.cos(_t) * (1 + 0.1 * np.cos(3 * _t)), 3.0 + 1.25 * np.sin(_t) * (1 + 0.1 * np.cos(2 * _t)), color="black")
+    _ax.plot(*blob(3.2, 3.0, 2.05, 1.3, wobble=0.1, seed=8), color="black")
     _ax.text(1.4, 4.1, "$M$", fontsize=13)
-    _ax.plot(3.2 + 0.75 * np.cos(_t), 3.05 + 0.6 * np.sin(_t), color=GREY)
+    _ax.plot(*blob(3.2, 3.05, 0.8, 0.62, wobble=0.06, seed=9), color=GREY)
     _ax.text(2.45, 3.65, "$U$", color=GREY, fontsize=11)
     _s = np.linspace(-0.6, 0.6, 80)
     _P = (3.2, 3.05)
     for _col, _k in ((BLUE, 0.0), (RED, 0.9), (ORANGE, -0.9)):
         _ax.plot(_P[0] + _s, _P[1] + 0.25 * _s - _k * _s**2, color=_col)
     arrow(_ax, _P, (_P[0] + 0.55, _P[1] + 0.14), GREEN)
-    _ax.text(_P[0] + 0.6, _P[1] + 0.28, r"$v_p = [\gamma]$", color=GREEN, fontsize=11)
+    _ax.text(_P[0] + 0.9, _P[1] + 0.42, r"$v_p = [\gamma]$", color=GREEN, fontsize=11, bbox=dict(boxstyle="round,pad=0.1", facecolor="white", edgecolor="none", alpha=0.85))
     _ax.plot(*_P, "o", color="black", ms=4)
     _ax.text(_P[0] - 0.08, _P[1] - 0.28, "$p$", fontsize=12, ha="right")
     # the real line on the left and the three paths as maps from it
@@ -177,7 +186,7 @@ def _(BLUE, Figure, GREEN, GREY, ORANGE, RED, arrow, np):
     arrow(_ax, _Q, (_Q[0] + 0.6, _Q[1] + 0.18), GREEN)
     _ax.text(_Q[0] + 0.65, _Q[1] + 0.3, r"$(\varphi \circ \gamma)'(0)$", color=GREEN, fontsize=10)
     _ax.plot(*_Q, "o", color="black", ms=4)
-    _ax.text(_Q[0], _Q[1] - 0.42, r"$\varphi(p)$", fontsize=10, ha="center", va="top")
+    _ax.text(_Q[0] - 0.05, _Q[1] - 0.5, r"$\varphi(p)$", fontsize=10, ha="center", va="top", bbox=dict(boxstyle="round,pad=0.1", facecolor="white", edgecolor="none", alpha=0.85))
     arrow(_ax, (3.9, 2.3), (4.6, 1.85), "black", connectionstyle="arc3,rad=-0.3")
     _ax.text(4.45, 2.35, r"$\varphi$", fontsize=12)
     _ax.set_xlim(-0.7, 7.2)
@@ -326,8 +335,7 @@ def _(definition, mo, theorem):
     $$
     \begin{aligned}
     \Longrightarrow \quad X_p(f \cdot g) &= \frac{d}{dt}\bigg|_{t=0} \big( (f \cdot g) \circ \gamma \big) \\[4pt]
-    &= (f \circ \gamma)'(0)\, g(\gamma(0)) + f(\gamma(0))\, (g \circ \gamma)'(0) \\[4pt]
-    &= X_p(f)\, g(p) + f(p)\, X_p(g)
+    &= (f \circ \gamma)'(0)\, g(\gamma(0)) + f(\gamma(0))\, (g \circ \gamma)'(0) = X_p(f)\, g(p) + f(p)\, X_p(g)
     \end{aligned}
     $$
 
@@ -433,8 +441,7 @@ def _(mo):
     $$
     \begin{aligned}
     \partial_u|_p (h) &= \frac{\partial}{\partial u}\bigg|_{(1, 0)} \frac{-1 + u^2 + v^2}{1 + u^2 + v^2} \\[4pt]
-    &= \frac{2u (1 + u^2 + v^2) - (-1 + u^2 + v^2)\, 2u}{(1 + u^2 + v^2)^2}\bigg|_{(1, 0)} \\[4pt]
-    &= \frac{4 - 0}{2^2} = 1
+    &= \frac{2u (1 + u^2 + v^2) - (-1 + u^2 + v^2)\, 2u}{(1 + u^2 + v^2)^2}\bigg|_{(1, 0)} = \frac{4 - 0}{2^2} = 1
     \end{aligned}
     $$
     """)
@@ -449,7 +456,7 @@ def _(mo):
 
 
 @app.cell(hide_code=True)
-def _(BLUE, FULL, Figure, GREY, RED, arrow, math, mo, np, s_u, s_v, table):
+def _(BLUE, FULL, Figure, GREY, RED, arrow, math, mo, np, s_u, s_v, shade_sphere, table):
     _az, _el = math.radians(-30), math.radians(16)
 
     def _pr(x, y, z):

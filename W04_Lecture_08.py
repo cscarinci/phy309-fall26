@@ -80,7 +80,7 @@ def _(mo):
             "",
             xy=tip,
             xytext=tail,
-            arrowprops={"arrowstyle": "-|>", "color": color, "lw": lw, "mutation_scale": 11, "shrinkA": 0, "shrinkB": 0, **kw},
+            arrowprops={"arrowstyle": "-|>,head_width=0.15,head_length=0.35", "color": color, "lw": lw, "shrinkA": 0, "shrinkB": 0, **kw},
         )
         if label:
             pos = tip if at_tip else ((tail[0] + tip[0]) / 2, (tail[1] + tip[1]) / 2)
@@ -108,11 +108,20 @@ def _(mo):
         ax.axis("off")
         return fig, ax
 
+    def blob(cx, cy, rx, ry, wobble=0.07, seed=0, n=400):
+        """Closed organic curve around (cx, cy): an ellipse with a few low harmonics."""
+        import numpy as _np
+
+        rng = _np.random.default_rng(seed)
+        t = _np.linspace(0, 2 * _np.pi, n)
+        r = 1 + sum(wobble / k * rng.uniform(0.4, 1.0) * _np.cos(k * t + rng.uniform(0, 2 * _np.pi)) for k in (2, 3, 4, 5))
+        return cx + rx * r * _np.cos(t), cy + ry * r * _np.sin(t)
+
     def table(rows):
         """Fixed-label readout table: rows are (label, value) pairs of markdown strings."""
         return mo.md("\n".join(["| | |", "|:--|--:|"] + [f"| {k} | {v} |" for k, v in rows]))
 
-    return BLUE, FULL, GREEN, GREY, HALF, LIGHT, ORANGE, RED, arrow, blank, corollary, definition, header, note, plane, postulate, proposition, table, theorem
+    return BLUE, FULL, GREEN, GREY, HALF, LIGHT, ORANGE, RED, arrow, blank, blob, corollary, definition, header, note, plane, postulate, proposition, table, theorem
 
 
 @app.cell(hide_code=True)
@@ -222,10 +231,8 @@ def _(fig_angles, mo):
 
     $$
     \begin{aligned}
-    \psi^{-1}(\phi, \theta) &= (\sin\phi \cos\theta,\ \sin\phi \sin\theta,\ \cos\phi) \\
-    &= (x, y, z) \\
-    &= \left( \frac{2u}{1 + u^2 + v^2},\ \frac{2v}{1 + u^2 + v^2},\ \frac{-1 + u^2 + v^2}{1 + u^2 + v^2} \right) \\
-    &= \varphi_n^{-1}(u, v)
+    \psi^{-1}(\phi, \theta) &= (\sin\phi \cos\theta,\ \sin\phi \sin\theta,\ \cos\phi) = (x, y, z) \\
+    &= \left( \frac{2u}{1 + u^2 + v^2},\ \frac{2v}{1 + u^2 + v^2},\ \frac{-1 + u^2 + v^2}{1 + u^2 + v^2} \right) = \varphi_n^{-1}(u, v)
     \end{aligned}
     $$
 
@@ -241,49 +248,71 @@ def _(fig_angles, mo):
 
 
 @app.cell(hide_code=True)
-def _(Arc, BLUE, FULL, GREEN, GREY, HALF, LIGHT, RED, arrow, blank, np, plane):
-    # Polar angle phi from n and azimuthal angle theta from e_1
-    fig_angles, _ax = blank(HALF, 3.2, (-1.5, 1.4), (-1.5, 1.5))
-    _t = np.linspace(0, 2 * np.pi, 200)
-    _ax.plot(np.cos(_t), np.sin(_t), color=GREY)
-    _ax.plot(np.cos(_t), 0.3 * np.sin(_t), "--", color=GREY, lw=0.8)
-    _ax.plot([0, 0], [-1.35, 1.35], color="black", lw=1.0)
-    _ax.plot([0, 0], [-1, 1], "o", color="black", ms=4)
-    _ax.text(0.08, 1.05, "$n$", fontsize=12)
-    _ax.text(0.08, -1.2, "$s$", fontsize=12)
-    _ax.plot(0, 0, "o", color="black", ms=3)
-    _ax.text(-0.18, -0.08, "$o$", fontsize=11, ha="right")
-    _p = (0.62, 0.66)
-    _foot = (0.62, -0.1)  # projection of p onto the equatorial plane (drawn in perspective)
-    arrow(_ax, (0, 0), _p, BLUE)
-    _ax.plot(*_p, "o", color=BLUE, ms=4)
-    _ax.text(_p[0] + 0.06, _p[1] + 0.04, "$p$", color=BLUE, fontsize=12)
-    _ax.plot([_p[0], _foot[0]], [_p[1], _foot[1]], "--", color=BLUE, lw=0.9)
-    _ax.plot([0, _foot[0]], [0, _foot[1]], "--", color=BLUE, lw=0.9)
-    arrow(_ax, (0, 0), (-0.75, -0.2), "black")
-    _ax.text(-0.82, -0.12, "$e_1$", fontsize=12, ha="right")
-    _ax.add_patch(Arc((0, 0), 0.7, 0.7, theta1=47, theta2=90, color=GREEN))
-    _ax.text(0.1, 0.42, r"$\phi$", color=GREEN, fontsize=12)
-    _ax.add_patch(Arc((0, 0), 0.9, 0.3, theta1=195, theta2=350, color=GREEN))
-    _ax.text(0.05, -0.3, r"$\theta$", color=GREEN, fontsize=12)
+def _(BLUE, FULL, GREEN, GREY, HALF, LIGHT, RED, arrow, blank, blob, math, np, plane, shade_sphere):
+    # Polar angle phi from n and azimuthal angle theta from e_1, drawn in perspective
+    _az, _el = math.radians(-30), math.radians(20)
+
+    def _pr(x, y, z):
+        X = -x * math.sin(_az) + y * math.cos(_az)
+        Y = z * math.cos(_el) - (x * math.cos(_az) + y * math.sin(_az)) * math.sin(_el)
+        D = (x * math.cos(_az) + y * math.sin(_az)) * math.cos(_el) + z * math.sin(_el)
+        return X, Y, D
+
+    def _curve(ax, x, y, z, color, lw=1.0, ls="-"):
+        X, Y, D = _pr(x, y, z)
+        ax.plot(np.where(D >= 0, X, np.nan), np.where(D >= 0, Y, np.nan), color=color, lw=lw, ls=ls)
+        ax.plot(np.where(D < 0, X, np.nan), np.where(D < 0, Y, np.nan), color=color, lw=0.7 * lw, ls=(0, (3, 3)))
+
+    fig_angles, _ax = blank(HALF, 3.2, (-1.45, 1.45), (-1.45, 1.45))
+    _t = np.linspace(0, 2 * np.pi, 300)
+    _ax.plot(np.cos(_t), np.sin(_t), color="black")
+    _curve(_ax, np.cos(_t), np.sin(_t), 0 * _t, GREY)
+    _ph, _th = math.radians(50), math.radians(40)
+    _P = (math.sin(_ph) * math.cos(_th), math.sin(_ph) * math.sin(_th), math.cos(_ph))
+    _F = (_P[0], _P[1], 0.0)  # foot of p on the equatorial plane
+    _N, _S, _O = _pr(0, 0, 1), _pr(0, 0, -1), _pr(0, 0, 0)
+    _ax.plot([_S[0], _N[0]], [_S[1], _N[1]], color="black", lw=0.9, zorder=2)
+    for _Q, _lab, _dx, _dy in ((_N, "$n$", 0.08, 0.04), (_S, "$s$", 0.08, -0.2)):
+        _ax.plot(*_Q[:2], "o", color="black", ms=4, zorder=4)
+        _ax.text(_Q[0] + _dx, _Q[1] + _dy, _lab, fontsize=12)
+    _ax.plot(*_O[:2], "o", color="black", ms=3, zorder=4)
+    _ax.text(_O[0] - 0.1, _O[1] - 0.16, "$o$", fontsize=11, ha="right")
+    arrow(_ax, _O[:2], _pr(*_P)[:2], BLUE)
+    _ax.plot(*_pr(*_P)[:2], "o", color=BLUE, ms=4, zorder=4)
+    _ax.text(_pr(*_P)[0] + 0.05, _pr(*_P)[1] + 0.12, "$p$", color=BLUE, fontsize=12, bbox=dict(boxstyle="round,pad=0.1", facecolor="white", edgecolor="none", alpha=0.85))
+    _ax.plot([_pr(*_P)[0], _pr(*_F)[0]], [_pr(*_P)[1], _pr(*_F)[1]], "--", color=BLUE, lw=0.9)
+    _ax.plot([_O[0], _pr(*_F)[0]], [_O[1], _pr(*_F)[1]], "--", color=BLUE, lw=0.9)
+    arrow(_ax, _O[:2], _pr(1.0, 0, 0)[:2], "black")
+    _ax.text(_pr(1.0, 0, 0)[0] - 0.02, _pr(1.0, 0, 0)[1] - 0.2, "$e_1$", fontsize=12, ha="center")
+    _a = np.linspace(0, _ph, 60)  # arc for phi, in the plane of n, o and p
+    _X, _Y, _ = _pr(0.4 * np.sin(_a) * math.cos(_th), 0.4 * np.sin(_a) * math.sin(_th), 0.4 * np.cos(_a))
+    _ax.plot(_X, _Y, color=GREEN)
+    _ax.text(_pr(0.5 * math.sin(_ph / 2) * math.cos(_th), 0.5 * math.sin(_ph / 2) * math.sin(_th), 0.5 * math.cos(_ph / 2))[0] + 0.02, _pr(0, 0, 0.5)[1] - 0.05, r"$\phi$", color=GREEN, fontsize=12)
+    _a = np.linspace(0, _th, 60)  # arc for theta, in the equatorial plane from e_1
+    _X, _Y, _ = _pr(0.45 * np.cos(_a), 0.45 * np.sin(_a), 0 * _a)
+    _ax.plot(_X, _Y, color=GREEN)
+    _m = _pr(0.6 * math.cos(_th / 2), 0.6 * math.sin(_th / 2), 0)
+    _ax.text(_m[0] + 0.1, _m[1] - 0.06, r"$\theta$", color=GREEN, fontsize=12)
     # Smooth map between manifolds through charts
     fig_smooth, _ax = blank(FULL, 3.1, (-0.2, 10.2), (-0.5, 4.7))
-    for _cx, _name in ((2.0, "$M$"), (8.0, "$N$")):
-        _ax.plot(_cx + 1.5 * np.cos(_t) * (1 + 0.12 * np.cos(3 * _t)), 3.2 + 1.0 * np.sin(_t) * (1 + 0.12 * np.cos(3 * _t)), color="black")
-        _ax.text(_cx - 1.9, 4.3, _name, fontsize=13)
-    _ax.plot(1.6 + 0.7 * np.cos(_t), 3.2 + 0.55 * np.sin(_t), color=RED)
-    _ax.plot(2.5 + 0.7 * np.cos(_t), 3.1 + 0.6 * np.sin(_t), color=BLUE)
-    _ax.text(1.0, 3.95, "$U$", color=RED, fontsize=12, ha="center")
-    _ax.text(2.9, 3.75, "$f^{-1}(A)$", color=BLUE, fontsize=11)
-    _ax.plot(7.5 + 0.7 * np.cos(_t), 3.2 + 0.55 * np.sin(_t), color=RED)
-    _ax.plot(8.4 + 0.7 * np.cos(_t), 3.1 + 0.6 * np.sin(_t), color=BLUE)
-    _ax.text(6.9, 3.95, "$f(U)$", color=RED, fontsize=11, ha="center")
-    _ax.text(9.1, 3.9, "$A$", color=BLUE, fontsize=12)
+    from matplotlib.path import Path as _Path
+
     _g = np.linspace(0, 1, 200)
-    _X, _Y = np.meshgrid(0.5 + 3.5 * _g, 2.2 + 2.0 * _g)
-    _ax.contourf(_X, _Y, ((((_X - 1.6) / 0.7) ** 2 + ((_Y - 3.2) / 0.55) ** 2 < 1) & (((_X - 2.5) / 0.7) ** 2 + ((_Y - 3.1) / 0.6) ** 2 < 1)).astype(float), levels=[0.5, 1.5], colors=[LIGHT], alpha=0.9)
-    _X2 = _X + 5.9
-    _ax.contourf(_X2, _Y, ((((_X2 - 7.5) / 0.7) ** 2 + ((_Y - 3.2) / 0.55) ** 2 < 1) & (((_X2 - 8.4) / 0.7) ** 2 + ((_Y - 3.1) / 0.6) ** 2 < 1)).astype(float), levels=[0.5, 1.5], colors=[LIGHT], alpha=0.9)
+    for _cx, _name, _seed in ((2.0, "$M$", 4), (8.0, "$N$", 5)):
+        _ax.plot(*blob(_cx, 3.2, 1.55, 1.05, wobble=0.1, seed=_seed), color="black")
+        _ax.text(_cx - 1.95, 4.3, _name, fontsize=13)
+        _R, _B = blob(_cx - 0.4, 3.2, 0.68, 0.55, seed=_seed + 10), blob(_cx + 0.5, 3.1, 0.68, 0.6, seed=_seed + 20)
+        _X, _Y = np.meshgrid(_cx - 1.5 + 3.0 * _g, 2.2 + 2.0 * _g)
+        _pts = np.column_stack([_X.ravel(), _Y.ravel()])
+        _in = _Path(np.column_stack(_R)).contains_points(_pts) & _Path(np.column_stack(_B)).contains_points(_pts)
+        _ax.contourf(_X, _Y, _in.reshape(_X.shape).astype(float), levels=[0.5, 1.5], colors=[LIGHT], alpha=0.9)
+        _ax.plot(*_R, color=RED)
+        _ax.plot(*_B, color=BLUE)
+    _bb = dict(boxstyle="round,pad=0.1", facecolor="white", edgecolor="none", alpha=0.85)
+    _ax.text(1.15, 3.85, "$U$", color=RED, fontsize=12, ha="center", bbox=_bb)
+    _ax.text(2.75, 3.85, "$f^{-1}(A)$", color=BLUE, fontsize=11, ha="center", bbox=_bb)
+    _ax.text(7.1, 3.85, "$f(U)$", color=RED, fontsize=11, ha="center", bbox=_bb)
+    _ax.text(8.75, 3.85, "$A$", color=BLUE, fontsize=12, ha="center", bbox=_bb)
     arrow(_ax, (3.9, 3.3), (6.1, 3.3), "black", connectionstyle="arc3,rad=-0.2")
     _ax.text(5.0, 3.75, "$f$", fontsize=13, ha="center")
     for _x0, _col in ((1.0, RED), (7.0, BLUE)):

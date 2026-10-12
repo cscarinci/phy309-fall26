@@ -80,7 +80,7 @@ def _(mo):
             "",
             xy=tip,
             xytext=tail,
-            arrowprops={"arrowstyle": "-|>", "color": color, "lw": lw, "mutation_scale": 11, "shrinkA": 0, "shrinkB": 0, **kw},
+            arrowprops={"arrowstyle": "-|>,head_width=0.15,head_length=0.35", "color": color, "lw": lw, "shrinkA": 0, "shrinkB": 0, **kw},
         )
         if label:
             pos = tip if at_tip else ((tail[0] + tip[0]) / 2, (tail[1] + tip[1]) / 2)
@@ -108,11 +108,20 @@ def _(mo):
         ax.axis("off")
         return fig, ax
 
+    def blob(cx, cy, rx, ry, wobble=0.07, seed=0, n=400):
+        """Closed organic curve around (cx, cy): an ellipse with a few low harmonics."""
+        import numpy as _np
+
+        rng = _np.random.default_rng(seed)
+        t = _np.linspace(0, 2 * _np.pi, n)
+        r = 1 + sum(wobble / k * rng.uniform(0.4, 1.0) * _np.cos(k * t + rng.uniform(0, 2 * _np.pi)) for k in (2, 3, 4, 5))
+        return cx + rx * r * _np.cos(t), cy + ry * r * _np.sin(t)
+
     def table(rows):
         """Fixed-label readout table: rows are (label, value) pairs of markdown strings."""
         return mo.md("\n".join(["| | |", "|:--|--:|"] + [f"| {k} | {v} |" for k, v in rows]))
 
-    return BLUE, FULL, GREEN, GREY, HALF, LIGHT, ORANGE, RED, arrow, blank, corollary, definition, header, note, plane, postulate, proposition, table, theorem
+    return BLUE, FULL, GREEN, GREY, HALF, LIGHT, ORANGE, RED, arrow, blank, blob, corollary, definition, header, note, plane, postulate, proposition, table, theorem
 
 
 @app.cell(hide_code=True)
@@ -251,22 +260,22 @@ def _(mo):
 
 
 @app.cell(hide_code=True)
-def _(BLUE, Figure, GREEN, GREY, RED, arrow, np):
+def _(BLUE, Figure, GREEN, GREY, RED, arrow, blob, np):
     # The derivative of f at p computed through a chart
     fig_deriv = Figure(figsize=(5.4, 3.6), layout="constrained")
     _ax = fig_deriv.subplots()
     _ax.set_aspect("equal")
     _ax.axis("off")
     _t = np.linspace(0, 2 * np.pi, 300)
-    _ax.plot(1.6 + 1.5 * np.cos(_t) * (1 + 0.1 * np.cos(3 * _t)), 3.0 + 1.1 * np.sin(_t) * (1 + 0.1 * np.cos(2 * _t)), color="black")
+    _ax.plot(*blob(1.6, 3.0, 1.55, 1.15, wobble=0.1, seed=10), color="black")
     _ax.text(0.1, 4.1, "$M$", fontsize=13)
-    _ax.plot(1.6 + 0.65 * np.cos(_t), 3.0 + 0.55 * np.sin(_t), color=GREY)
+    _ax.plot(*blob(1.6, 3.0, 0.68, 0.56, wobble=0.06, seed=11), color=GREY)
     _ax.text(0.95, 3.6, "$U$", color=GREY, fontsize=11)
     _P = (1.6, 2.95)
     arrow(_ax, _P, (_P[0] + 0.55, _P[1] + 0.3), GREEN)
-    _ax.text(_P[0] + 0.6, _P[1] + 0.38, r"$[\gamma] = v^i \partial_i|_p$", color=GREEN, fontsize=10)
+    _ax.text(_P[0] + 0.05, _P[1] + 0.4, r"$[\gamma] = v^i \partial_i|_p$", color=GREEN, fontsize=9, ha="center", va="center", bbox=dict(boxstyle="round,pad=0.1", facecolor="white", edgecolor="none"))
     _ax.plot(*_P, "o", color="black", ms=4)
-    _ax.text(_P[0] - 0.1, _P[1] - 0.3, r"$p = \varphi^{-1}(x)$", fontsize=10, ha="right")
+    _ax.text(_P[0] - 0.12, _P[1] - 0.22, r"$p = \varphi^{-1}(x)$", fontsize=10, ha="right")
     _B = (4.6, 2.2)
     _ax.plot([_B[0], _B[0] + 1.8, _B[0] + 1.8, _B[0], _B[0]], [_B[1], _B[1], _B[1] + 1.6, _B[1] + 1.6, _B[1]], color=GREY)
     _ax.text(_B[0] + 0.9, _B[1] + 1.65, "$V$", color=GREY, fontsize=11, ha="center", va="bottom")
@@ -619,7 +628,7 @@ def _(mo):
 
 
 @app.cell(hide_code=True)
-def _(BLUE, FULL, Figure, GREY, RED, arrow, d_ode, math, mo, np, s_t, s_u0, s_v0, table):
+def _(BLUE, FULL, Figure, GREY, RED, arrow, d_ode, math, mo, np, s_t, s_u0, s_v0, shade_sphere, table):
     _az, _el = math.radians(-30), math.radians(20)
 
     def _pr(x, y, z):
