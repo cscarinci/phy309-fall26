@@ -80,7 +80,7 @@ def _(mo):
             "",
             xy=tip,
             xytext=tail,
-            arrowprops={"arrowstyle": "-|>", "color": color, "lw": lw, "mutation_scale": 11, "shrinkA": 0, "shrinkB": 0, **kw},
+            arrowprops={"arrowstyle": "-|>,head_width=0.15,head_length=0.35", "color": color, "lw": lw, "shrinkA": 0, "shrinkB": 0, **kw},
         )
         if label:
             pos = tip if at_tip else ((tail[0] + tip[0]) / 2, (tail[1] + tip[1]) / 2)
@@ -108,11 +108,20 @@ def _(mo):
         ax.axis("off")
         return fig, ax
 
+    def blob(cx, cy, rx, ry, wobble=0.07, seed=0, n=400):
+        """Closed organic curve around (cx, cy): an ellipse with a few low harmonics."""
+        import numpy as _np
+
+        rng = _np.random.default_rng(seed)
+        t = _np.linspace(0, 2 * _np.pi, n)
+        r = 1 + sum(wobble / k * rng.uniform(0.4, 1.0) * _np.cos(k * t + rng.uniform(0, 2 * _np.pi)) for k in (2, 3, 4, 5))
+        return cx + rx * r * _np.cos(t), cy + ry * r * _np.sin(t)
+
     def table(rows):
         """Fixed-label readout table: rows are (label, value) pairs of markdown strings."""
         return mo.md("\n".join(["| | |", "|:--|--:|"] + [f"| {k} | {v} |" for k, v in rows]))
 
-    return BLUE, FULL, GREEN, GREY, HALF, LIGHT, ORANGE, RED, arrow, blank, corollary, definition, header, note, plane, postulate, proposition, table, theorem
+    return BLUE, FULL, GREEN, GREY, HALF, LIGHT, ORANGE, RED, arrow, blank, blob, corollary, definition, header, note, plane, postulate, proposition, table, theorem
 
 
 @app.cell(hide_code=True)
@@ -168,7 +177,7 @@ def _(BLUE, GREEN, GREY, LIGHT, ORANGE, RED, arrow, blank, np):
     _ax.text(-0.95, 1.55, r"$\gamma_1$", color=BLUE, fontsize=13)
     _ax.text(1.55, 1.55, r"$\gamma_2$", color=RED, fontsize=13)
     arrow(_ax, (0, 0), (-0.4, 1.0), BLUE)
-    _ax.text(-0.5, 0.95, r"$\gamma_1'$", color=BLUE, fontsize=13, ha="right")
+    _ax.text(-0.55, 0.75, r"$\gamma_1'$", color=BLUE, fontsize=13, ha="right")
     arrow(_ax, (0, 0), (0.8, 1.0), RED)
     _ax.text(0.9, 0.95, r"$\gamma_2'$", color=RED, fontsize=13)
     arrow(_ax, (-0.4, 1.0), (0.8, 1.0), GREEN)
@@ -202,12 +211,13 @@ def _(BLUE, GREEN, GREY, LIGHT, ORANGE, RED, arrow, blank, np):
     arrow(_ax, (0, 0), (-0.3, 1.0), BLUE)
     arrow(_ax, (0, 0), (0.4, 1.0), RED)
     arrow(_ax, (0, 0), (1.2, 1.0), ORANGE)
+    _bb = dict(boxstyle="round,pad=0.1", facecolor="white", edgecolor="none", alpha=0.9)
     arrow(_ax, (-0.3, 1.0), (0.4, 1.0), GREEN)
     arrow(_ax, (0.4, 1.0), (1.2, 1.0), GREEN)
-    arrow(_ax, (-0.3, 1.2), (1.2, 1.2), GREEN)
-    _ax.text(0.05, 0.82, r"$\vec{v}(\gamma, \sigma)$", color=GREEN, fontsize=10, ha="center", va="top")
-    _ax.text(0.8, 0.82, r"$\vec{v}(\sigma, \xi)$", color=GREEN, fontsize=10, ha="center", va="top")
-    _ax.text(0.45, 1.27, r"$\vec{v}(\gamma, \xi)$", color=GREEN, fontsize=10, ha="center", va="bottom")
+    arrow(_ax, (-0.3, 1.25), (1.2, 1.25), GREEN)
+    _ax.text(0.05, 0.88, r"$\vec{v}(\gamma, \sigma)$", color=GREEN, fontsize=10, ha="center", va="top", bbox=_bb)
+    _ax.text(0.8, 0.88, r"$\vec{v}(\sigma, \xi)$", color=GREEN, fontsize=10, ha="center", va="top", bbox=_bb)
+    _ax.text(0.45, 1.34, r"$\vec{v}(\gamma, \xi)$", color=GREEN, fontsize=10, ha="center", va="bottom", bbox=_bb)
     _ax.plot(0, 0, "o", color="black", ms=4)
     _ = None  # no cell output: the figures are returned, not displayed here
 

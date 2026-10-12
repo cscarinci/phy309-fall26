@@ -80,7 +80,7 @@ def _(mo):
             "",
             xy=tip,
             xytext=tail,
-            arrowprops={"arrowstyle": "-|>", "color": color, "lw": lw, "mutation_scale": 11, "shrinkA": 0, "shrinkB": 0, **kw},
+            arrowprops={"arrowstyle": "-|>,head_width=0.15,head_length=0.35", "color": color, "lw": lw, "shrinkA": 0, "shrinkB": 0, **kw},
         )
         if label:
             pos = tip if at_tip else ((tail[0] + tip[0]) / 2, (tail[1] + tip[1]) / 2)
@@ -108,11 +108,20 @@ def _(mo):
         ax.axis("off")
         return fig, ax
 
+    def blob(cx, cy, rx, ry, wobble=0.07, seed=0, n=400):
+        """Closed organic curve around (cx, cy): an ellipse with a few low harmonics."""
+        import numpy as _np
+
+        rng = _np.random.default_rng(seed)
+        t = _np.linspace(0, 2 * _np.pi, n)
+        r = 1 + sum(wobble / k * rng.uniform(0.4, 1.0) * _np.cos(k * t + rng.uniform(0, 2 * _np.pi)) for k in (2, 3, 4, 5))
+        return cx + rx * r * _np.cos(t), cy + ry * r * _np.sin(t)
+
     def table(rows):
         """Fixed-label readout table: rows are (label, value) pairs of markdown strings."""
         return mo.md("\n".join(["| | |", "|:--|--:|"] + [f"| {k} | {v} |" for k, v in rows]))
 
-    return BLUE, FULL, GREEN, GREY, HALF, LIGHT, ORANGE, RED, arrow, blank, corollary, definition, header, note, plane, postulate, proposition, table, theorem
+    return BLUE, FULL, GREEN, GREY, HALF, LIGHT, ORANGE, RED, arrow, blank, blob, corollary, definition, header, note, plane, postulate, proposition, table, theorem
 
 
 @app.cell(hide_code=True)
@@ -208,10 +217,7 @@ def _(definition, mo, postulate, theorem):
     $$
 
     $$
-    \begin{aligned}
-    \Longrightarrow \quad a(\gamma, \sigma)(p) &= \sigma''(0) - \gamma''(0) \\
-    &= \frac{\kappa_\sigma}{m_\sigma} F(p, v) - \frac{\ell_\gamma}{m_\gamma} H(p, v)
-    \end{aligned}
+    \Longrightarrow \quad a(\gamma, \sigma)(p) = \sigma''(0) - \gamma''(0) = \frac{\kappa_\sigma}{m_\sigma} F(p, v) - \frac{\ell_\gamma}{m_\gamma} H(p, v)
     $$
 
     If $\gamma$ is free-falling, $H(\gamma, \gamma') = 0$
@@ -253,11 +259,7 @@ def _(definition, mo, postulate, theorem):
     with $\sigma(0) = \gamma(0) + \delta$, &nbsp; $\sigma'(0) = \gamma'(0) = v$ &nbsp; and $\delta \in v^\perp$
 
     $$
-    \begin{aligned}
-    \Longrightarrow \quad a(\gamma, \sigma)(0) &= G(p + \delta, v) - G(p, v) \\
-    &= D_1 G(p, v)[\delta] + O(\lVert \delta \rVert^2) \\
-    &= \nu(\gamma, \sigma)'(0) \quad \text{not zero in general!}
-    \end{aligned}
+    \Longrightarrow \quad a(\gamma, \sigma)(0) = G(p + \delta, v) - G(p, v) = D_1 G(p, v)[\delta] + O(\lVert \delta \rVert^2) = \nu(\gamma, \sigma)'(0) \neq 0 \ \text{ in general}
     $$
 
     Neighboring particles with zero initial relative velocity may start moving towards or away from each other &nbsp; $\leadsto$ &nbsp; tidal effects

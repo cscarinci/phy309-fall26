@@ -80,7 +80,7 @@ def _(mo):
             "",
             xy=tip,
             xytext=tail,
-            arrowprops={"arrowstyle": "-|>", "color": color, "lw": lw, "mutation_scale": 11, "shrinkA": 0, "shrinkB": 0, **kw},
+            arrowprops={"arrowstyle": "-|>,head_width=0.15,head_length=0.35", "color": color, "lw": lw, "shrinkA": 0, "shrinkB": 0, **kw},
         )
         if label:
             pos = tip if at_tip else ((tail[0] + tip[0]) / 2, (tail[1] + tip[1]) / 2)
@@ -108,11 +108,20 @@ def _(mo):
         ax.axis("off")
         return fig, ax
 
+    def blob(cx, cy, rx, ry, wobble=0.07, seed=0, n=400):
+        """Closed organic curve around (cx, cy): an ellipse with a few low harmonics."""
+        import numpy as _np
+
+        rng = _np.random.default_rng(seed)
+        t = _np.linspace(0, 2 * _np.pi, n)
+        r = 1 + sum(wobble / k * rng.uniform(0.4, 1.0) * _np.cos(k * t + rng.uniform(0, 2 * _np.pi)) for k in (2, 3, 4, 5))
+        return cx + rx * r * _np.cos(t), cy + ry * r * _np.sin(t)
+
     def table(rows):
         """Fixed-label readout table: rows are (label, value) pairs of markdown strings."""
         return mo.md("\n".join(["| | |", "|:--|--:|"] + [f"| {k} | {v} |" for k, v in rows]))
 
-    return BLUE, FULL, GREEN, GREY, HALF, LIGHT, ORANGE, RED, arrow, blank, corollary, definition, header, note, plane, postulate, proposition, table, theorem
+    return BLUE, FULL, GREEN, GREY, HALF, LIGHT, ORANGE, RED, arrow, blank, blob, corollary, definition, header, note, plane, postulate, proposition, table, theorem
 
 
 @app.cell(hide_code=True)
@@ -158,14 +167,14 @@ def _(BLUE, GREEN, GREY, HALF, ORANGE, RED, arrow, blank, np):
     arrow(_ax, (0, 0), (0, 1), BLUE)
     _ax.text(-0.08, 0.55, "$u$", color=BLUE, fontsize=13, ha="right")
     arrow(_ax, (0, 0), (_G * _b, _G), RED)
-    _ax.text(_G * _b / 2 + 0.08, _G / 2, "$v$", color=RED, fontsize=13)
+    _ax.text(_G * _b / 2 + 0.1, _G / 2 - 0.08, "$v$", color=RED, fontsize=13, bbox=dict(boxstyle="round,pad=0.08", facecolor="white", edgecolor="none", alpha=0.9))
     arrow(_ax, (0, 1), (_b, 1), GREEN)
-    _ax.text(_b / 2, 1.06, r"$\nu(\gamma, \sigma)$", color=GREEN, fontsize=10, ha="center", va="bottom")
+    _ax.text(_b / 2 - 0.05, 1.08, r"$\nu(\gamma, \sigma)$", color=GREEN, fontsize=10, ha="center", va="bottom", bbox=dict(boxstyle="round,pad=0.08", facecolor="white", edgecolor="none", alpha=0.9))
     arrow(_ax, (0, 0), (1.5, 1.5), ORANGE)
     _ax.plot([-0.9, 1.75], [-0.9, 1.75], color=ORANGE)
     _ax.text(1.3, 1.05, "$w$", color=ORANGE, fontsize=13)
     arrow(_ax, (0, 1), (1, 1), GREEN)
-    _ax.text(0.8, 0.94, r"$\nu(\gamma, \xi)$", color=GREEN, fontsize=10, ha="center", va="top")
+    _ax.text(0.75, 0.9, r"$\nu(\gamma, \xi)$", color=GREEN, fontsize=10, ha="center", va="top", bbox=dict(boxstyle="round,pad=0.08", facecolor="white", edgecolor="none", alpha=0.9))
     _ax.plot(0, 0, "o", color="black", ms=4)
     _ax.text(0.1, -0.25, "$p$", fontsize=12)
     _ = None  # no cell output: the figures are returned, not displayed here
@@ -322,10 +331,7 @@ def _(corollary, definition, lorentz_panel, mo, theorem):
     Given a particle $\gamma$ and a photon $\xi$ &nbsp; $\big( p = \gamma(t) = \xi(s)$, $\gamma'(t) = u(t)$, $\xi'(s) = w(s) \big)$
 
     $$
-    \begin{aligned}
-    w &= \underbrace{-\eta(u, w)\, u}_{\text{parallel}} + \underbrace{\big( w + \eta(u, w)\, u \big)}_{\text{orthogonal}} \\
-    &= -\eta(u, w) \big( u + \nu(\gamma, \xi) \big)
-    \end{aligned}
+    w = \underbrace{-\eta(u, w)\, u}_{\text{parallel}} + \underbrace{\big( w + \eta(u, w)\, u \big)}_{\text{orthogonal}} = -\eta(u, w) \big( u + \nu(\gamma, \xi) \big)
     $$
     """,
                 "Decomposition of a photon",

@@ -81,7 +81,7 @@ def _(mo):
             "",
             xy=tip,
             xytext=tail,
-            arrowprops={"arrowstyle": "-|>", "color": color, "lw": lw, "mutation_scale": 11, "shrinkA": 0, "shrinkB": 0, **kw},
+            arrowprops={"arrowstyle": "-|>,head_width=0.15,head_length=0.35", "color": color, "lw": lw, "shrinkA": 0, "shrinkB": 0, **kw},
         )
         if label:
             pos = tip if at_tip else ((tail[0] + tip[0]) / 2, (tail[1] + tip[1]) / 2)
@@ -109,11 +109,20 @@ def _(mo):
         ax.axis("off")
         return fig, ax
 
+    def blob(cx, cy, rx, ry, wobble=0.07, seed=0, n=400):
+        """Closed organic curve around (cx, cy): an ellipse with a few low harmonics."""
+        import numpy as _np
+
+        rng = _np.random.default_rng(seed)
+        t = _np.linspace(0, 2 * _np.pi, n)
+        r = 1 + sum(wobble / k * rng.uniform(0.4, 1.0) * _np.cos(k * t + rng.uniform(0, 2 * _np.pi)) for k in (2, 3, 4, 5))
+        return cx + rx * r * _np.cos(t), cy + ry * r * _np.sin(t)
+
     def table(rows):
         """Fixed-label readout table: rows are (label, value) pairs of markdown strings."""
         return mo.md("\n".join(["| | |", "|:--|--:|"] + [f"| {k} | {v} |" for k, v in rows]))
 
-    return BLUE, FULL, GREEN, GREY, HALF, LIGHT, ORANGE, RED, arrow, blank, corollary, definition, header, note, plane, postulate, proposition, table, theorem
+    return BLUE, FULL, GREEN, GREY, HALF, LIGHT, ORANGE, RED, arrow, blank, blob, corollary, definition, header, note, plane, postulate, proposition, table, theorem
 
 
 @app.cell(hide_code=True)
@@ -255,8 +264,8 @@ def _(BLUE, GREEN, GREY, HALF, RED, arrow, blank, mo, theorem):
     arrow(_a3, (0, 0), (0.4, 1.1), GREEN)
     arrow(_a3, (1.9, 0.4), (2.3, 1.5), GREEN)
     arrow(_a3, (0, 0), (2.3, 1.5), BLUE)
-    _a3.text(0.9, 0.05, r"$\vec{u}$", color=GREEN, fontsize=13)
-    _a3.text(0.75, 1.0, r"$\vec{u} + \vec{v}$", color=BLUE, fontsize=13)
+    _a3.text(1.0, -0.3, r"$\vec{u}$", color=GREEN, fontsize=13)
+    _a3.text(0.95, 1.05, r"$\vec{u} + \vec{v}$", color=BLUE, fontsize=13)
     _a3.text(2.25, 0.8, r"$\vec{v}\,'$", color=GREEN, fontsize=13)
     _a3.text(-0.15, 0.6, r"$\vec{v}$", color=GREEN, fontsize=13)
     _pt(_a3, (0, 0), "$p$")
@@ -277,7 +286,7 @@ def _(BLUE, GREEN, GREY, HALF, RED, arrow, blank, mo, theorem):
     arrow(_a4, _o, (_o[0] + 1.55, _o[1] + 1.35), BLUE)
     _a4.text(3.6, -0.6, r"$\vec{u}$", color=GREEN, fontsize=13)
     _a4.text(2.9, 0.4, r"$\vec{v}$", color=GREEN, fontsize=13)
-    _a4.text(3.55, 0.95, r"$\vec{u} + \vec{v}$", color=BLUE, fontsize=13, rotation=41)
+    _a4.text(3.45, 1.05, r"$\vec{u} + \vec{v}$", color=BLUE, fontsize=13, rotation=41)
 
     mo.vstack(
         [
@@ -378,7 +387,7 @@ def _(BLUE, GREEN, GREY, HALF, RED, arrow, blank, mo, theorem):
 
 
 @app.cell(hide_code=True)
-def _(Arc, BLUE, FULL, GREEN, arrow, definition, mo):
+def _(Arc, BLUE, FULL, GREEN, arrow, definition, mo, np):
 
     # Marginal sketches of the four measurements: distance, angle, triangle area, tetrahedron volume
     from matplotlib.figure import Figure as _Figure
@@ -415,15 +424,17 @@ def _(Arc, BLUE, FULL, GREEN, arrow, definition, mo):
     _a.set_xlim(-0.3, 2.3)
     _a.set_ylim(-0.3, 1.6)
 
-    _o, _u, _w, _z = (0, 0), (2.0, -0.2), (1.2, 0.7), (0.9, 1.6)
-    for _p, _q in ((_u, _w), (_w, _z), (_u, _z)):
-        _v.plot([_p[0], _q[0]], [_p[1], _q[1]], "--", color=BLUE, lw=1.0)
+    _o, _u, _w, _z = np.array((0.0, 0.0)), np.array((1.7, -0.15)), np.array((0.7, 0.45)), np.array((0.15, 1.1))
+    _corners = [_o, _u, _w, _z, _u + _w, _u + _z, _w + _z, _u + _w + _z]
+    _edges = [(1, 4), (1, 5), (2, 4), (2, 6), (3, 5), (3, 6), (4, 7), (5, 7), (6, 7)]
+    for _i, _j in _edges:
+        _v.plot([_corners[_i][0], _corners[_j][0]], [_corners[_i][1], _corners[_j][1]], "--", color=BLUE, lw=1.0)
     for _tip in (_u, _w, _z):
         arrow(_v, _o, _tip, GREEN)
-    _v.text(1.45, 0.95, "$V$", color=GREEN, fontsize=13)
+    _v.text(1.3, 0.75, "$V$", color=GREEN, fontsize=13)
     _v.plot(0, 0, "o", color="black", ms=4)
-    _v.set_xlim(-0.3, 2.3)
-    _v.set_ylim(-0.5, 1.9)
+    _v.set_xlim(-0.3, 2.9)
+    _v.set_ylim(-0.4, 1.8)
 
     mo.vstack(
         [
