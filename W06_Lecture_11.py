@@ -80,7 +80,7 @@ def _(mo):
             "",
             xy=tip,
             xytext=tail,
-            arrowprops={"arrowstyle": "-|>", "color": color, "lw": lw, "mutation_scale": 11, "shrinkA": 0, "shrinkB": 0, **kw},
+            arrowprops={"arrowstyle": "-|>,head_width=0.15,head_length=0.35", "color": color, "lw": lw, "shrinkA": 0, "shrinkB": 0, **kw},
         )
         if label:
             pos = tip if at_tip else ((tail[0] + tip[0]) / 2, (tail[1] + tip[1]) / 2)
@@ -108,11 +108,20 @@ def _(mo):
         ax.axis("off")
         return fig, ax
 
+    def blob(cx, cy, rx, ry, wobble=0.07, seed=0, n=400):
+        """Closed organic curve around (cx, cy): an ellipse with a few low harmonics."""
+        import numpy as _np
+
+        rng = _np.random.default_rng(seed)
+        t = _np.linspace(0, 2 * _np.pi, n)
+        r = 1 + sum(wobble / k * rng.uniform(0.4, 1.0) * _np.cos(k * t + rng.uniform(0, 2 * _np.pi)) for k in (2, 3, 4, 5))
+        return cx + rx * r * _np.cos(t), cy + ry * r * _np.sin(t)
+
     def table(rows):
         """Fixed-label readout table: rows are (label, value) pairs of markdown strings."""
         return mo.md("\n".join(["| | |", "|:--|--:|"] + [f"| {k} | {v} |" for k, v in rows]))
 
-    return BLUE, FULL, GREEN, GREY, HALF, LIGHT, ORANGE, RED, arrow, blank, corollary, definition, header, note, plane, postulate, proposition, table, theorem
+    return BLUE, FULL, GREEN, GREY, HALF, LIGHT, ORANGE, RED, arrow, blank, blob, corollary, definition, header, note, plane, postulate, proposition, table, theorem
 
 
 @app.cell(hide_code=True)
@@ -420,7 +429,7 @@ def _(mo):
 
 
 @app.cell(hide_code=True)
-def _(BLUE, FULL, Figure, GREY, RED, arrow, math, mo, np, s_t, s_u0, s_v0, table):
+def _(BLUE, FULL, Figure, GREY, RED, arrow, math, mo, np, s_t, s_u0, s_v0, shade_sphere, table):
     _az, _el = math.radians(-30), math.radians(20)
 
     def _pr(x, y, z):
@@ -505,30 +514,55 @@ def _(BLUE, FULL, Figure, GREY, RED, arrow, math, mo, np, s_t, s_u0, s_v0, table
 
 
 @app.cell(hide_code=True)
-def _(BLUE, Figure, ORANGE, RED, arrow, definition, mo, np):
-    _fig = Figure(figsize=(5.2, 3.3), layout="constrained")
+def _(BLUE, Figure, GREY, ORANGE, RED, arrow, definition, math, mo, np):
+    # A curved surface with three tangent planes, in perspective
+    _az, _el = math.radians(-35), math.radians(28)
+
+    def _pr(x, y, z):
+        X = -x * math.sin(_az) + y * math.cos(_az)
+        Y = z * math.cos(_el) - (x * math.cos(_az) + y * math.sin(_az)) * math.sin(_el)
+        return X, Y
+
+    def _h(x, y):  # height of the surface
+        return 0.35 * np.sin(1.1 * x) * np.cos(0.9 * y) + 0.12 * y
+
+    def _dh(x, y):
+        return 0.35 * 1.1 * np.cos(1.1 * x) * np.cos(0.9 * y), -0.35 * 0.9 * np.sin(1.1 * x) * np.sin(0.9 * y) + 0.12
+
+    _fig = Figure(figsize=(6.0, 3.6), layout="constrained")
     _ax = _fig.subplots()
-    _ax.set_xlim(-3.4, 3.9)
-    _ax.set_ylim(-2.3, 2.4)
     _ax.set_aspect("equal")
     _ax.axis("off")
-    _c = np.linspace(0, 2 * np.pi, 300)
-    _ax.plot(2.0 * np.cos(_c) + 0.25 * np.cos(2 * _c), 1.25 * np.sin(_c) + 0.15 * np.sin(3 * _c), color="black")
-    _ax.text(-2.75, -0.2, "$M$", fontsize=15)
-    for (_x, _y), (_a, _b), _col, _name, _tn, _vecs in (
-        ((-1.15, 0.55), ((0.85, 0.3), (0.25, 0.5)), BLUE, "$q$", (r"$T_q M$", (-2.6, 1.5)), (((0.6, 0.18), "$Z_q$"),)),
-        ((1.2, 0.15), ((0.7, -0.45), (0.45, 0.6)), RED, "$p$", (r"$T_p M$", (2.5, 0.75)), (((0.6, 0.3), "$Y_p$"), ((0.65, -0.3), "$X_p$"))),
-        ((-0.1, -0.55), ((1.0, 0.0), (0.3, -0.42)), ORANGE, "$r$", (r"$T_r M$", (1.3, -1.75)), (((-0.6, -0.15), "$W_r$"),)),
+    _g = np.linspace(-2.2, 2.2, 160)
+    for _c in np.linspace(-2.2, 2.2, 7)[1:-1]:  # a few coordinate lines on the surface
+        _ax.plot(*_pr(_g, _c + 0 * _g, _h(_g, _c)), color=GREY, lw=0.6, zorder=1)
+        _ax.plot(*_pr(_c + 0 * _g, _g, _h(_c, _g)), color=GREY, lw=0.6, zorder=1)
+    for _e in (np.column_stack([_g, -2.2 + 0 * _g]), np.column_stack([_g, 2.2 + 0 * _g]), np.column_stack([-2.2 + 0 * _g, _g]), np.column_stack([2.2 + 0 * _g, _g])):
+        _ax.plot(*_pr(_e[:, 0], _e[:, 1], _h(_e[:, 0], _e[:, 1])), color="black", lw=1.2, zorder=2)
+    _ax.text(*_pr(-2.4, -2.4, _h(-2.4, -2.4) + 0.3), "$M$", fontsize=15, ha="right")
+    for (_x, _y), _col, _name, _tn, _vecs in (
+        ((-1.3, -0.2), BLUE, "$q$", r"$T_q M$", (((0.42, 0.28), "$Z_q$"),)),
+        ((1.25, -1.0), RED, "$p$", r"$T_p M$", (((0.55, -0.15), "$X_p$"), ((0.1, 0.5), "$Y_p$"))),
+        ((0.5, 1.5), ORANGE, "$r$", r"$T_r M$", (((-0.5, 0.25), "$W_r$"),)),
     ):
-        _corners = [(_x + s * _a[0] + t * _b[0], _y + s * _a[1] + t * _b[1]) for s, t in ((-1, -1), (1, -1), (1, 1), (-1, 1), (-1, -1))]
-        _ax.fill(*zip(*_corners), facecolor=_col, alpha=0.10, edgecolor="none")
-        _ax.plot(*zip(*_corners), color=_col)
-        for (_dx, _dy), _lab in _vecs:
-            arrow(_ax, (_x, _y), (_x + _dx, _y + _dy), _col)
-            _ax.text(_x + _dx + (0.08 if _dx > 0 else -0.55), _y + _dy + (-0.08 if _dx > 0 else 0.1), _lab, color=_col, fontsize=12)
-        _ax.plot(_x, _y, "o", color="black", ms=4)
-        _ax.text(_x - 0.12, _y - 0.38, _name, fontsize=13)
-        _ax.text(*_tn[1], _tn[0], color=_col, fontsize=14)
+        _z = _h(_x, _y)
+        _hx, _hy = _dh(_x, _y)
+        _tx, _ty = np.array([1.0, 0.0, _hx]), np.array([0.0, 1.0, _hy])  # tangent directions
+        _corners = [np.array([_x, _y, _z]) + s_ * 0.7 * _tx + t_ * 0.55 * _ty for s_, t_ in ((-1, -1), (1, -1), (1, 1), (-1, 1))]
+        _CX, _CY = zip(*[_pr(*c) for c in _corners])
+        _ax.plot(list(_CX) + [_CX[0]], list(_CY) + [_CY[0]], color=_col, lw=1.0, zorder=4)
+        _P = _pr(_x, _y, _z)
+        for (_a, _b), _lab in _vecs:
+            _tip = np.array([_x, _y, _z]) + _a * _tx + _b * _ty
+            _T = _pr(*_tip)
+            arrow(_ax, _P, _T, _col, zorder=6)
+            _dx, _dy = _T[0] - _P[0], _T[1] - _P[1]
+            _nn = math.hypot(_dx, _dy)
+            _ax.text(_T[0] + 0.22 * _dx / _nn, _T[1] + 0.22 * _dy / _nn, _lab, color=_col, fontsize=11, ha="center", va="center", zorder=7, bbox=dict(boxstyle="round,pad=0.08", facecolor="white", edgecolor="none"))
+        _ax.plot(*_P, "o", color="black", ms=4, zorder=6)
+        _ax.text(_P[0] - 0.08, _P[1] - 0.1, _name, fontsize=12, ha="right", va="top", zorder=7)
+        _left = min(range(4), key=lambda i: _CX[i])
+        _ax.text(_CX[_left] - 0.08, _CY[_left] + 0.02, _tn, color=_col, fontsize=12, ha="right", va="center", zorder=7)
 
     mo.vstack(
         [
