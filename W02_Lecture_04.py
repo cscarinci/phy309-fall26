@@ -379,7 +379,7 @@ def _(BLUE, GREY, RED, arrow, blank, math, mo, star):
     _ax.text(_x / 2 + 0.3, 2.3, "B", color=RED, fontsize=12)
     for _pt, _name, _off in (((0, 0), "$p = (0, 0)$", (8, -10)), ((0, 10), "$q = (10, 0)$", (8, 2)), ((_x, 5), f"$r = (5, {_x:g})$", (8, 6)), ((0, 5), "$s$", (-16, 4))):
         _ax.plot(*_pt, "o", color="black", ms=4)
-        _ax.annotate(_name, _pt, textcoords="offset points", xytext=_off, fontsize=12)
+        _ax.annotate(_name, _pt, textcoords="offset points", xytext=_off, fontsize=12, bbox=dict(boxstyle="round,pad=0.08", facecolor="white", edgecolor="none"), zorder=8)
 
     _table = "\n".join(
         [
@@ -465,7 +465,7 @@ def _(BLUE, GREEN, GREY, ORANGE, RED, arrow, beta, blank, math, mo):
     arrow(_ax, (0, 1), (_b, 1), GREEN)
     _ax.annotate(r"$\nu(u, v)$", (_b / 2, 1), textcoords="offset points", xytext=(0, 6), color=GREEN, fontsize=12, ha="center", va="bottom")
     arrow(_ax, _v, (0, 1 / _g), ORANGE)
-    _ax.annotate(r"$\nu(v, u)$", _v, textcoords="offset points", xytext=(8, 0) if _b >= 0 else (-8, 0), color=ORANGE, fontsize=12, ha="left" if _b >= 0 else "right", va="center")
+    _ax.annotate(r"$\nu(v, u)$", _v, textcoords="offset points", xytext=(8, 0) if _b >= 0 else (-8, 0), color=ORANGE, fontsize=12, ha="left" if _b >= 0 else "right", va="center", bbox=dict(boxstyle="round,pad=0.08", facecolor="white", edgecolor="none"), zorder=8)
     _ax.plot(0, 0, "o", color="black", ms=4)
     _ax.text(0.1, -0.3, "$p$", fontsize=13)
 

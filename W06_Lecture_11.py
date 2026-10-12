@@ -468,7 +468,7 @@ def _(BLUE, FULL, Figure, GREY, RED, arrow, math, mo, np, s_t, s_u0, s_v0, table
         for _a in np.linspace(0, 2 * np.pi, 12, endpoint=False):
             _q = (_rr * math.cos(_a), _rr * math.sin(_a), _z)
             _Q = _pr(*_q)
-            if _Q[2] > 0.15:
+            if _Q[2] > 0.15 and math.hypot(_Q[0] - _pr(0, 0, -1)[0], _Q[1] - _pr(0, 0, -1)[1]) > 0.25:
                 _E = _pr(_q[0] - 0.22 * _q[1], _q[1] + 0.22 * _q[0], _z)
                 arrow(_ax, _Q[:2], _E[:2], BLUE, lw=0.9)
     _curve(_ax, _inv(_u0 * np.cos(_c) - _v0 * np.sin(_c), _u0 * np.sin(_c) + _v0 * np.cos(_c)), RED, lw=0.9)
@@ -492,13 +492,13 @@ def _(BLUE, FULL, Figure, GREY, RED, arrow, math, mo, np, s_t, s_u0, s_v0, table
     _U, _V = np.meshgrid(_g, _g)
     _ax2.quiver(_U, _V, -_V, _U, color=BLUE, angles="xy", scale_units="xy", scale=5, width=0.006)
     _ax2.plot(np.cos(_c), np.sin(_c), color=GREY, lw=1.0)
-    _ax2.text(0, 1.04, "equator", color=GREY, fontsize=9, ha="center", va="bottom")
+    _ax2.text(0.06, 1.04, "equator", color=GREY, fontsize=10, ha="left", va="bottom", bbox=dict(boxstyle="round,pad=0.1", facecolor="white", edgecolor="none"))
     _ax2.plot(_u0 * np.cos(_c) - _v0 * np.sin(_c), _u0 * np.sin(_c) + _v0 * np.cos(_c), color=RED, lw=0.9)
     _ax2.plot(_us, _vs, color=RED)
     _ax2.plot(_u0, _v0, "o", color=RED, mfc="white", ms=6)
-    _ax2.annotate(r"$\gamma(0)$", (_u0, _v0), textcoords="offset points", xytext=(6, -12), color=RED, fontsize=10)
+    _ax2.annotate(r"$\gamma(0)$", (_u0, _v0), textcoords="offset points", xytext=(6, -12), color=RED, fontsize=10, bbox=dict(boxstyle="round,pad=0.08", facecolor="white", edgecolor="none"), zorder=8)
     _ax2.plot(_ut, _vt, "o", color=RED, ms=6)
-    _ax2.annotate(r"$\gamma(t)$", (_ut, _vt), textcoords="offset points", xytext=(6, 4), color=RED, fontsize=10)
+    _ax2.annotate(r"$\gamma(t)$", (_ut, _vt), textcoords="offset points", xytext=(6, 4), color=RED, fontsize=10, bbox=dict(boxstyle="round,pad=0.08", facecolor="white", edgecolor="none"), zorder=8)
     _ax2.set_xticks([-3, 0, 3])
     _ax2.set_yticks([-3, 0, 3])
 
@@ -541,8 +541,8 @@ def _(BLUE, Figure, GREY, ORANGE, RED, arrow, definition, math, mo, np):
         _ax.plot(*_pr(_e[:, 0], _e[:, 1], _h(_e[:, 0], _e[:, 1])), color="black", lw=1.2, zorder=2)
     _ax.text(*_pr(-2.4, -2.4, _h(-2.4, -2.4) + 0.3), "$M$", fontsize=15, ha="right")
     for (_x, _y), _col, _name, _tn, _vecs in (
-        ((-1.3, -0.2), BLUE, "$q$", r"$T_q M$", (((0.42, 0.28), "$Z_q$"),)),
-        ((1.25, -1.0), RED, "$p$", r"$T_p M$", (((0.55, -0.15), "$X_p$"), ((0.1, 0.5), "$Y_p$"))),
+        ((-1.3, -0.2), BLUE, "$q$", r"$T_q M$", (((0.3, 0.2), "$Z_q$"),)),
+        ((1.25, -1.0), RED, "$p$", r"$T_p M$", (((0.38, -0.12), "$X_p$"), ((0.1, 0.38), "$Y_p$"))),
         ((0.5, 1.5), ORANGE, "$r$", r"$T_r M$", (((-0.5, 0.25), "$W_r$"),)),
     ):
         _z = _h(_x, _y)
@@ -562,7 +562,7 @@ def _(BLUE, Figure, GREY, ORANGE, RED, arrow, definition, math, mo, np):
         _ax.plot(*_P, "o", color="black", ms=4, zorder=6)
         _ax.text(_P[0] - 0.08, _P[1] - 0.1, _name, fontsize=12, ha="right", va="top", zorder=7)
         _left = min(range(4), key=lambda i: _CX[i])
-        _ax.text(_CX[_left] - 0.08, _CY[_left] + 0.02, _tn, color=_col, fontsize=12, ha="right", va="center", zorder=7)
+        _ax.text(_CX[_left] - 0.08, _CY[_left] + 0.02, _tn, color=_col, fontsize=12, ha="right", va="center", zorder=7, bbox=dict(boxstyle="round,pad=0.08", facecolor="white", edgecolor="none"))
 
     mo.vstack(
         [

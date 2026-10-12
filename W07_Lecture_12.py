@@ -275,7 +275,7 @@ def _(BLUE, Figure, GREEN, GREY, RED, arrow, blob, np):
     arrow(_ax, _P, (_P[0] + 0.55, _P[1] + 0.3), GREEN)
     _ax.text(_P[0] + 0.05, _P[1] + 0.4, r"$[\gamma] = v^i \partial_i|_p$", color=GREEN, fontsize=9, ha="center", va="center", bbox=dict(boxstyle="round,pad=0.1", facecolor="white", edgecolor="none"))
     _ax.plot(*_P, "o", color="black", ms=4)
-    _ax.text(_P[0] - 0.12, _P[1] - 0.22, r"$p = \varphi^{-1}(x)$", fontsize=10, ha="right")
+    _ax.text(_P[0], _P[1] - 0.12, r"$p = \varphi^{-1}(x)$", fontsize=10, ha="center", va="top")
     _B = (4.6, 2.2)
     _ax.plot([_B[0], _B[0] + 1.8, _B[0] + 1.8, _B[0], _B[0]], [_B[1], _B[1], _B[1] + 1.6, _B[1] + 1.6, _B[1]], color=GREY)
     _ax.text(_B[0] + 0.9, _B[1] + 1.65, "$V$", color=GREY, fontsize=11, ha="center", va="bottom")
@@ -295,7 +295,7 @@ def _(BLUE, Figure, GREEN, GREY, RED, arrow, blob, np):
     _ax.text(2.1, 0.75, r"$Df(p)[\gamma]$", color=GREEN, fontsize=10, ha="center", va="bottom")
     arrow(_ax, (1.5, 1.85), (1.55, 0.8), BLUE)
     _ax.text(1.3, 1.35, "$f$", color=BLUE, fontsize=12, ha="right")
-    arrow(_ax, (4.9, 2.1), (2.3, 0.75), RED, connectionstyle="arc3,rad=-0.15")
+    arrow(_ax, (4.9, 2.1), (2.95, 0.75), RED, connectionstyle="arc3,rad=-0.15")
     _ax.text(4.0, 1.1, r"$f \circ \varphi^{-1}$", color=RED, fontsize=11)
     _ax.set_xlim(-0.2, 6.8)
     _ax.set_ylim(0, 4.5)
@@ -513,7 +513,7 @@ def _(BLUE, FULL, Figure, GREY, d_field, mo, np, table):
         _ax.axhline(0, color="black", lw=0.5)
         _ax.axvline(0, color="black", lw=0.5)
         _ax.plot(np.cos(_c), np.sin(_c), color=GREY, lw=1.0)
-        _ax.text(0, 1.04, "equator", color=GREY, fontsize=9, ha="center", va="bottom")
+        _ax.text(0.06, 1.04, "equator", color=GREY, fontsize=10, ha="left", va="bottom", bbox=dict(boxstyle="round,pad=0.1", facecolor="white", edgecolor="none"))
         _ax.plot(0, 0, "o", color="black", ms=3)
         _ax.text(0.08, -0.1, _pole, fontsize=11, va="top")  # the pole at the origin of this chart
         _m = max(float(np.max(np.hypot(_P, _Q))), 1e-9)
@@ -557,7 +557,7 @@ def _(BLUE, HALF, RED, arrow, blank, mo, np):
     arrow(_ax, (_x0, _y0), (_x0 + 1.4 * _dx, _y0 + 1.4 * _dy), BLUE)
     _ax.plot(_x0, _y0, "o", color="black", ms=4)
     _ax.text(_x0 + 0.05, _y0 - 0.3, r"$\gamma(t)$", fontsize=11)
-    _ax.text(_x0 + 0.5, _y0 + 0.22, r"$X_{\gamma(t)}$", color=BLUE, fontsize=11)
+    _ax.text(_x0 + 0.35, _y0 + 0.28, r"$X_{\gamma(t)}$", color=BLUE, fontsize=11, zorder=8, bbox=dict(boxstyle="round,pad=0.08", facecolor="white", edgecolor="none"))
     mo.vstack(
         [
             mo.md(
@@ -676,7 +676,7 @@ def _(BLUE, FULL, Figure, GREY, RED, arrow, d_ode, math, mo, np, s_t, s_u0, s_v0
         for _a in np.linspace(0, 2 * np.pi, 12, endpoint=False):
             _q = (_rr * math.cos(_a), _rr * math.sin(_a), _z)
             _Q = _pr(*_q)
-            if _Q[2] > 0.15:
+            if _Q[2] > 0.15 and math.hypot(_Q[0] - _pr(0, 0, -1)[0], _Q[1] - _pr(0, 0, -1)[1]) > 0.25:
                 _d = _vec3(*_q)
                 _E = _pr(_q[0] + 0.22 * _d[0], _q[1] + 0.22 * _d[1], _q[2] + 0.22 * _d[2])
                 arrow(_ax, _Q[:2], _E[:2], BLUE, lw=0.9)
@@ -701,13 +701,13 @@ def _(BLUE, FULL, Figure, GREY, RED, arrow, d_ode, math, mo, np, s_t, s_u0, s_v0
     _U, _V = np.meshgrid(_g, _g)
     _ax2.quiver(_U, _V, *_field(_U, _V), color=BLUE, angles="xy", scale_units="xy", scale=5, width=0.006)
     _ax2.plot(np.cos(_c), np.sin(_c), color=GREY, lw=1.0)
-    _ax2.text(0, 1.04, "equator", color=GREY, fontsize=9, ha="center", va="bottom")
+    _ax2.text(0.06, 1.04, "equator", color=GREY, fontsize=10, ha="left", va="bottom", bbox=dict(boxstyle="round,pad=0.1", facecolor="white", edgecolor="none"))
     _ax2.plot(_uw, _vw, color=RED, lw=0.9)
     _ax2.plot(_us, _vs, color=RED)
     _ax2.plot(_u0, _v0, "o", color=RED, mfc="white", ms=6)
-    _ax2.annotate(r"$\gamma(0)$", (_u0, _v0), textcoords="offset points", xytext=(6, -12), color=RED, fontsize=10)
+    _ax2.annotate(r"$\gamma(0)$", (_u0, _v0), textcoords="offset points", xytext=(6, -12), color=RED, fontsize=10, bbox=dict(boxstyle="round,pad=0.08", facecolor="white", edgecolor="none"), zorder=8)
     _ax2.plot(_ut, _vt, "o", color=RED, ms=6, clip_on=True)
-    _ax2.annotate(r"$\gamma(t)$", (_ut, _vt), textcoords="offset points", xytext=(6, 4), color=RED, fontsize=10, annotation_clip=True)
+    _ax2.annotate(r"$\gamma(t)$", (_ut, _vt), textcoords="offset points", xytext=(6, 4), color=RED, fontsize=10, annotation_clip=True, bbox=dict(boxstyle="round,pad=0.08", facecolor="white", edgecolor="none"), zorder=8)
     _ax2.set_xticks([-3, 0, 3])
     _ax2.set_yticks([-3, 0, 3])
 

@@ -387,12 +387,10 @@ def _(BLUE, GREEN, GREY, HALF, RED, arrow, blank, mo, theorem):
 
 
 @app.cell(hide_code=True)
-def _(Arc, BLUE, FULL, GREEN, arrow, definition, mo, np):
+def _(Arc, BLUE, FULL, Figure, GREEN, arrow, definition, mo, np):
 
     # Marginal sketches of the four measurements: distance, angle, triangle area, tetrahedron volume
-    from matplotlib.figure import Figure as _Figure
-
-    _fig = _Figure(figsize=(FULL, 1.9), layout="constrained")
+    _fig = Figure(figsize=(FULL, 1.9), layout="constrained")
     _d, _t, _a, _v = _fig.subplots(1, 4)
     for _ax in (_d, _t, _a, _v):
         _ax.set_aspect("equal")
@@ -431,7 +429,7 @@ def _(Arc, BLUE, FULL, GREEN, arrow, definition, mo, np):
         _v.plot([_corners[_i][0], _corners[_j][0]], [_corners[_i][1], _corners[_j][1]], "--", color=BLUE, lw=1.0)
     for _tip in (_u, _w, _z):
         arrow(_v, _o, _tip, GREEN)
-    _v.text(1.3, 0.75, "$V$", color=GREEN, fontsize=13)
+    _v.text(1.3, 0.75, "$V$", color=GREEN, fontsize=13, ha="center", va="center", zorder=5, bbox=dict(boxstyle="round,pad=0.1", facecolor="white", edgecolor="none"))
     _v.plot(0, 0, "o", color="black", ms=4)
     _v.set_xlim(-0.3, 2.9)
     _v.set_ylim(-0.4, 1.8)
@@ -560,8 +558,8 @@ def _(BLUE, GREEN, HALF, arrow, blank, mo, theorem):
     _ax.annotate("$p$", _f(*_p), textcoords="offset points", xytext=(6, 2), fontsize=13)
     _ax.plot(0, 0, "o", color="black", ms=4)
     _ax.annotate("$o$", (0, 0), textcoords="offset points", xytext=(-14, 2), fontsize=13)
-    for _q, _n in (((1.2, 0, 0), "$x$"), ((0, 1.8, 0), "$y$"), ((0, 0, 1.5), "$z$")):
-        _ax.annotate(_n, _f(*_q), textcoords="offset points", xytext=(-12, 2), color=GREEN, fontsize=12)
+    for _q, _n, _off in (((1.2, 0, 0), "$x$", (-12, 2)), ((0, 1.8, 0), "$y$", (-4, 5)), ((0, 0, 1.5), "$z$", (-12, 2))):
+        _ax.annotate(_n, _f(*_q), textcoords="offset points", xytext=_off, color=GREEN, fontsize=12)
 
     mo.vstack(
         [

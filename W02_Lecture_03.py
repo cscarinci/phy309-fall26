@@ -313,7 +313,7 @@ def _(BLUE, GREEN, GREY, LIGHT, RED, arrow, blank, np):
         arrow(_ax, (_x0, _s0), (_x0 + 0.8 * _dx / _n, _s0 + 0.8 / _n), GREEN)
         _ax.plot(_x0, _s0, "o", color="black", ms=4)
         _ax.text(_x0 + 0.55, _s0 - 0.1, rf"$\gamma({_name[1:-1]})$", fontsize=12)
-        _ax.text(_x0 + 0.8 * _dx / _n - 0.1, _s0 + 0.8 / _n + 0.05, rf"$\gamma'({_name[1:-1]})$", color=GREEN, fontsize=12, ha="right")
+        _ax.text(_x0 + 0.8 * _dx / _n + 0.08, _s0 + 0.8 / _n, rf"$\gamma'({_name[1:-1]})$", color=GREEN, fontsize=12, ha="left")
 
     # Relative velocity: rescale sigma' to the simultaneity line of gamma, then subtract gamma'
     fig_relvel, _ax = blank(3.4, 3.0, (-1.6, 2.4), (-1.2, 2.2))
@@ -328,7 +328,7 @@ def _(BLUE, GREEN, GREY, LIGHT, RED, arrow, blank, np):
     _ax.plot([-1.5, 2.3], [-1.5 * _g[0] / _g[1], 2.3 * _g[0] / _g[1]], color=GREY, lw=1.0)
     _ax.text(2.05, -0.75, r"$(\gamma')^\perp$", color=GREY, fontsize=12, ha="center")
     arrow(_ax, (0, 0), _g, BLUE)
-    _ax.text(_g[0] - 0.14, _g[1] - 0.15, r"$\gamma'$", color=BLUE, fontsize=13, ha="right")
+    _ax.text(_g[0] - 0.28, _g[1] - 0.3, r"$\gamma'$", color=BLUE, fontsize=13, ha="right")
     arrow(_ax, (0, 0), _sg, RED)
     _ax.text(_sg[0] + 0.1, _sg[1] + 0.05, r"$\sigma'$", color=RED, fontsize=13)
     # scaled sigma' / (-eta(gamma', sigma')) lands on the line through gamma' parallel to (gamma')^perp

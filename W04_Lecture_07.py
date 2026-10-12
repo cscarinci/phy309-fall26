@@ -321,7 +321,7 @@ def _(BLUE, Figure, GREEN, GREY, HALF, ORANGE, RED, arrow, math, np):
     _cg.text(-0.6, _y0 - 0.1, "$p$", fontsize=12, ha="center", va="top")
     _cg.text(0.6, _y0 - 0.1, "$q$", fontsize=12, ha="center", va="top")
     _cg.text(-0.67, _y0 + 0.1, "$v$", color=GREEN, fontsize=12, ha="right", va="center")
-    _cg.text(0.67, _y0 + 0.1, "$v' = v$", color=GREEN, fontsize=12, ha="left", va="center")
+    _cg.text(0.67, _y0 + 0.1, "$v' = v$", color=GREEN, fontsize=12, ha="left", va="center", zorder=8, bbox=dict(boxstyle="round,pad=0.08", facecolor="white", edgecolor="none"))
     arrow(_cg, (0, 1), (-0.42, 1.32), GREEN)
     arrow(_cg, (0, 1), (0.42, 1.32), ORANGE)
     _cg.text(-0.5, 1.38, "$v$", color=GREEN, fontsize=12, ha="right")

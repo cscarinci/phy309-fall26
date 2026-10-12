@@ -178,19 +178,19 @@ def _(BLUE, Figure, GREEN, GREY, ORANGE, RED, arrow, blob, np):
         _ax.text(0.2, 1.9 + _dy, _name, color=_col, fontsize=11, ha="right", va="center")
     # chart box below
     _B = (4.2, 0.2)
-    _ax.plot([_B[0], _B[0] + 1.9, _B[0] + 1.9, _B[0], _B[0]], [_B[1], _B[1], _B[1] + 1.6, _B[1] + 1.6, _B[1]], color=GREY)
-    _ax.text(_B[0] + 1.95, _B[1] + 0.05, r"$\varphi(U) \subseteq \mathbb{R}^m$", color=GREY, fontsize=10)
+    _ax.plot([_B[0], _B[0] + 2.9, _B[0] + 2.9, _B[0], _B[0]], [_B[1], _B[1], _B[1] + 1.6, _B[1] + 1.6, _B[1]], color=GREY)
+    _ax.text(_B[0] + 2.9, _B[1] - 0.06, r"$\varphi(U) \subseteq \mathbb{R}^m$", color=GREY, fontsize=11, ha="right", va="top")
     _Q = (_B[0] + 0.9, _B[1] + 0.8)
     for _col, _k in ((BLUE, 0.0), (RED, 1.2), (ORANGE, -1.2)):
         _ax.plot(_Q[0] + _s, _Q[1] + 0.3 * _s - _k * _s**2, color=_col)
     arrow(_ax, _Q, (_Q[0] + 0.6, _Q[1] + 0.18), GREEN)
-    _ax.text(_Q[0] + 0.65, _Q[1] + 0.3, r"$(\varphi \circ \gamma)'(0)$", color=GREEN, fontsize=10)
+    _ax.text(_Q[0] + 0.65, _Q[1] + 0.3, r"$(\varphi \circ \gamma)'(0)$", color=GREEN, fontsize=11)
     _ax.plot(*_Q, "o", color="black", ms=4)
     _ax.text(_Q[0] - 0.05, _Q[1] - 0.5, r"$\varphi(p)$", fontsize=10, ha="center", va="top", bbox=dict(boxstyle="round,pad=0.1", facecolor="white", edgecolor="none", alpha=0.85))
     arrow(_ax, (3.9, 2.3), (4.6, 1.85), "black", connectionstyle="arc3,rad=-0.3")
     _ax.text(4.45, 2.35, r"$\varphi$", fontsize=12)
     _ax.set_xlim(-0.7, 7.2)
-    _ax.set_ylim(-0.1, 4.6)
+    _ax.set_ylim(-0.45, 4.6)
     _ = None  # no cell output: the figures are returned, not displayed here
     return (fig_paths,)
 
@@ -521,7 +521,7 @@ def _(BLUE, FULL, Figure, GREY, RED, arrow, math, mo, np, s_u, s_v, table):
     _ax2.plot(np.cos(_c), np.sin(_c), color=GREY, lw=1.0)
     _ax2.plot([-3.0, 3.0], [_v, _v], color=BLUE)
     _ax2.plot([_u, _u], [-3.0, 3.0], color=RED)
-    _ax2.text(0, 1.04, "equator", color=GREY, fontsize=9, ha="center", va="bottom")
+    _ax2.text(0.06, 1.04, "equator", color=GREY, fontsize=10, ha="left", va="bottom", bbox=dict(boxstyle="round,pad=0.1", facecolor="white", edgecolor="none"))
     arrow(_ax2, (_u, _v), (_u + 0.8, _v), BLUE)
     arrow(_ax2, (_u, _v), (_u, _v + 0.8), RED)
     _ax2.plot(_u, _v, "o", color="black", ms=5)

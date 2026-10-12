@@ -331,7 +331,7 @@ def _(BLUE, FULL, Figure, GREEN, GREY, RED, arrow, mo, np, s_a, s_b, s_u, s_v, t
             _ax.axhline(0, color="black", lw=0.6)
             _ax.axvline(0, color="black", lw=0.6)
             _ax.plot(np.cos(_c), np.sin(_c), color=GREY, lw=0.8)
-            _ax.text(0, 1.03, "equator", color=GREY, fontsize=9, ha="center", va="bottom")
+            _ax.text(0.06, 1.04, "equator", color=GREY, fontsize=10, ha="left", va="bottom", bbox=dict(boxstyle="round,pad=0.1", facecolor="white", edgecolor="none"))
             _ax.set_xticks([-round(_L, 1), 0, round(_L, 1)])
             _ax.set_yticks([-round(_L, 1), 0, round(_L, 1)])
         for (_pu, _pv), _col, _name in ((_g, BLUE, r"$\gamma$"), (_h, RED, r"$\tilde{\gamma}$")):

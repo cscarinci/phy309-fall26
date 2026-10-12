@@ -310,8 +310,8 @@ def _(BLUE, FULL, GREEN, GREY, HALF, LIGHT, RED, arrow, blank, blob, math, np, p
         _ax.plot(*_B, color=BLUE)
     _bb = dict(boxstyle="round,pad=0.1", facecolor="white", edgecolor="none", alpha=0.85)
     _ax.text(1.15, 3.85, "$U$", color=RED, fontsize=12, ha="center", bbox=_bb)
-    _ax.text(2.75, 3.85, "$f^{-1}(A)$", color=BLUE, fontsize=11, ha="center", bbox=_bb)
-    _ax.text(7.1, 3.85, "$f(U)$", color=RED, fontsize=11, ha="center", bbox=_bb)
+    _ax.text(2.62, 3.05, "$f^{-1}(A)$", color=BLUE, fontsize=11, ha="center", bbox=_bb)
+    _ax.text(7.3, 3.25, "$f(U)$", color=RED, fontsize=11, ha="center", bbox=_bb)
     _ax.text(8.75, 3.85, "$A$", color=BLUE, fontsize=12, ha="center", bbox=_bb)
     arrow(_ax, (3.9, 3.3), (6.1, 3.3), "black", connectionstyle="arc3,rad=-0.2")
     _ax.text(5.0, 3.75, "$f$", fontsize=13, ha="center")
@@ -326,8 +326,8 @@ def _(BLUE, FULL, GREEN, GREY, HALF, LIGHT, RED, arrow, blank, blob, math, np, p
     _ax.text(9.0, 2.0, r"$\psi$", color=BLUE, fontsize=12)
     arrow(_ax, (2.8, 0.9), (6.8, 0.9), "black", lw=1.0)
     _ax.text(4.8, 1.05, r"$\psi \circ f \circ \varphi^{-1}$", fontsize=12, ha="center", va="bottom")
-    _ax.text(2.7, 1.75, r"$\varphi(U \cap f^{-1}(A))$", color=GREY, fontsize=10, ha="center")
-    _ax.text(7.4, 1.75, r"$\psi(f(U) \cap A)$", color=GREY, fontsize=10, ha="center")
+    _ax.text(2.7, 1.75, r"$\varphi(U \cap f^{-1}(A))$", color=GREY, fontsize=11, ha="center")
+    _ax.text(7.4, 1.75, r"$\psi(f(U) \cap A)$", color=GREY, fontsize=11, ha="center")
     _ = None  # no cell output: the figures are returned, not displayed here
     return fig_angles, fig_smooth
 
@@ -360,7 +360,7 @@ def _(BLUE, FULL, Figure, GREEN, GREY, math, mo, np, s_phi, s_theta):
             _ax.set_xlim(0, 180)
             _ax.set_ylim(0, 360)
             _ax.set_xlabel(r"$\phi$")
-            _ax.set_ylabel(r"$\theta$", rotation=0)
+            _ax.set_ylabel(r"$\theta$", rotation=0, labelpad=12)
             _ax.set_xticks([0, 90, 180])
             _ax.set_yticks([0, 180, 360])
         else:
@@ -372,13 +372,15 @@ def _(BLUE, FULL, Figure, GREEN, GREY, math, mo, np, s_phi, s_theta):
             _ax.plot(np.cos(_a), np.sin(_a), color=GREY, lw=0.8)
             _ax.set_xticks([-round(_lim, 1), 0, round(_lim, 1)])
             _ax.set_yticks([-round(_lim, 1), 0, round(_lim, 1)])
+            for _axis in (_ax.xaxis, _ax.yaxis):
+                _axis.set_major_formatter(lambda _t, _i: f"${_t:.1f}$")
         _ax.plot(*_pt, "o", color=BLUE, ms=6)
     # the curve of constant phi in the three charts
     _axes[1].plot(_r * np.cos(_a), _r * np.sin(_a), color=GREEN, lw=1.0)
     _axes[2].plot(np.cos(_a) / _r, np.sin(_a) / _r, color=GREEN, lw=1.0)
     _axes[0].plot([s_phi.value, s_phi.value], [0, 360], color=GREEN, lw=1.0)
-    _axes[1].text(0, 1.04, "equator", color=GREY, fontsize=9, ha="center", va="bottom")
-    _axes[1].text(0, -_r - 0.04 * _axes[1].get_ylim()[1], r"$\phi$ = const", color=GREEN, fontsize=9, ha="center", va="top")
+    _axes[1].text(0.06, 1.04, "equator", color=GREY, fontsize=10, ha="left", va="bottom")
+    _axes[1].text(0.76 * max(_r, 0.5), -0.76 * max(_r, 0.5), r"$\phi$ = const", color=GREEN, fontsize=10, ha="left", va="top")
 
     _table = "\n".join(
         [
