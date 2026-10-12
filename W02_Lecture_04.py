@@ -191,7 +191,7 @@ def _(corollary, definition, fig_compare, mo, theorem):
     ## Last time
 
     - Minkowski spacetime $\mathbb{M}^4 = (\mathbb{A}^4, \mathbb{V}^4, -)$ with $\eta$ symmetric, bilinear, of signature $(3, 1)$; non-zero vectors are timelike ($\lVert u \rVert^2 < 0$), spacelike ($> 0$) or lightlike ($= 0$)
-    - causal structure: $q$ in the future / past of $p$ if $q - p$ is timelike or lightlike in the future / past cone; $p, q$ spacelike separated otherwise; no absolute simultaneity
+    - causal structure: $q$ in the future / past of $p$ if $q - p$ is timelike in the future / past cone; $p, q$ spacelike separated otherwise; no absolute simultaneity
     - proper time $\mathrm{time}(p, q) = \sqrt{-\lVert q - p \rVert^2}$ and proper distance $\mathrm{dist}(p, q) = \sqrt{\lVert q - p \rVert^2}$; particles are future oriented timelike curves
 
     **In this lecture:** proper time along a particle, the reversed inequalities behind the twin paradox, and relative velocity in coordinates
