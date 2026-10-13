@@ -464,9 +464,10 @@ def _(BLUE, GREEN, GREY, ORANGE, RED, arrow, beta, blank, math, mo):
     _ax.plot([-_L, _L], [0, 0], color=BLUE, lw=1.0)
     _ax.text(_L * 0.98, -0.12 * _L, r"$p + u^\perp = S_p^u$", color=BLUE, fontsize=12, ha="right")
     _ax.plot([-_L, _L], [-_L * _b, _L * _b], color=RED, lw=1.0)
-    _ax.annotate(r"$p + v^\perp = S_p^v$", (-_L * 0.95, -_L * 0.95 * _b), textcoords="offset points", xytext=(0, -16 if _b >= 0 else 8), color=RED, fontsize=12)
+    _sx = -0.95 if _b >= 0 else 0.95  # label the lower end of the line, so it is never clipped at the top
+    _ax.annotate(r"$p + v^\perp = S_p^v$", (_L * _sx, _L * _sx * _b), textcoords="offset points", xytext=(0, -16), ha="left" if _b >= 0 else "right", color=RED, fontsize=12)
     arrow(_ax, (0, 0), (0, 1), BLUE)
-    _ax.annotate("$u$", (0, 0.5), textcoords="offset points", xytext=(-16, -4), color=BLUE, fontsize=16)
+    _ax.annotate("$u$", (0, 0.5), textcoords="offset points", xytext=(-16, -4) if _b >= 0 else (6, -4), color=BLUE, fontsize=16)  # on the side away from v
     arrow(_ax, (0, 0), _v, RED)
     _ax.annotate("$v$", (_v[0] / 2, _v[1] / 2), textcoords="offset points", xytext=(8, -8) if _b >= 0 else (-18, -8), color=RED, fontsize=16)
     # nu(u, v) = v / (-eta) - u: from the tip of u along S_p^u;  nu(v, u) = u / (-eta) - v: from the tip of v along S_p^v

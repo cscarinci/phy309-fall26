@@ -277,8 +277,9 @@ def _(BLUE, GREEN, GREY, LIGHT, RED, arrow, blank, c_u0, c_u1, mo):
         arrow(_ax, (0, 0), (_u1, _u0), _col, r"$\vec{u}$", at_tip=True)
     _ax.text(-1.2, 1.9, "timelike", color=BLUE, fontsize=11, ha="center")
     _ax.text(-1.2, -2.05, "timelike", color=BLUE, fontsize=11, ha="center")
-    _ax.text(-2.1, 0.5, "spacelike", color=RED, fontsize=11, ha="center")
-    _ax.text(2.1, 0.5, "spacelike", color=RED, fontsize=11, ha="center")
+    for _sx in (-2.1, 2.1):  # move a region label below the axis when the dashed u-perp line would run through it
+        _yl = _sx * _u1 / _u0 if _n < 0 else 99.0
+        _ax.text(_sx, 0.5 if abs(_yl - 0.6) > 0.4 else -0.75, "spacelike", color=RED, fontsize=11, ha="center")
     _ax.text(1.75, -2.0, "lightlike", color=GREY, fontsize=11, rotation=-45, ha="center", va="center")
 
     _table = "\n".join(

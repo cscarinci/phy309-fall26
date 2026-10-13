@@ -319,11 +319,12 @@ def _(BLUE, FULL, Figure, GREEN, GREY, RED, arrow, mo, np, s_a, s_b, s_u, s_v, t
         _g = (_u + _t * _a, _v + _t * _b)
         _h = (_u + _t * _a - 0.5 * _t**2 * _b, _v + _t * _b + 0.5 * _t**2 * _a)
 
-        _Ls = max(3.0, 1.2 * max(abs(_ut) + abs(_at), abs(_vt) + abs(_bt)))  # south panel follows its point and arrow
+        _Ls = max(3.0, 1.5 * max(abs(_ut), abs(_vt)))  # south panel follows its point
+        _k = min(1.0, 0.6 * _Ls / max(np.hypot(_at, _bt), 1e-9))  # one arrow scale for both panels, so the south arrow fits
         _fig = Figure(figsize=(FULL, 3.9), layout="constrained")
         _axes = _fig.subplots(1, 2)
         _c = np.linspace(0, 2 * np.pi, 200)
-        for _ax, _title, _L in zip(_axes, (r"$\varphi_n$ : $(u, v)$", r"$\varphi_s$ : $(\tilde{u}, \tilde{v})$"), (3.0, _Ls)):
+        for _ax, _title, _L in zip(_axes, (r"$\varphi_n$ : $(u, v)$", r"$\varphi_s$ : $(\tilde{u}, \tilde{v})$"), (3.6, _Ls)):
             _ax.set_title(_title, fontsize=13)
             _ax.set_xlim(-_L, _L)
             _ax.set_ylim(-_L, _L)
@@ -340,8 +341,11 @@ def _(BLUE, FULL, Figure, GREEN, GREY, RED, arrow, mo, np, s_a, s_b, s_u, s_v, t
             _q = _pu**2 + _pv**2
             _q = np.where(_q < 1e-6, np.nan, _q)  # the path image passes through infinity where it crosses s
             _axes[1].plot(_pu / _q, _pv / _q, color=_col)
-        arrow(_axes[0], (_u, _v), (_u + _a, _v + _b), GREEN)
-        arrow(_axes[1], (_ut, _vt), (_ut + _at, _vt + _bt), GREEN)
+        arrow(_axes[0], (_u, _v), (_u + _k * _a, _v + _k * _b), GREEN)
+        arrow(_axes[1], (_ut, _vt), (_ut + _k * _at, _vt + _k * _bt), GREEN)
+        if _k < 1:
+            for _ax in _axes:
+                _ax.text(0.03, 0.03, rf"arrows drawn at ${_k:.2g}\times$ length", transform=_ax.transAxes, color=GREEN, fontsize=10)
         _axes[0].plot(_u, _v, "o", color="black", ms=5)
         _axes[1].plot(_ut, _vt, "o", color="black", ms=5)
         _out = mo.vstack(
@@ -534,8 +538,9 @@ def _(BLUE, FULL, Figure, GREEN, HALF, RED, arrow, math, mo, np, s_t, table):
         _ax2.text(0.25, _y - 0.05, _lab, fontsize=13)
     _ax2.plot(0, 0, "o", color=BLUE, ms=6)
     _ax2.plot(0, math.sin(_t), "o", color=RED, ms=6)
-    _ax2.text(-0.25, 0, r"$f(\gamma(t))$", color=BLUE, fontsize=11, ha="right", va="center")
-    _ax2.text(-0.25, math.sin(_t), r"$f(\sigma(t))$", color=RED, fontsize=11, ha="right", va="center")
+    _sep = math.copysign(0.13, math.sin(_t) + 1e-12) if abs(math.sin(_t)) < 0.15 else 0.0  # pull the two labels apart when the dots nearly coincide
+    _ax2.text(-0.25, -_sep, r"$f(\gamma(t))$", color=BLUE, fontsize=11, ha="right", va="center")
+    _ax2.text(-0.25, math.sin(_t) + _sep, r"$f(\sigma(t))$", color=RED, fontsize=11, ha="right", va="center")
     _ax2.text(0, 1.35, r"$\mathbb{R}$", fontsize=13, ha="center")
 
     _table = table(

@@ -519,12 +519,18 @@ def _(BLUE, FULL, Figure, GREY, RED, arrow, math, mo, np, s_u, s_v, table):
     _curve(_ax, _inv(_u + 0 * _s, _v + _s), RED)
     _P = _pr(*_p)
     _front = _P[2] >= 0
-    for _d, _col, _lab in ((_du, BLUE, r"$\partial_u|_p$"), (_dv, RED, r"$\partial_v|_p$")):
+    _units = []  # projected unit directions of the two arrows, to keep their labels apart
+    for _d in (_du, _dv):
+        _E = _pr(*(_p + 0.8 * _d))
+        _w = np.array([_E[0] - _P[0], _E[1] - _P[1]])
+        _units.append(_w / max(np.hypot(*_w), 1e-6))
+    for _i, (_d, _col, _lab) in enumerate(((_du, BLUE, r"$\partial_u|_p$"), (_dv, RED, r"$\partial_v|_p$"))):
         _E = _pr(*(_p + 0.8 * _d))
         arrow(_ax, _P[:2], _E[:2], _col, alpha=1.0 if _front else 0.45)
-        _dx, _dy = _E[0] - _P[0], _E[1] - _P[1]
-        _n = max(math.hypot(_dx, _dy), 1e-6)
-        _ax.text(_E[0] + 0.22 * _dx / _n, _E[1] + 0.16 * _dy / _n, _lab, color=_col, fontsize=13, ha="center", va="center")
+        _dx, _dy = _units[_i]
+        _away = _units[_i] - _units[1 - _i]  # push labels apart when the projected arrows are nearly parallel
+        _away = 0.25 * max(0.0, float(_units[0] @ _units[1])) * _away / max(np.hypot(*_away), 1e-6)
+        _ax.text(_E[0] + 0.22 * _dx + _away[0], _E[1] + 0.16 * _dy + _away[1], _lab, color=_col, fontsize=13, ha="center", va="center")
     _ax.plot(*_P[:2], "o", color="black", ms=5, mfc="black" if _front else "white")
     _N = _pr(0, 0, 1)
     _ax.plot(*_N[:2], "o", color="black", ms=3)

@@ -527,7 +527,7 @@ def _(BLUE, FULL, GREY, RED, blank, lat, math, mo, np):
         _ax.plot(*_pt, "o", color=_col, ms=5)
         _ax.annotate(_name, _pt, textcoords="offset points", xytext=_off, color=_col, fontsize=14)
     _ax.plot(_u, 0, "o", color=BLUE, ms=5)
-    _ax.annotate(r"$\varphi_n(p)$", (_u, 0), textcoords="offset points", xytext=(-8, -18), color=BLUE, fontsize=12)
+    _ax.annotate(r"$\varphi_n(p)$", (_u, 0), textcoords="offset points", xytext=(-8, -18) if _z >= 0 else (-50, -16), color=BLUE, fontsize=12)
     _ax.plot(_ut, 0, "o", color=RED, ms=5)
     _ax.annotate(r"$\varphi_s(p)$", (_ut, 0), textcoords="offset points", xytext=(-30, 8), color=RED, fontsize=12)
 

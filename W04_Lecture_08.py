@@ -403,8 +403,9 @@ def _(BLUE, FULL, Figure, GREEN, GREY, math, mo, np, s_phi, s_theta):
     _axes[1].plot(_r * np.cos(_a), _r * np.sin(_a), color=GREEN, lw=1.0)
     _axes[2].plot(np.cos(_a) / _r, np.sin(_a) / _r, color=GREEN, lw=1.0)
     _axes[0].plot([s_phi.value, s_phi.value], [0, 360], color=GREEN, lw=1.0)
-    _axes[1].text(0.06, 1.04, "equator", color=GREY, fontsize=10, ha="left", va="bottom")
-    _axes[1].text(0.76 * max(_r, 0.5), -0.76 * max(_r, 0.5), r"$\phi$ = const", color=GREEN, fontsize=10, ha="left", va="top")
+    _axes[1].annotate("equator", (0, 1), textcoords="offset points", xytext=(3, 2), color=GREY, fontsize=10, ha="left", va="bottom")  # offset in points: stays next to the circle at any zoom
+    if _r > 0.3:  # label the constant-phi circle only when it is visible beyond the point marker
+        _axes[1].text(0.76 * _r, -0.76 * _r, r"$\phi$ = const", color=GREEN, fontsize=10, ha="left", va="top")
 
     _table = "\n".join(
         [
