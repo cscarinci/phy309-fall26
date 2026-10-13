@@ -308,7 +308,7 @@ def _(BLUE, GREY, RED, arrow, blank, definition, mo):
     We can define spatial length
 
     $$
-    \text{if } \tau(\vec{u}) = 0 \quad \Longrightarrow \quad \lVert \vec{u} \rVert = \sqrt{\langle \vec{u}, \vec{u} \rangle}
+    \text{if } \tau(\vec{u}) = 0 \qquad \Longrightarrow \qquad \lVert \vec{u} \rVert = \sqrt{\langle \vec{u}, \vec{u} \rangle}
     $$
 
     Each set of mutually simultaneous events in $\mathbb{G}^4$ is an identical copy of $\mathbb{E}^3$
@@ -410,7 +410,7 @@ def _(definition, fig_frame, fig_relvel, mo, proposition, theorem):
 
     $$
     \begin{aligned}
-    \Longrightarrow \quad t_2 - t_1 = \int_{t_1}^{t_2} dt &= \int_{t_1}^{t_2} \tau(\gamma'(t))\, dt \\
+    \Longrightarrow \qquad t_2 - t_1 = \int_{t_1}^{t_2} dt &= \int_{t_1}^{t_2} \tau(\gamma'(t))\, dt \\
     &= \tau\!\left( \int_{t_1}^{t_2} \gamma'(t)\, dt \right) = \tau(\gamma(t_2) - \gamma(t_1)) \qquad \square
     \end{aligned}
     $$
@@ -466,7 +466,7 @@ def _(definition, fig_frame, fig_relvel, mo, proposition, theorem):
     **Example.** constant force: &nbsp; $\vec{F}(t) = \vec{v} \in \ker(\tau)$
 
     $$
-    \Longrightarrow \quad \gamma(t) = p + t\vec{u} + \frac{1}{2m} t^2 \vec{v}
+    \Longrightarrow \qquad \gamma(t) = p + t\vec{u} + \frac{1}{2m} t^2 \vec{v}
     $$
     """
             ),
@@ -560,7 +560,7 @@ def _(fig_addition, fig_gravity, mo, theorem):
     \vec{\nabla} \cdot \vec{E} = 0, \quad \vec{\nabla} \times \vec{B} - \frac{1}{c^2} \partial_t \vec{E} = 0 \\[4pt]
     \vec{\nabla} \cdot \vec{B} = 0, \quad \vec{\nabla} \times \vec{E} + \partial_t \vec{B} = 0
     \end{cases}
-    \quad \Longrightarrow \quad
+    \qquad \Longrightarrow \qquad
     \begin{cases}
     \left( \Delta - \frac{1}{c^2} \partial_t^2 \right) \vec{E} = 0 \\[4pt]
     \left( \Delta - \frac{1}{c^2} \partial_t^2 \right) \vec{B} = 0
@@ -589,7 +589,7 @@ def _(fig_addition, fig_gravity, mo, theorem):
                 r"""
     $$
     \begin{gathered}
-    \text{triangle inequality} \quad \Longrightarrow \quad \lVert \vec{v}(\gamma, \xi) \rVert \leq \lVert \vec{v}(\gamma, \sigma) \rVert + \lVert \vec{v}(\sigma, \xi) \rVert \\[4pt]
+    \text{triangle inequality} \qquad \Longrightarrow \qquad \lVert \vec{v}(\gamma, \xi) \rVert \leq \lVert \vec{v}(\gamma, \sigma) \rVert + \lVert \vec{v}(\sigma, \xi) \rVert \\[4pt]
     \text{with equality if and only if one of the two vectors is a non-negative multiple of the other}
     \end{gathered}
     $$
@@ -597,7 +597,7 @@ def _(fig_addition, fig_gravity, mo, theorem):
     $\gamma, \sigma$ are inertial particles and $\xi$ is a light particle moving along same direction
 
     $$
-    \Longrightarrow \quad c = \lVert \vec{v}(\gamma, \sigma) \rVert + c \qquad \text{contradiction unless } \gamma, \sigma \text{ have zero relative velocity}
+    \Longrightarrow \qquad c = \lVert \vec{v}(\gamma, \sigma) \rVert + c \qquad \text{contradiction unless } \gamma, \sigma \text{ have zero relative velocity}
     $$
 
     ## Summary

@@ -214,7 +214,7 @@ def _(corollary, definition, fig_compare, mo, theorem):
     Recall, in $\mathbb{G}^4$, particles were parameterized by “absolute time” if $\tau(\gamma'(t)) = 1$
 
     $$
-    \Longrightarrow \quad \mathrm{time}(\gamma(t_1), \gamma(t_2)) = \int_{t_1}^{t_2} \tau(\gamma'(t))\, dt = t_2 - t_1 = \tau(\gamma(t_2) - \gamma(t_1)) \qquad (\text{for any particle})
+    \Longrightarrow \qquad \mathrm{time}(\gamma(t_1), \gamma(t_2)) = \int_{t_1}^{t_2} \tau(\gamma'(t))\, dt = t_2 - t_1 = \tau(\gamma(t_2) - \gamma(t_1)) \qquad (\text{for any particle})
     $$
     """
             ),
@@ -269,19 +269,21 @@ def _(corollary, definition, fig_compare, mo, theorem):
     Choose $e_\mu = e_0, e_i$ inertial frame
 
     $$
-    \Longrightarrow \quad \begin{cases} u = u^0 e_0 + u^i e_i & \text{with } u^0 > 0 \\ v = v^0 e_0 + v^i e_i & \text{with } v^0 > 0 \end{cases}
+    \Longrightarrow \qquad \begin{cases} u = u^0 e_0 + u^i e_i & \text{with } u^0 > 0 \\ v = v^0 e_0 + v^i e_i & \text{with } v^0 > 0 \end{cases}
     $$
 
     $$
     \begin{aligned}
-    \lVert u \rVert^2 = -(u^0)^2 + \delta_{ij} u^i u^j < 0 \quad &\Longrightarrow \quad \sqrt{\delta_{ij} u^i u^j} < u^0 \qquad \left( \sqrt{\delta_{ij} u^i u^j} = \sqrt{(u^1)^2 + (u^2)^2 + (u^3)^2} \right) \\
-    \lVert v \rVert^2 = -(v^0)^2 + \delta_{ij} v^i v^j < 0 \quad &\Longrightarrow \quad \sqrt{\delta_{ij} v^i v^j} < v^0
+    \lVert u \rVert^2 = -(u^0)^2 + \delta_{ij} u^i u^j < 0 \qquad & \Longrightarrow \qquad \sqrt{\delta_{ij} u^i u^j} < u^0 \qquad \left( \sqrt{\delta_{ij} u^i u^j} = \sqrt{(u^1)^2 + (u^2)^2 + (u^3)^2} \right) \\
+    \lVert v \rVert^2 = -(v^0)^2 + \delta_{ij} v^i v^j < 0 \qquad & \Longrightarrow \qquad \sqrt{\delta_{ij} v^i v^j} < v^0
     \end{aligned}
     $$
 
     $$
-    \text{Euclidean Cauchy–Schwarz} \quad \Longrightarrow \quad \delta_{ij} u^i v^j \leq \sqrt{\delta_{k\ell} u^k u^\ell}\, \sqrt{\delta_{mn} v^m v^n} < u^0 v^0
-    \quad \Longrightarrow \quad -u^0 v^0 + \delta_{ij} u^i v^j < 0
+    \begin{aligned}
+    \text{Euclidean Cauchy–Schwarz} \qquad & \Longrightarrow \qquad \delta_{ij} u^i v^j \leq \sqrt{\delta_{k\ell} u^k u^\ell}\, \sqrt{\delta_{mn} v^m v^n} < u^0 v^0 \\[4pt]
+    & \Longrightarrow \qquad -u^0 v^0 + \delta_{ij} u^i v^j < 0
+    \end{aligned}
     $$
 
     **2.** Consider $\eta(u + tv, u + tv) = \lVert u \rVert^2 + 2t\, \eta(u, v) + t^2 \lVert v \rVert^2$
@@ -291,20 +293,20 @@ def _(corollary, definition, fig_compare, mo, theorem):
     Let $w = u - \dfrac{\eta(u, v)}{\lVert v \rVert^2}\, v$
 
     $$
-    \Longrightarrow \quad \eta(v, w) = \eta(v, u) - \eta(u, v) \frac{\lVert v \rVert^2}{\lVert v \rVert^2} = 0
+    \Longrightarrow \qquad \eta(v, w) = \eta(v, u) - \eta(u, v) \frac{\lVert v \rVert^2}{\lVert v \rVert^2} = 0
     $$
 
     $$
-    \Longrightarrow \quad w \in v^\perp \ \ (v \text{ timelike}) \quad \Longrightarrow \quad 0 \leq \underbrace{\lVert w \rVert^2}_{\text{spacelike}} = \lVert u \rVert^2 - \frac{2\, \eta(u, v)^2}{\lVert v \rVert^2} + \frac{\eta(u, v)^2}{\lVert v \rVert^2}
+    \Longrightarrow \qquad w \in v^\perp \ \ (v \text{ timelike}) \qquad \Longrightarrow \qquad 0 \leq \underbrace{\lVert w \rVert^2}_{\text{spacelike}} = \lVert u \rVert^2 - \frac{2\, \eta(u, v)^2}{\lVert v \rVert^2} + \frac{\eta(u, v)^2}{\lVert v \rVert^2}
     $$
 
     $$
-    \Longrightarrow \quad \lVert u \rVert^2 \geq \frac{\eta(u, v)^2}{\lVert v \rVert^2} \quad (\lVert v \rVert^2: \text{negative})
-    \quad \Longrightarrow \quad \lVert u \rVert^2 \lVert v \rVert^2 \leq \eta(u, v)^2 \qquad \text{reversed Cauchy–Schwarz}
+    \Longrightarrow \qquad \lVert u \rVert^2 \geq \frac{\eta(u, v)^2}{\lVert v \rVert^2} \quad (\lVert v \rVert^2: \text{negative})
+    \qquad \Longrightarrow \qquad \lVert u \rVert^2 \lVert v \rVert^2 \leq \eta(u, v)^2 \qquad \text{reversed Cauchy–Schwarz}
     $$
 
     $$
-    \Longrightarrow \quad \underbrace{-\eta(u, v)}_{+\text{ve}} \geq \underbrace{\sqrt{-\lVert u \rVert^2}}_{+\text{ve}}\, \underbrace{\sqrt{-\lVert v \rVert^2}}_{+\text{ve}}
+    \Longrightarrow \qquad \underbrace{-\eta(u, v)}_{+\text{ve}} \geq \underbrace{\sqrt{-\lVert u \rVert^2}}_{+\text{ve}}\, \underbrace{\sqrt{-\lVert v \rVert^2}}_{+\text{ve}}
     $$
 
     **3.** $u + v$ is timelike
@@ -345,7 +347,7 @@ def _(corollary, definition, fig_compare, mo, theorem):
     A waits 10 years for B's return; &nbsp; B takes 3 years to reach the star; &nbsp; B takes another 3 years to return
 
     $$
-    \leadsto \quad \sqrt{\frac{-\lVert s - p \rVert^2}{-\lVert r - p \rVert^2}} = \frac{5}{3} \quad \text{is called the time dilation factor between A and B}
+    \leadsto \qquad \sqrt{\frac{-\lVert s - p \rVert^2}{-\lVert r - p \rVert^2}} = \frac{5}{3} \quad \text{is called the time dilation factor between A and B}
     $$
 
     $$
@@ -426,7 +428,7 @@ def _(definition, mo):
     In $\mathbb{G}^4$: &nbsp; $\nu(u, v) = v - u \in \ker \tau$ &nbsp; (the same subspace for every $u$, unlike $u^\perp$ &nbsp; $\Longrightarrow$ &nbsp; simple formula for the addition of relative velocities &nbsp; $\Longrightarrow$ &nbsp; broke Maxwell)
 
     $$
-    \Longrightarrow \quad \lVert \nu(u, v) \rVert^2 = \frac{\lVert v \rVert^2}{\eta(u, v)^2} + \lVert u \rVert^2 + 2\, \frac{\eta(u, v)}{\eta(u, v)} = 1 + \frac{\lVert v \rVert^2}{\eta(u, v)^2} < 1
+    \Longrightarrow \qquad \lVert \nu(u, v) \rVert^2 = \frac{\lVert v \rVert^2}{\eta(u, v)^2} + \lVert u \rVert^2 + 2\, \frac{\eta(u, v)}{\eta(u, v)} = 1 + \frac{\lVert v \rVert^2}{\eta(u, v)^2} < 1
     $$
 
     Relative speeds are bounded above (by 1)
@@ -504,7 +506,7 @@ def _(definition, mo):
     $$
 
     $$
-    \Longrightarrow \quad \lVert \nu(u, w) \rVert^2 = \underbrace{\frac{\lVert w \rVert^2}{\eta(u, w)^2}}_{=\, 0} + \lVert u \rVert^2 + 2\, \frac{\eta(u, w)}{\eta(u, w)} = 1\,!
+    \Longrightarrow \qquad \lVert \nu(u, w) \rVert^2 = \underbrace{\frac{\lVert w \rVert^2}{\eta(u, w)^2}}_{=\, 0} + \lVert u \rVert^2 + 2\, \frac{\eta(u, w)}{\eta(u, w)} = 1\,!
     $$
 
     - photons *achieve the maximal relative velocity* with respect to every other particle!

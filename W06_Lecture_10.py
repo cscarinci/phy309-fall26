@@ -337,7 +337,7 @@ def _(definition, mo, theorem):
 
     $$
     \begin{aligned}
-    \Longrightarrow \quad X_p(f \cdot g) &= \frac{d}{dt}\bigg|_{t=0} \big( (f \cdot g) \circ \gamma \big) \\[4pt]
+    \Longrightarrow \qquad X_p(f \cdot g) &= \frac{d}{dt}\bigg|_{t=0} \big( (f \cdot g) \circ \gamma \big) \\[4pt]
     &= (f \circ \gamma)'(0)\, g(\gamma(0)) + f(\gamma(0))\, (g \circ \gamma)'(0) = X_p(f)\, g(p) + f(p)\, X_p(g)
     \end{aligned}
     $$
@@ -358,20 +358,20 @@ def _(definition, mo, theorem):
     Conversely, given $X_p \in \mathrm{Der}_p(M)$ we define $[\gamma] \in T_p M$. Work in a chart $\varphi$ with local coordinate functions $x^i : U \longrightarrow \mathbb{R}$, $\varphi(q) = x^i(q)\, e_i$, so that $x^i \circ \varphi^{-1}(x) = x^i$, and set
 
     $$
-    \Longrightarrow \quad X_p(x^i) = v^i \in \mathbb{R}
+    \Longrightarrow \qquad X_p(x^i) = v^i \in \mathbb{R}
     $$
 
     Define &nbsp; $\gamma(t) = \varphi^{-1}\big( \varphi(p) + t v^i e_i \big) = \varphi^{-1}\big( (x^i(p) + t v^i)\, e_i \big)$
 
     $$
     \begin{aligned}
-    \Longrightarrow \quad \frac{d}{dt}\bigg|_{t=0} (f \circ \gamma)(t) &= \frac{d}{dt}\bigg|_{t=0} (f \circ \varphi^{-1})\big( \varphi(p) + t v^i e_i \big) \\[4pt]
+    \Longrightarrow \qquad \frac{d}{dt}\bigg|_{t=0} (f \circ \gamma)(t) &= \frac{d}{dt}\bigg|_{t=0} (f \circ \varphi^{-1})\big( \varphi(p) + t v^i e_i \big) \\[4pt]
     &= \frac{\partial}{\partial x^i} (f \circ \varphi^{-1})(\varphi(p)) \cdot v^i
     \end{aligned}
     $$
 
     $$
-    \Longrightarrow \quad \frac{d}{dt}\bigg|_{t=0} (x^i \circ \gamma)(t) = \frac{\partial x^i}{\partial x^j}(\varphi(p))\, v^j = v^i = X_p(x^i)
+    \Longrightarrow \qquad \frac{d}{dt}\bigg|_{t=0} (x^i \circ \gamma)(t) = \frac{\partial x^i}{\partial x^j}(\varphi(p))\, v^j = v^i = X_p(x^i)
     $$
 
     To conclude that $X_p(f) = \frac{\partial}{\partial x^i}(f \circ \varphi^{-1})(\varphi(p))\, v^i$ for *every* $f$, two more facts:
@@ -380,7 +380,7 @@ def _(definition, mo, theorem):
     - near $p$: &nbsp; $f = f(p) + \big( x^i - x^i(p) \big)\, g_i$ with $g_i$ smooth and $g_i(p) = \frac{\partial}{\partial x^i}(f \circ \varphi^{-1})(\varphi(p))$, namely $g_i(q) = \int_0^1 \partial_i (f \circ \varphi^{-1})\big( \varphi(p) + s (\varphi(q) - \varphi(p)) \big)\, ds$.
 
     $$
-    \Longrightarrow \quad X_p(f) = \underbrace{X_p(f(p))}_{=\,0 \ (\text{Leibniz on } 1 \cdot 1)} + X_p(x^i)\, g_i(p) + \underbrace{\big( x^i(p) - x^i(p) \big)}_{=\,0} X_p(g_i) = v^i\, \frac{\partial}{\partial x^i}(f \circ \varphi^{-1})(\varphi(p))
+    \Longrightarrow \qquad X_p(f) = \underbrace{X_p(f(p))}_{=\,0 \ (\text{Leibniz on } 1 \cdot 1)} + X_p(x^i)\, g_i(p) + \underbrace{\big( x^i(p) - x^i(p) \big)}_{=\,0} X_p(g_i) = v^i\, \frac{\partial}{\partial x^i}(f \circ \varphi^{-1})(\varphi(p))
     $$
 
     $\Longrightarrow$ &nbsp; $X_p$ is the directional derivative at $p$ in the direction of $[\gamma]$, which we already know is independent of the chart $\varphi$.
@@ -405,7 +405,7 @@ def _(mo):
     **Remark.** $\mathrm{Der}_p(M)$ is naturally a vector space:
 
     $$
-    \text{if } X_p, Y_p \in \mathrm{Der}_p(M),\ \alpha, \beta \in \mathbb{R} \qquad \Longrightarrow \quad \alpha X_p + \beta Y_p \in \mathrm{Der}_p(M)
+    \text{if } X_p, Y_p \in \mathrm{Der}_p(M),\ \alpha, \beta \in \mathbb{R} \qquad \Longrightarrow \qquad \alpha X_p + \beta Y_p \in \mathrm{Der}_p(M)
     $$
 
     $\Longrightarrow$ &nbsp; the bijection above defines a vector space structure on the tangent space $T_p M$.

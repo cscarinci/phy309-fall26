@@ -253,7 +253,7 @@ def _(mo):
     $$
 
     $$
-    \leadsto \quad \varphi_n^{-1}(u, v) = \left( \frac{2u}{1 + u^2 + v^2},\ \frac{2v}{1 + u^2 + v^2},\ \frac{-1 + u^2 + v^2}{1 + u^2 + v^2} \right)
+    \leadsto \qquad \varphi_n^{-1}(u, v) = \left( \frac{2u}{1 + u^2 + v^2},\ \frac{2v}{1 + u^2 + v^2},\ \frac{-1 + u^2 + v^2}{1 + u^2 + v^2} \right)
     $$
 
     $$
@@ -261,7 +261,7 @@ def _(mo):
     $$
 
     $$
-    \leadsto \quad \varphi_s^{-1}(\tilde{u}, \tilde{v}) = \left( \frac{2\tilde{u}}{1 + \tilde{u}^2 + \tilde{v}^2},\ \frac{2\tilde{v}}{1 + \tilde{u}^2 + \tilde{v}^2},\ \frac{1 - \tilde{u}^2 - \tilde{v}^2}{1 + \tilde{u}^2 + \tilde{v}^2} \right)
+    \leadsto \qquad \varphi_s^{-1}(\tilde{u}, \tilde{v}) = \left( \frac{2\tilde{u}}{1 + \tilde{u}^2 + \tilde{v}^2},\ \frac{2\tilde{v}}{1 + \tilde{u}^2 + \tilde{v}^2},\ \frac{1 - \tilde{u}^2 - \tilde{v}^2}{1 + \tilde{u}^2 + \tilde{v}^2} \right)
     $$
 
     Given $\gamma : \mathbb{R} \longrightarrow \mathbb{S}^2$, $\gamma(t) = (x(t), y(t), z(t))$, with $\gamma(0) = p \neq n$, the velocity is computed in the chart, not on $\mathbb{S}^2$:
@@ -397,7 +397,7 @@ def _(BLUE, FULL, Figure, GREEN, RED, arrow, blob, definition, mo, np):
     **Remark.** Every $\begin{bmatrix} a \\ b \end{bmatrix} \in \mathbb{R}^2$ is the velocity of some path through $p$ in the chart $\varphi_n$:
 
     $$
-    \gamma(t) = \varphi_n^{-1}\big( u(0) + t a,\ v(0) + t b \big) \qquad \Longrightarrow \quad (\varphi_n \circ \gamma)'(0) = \begin{bmatrix} a \\ b \end{bmatrix}
+    \gamma(t) = \varphi_n^{-1}\big( u(0) + t a,\ v(0) + t b \big) \qquad \Longrightarrow \qquad (\varphi_n \circ \gamma)'(0) = \begin{bmatrix} a \\ b \end{bmatrix}
     $$
 
     $$

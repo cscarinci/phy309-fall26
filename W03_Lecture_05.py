@@ -222,7 +222,7 @@ def _(corollary, definition, fig_decomp, mo, theorem):
     $$
 
     $$
-    \leadsto \quad \begin{cases} \Gamma(\gamma, \sigma) = -\eta(u, v) > 0 \\[4pt] \nu(\gamma, \sigma) = \dfrac{v}{\Gamma(\gamma, \sigma)} - u \in u^\perp \end{cases} \qquad (\text{at } p)
+    \leadsto \qquad \begin{cases} \Gamma(\gamma, \sigma) = -\eta(u, v) > 0 \\[4pt] \nu(\gamma, \sigma) = \dfrac{v}{\Gamma(\gamma, \sigma)} - u \in u^\perp \end{cases} \qquad (\text{at } p)
     $$
     """,
                 "Lorentz factor and relative velocity",
@@ -235,7 +235,7 @@ def _(corollary, definition, fig_decomp, mo, theorem):
     Choose $o = p \in \mathbb{M}^4$ origin event and $e_0 = u \in \mathbb{V}$, $e_i \in u^\perp \subset \mathbb{V}$ inertial frame
 
     $$
-    \Longrightarrow \quad \gamma(t) = \begin{bmatrix} t \\ 0 \\ 0 \\ 0 \end{bmatrix}, \qquad \sigma(s) = \begin{bmatrix} s v^0 \\ s v^1 \\ s v^2 \\ s v^3 \end{bmatrix}
+    \Longrightarrow \qquad \gamma(t) = \begin{bmatrix} t \\ 0 \\ 0 \\ 0 \end{bmatrix}, \qquad \sigma(s) = \begin{bmatrix} s v^0 \\ s v^1 \\ s v^2 \\ s v^3 \end{bmatrix}
     $$
 
     $$
@@ -370,7 +370,7 @@ def _(corollary, definition, lorentz_panel, mo, theorem):
     \begin{aligned}
     P &= \underbrace{m\, \Gamma(\gamma, \sigma)}_{\text{energy of } \sigma \text{ relative to } \gamma}\, u + \underbrace{m\, \Gamma(\gamma, \sigma)\, \nu(\gamma, \sigma)}_{\text{spatial momentum of } \sigma \text{ relative to } \gamma} \\[4pt]
     &= \varepsilon(\gamma, \sigma)\, u + \underbrace{\pi(\gamma, \sigma)}_{\in\, u^\perp}
-    \qquad \Longrightarrow \quad \begin{cases} \varepsilon = -\eta(P, u) \\ \pi = P - \varepsilon u \end{cases}
+    \qquad \Longrightarrow \qquad \begin{cases} \varepsilon = -\eta(P, u) \\ \pi = P - \varepsilon u \end{cases}
     \end{aligned}
     $$
     """
@@ -379,7 +379,7 @@ def _(corollary, definition, lorentz_panel, mo, theorem):
                 r"""
     $$
     \lVert P \rVert^2 = m^2 \lVert v \rVert^2 = \varepsilon(\gamma, \sigma)^2 \lVert u \rVert^2 + \lVert \pi(\gamma, \sigma) \rVert^2
-    \qquad \Longrightarrow \quad \varepsilon(\gamma, \sigma)^2 = m^2 + \lVert \pi(\gamma, \sigma) \rVert^2
+    \qquad \Longrightarrow \qquad \varepsilon(\gamma, \sigma)^2 = m^2 + \lVert \pi(\gamma, \sigma) \rVert^2
     $$
 
     $$
@@ -433,7 +433,7 @@ def _(corollary, definition, lorentz_panel, mo, theorem):
 
     $$
     \begin{aligned}
-    \Longrightarrow \quad \sigma''(s) &= \frac{q}{m}\, \mathbf{F}(\sigma(s))\, \sigma'(s) \\
+    \Longrightarrow \qquad \sigma''(s) &= \frac{q}{m}\, \mathbf{F}(\sigma(s))\, \sigma'(s) \\
     &= \frac{q}{m}\, \Gamma(\gamma, \sigma) \Big( \eta\big( E(\gamma), \nu(\gamma, \sigma) \big)\, u + E(\gamma) + \nu(\gamma, \sigma) \times B(\gamma) \Big)
     \end{aligned}
     $$

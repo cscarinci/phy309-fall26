@@ -453,7 +453,7 @@ def _(BLUE, FULL, LIGHT, RED, arrow, blank, blob, definition, mo, np):
 
     $$
     \begin{aligned}
-    \Longrightarrow \quad \frac{\partial}{\partial x^\mu} (f \circ \varphi^{-1})(x) &= \frac{\partial}{\partial \tilde{x}^\nu} (f \circ \tilde{\varphi}^{-1})(\tilde{x}(x))\, \frac{\partial \tilde{x}^\nu}{\partial x^\mu}(x) \\[4pt]
+    \Longrightarrow \qquad \frac{\partial}{\partial x^\mu} (f \circ \varphi^{-1})(x) &= \frac{\partial}{\partial \tilde{x}^\nu} (f \circ \tilde{\varphi}^{-1})(\tilde{x}(x))\, \frac{\partial \tilde{x}^\nu}{\partial x^\mu}(x) \\[4pt]
     &= \underbrace{\frac{\partial \tilde{x}^\nu}{\partial x^\mu}(x)}_{\text{Jacobian matrix of the change of coordinates}} \frac{\partial}{\partial \tilde{x}^\nu} (f \circ \tilde{\varphi}^{-1})(\tilde{x}(x))
     \end{aligned}
     $$

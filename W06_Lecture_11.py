@@ -235,7 +235,7 @@ def _(mo):
 
     $$
     \begin{aligned}
-    \Longrightarrow \quad \frac{\partial}{\partial u} (f \circ \varphi_n^{-1}) &= \frac{\partial}{\partial u} (f \circ \varphi_s^{-1} \circ \varphi_s \circ \varphi_n^{-1}) \\[4pt]
+    \Longrightarrow \qquad \frac{\partial}{\partial u} (f \circ \varphi_n^{-1}) &= \frac{\partial}{\partial u} (f \circ \varphi_s^{-1} \circ \varphi_s \circ \varphi_n^{-1}) \\[4pt]
     &= \frac{\partial}{\partial \tilde{u}} (f \circ \varphi_s^{-1})\, \frac{\partial \tilde{u}}{\partial u} + \frac{\partial}{\partial \tilde{v}} (f \circ \varphi_s^{-1})\, \frac{\partial \tilde{v}}{\partial u} \\[4pt]
     &= \frac{-u^2 + v^2}{(u^2 + v^2)^2}\, \frac{\partial}{\partial \tilde{u}} (f \circ \varphi_s^{-1}) + \frac{-2uv}{(u^2 + v^2)^2}\, \frac{\partial}{\partial \tilde{v}} (f \circ \varphi_s^{-1}) \\[10pt]
     \frac{\partial}{\partial v} (f \circ \varphi_n^{-1}) &= \frac{-2uv}{(u^2 + v^2)^2}\, \frac{\partial}{\partial \tilde{u}} (f \circ \varphi_s^{-1}) + \frac{u^2 - v^2}{(u^2 + v^2)^2}\, \frac{\partial}{\partial \tilde{v}} (f \circ \varphi_s^{-1})
@@ -251,7 +251,7 @@ def _(mo):
     so they do agree.
 
     $$
-    \Longrightarrow \quad X : p \longmapsto X_p =
+    \Longrightarrow \qquad X : p \longmapsto X_p =
     \begin{cases}
     -v(p)\, \partial_u|_p + u(p)\, \partial_v|_p, & p \neq n \\[4pt]
     -\tilde{v}(p)\, \partial_{\tilde{u}}|_p + \tilde{u}(p)\, \partial_{\tilde{v}}|_p, & p \neq s
@@ -281,7 +281,7 @@ def _(mo):
     $$
 
     $$
-    \Longrightarrow \quad X : p \longmapsto X_p = \partial_\theta|_p
+    \Longrightarrow \qquad X : p \longmapsto X_p = \partial_\theta|_p
     $$
 
     with smooth components, because the transition map $\varphi_n \circ \psi^{-1}$ is smooth. Smoothness in one atlas is smoothness in every compatible chart.
@@ -407,10 +407,10 @@ def _(definition, mo, theorem):
 
     $$
     \begin{aligned}
-    &\Longleftrightarrow \quad \gamma'(t) = X_{\gamma(t)} \\[4pt]
-    &\Longleftrightarrow \quad (\varphi_n \circ \gamma)'(t) = X^i(\gamma(t))\, e_i, \qquad \begin{bmatrix} u'(t) \\ v'(t) \end{bmatrix} = \begin{bmatrix} -v(t) \\ u(t) \end{bmatrix} \\[4pt]
-    &\Longleftrightarrow \quad \begin{bmatrix} u(t) \\ v(t) \end{bmatrix} = \begin{bmatrix} u_0 \cos(t) - v_0 \sin(t) \\ u_0 \sin(t) + v_0 \cos(t) \end{bmatrix} \\[4pt]
-    &\Longleftrightarrow \quad \gamma(t) = \varphi_n^{-1}\!\left( \begin{bmatrix} u_0 \cos(t) - v_0 \sin(t) \\ u_0 \sin(t) + v_0 \cos(t) \end{bmatrix} \right)
+    &\Longleftrightarrow \qquad \gamma'(t) = X_{\gamma(t)} \\[4pt]
+    &\Longleftrightarrow \qquad (\varphi_n \circ \gamma)'(t) = X^i(\gamma(t))\, e_i, \qquad \begin{bmatrix} u'(t) \\ v'(t) \end{bmatrix} = \begin{bmatrix} -v(t) \\ u(t) \end{bmatrix} \\[4pt]
+    &\Longleftrightarrow \qquad \begin{bmatrix} u(t) \\ v(t) \end{bmatrix} = \begin{bmatrix} u_0 \cos(t) - v_0 \sin(t) \\ u_0 \sin(t) + v_0 \cos(t) \end{bmatrix} \\[4pt]
+    &\Longleftrightarrow \qquad \gamma(t) = \varphi_n^{-1}\!\left( \begin{bmatrix} u_0 \cos(t) - v_0 \sin(t) \\ u_0 \sin(t) + v_0 \cos(t) \end{bmatrix} \right)
     \end{aligned}
     $$
     """

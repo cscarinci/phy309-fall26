@@ -237,7 +237,7 @@ def _(mo):
     $$
 
     $$
-    f \ \text{smooth} \quad \Longleftrightarrow \quad f \circ \varphi^{-1} \ \text{smooth} \quad \forall\ \varphi
+    f \ \text{smooth} \qquad \Longleftrightarrow \qquad f \circ \varphi^{-1} \ \text{smooth} \quad \forall\ \varphi
     $$
 
     **Example.** &nbsp; The height function $f : \mathbb{S}^2 \longrightarrow \mathbb{R}$, $(x, y, z) \longmapsto z$, has local representations
@@ -427,8 +427,8 @@ def _(mo):
 
     $$
     \begin{aligned}
-    \text{tangent vector } [\gamma] = X_p \in T_pM \quad &\leadsto \quad X_p : C^\infty(M, \mathbb{R}) \longrightarrow \mathbb{R}, \qquad f \longmapsto X_p(f) \\[6pt]
-    \text{smooth vector field } X \in \Gamma(TM) \quad &\leadsto \quad X : C^\infty(M, \mathbb{R}) \longrightarrow C^\infty(M, \mathbb{R}), \qquad f \longmapsto X(f)
+    \text{tangent vector } [\gamma] = X_p \in T_pM \qquad & \leadsto \qquad X_p : C^\infty(M, \mathbb{R}) \longrightarrow \mathbb{R}, \qquad f \longmapsto X_p(f) \\[6pt]
+    \text{smooth vector field } X \in \Gamma(TM) \qquad & \leadsto \qquad X : C^\infty(M, \mathbb{R}) \longrightarrow C^\infty(M, \mathbb{R}), \qquad f \longmapsto X(f)
     \end{aligned}
     $$
 
@@ -577,7 +577,7 @@ def _(BLUE, HALF, RED, arrow, blank, mo, np):
     In a chart $\varphi$, and in another chart $\tilde{\varphi}$, this is a first order system of ordinary differential equations
 
     $$
-    \gamma'(t) = X_{\gamma(t)} \quad \overset{\varphi}{\Longleftrightarrow} \quad \frac{d}{dt} x^i(t) = X^i(t) \quad \forall\ t,\ \forall\ i \quad \overset{\tilde{\varphi}}{\Longleftrightarrow} \quad \frac{d}{dt} \tilde{x}^i(t) = \tilde{X}^i(t) \quad \forall\ t,\ \forall\ i
+    \gamma'(t) = X_{\gamma(t)} \qquad \overset{\varphi}{\Longleftrightarrow} \qquad \frac{d}{dt} x^i(t) = X^i(t) \quad \forall\ t,\ \forall\ i \qquad \overset{\tilde{\varphi}}{\Longleftrightarrow} \qquad \frac{d}{dt} \tilde{x}^i(t) = \tilde{X}^i(t) \quad \forall\ t,\ \forall\ i
     $$
 
     where
@@ -595,7 +595,7 @@ def _(BLUE, HALF, RED, arrow, blank, mo, np):
     $$
 
     $$
-    \Longrightarrow \quad \gamma(t) = \varphi_n^{-1}\big( u(t), v(t) \big) = \big( \sin\phi_0 \cos(\theta_0 + t),\ \sin\phi_0 \sin(\theta_0 + t),\ \cos\phi_0 \big)
+    \Longrightarrow \qquad \gamma(t) = \varphi_n^{-1}\big( u(t), v(t) \big) = \big( \sin\phi_0 \cos(\theta_0 + t),\ \sin\phi_0 \sin(\theta_0 + t),\ \cos\phi_0 \big)
     $$
 
     the horizontal latitudes around the $z$-axis, where $(\phi_0, \theta_0)$ are the spherical coordinates of $\gamma(0)$.
@@ -607,7 +607,7 @@ def _(BLUE, HALF, RED, arrow, blank, mo, np):
     $$
 
     $$
-    \Longrightarrow \quad \gamma(t) = \varphi_n^{-1}\big( u(t), v(t) \big) = \big( \operatorname{sech}(t - t_0) \cos\theta_0,\ \operatorname{sech}(t - t_0) \sin\theta_0,\ \tanh(t - t_0) \big)
+    \Longrightarrow \qquad \gamma(t) = \varphi_n^{-1}\big( u(t), v(t) \big) = \big( \operatorname{sech}(t - t_0) \cos\theta_0,\ \operatorname{sech}(t - t_0) \sin\theta_0,\ \tanh(t - t_0) \big)
     $$
 
     the vertical meridians from $s$ to $n$, where $e^{-t_0} = \sqrt{u_0^2 + v_0^2}$ and $\theta_0$ is the polar angle of $(u_0, v_0)$.

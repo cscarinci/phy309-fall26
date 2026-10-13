@@ -313,7 +313,7 @@ def _(BLUE, GREEN, GREY, HALF, RED, arrow, blank, mo, theorem):
     given $p \in \mathbb{E}^3$ and $\vec{u} \in \mathbb{V}_p$, there exists a unique “end point” $q \in \mathbb{E}^3$ such that
 
     $$
-    \vec{u} = q - p \quad \overset{\text{notation}}{\leadsto} \quad q = p + \vec{u}
+    \vec{u} = q - p \qquad \overset{\text{notation}}{\leadsto} \qquad q = p + \vec{u}
     $$
 
     Once we fix $p \in \mathbb{E}^3$, we get a well-defined identification
@@ -325,7 +325,7 @@ def _(BLUE, GREEN, GREY, HALF, RED, arrow, blank, mo, theorem):
     **(ii)** given $p, q \in \mathbb{E}^3$ and $\vec{v} \in \mathbb{V}_p^3$, there exists a unique $\vec{v}\,' \in \mathbb{V}_q$ “congruent” to $\vec{v}$ &nbsp; (intuitively “same size and direction”)
 
     $$
-    \overset{\text{notation}}{\leadsto} \quad \vec{v}\,' = \vec{v} \in \mathbb{V}^3 \qquad (\text{identification between } \mathbb{V}_p^3 \text{ and } \mathbb{V}_q^3)
+    \overset{\text{notation}}{\leadsto} \qquad \vec{v}\,' = \vec{v} \in \mathbb{V}^3 \qquad (\text{identification between } \mathbb{V}_p^3 \text{ and } \mathbb{V}_q^3)
     $$
     """
             ),
@@ -358,10 +358,10 @@ def _(BLUE, GREEN, GREY, HALF, RED, arrow, blank, mo, theorem):
 
     $$
     \begin{aligned}
-    \text{if } \ a = n \in \mathbb{N} \quad &\leadsto \quad n \cdot \vec{u} = \underbrace{\vec{u} + \cdots + \vec{u}}_{n \text{ times}} \\[4pt]
-    a = 0 \quad &\leadsto \quad 0 \cdot \vec{u} = \vec{0} \ \text{ such that } \ p + \vec{0} = p \\[4pt]
-    a = -1 \quad &\leadsto \quad (-1) \cdot \vec{u} = \vec{v} \ \text{ such that } \ \vec{u} + \vec{v} = \vec{0} \\[4pt]
-    a = 1/n \quad &\leadsto \quad \tfrac{1}{n} \cdot \vec{u} = \vec{v} \ \text{ such that } \ \vec{u} = n \cdot \vec{v} \qquad (\text{here we need more than (i) and (ii)})
+    \text{if } \ a = n \in \mathbb{N} \qquad & \leadsto \qquad n \cdot \vec{u} = \underbrace{\vec{u} + \cdots + \vec{u}}_{n \text{ times}} \\[4pt]
+    a = 0 \qquad & \leadsto \qquad 0 \cdot \vec{u} = \vec{0} \ \text{ such that } \ p + \vec{0} = p \\[4pt]
+    a = -1 \qquad & \leadsto \qquad (-1) \cdot \vec{u} = \vec{v} \ \text{ such that } \ \vec{u} + \vec{v} = \vec{0} \\[4pt]
+    a = 1/n \qquad & \leadsto \qquad \tfrac{1}{n} \cdot \vec{u} = \vec{v} \ \text{ such that } \ \vec{u} = n \cdot \vec{v} \quad (\text{here we need more than (i) and (ii)})
     \end{aligned}
     $$
 

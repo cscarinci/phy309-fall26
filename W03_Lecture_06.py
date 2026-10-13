@@ -168,18 +168,18 @@ def _(definition, mo, postulate, theorem):
     **Remark.** For relativistic models of this type (e.g. Maxwell), given two particles $\sigma_1, \sigma_2$ with $\begin{cases} \sigma_1(0) = \sigma_2(0) = p \\ \sigma_1'(0) = \sigma_2'(0) = v \end{cases}$
 
     $$
-    \Longrightarrow \quad \sigma_2''(0) - \sigma_1''(0) = \left( \frac{\kappa_2}{m_2} - \frac{\kappa_1}{m_1} \right) F(p, v)
-    \qquad \Longrightarrow \quad \text{different histories}
+    \Longrightarrow \qquad \sigma_2''(0) - \sigma_1''(0) = \left( \frac{\kappa_2}{m_2} - \frac{\kappa_1}{m_1} \right) F(p, v)
+    \qquad \Longrightarrow \qquad \text{different histories}
     $$
 
     For gravity, however, *“charge” = mass* &nbsp; (gravitational mass $\kappa_i$ = inertial mass $m_i$: weak equivalence principle)
 
     $$
-    \Longrightarrow \quad \sigma_2''(0) - \sigma_1''(0) = \underbrace{\left( \frac{m_2}{m_2} - \frac{m_1}{m_1} \right) G(p, v) = 0}_{\text{independent of the specific model we would use for } G}
+    \Longrightarrow \qquad \sigma_2''(0) - \sigma_1''(0) = \underbrace{\left( \frac{m_2}{m_2} - \frac{m_1}{m_1} \right) G(p, v) = 0}_{\text{independent of the specific model we would use for } G}
     $$
 
     $$
-    \Longrightarrow \quad \sigma_1(s) = \sigma_2(s) \quad \forall\, s \qquad (\text{by uniqueness of IVPs})
+    \Longrightarrow \qquad \sigma_1(s) = \sigma_2(s) \quad \forall\, s \qquad (\text{by uniqueness of IVPs})
     $$
 
     $\Longrightarrow$ &nbsp; gravity defines a special family of histories in spacetime!
@@ -217,13 +217,13 @@ def _(definition, mo, postulate, theorem):
     $$
 
     $$
-    \Longrightarrow \quad a(\gamma, \sigma)(p) = \sigma''(0) - \gamma''(0) = \frac{\kappa_\sigma}{m_\sigma} F(p, v) - \frac{\ell_\gamma}{m_\gamma} H(p, v)
+    \Longrightarrow \qquad a(\gamma, \sigma)(p) = \sigma''(0) - \gamma''(0) = \frac{\kappa_\sigma}{m_\sigma} F(p, v) - \frac{\ell_\gamma}{m_\gamma} H(p, v)
     $$
 
     If $\gamma$ is free-falling, $H(\gamma, \gamma') = 0$
 
     $$
-    \Longrightarrow \quad a(\gamma, \sigma)(p) = \frac{\kappa_\sigma}{m_\sigma} F(p, v)
+    \Longrightarrow \qquad a(\gamma, \sigma)(p) = \frac{\kappa_\sigma}{m_\sigma} F(p, v)
     $$
 
     - same as for an inertial observer in $\mathbb{M}^4$
@@ -259,7 +259,7 @@ def _(definition, mo, postulate, theorem):
     with $\sigma(0) = \gamma(0) + \delta$, &nbsp; $\sigma'(0) = \gamma'(0) = v$ &nbsp; and $\delta \in v^\perp$
 
     $$
-    \Longrightarrow \quad a(\gamma, \sigma)(0) = G(p + \delta, v) - G(p, v) = D_1 G(p, v)[\delta] + O(\lVert \delta \rVert^2) = \nu(\gamma, \sigma)'(0) \neq 0 \ \text{ in general}
+    \Longrightarrow \qquad a(\gamma, \sigma)(0) = G(p + \delta, v) - G(p, v) = D_1 G(p, v)[\delta] + O(\lVert \delta \rVert^2) = \nu(\gamma, \sigma)'(0) \neq 0 \ \text{ in general}
     $$
 
     Neighboring particles with zero initial relative velocity may start moving towards or away from each other &nbsp; $\leadsto$ &nbsp; tidal effects
@@ -330,7 +330,7 @@ def _(mo, postulate):
     For inertial particles $\gamma, \sigma$ in $\mathbb{M}^4$ (also in $\mathbb{G}^4$) with $\sigma(0) = \gamma(0) + \delta$, &nbsp; $\sigma'(0) = \gamma'(0) = v$, &nbsp; $\delta \in v^\perp$ &nbsp; ($\delta \in \ker \tau$)
 
     $$
-    \Longrightarrow \quad a(\gamma, \sigma)(0) = 0 = \nu(\gamma, \sigma)'(0)
+    \Longrightarrow \qquad a(\gamma, \sigma)(0) = 0 = \nu(\gamma, \sigma)'(0)
     $$
 
     Particles that start moving in the same direction remain parallel forever.

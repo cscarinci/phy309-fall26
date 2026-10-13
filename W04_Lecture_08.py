@@ -171,14 +171,14 @@ def _(fig_angles, mo):
     $$
 
     $$
-    \Longrightarrow \quad \varphi_n^{-1}(u, v) = \left( \frac{2u}{1 + u^2 + v^2},\ \frac{2v}{1 + u^2 + v^2},\ \frac{-1 + u^2 + v^2}{1 + u^2 + v^2} \right)
+    \Longrightarrow \qquad \varphi_n^{-1}(u, v) = \left( \frac{2u}{1 + u^2 + v^2},\ \frac{2v}{1 + u^2 + v^2},\ \frac{-1 + u^2 + v^2}{1 + u^2 + v^2} \right)
     $$
 
     Similarly, choose $s = (0, 0, -1)$. Define $\varphi_s : U_s \longrightarrow V_s$ via &nbsp; $U_s = \mathbb{S}^2 - \{s\}$, &nbsp; $V_s = \mathbb{R}^2$,
 
     $$
     \varphi_s(x, y, z) = (\tilde{u}, \tilde{v}) = \left( \frac{x}{1 + z},\ \frac{y}{1 + z} \right)
-    \qquad \Longrightarrow \quad \varphi_s^{-1}(\tilde{u}, \tilde{v}) = \left( \frac{2\tilde{u}}{1 + \tilde{u}^2 + \tilde{v}^2},\ \frac{2\tilde{v}}{1 + \tilde{u}^2 + \tilde{v}^2},\ \frac{1 - \tilde{u}^2 - \tilde{v}^2}{1 + \tilde{u}^2 + \tilde{v}^2} \right)
+    \qquad \Longrightarrow \qquad \varphi_s^{-1}(\tilde{u}, \tilde{v}) = \left( \frac{2\tilde{u}}{1 + \tilde{u}^2 + \tilde{v}^2},\ \frac{2\tilde{v}}{1 + \tilde{u}^2 + \tilde{v}^2},\ \frac{1 - \tilde{u}^2 - \tilde{v}^2}{1 + \tilde{u}^2 + \tilde{v}^2} \right)
     $$
 
     - $U_n \cup U_s = (\mathbb{S}^2 - \{n\}) \cup (\mathbb{S}^2 - \{s\}) = \mathbb{S}^2$
@@ -237,7 +237,7 @@ def _(fig_angles, mo):
     $$
 
     $$
-    \Longrightarrow \quad (u, v) = \varphi_n \circ \psi^{-1}(\phi, \theta) = \left( \cot\tfrac{\phi}{2} \cos\theta,\ \cot\tfrac{\phi}{2} \sin\theta \right)
+    \Longrightarrow \qquad (u, v) = \varphi_n \circ \psi^{-1}(\phi, \theta) = \left( \cot\tfrac{\phi}{2} \cos\theta,\ \cot\tfrac{\phi}{2} \sin\theta \right)
     $$
 
     diffeo from $(0, \pi) \times (0, 2\pi)$ to $\mathbb{R}^2 - \{\, \lambda e_1,\ \lambda \geq 0 \,\}$
@@ -479,8 +479,8 @@ def _(BLUE, GREEN, GREY, HALF, RED, arrow, blank, definition, fig_smooth, mo, np
 
     $$
     \begin{cases}
-    (\varphi \circ \gamma)(0) = (\varphi \circ \sigma)(0) & \leadsto \quad \gamma(0) = \sigma(0) = p \\
-    (\varphi \circ \gamma)'(0) = (\varphi \circ \sigma)'(0) & \leadsto \quad \text{“} \gamma'(0) = \sigma'(0) = v \text{”}
+    (\varphi \circ \gamma)(0) = (\varphi \circ \sigma)(0) & \leadsto \qquad \gamma(0) = \sigma(0) = p \\
+    (\varphi \circ \gamma)'(0) = (\varphi \circ \sigma)'(0) & \leadsto \qquad \text{“} \gamma'(0) = \sigma'(0) = v \text{”}
     \end{cases}
     $$
 
@@ -488,7 +488,7 @@ def _(BLUE, GREEN, GREY, HALF, RED, arrow, blank, definition, fig_smooth, mo, np
 
     $$
     \psi \circ \gamma(t) = \underbrace{\psi \circ \varphi^{-1}}_{\text{change of coordinates}} \circ\, \varphi \circ \gamma(t)
-    \qquad \Longrightarrow \quad (\psi \circ \gamma)'(t) = \underbrace{D(\psi \circ \varphi^{-1})_{\varphi \circ \gamma(t)}}_{\text{Jacobian matrix}} \big( (\varphi \circ \gamma)'(t) \big)
+    \qquad \Longrightarrow \qquad (\psi \circ \gamma)'(t) = \underbrace{D(\psi \circ \varphi^{-1})_{\varphi \circ \gamma(t)}}_{\text{Jacobian matrix}} \big( (\varphi \circ \gamma)'(t) \big)
     $$
 
     $\Longrightarrow$ &nbsp; $[\gamma]_p$ is defined independently of the choice of charts

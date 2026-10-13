@@ -222,13 +222,13 @@ def _(definition, mo):
     Choose $o \in \mathbb{M}^4$, $\vec{e}_0 \in \mathbb{V}^4$ with $\lVert \vec{e}_0 \rVert^2 = -1$, &nbsp; $\vec{e}_1, \vec{e}_2, \vec{e}_3 \in \vec{e}_0^\perp$ with $\eta(\vec{e}_i, \vec{e}_j) = \delta_{ij}$ &nbsp; (inertial frame)
 
     $$
-    \Longrightarrow \quad p = o + p^0 \vec{e}_0 + p^i \vec{e}_i = o + p^\mu \vec{e}_\mu \in \mathbb{M}^4 \qquad \text{Cartesian coordinates}
+    \Longrightarrow \qquad p = o + p^0 \vec{e}_0 + p^i \vec{e}_i = o + p^\mu \vec{e}_\mu \in \mathbb{M}^4 \qquad \text{Cartesian coordinates}
     $$
 
     (sum over $i = 1, 2, 3$; &nbsp; sum over $\mu = 0, 1, 2, 3$)
 
     $$
-    \Longrightarrow \quad \vec{u} = u^0 \vec{e}_0 + u^i \vec{e}_i = u^\mu \vec{e}_\mu \in \mathbb{V}^4
+    \Longrightarrow \qquad \vec{u} = u^0 \vec{e}_0 + u^i \vec{e}_i = u^\mu \vec{e}_\mu \in \mathbb{V}^4
     $$
 
     $$
@@ -415,7 +415,7 @@ def _(definition, fig_cones, fig_relvel, mo, proposition, theorem):
     In $\mathbb{G}^4$, “absolute time” was defined such that $\tau(\gamma'(t)) = 1$
 
     $$
-    \leadsto \quad \mathrm{time}(\gamma(t_1), \gamma(t_2)) = \int_{t_1}^{t_2} \tau(\gamma'(t))\, dt = (t_2 - t_1) = \tau(\gamma(t_2) - \gamma(t_1))
+    \leadsto \qquad \mathrm{time}(\gamma(t_1), \gamma(t_2)) = \int_{t_1}^{t_2} \tau(\gamma'(t))\, dt = (t_2 - t_1) = \tau(\gamma(t_2) - \gamma(t_1))
     $$
     """
             ),
