@@ -71,11 +71,19 @@ NAV_CSS = """<style>
   .phy-nav a:hover, .phy-nav a:focus-visible { opacity: 1; }
   .phy-nav a:focus-visible { outline: 2px solid #1b458f; outline-offset: 2px; }
   #root { padding-bottom: 3.5rem; }
-  @media print { .phy-nav { display: none; } }
+  .phy-ask { position: fixed; right: 16px; bottom: 16px; z-index: 50; color: #1b458f; text-decoration: none; opacity: .75;
+             padding: 3.5px 8px; border-radius: 4.5px; background: rgba(255,255,255,.85); border: 1px solid rgba(27,69,143,.25);
+             display: inline-flex; align-items: center; transition: opacity .15s; }
+  .phy-ask svg { width: 18px; height: 19.5px; }  /* px, not rem: the same size on the index and in the lectures */
+  .phy-ask:hover, .phy-ask:focus-visible { opacity: 1; }
+  .phy-ask:focus-visible { outline: 2px solid #1b458f; outline-offset: 2px; }
+  @media print { .phy-nav, .phy-ask { display: none; } }
   @media (max-width: 1000px) {  /* narrow screens: a bottom bar instead of floating buttons */
     .phy-nav { left: 0; right: 0; bottom: 0; justify-content: center; padding: .35rem; background: #fff;
                border-top: 1px solid rgba(27,69,143,.25); }
     .phy-nav a { border: none; background: none; }
+    .phy-nav:has(~ .phy-ask) { justify-content: flex-start; }
+    .phy-nav ~ .phy-ask { right: 9px; bottom: 5px; z-index: 51; border: none; background: none; }
     #root { padding-bottom: 4rem; }
   }
 </style>"""
@@ -89,7 +97,20 @@ def nav_html(number, numbers):
     links.append('<a href="../" title="All lectures">Index</a>')
     if number + 1 in numbers:
         links.append(f'<a href="../Lecture_{number + 1:02d}/" title="Lecture {number + 1:02d}">{number + 1:02d} &rarr;</a>')
-    return NAV_CSS + '<nav class="phy-nav">' + "".join(links) + "</nav>"
+    return NAV_CSS + '<nav class="phy-nav">' + "".join(links) + "</nav>" + ask_html()
+
+
+BUBBLE = (  # outline speech bubble, drawn in the link colour
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true">'
+    '<path d="M4 5.5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-9l-4.5 3.5v-3.5H4a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1z"/></svg>'
+)
+
+
+def ask_html():
+    """Bottom-right icon button linking to the questions and comments form."""
+    if not QUESTIONS:
+        return ""
+    return f'<a class="phy-ask" href="{QUESTIONS}" target="_blank" rel="noopener" title="{ASK_TEXT}" aria-label="{ASK_TEXT}">{BUBBLE}</a>'
 
 
 # python build.py --snapshot: run each notebook during the build and embed its outputs, so the page shows
@@ -98,6 +119,13 @@ SNAPSHOT = ["--execute", "--no-sandbox"] if "--snapshot" in sys.argv else []
 
 # page-view counting with GoatCounter (goatcounter.com): the site code chosen at sign-up; "" turns it off
 GOATCOUNTER = "cscarinci"
+
+# share link of the course's Microsoft Forms form for questions and comments; "" hides the links to it
+QUESTIONS = (
+    "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=LRqY0sLhfEau6kPCST8vRN-nk1Q9k4xFlhx6m6mvuZJUQk5JUE8wN1hHSzJRVEtZWkhPWVlFTFZLTi4u&r703d5ae20f8c4e00ab89e285392ca2b6="
+    "%22PHY309%20-%20Differential%20Geometry%20and%20General%20Relativity%22"
+)
+ASK_TEXT = "Questions, comments, or suggestions?"
 COUNTER = (
     f'<script data-goatcounter="https://{GOATCOUNTER}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
     if GOATCOUNTER
@@ -121,7 +149,7 @@ def main():
 
     for number in notebooks:  # previous / next navigation, injected into each exported page
         page = SITE / f"Lecture_{number:02d}" / "index.html"
-        html = re.sub(r'<nav class="phy-nav">.*?</nav>', "", page.read_text(encoding="utf-8"), flags=re.S)
+        html = re.sub(r'<nav class="phy-nav">.*?</nav>(<a class="phy-ask".*?</a>)?', "", page.read_text(encoding="utf-8"), flags=re.S)
         html = html.replace("</body>", nav_html(number, notebooks) + "</body>", 1)
         html = re.sub(r"<script data-goatcounter=.*?</script>", "", html, flags=re.S).replace("</head>", COUNTER + "</head>", 1)
         page.write_text(html, encoding="utf-8")
@@ -141,7 +169,7 @@ def main():
         sections.append(f"<h2>{name}</h2>{body}")
 
     SITE.mkdir(exist_ok=True)
-    (SITE / "index.html").write_text(PAGE.format(count=len(notebooks), parts="\n".join(sections)).replace("</head>", COUNTER + "</head>", 1), encoding="utf-8")
+    (SITE / "index.html").write_text(PAGE.format(count=len(notebooks), parts="\n".join(sections)).replace("</body>", NAV_CSS + ask_html() + "</body>", 1).replace("</head>", COUNTER + "</head>", 1), encoding="utf-8")
     (SITE / ".nojekyll").write_text("")
     print(f"wrote {SITE / 'index.html'}")
 
