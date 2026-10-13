@@ -521,8 +521,8 @@ def _(BLUE, FULL, GREY, RED, blank, lat, math, mo, np):
     _th = np.linspace(0, 2 * np.pi, 200)
     _ax.plot(np.cos(_th), np.sin(_th), color=GREY)
     _ax.plot([-0.3 * _R, _R], [0, 0], color="black")
-    _ax.plot([0, _u], [1, 0], color=BLUE)  # ray from n through p to phi_n(p)
-    _ax.plot([0, _ut], [-1, 0], color=RED)  # ray from s through p to phi_s(p)
+    _ax.plot([0, _x, _u], [1, _z, 0], color=BLUE)  # ray from n through p to phi_n(p)
+    _ax.plot([0, _x, _ut], [-1, _z, 0], color=RED)  # ray from s through p to phi_s(p)
     for _pt, _name, _col, _off in (((0, 1), "$n$", "black", (-14, 4)), ((0, -1), "$s$", "black", (-14, -12)), ((_x, _z), "$p$", "black", (8, 4))):
         _ax.plot(*_pt, "o", color=_col, ms=5)
         _ax.annotate(_name, _pt, textcoords="offset points", xytext=_off, color=_col, fontsize=14)

@@ -546,7 +546,13 @@ def _(definition, mo):
     ## Summary
 
     - proper time length $\int \sqrt{-\lVert \gamma' \rVert^2}\, dt$ is the clock carried by each particle; it is *longest* along the inertial particle (reversed triangle inequality), which is the twin paradox
-    - the relative velocity $\nu(u, v) = v / (-\eta(u, v)) - u \in u^\perp$ has $\lVert \nu \rVert^2 = 1 - 1 / \eta(u, v)^2 < 1$, and $= 1$ exactly for photons, for every observer
+    - the relative velocity
+
+        $$
+        \nu(u, v) = \frac{v}{-\eta(u, v)} - u \in u^\perp
+        $$
+
+        has $\lVert \nu \rVert^2 = 1 - 1 / \eta(u, v)^2 < 1$, and $= 1$ exactly for photons, for every observer
     - Maxwell's equations take the frame-independent form $\partial_\mu F^{\mu\nu} = J^\nu$, $\partial_\mu \tilde{F}^{\mu\nu} = 0$ in Minkowski spacetime
 
     **Next:** the Lorentz factor, photons as limits of particles, and relativistic dynamics (4-momentum, energy, 4-force)

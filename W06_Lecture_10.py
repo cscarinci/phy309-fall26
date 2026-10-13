@@ -564,7 +564,11 @@ def _(mo):
     mo.md(r"""
     ## Summary
 
-    - A tangent vector $v_p = [\gamma]$ differentiates functions: $Df_p(v_p) = \dfrac{d}{dt}\Big|_{t=0} f \circ \gamma(t)$.
+    - A tangent vector $v_p = [\gamma]$ differentiates functions:
+
+        $$
+        Df_p(v_p) = \frac{d}{dt}\Big|_{t=0} f \circ \gamma(t).
+        $$
     - A derivation at $p$ is a linear functional on $C^\infty(M, \mathbb{R})$ satisfying the Leibniz rule; $\mathrm{Der}_p(M) \approx T_pM$.
     - Through this bijection $T_pM$ becomes a vector space.
     - A chart $\varphi$ with coordinates $x^i$ gives the coordinate basis $\partial_i|_p$, acting on functions as the partial derivatives of $f \circ \varphi^{-1}$ at $\varphi(p)$.

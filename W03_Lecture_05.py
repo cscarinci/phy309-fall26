@@ -442,9 +442,19 @@ def _(corollary, definition, lorentz_panel, mo, theorem):
 
     ## Summary
 
-    - the 4-velocity of $\sigma$ decomposes along any observer $\gamma$ as $v = \Gamma (u + \nu)$ with Lorentz factor $\Gamma = -\eta(u, v) = 1 / \sqrt{1 - \lVert \nu \rVert^2}$
+    - the 4-velocity of $\sigma$ decomposes along any observer $\gamma$ as
+
+        $$
+        v = \Gamma (u + \nu) \quad \text{with Lorentz factor} \quad \Gamma = -\eta(u, v) = \frac{1}{\sqrt{1 - \lVert \nu \rVert^2}}
+        $$
     - photons decompose the same way with $\lVert \nu \rVert = 1$: the maximal speed, for every observer
-    - 4-momentum $P = m v = \varepsilon u + \pi$ gives energy $\varepsilon = m\Gamma$ and spatial momentum $\pi = m\Gamma\nu$ measured by $\gamma$, with $\varepsilon^2 = m^2 + \lVert \pi \rVert^2$ and the Newtonian limit $\varepsilon \approx m + \tfrac{1}{2} m \lVert \nu \rVert^2$
+    - 4-momentum $P = m v = \varepsilon u + \pi$ gives energy $\varepsilon = m\Gamma$ and spatial momentum $\pi = m\Gamma\nu$ measured by $\gamma$, with
+
+        $$
+        \varepsilon^2 = m^2 + \lVert \pi \rVert^2
+        $$
+
+        and the Newtonian limit $\varepsilon \approx m + \tfrac{1}{2} m \lVert \nu \rVert^2$
     - dynamics: $m \sigma'' = F(\sigma, \sigma')$, a second order ODE in $\mathbb{M}^4$; Maxwell gives $F = q\, \mathbf{F}(\sigma)\, \sigma'$
 
     **Next:** gravity, and why it cannot be one more force rule on an affine spacetime

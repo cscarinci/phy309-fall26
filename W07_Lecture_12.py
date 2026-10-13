@@ -734,8 +734,16 @@ def _(mo):
     ## Summary
 
     - Charts $\varphi : U \longrightarrow V \subseteq \mathbb{R}^m$ give local coordinates $x^i$ and local parametrizations $\varphi^{-1}$; a change of charts is a diffeomorphism, with invertible smooth Jacobian $\partial \tilde{x}^j / \partial x^i$.
-    - A function is smooth if its local representations $f \circ \varphi^{-1}$ are smooth; its derivative in the direction $[\gamma] = v^i\, \partial_i|_p$ is $v^i\, \partial_i (f \circ \varphi^{-1})(\varphi(p)) = \dfrac{d}{dt}\Big|_{t=0} f \circ \gamma(t)$.
-    - A vector field $X = X^i\, \partial_i$ is a derivation on $C^\infty(M, \mathbb{R})$; under a change of coordinates $\partial_i = \dfrac{\partial \tilde{x}^j}{\partial x^i}\, \tilde{\partial}_j$ and $\tilde{X}^j = X^i\, \dfrac{\partial \tilde{x}^j}{\partial x^i}$.
+    - A function is smooth if its local representations $f \circ \varphi^{-1}$ are smooth; its derivative in the direction $[\gamma] = v^i\, \partial_i|_p$ is
+
+        $$
+        v^i\, \partial_i (f \circ \varphi^{-1})(\varphi(p)) = \frac{d}{dt}\Big|_{t=0} f \circ \gamma(t).
+        $$
+    - A vector field $X = X^i\, \partial_i$ is a derivation on $C^\infty(M, \mathbb{R})$; under a change of coordinates
+
+        $$
+        \partial_i = \frac{\partial \tilde{x}^j}{\partial x^i}\, \tilde{\partial}_j \qquad \text{and} \qquad \tilde{X}^j = X^i\, \frac{\partial \tilde{x}^j}{\partial x^i}.
+        $$
     - Integral curves $\gamma'(t) = X_{\gamma(t)}$ are the solutions of the first order system $\dot{x}^i = X^i$ in any chart; on $\mathbb{S}^2$ the fields $-v\, \partial_u + u\, \partial_v$ and $u\, \partial_u + v\, \partial_v$ have the latitudes and the meridians as integral curves.
 
     **Next:** Part III, metrics: measuring lengths and angles on a manifold.
