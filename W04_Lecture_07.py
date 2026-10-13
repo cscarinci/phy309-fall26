@@ -382,7 +382,11 @@ def _(BLUE, FULL, LIGHT, RED, arrow, blank, blob, definition, mo, np):
     - $V_\alpha$ are *open sets* of $\mathbb{R}^m$ &nbsp; (given by union of open balls in $\mathbb{R}^m$)
     - $\varphi_\alpha : U_\alpha \overset{\sim}{\longrightarrow} V_\alpha$ are *bijections* &nbsp; (each $U_\alpha$ “looks like” $V_\alpha = \varphi_\alpha(U_\alpha)$ via $\varphi_\alpha$)
     - $\varphi_\alpha(U_\alpha \cap U_\beta) \subseteq V_\alpha$, &nbsp; $\varphi_\beta(U_\alpha \cap U_\beta) \subseteq V_\beta$ are also open
-    - $\varphi_\beta \circ \varphi_\alpha^{-1} : \underbrace{\varphi_\alpha(U_\alpha \cap U_\beta)}_{\subseteq\, \mathbb{R}^m} \overset{\sim}{\longrightarrow} \underbrace{\varphi_\beta(U_\alpha \cap U_\beta)}_{\subseteq\, \mathbb{R}^m}$ are *diffeomorphisms* &nbsp; (smooth bijections with smooth inverse)
+    - $\varphi_\beta \circ \varphi_\alpha^{-1}$ are *diffeomorphisms* &nbsp; (smooth bijections with smooth inverse)
+
+        $$
+        \varphi_\beta \circ \varphi_\alpha^{-1} : \underbrace{\varphi_\alpha(U_\alpha \cap U_\beta)}_{\subseteq\, \mathbb{R}^m} \overset{\sim}{\longrightarrow} \underbrace{\varphi_\beta(U_\alpha \cap U_\beta)}_{\subseteq\, \mathbb{R}^m}
+        $$
     """,
                 "Manifold",
             ),

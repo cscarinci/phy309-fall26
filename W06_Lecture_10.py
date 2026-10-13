@@ -205,7 +205,11 @@ def _(fig_paths, mo):
 
     - Two smooth paths through $p \in M$ have the same velocity if $(\varphi \circ \gamma)'(0) = (\varphi \circ \tilde{\gamma})'(0)$ for some (hence every) chart $\varphi$.
     - The tangent space $T_pM$ is the set of velocity classes $v_p = [\gamma]$ of paths with $\gamma(0) = p$.
-    - The derivative of a smooth map $f : M \longrightarrow N$ at $p$ is $Df_p : T_pM \longrightarrow T_{f(p)}N$, $Df_p[\gamma] = [f \circ \gamma]$.
+    - The derivative of a smooth map $f : M \longrightarrow N$ at $p$ is
+
+        $$
+        Df_p : T_pM \longrightarrow T_{f(p)}N, \qquad Df_p[\gamma] = [f \circ \gamma]
+        $$
     - For a smooth function $f : M \longrightarrow \mathbb{R}$, the affine structure of $\mathbb{R}$ gives $T_{f(p)}\mathbb{R} \approx \mathbb{R}$ and $Df_p(v_p) = \dfrac{d}{dt}\Big|_{t=0} f \circ \gamma(t)$, the directional derivative of $f$ at $p$ in the direction $v_p$.
 
     **In this lecture:** tangent vectors as derivations, the vector space structure of $T_pM$, and the coordinate basis $\partial_i|_p$.
@@ -376,8 +380,24 @@ def _(definition, mo, theorem):
 
     To conclude that $X_p(f) = \frac{\partial}{\partial x^i}(f \circ \varphi^{-1})(\varphi(p))\, v^i$ for *every* $f$, two more facts:
 
-    - derivations are local: if $f = 0$ near $p$, write $f = f \chi$ with $\chi$ smooth, $\chi = 1$ where $f \neq 0$ and $\chi(p) = 0$ &nbsp; $\Longrightarrow$ &nbsp; $X_p(f) = X_p(f)\, \chi(p) + f(p)\, X_p(\chi) = 0$. &nbsp; So $X_p(f)$ depends only on $f$ near $p$, and $X_p$ can be applied to the local functions $x^i$.
-    - near $p$: &nbsp; $f = f(p) + \big( x^i - x^i(p) \big)\, g_i$ with $g_i$ smooth and $g_i(p) = \frac{\partial}{\partial x^i}(f \circ \varphi^{-1})(\varphi(p))$, namely $g_i(q) = \int_0^1 \partial_i (f \circ \varphi^{-1})\big( \varphi(p) + s (\varphi(q) - \varphi(p)) \big)\, ds$.
+    - derivations are local: if $f = 0$ near $p$, write $f = f \chi$ with $\chi$ smooth, $\chi = 1$ where $f \neq 0$ and $\chi(p) = 0$
+
+        $$
+        \Longrightarrow \qquad X_p(f) = X_p(f)\, \chi(p) + f(p)\, X_p(\chi) = 0
+        $$
+
+        So $X_p(f)$ depends only on $f$ near $p$, and $X_p$ can be applied to the local functions $x^i$.
+    - near $p$:
+
+        $$
+        f = f(p) + \big( x^i - x^i(p) \big)\, g_i
+        $$
+
+        with $g_i$ smooth and $g_i(p) = \frac{\partial}{\partial x^i}(f \circ \varphi^{-1})(\varphi(p))$, namely
+
+        $$
+        g_i(q) = \int_0^1 \partial_i (f \circ \varphi^{-1})\big( \varphi(p) + s (\varphi(q) - \varphi(p)) \big)\, ds
+        $$
 
     $$
     \Longrightarrow \qquad X_p(f) = \underbrace{X_p(f(p))}_{=\,0 \ (\text{Leibniz on } 1 \cdot 1)} + X_p(x^i)\, g_i(p) + \underbrace{\big( x^i(p) - x^i(p) \big)}_{=\,0} X_p(g_i) = v^i\, \frac{\partial}{\partial x^i}(f \circ \varphi^{-1})(\varphi(p))

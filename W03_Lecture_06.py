@@ -235,7 +235,10 @@ def _(definition, mo, postulate, theorem):
             postulate(
                 r"""
     $$
-    \textit{Physics} \text{ in a free-falling lab} = \text{Physics in an inertial lab} \qquad (\textit{Physics}: \text{local and non-gravitational})
+    \begin{gathered}
+    \textit{Physics} \text{ in a free-falling lab} = \text{Physics in an inertial lab} \\[4pt]
+    (\textit{Physics}: \text{local and non-gravitational})
+    \end{gathered}
     $$
 
     (extends the weak equivalence principle, gravitational mass = inertial mass)
@@ -259,7 +262,10 @@ def _(definition, mo, postulate, theorem):
     with $\sigma(0) = \gamma(0) + \delta$, &nbsp; $\sigma'(0) = \gamma'(0) = v$ &nbsp; and $\delta \in v^\perp$
 
     $$
-    \Longrightarrow \qquad a(\gamma, \sigma)(0) = G(p + \delta, v) - G(p, v) = D_1 G(p, v)[\delta] + O(\lVert \delta \rVert^2) = \nu(\gamma, \sigma)'(0) \neq 0 \ \text{ in general}
+    \begin{aligned}
+    \Longrightarrow \qquad a(\gamma, \sigma)(0) &= G(p + \delta, v) - G(p, v) = D_1 G(p, v)[\delta] + O(\lVert \delta \rVert^2) \\[4pt]
+    &= \nu(\gamma, \sigma)'(0) \neq 0 \ \text{ in general}
+    \end{aligned}
     $$
 
     Neighboring particles with zero initial relative velocity may start moving towards or away from each other &nbsp; $\leadsto$ &nbsp; tidal effects

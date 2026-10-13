@@ -253,8 +253,14 @@ def _(corollary, definition, fig_compare, mo, theorem):
                 r"""
     If $u, v \in \mathbb{V}$ are timelike future oriented
 
-    - $\eta(u, v)^2 \geq \lVert u \rVert^2 \lVert v \rVert^2$, with “$=$” if and only if $u, v$ are proportional
-    - $\sqrt{-\lVert u + v \rVert^2} \geq \sqrt{-\lVert u \rVert^2} + \sqrt{-\lVert v \rVert^2}$, with “$=$” if and only if $u, v$ are proportional
+    $$
+    \begin{aligned}
+    \eta(u, v)^2 &\geq \lVert u \rVert^2 \lVert v \rVert^2 \\[4pt]
+    \sqrt{-\lVert u + v \rVert^2} &\geq \sqrt{-\lVert u \rVert^2} + \sqrt{-\lVert v \rVert^2}
+    \end{aligned}
+    $$
+
+    with “$=$” if and only if $u, v$ are proportional
     """,
                 "Reversed Cauchy–Schwarz and triangle inequalities",
             ),

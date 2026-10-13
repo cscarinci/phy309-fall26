@@ -153,7 +153,11 @@ def _(mo):
     mo.md(r"""
     ## Last time
 
-    - $T_pM = \{\, [\gamma] \mid \gamma : \mathbb{R} \to M,\ \gamma(0) = p \,\}$ with $\gamma \sim \tilde{\gamma}$ if $(\varphi \circ \gamma)'(0) = (\varphi \circ \tilde{\gamma})'(0)$.
+    - $T_pM = \{\, [\gamma] \mid \gamma : \mathbb{R} \to M,\ \gamma(0) = p \,\}$ with $\gamma \sim \tilde{\gamma}$ if
+
+        $$
+        (\varphi \circ \gamma)'(0) = (\varphi \circ \tilde{\gamma})'(0)
+        $$
     - $\mathrm{Der}_p(M) = \{\, X_p : C^\infty(M, \mathbb{R}) \to \mathbb{R} \mid \text{linear, } X_p(fg) = X_p(f)\, g(p) + f(p)\, X_p(g) \,\}$.
     - $T_pM \simeq \mathrm{Der}_p(M)$: $[\gamma] \longleftrightarrow X_p$ with $X_p(f) = \dfrac{d}{dt}\Big|_{t=0} (f \circ \gamma)(t)$, equivalently $(\varphi \circ \gamma)'(0) = X_p(x^i)\, e_i$. Velocity vectors are directional derivatives.
     - $T_pM$ is an $m$-dimensional vector space; a chart $\varphi$ gives the coordinate basis $\partial_i|_p$, with $\partial_i|_p f = \dfrac{\partial}{\partial x^i}(f \circ \varphi^{-1})\Big|_{\varphi(p)}$, and every $X_p = X^i(p)\, \partial_i|_p$ with $X^i(p) = X_p(x^i)$.
@@ -336,7 +340,10 @@ def _(definition, mo, theorem):
     **Remark.** In terms of a chart $\varphi : U \subseteq M \longrightarrow \mathbb{R}^m$
 
     $$
-    X = X^i\, \partial_i, \qquad X^i : U \subseteq M \longrightarrow \mathbb{R} \ \text{ local functions on } U, \qquad \partial_i \in \Gamma(TM)|_U \ \text{ local vector fields on } U
+    \begin{gathered}
+    X = X^i\, \partial_i, \\[4pt]
+    X^i : U \subseteq M \longrightarrow \mathbb{R} \ \text{ local functions on } U, \qquad \partial_i \in \Gamma(TM)|_U \ \text{ local vector fields on } U
+    \end{gathered}
     $$
 
     The $\partial_i$ form a local basis of vector fields on $U$; they play over $U$ the role of $e_i \in \mathbb{R}^m$.

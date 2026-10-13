@@ -177,14 +177,23 @@ def _(fig_angles, mo):
     Similarly, choose $s = (0, 0, -1)$. Define $\varphi_s : U_s \longrightarrow V_s$ via &nbsp; $U_s = \mathbb{S}^2 - \{s\}$, &nbsp; $V_s = \mathbb{R}^2$,
 
     $$
-    \varphi_s(x, y, z) = (\tilde{u}, \tilde{v}) = \left( \frac{x}{1 + z},\ \frac{y}{1 + z} \right)
-    \qquad \Longrightarrow \qquad \varphi_s^{-1}(\tilde{u}, \tilde{v}) = \left( \frac{2\tilde{u}}{1 + \tilde{u}^2 + \tilde{v}^2},\ \frac{2\tilde{v}}{1 + \tilde{u}^2 + \tilde{v}^2},\ \frac{1 - \tilde{u}^2 - \tilde{v}^2}{1 + \tilde{u}^2 + \tilde{v}^2} \right)
+    \begin{gathered}
+    \varphi_s(x, y, z) = (\tilde{u}, \tilde{v}) = \left( \frac{x}{1 + z},\ \frac{y}{1 + z} \right) \\[6pt]
+    \Longrightarrow \qquad \varphi_s^{-1}(\tilde{u}, \tilde{v}) = \left( \frac{2\tilde{u}}{1 + \tilde{u}^2 + \tilde{v}^2},\ \frac{2\tilde{v}}{1 + \tilde{u}^2 + \tilde{v}^2},\ \frac{1 - \tilde{u}^2 - \tilde{v}^2}{1 + \tilde{u}^2 + \tilde{v}^2} \right)
+    \end{gathered}
     $$
 
     - $U_n \cup U_s = (\mathbb{S}^2 - \{n\}) \cup (\mathbb{S}^2 - \{s\}) = \mathbb{S}^2$
     - $V_n = \mathbb{R}^2$, $V_s = \mathbb{R}^2$ open
     - $\varphi_n : U_n \longrightarrow V_n$, &nbsp; $\varphi_s : U_s \longrightarrow V_s$ bijective
-    - $\varphi_n(U_n \cap U_s) = \varphi_n(\mathbb{S}^2 - \{n, s\}) = \mathbb{R}^2 - \{(0, 0)\}$ and $\varphi_s(U_n \cap U_s) = \varphi_s(\mathbb{S}^2 - \{n, s\}) = \mathbb{R}^2 - \{(0, 0)\}$ are open!
+    - $\varphi_n(U_n \cap U_s)$ and $\varphi_s(U_n \cap U_s)$ are open!
+
+        $$
+        \begin{aligned}
+        \varphi_n(U_n \cap U_s) &= \varphi_n(\mathbb{S}^2 - \{n, s\}) = \mathbb{R}^2 - \{(0, 0)\} \\[4pt]
+        \varphi_s(U_n \cap U_s) &= \varphi_s(\mathbb{S}^2 - \{n, s\}) = \mathbb{R}^2 - \{(0, 0)\}
+        \end{aligned}
+        $$
     - $\varphi_s \circ \varphi_n^{-1}$:
 
     $$
@@ -211,15 +220,30 @@ def _(fig_angles, mo):
     \varphi_\alpha \circ \varphi^{-1} : \varphi(U \cap U_\alpha) \longrightarrow \varphi_\alpha(U \cap U_\alpha) \quad \text{is a diffeo for } \alpha = n, s
     $$
 
-    - choose any $q \in \mathbb{S}^2$ and define $\varphi_q : \mathbb{S}^2 - \{q\} \longrightarrow \mathbb{R}^2 \approx (q - o)^\perp \subseteq \mathbb{R}^3$ the stereographic projection based at $q$
-    - choose any $q \in \mathbb{S}^2$ ($= n$) and $e_1 \in (n - o)^\perp$, &nbsp; $e_2 = (n - o) \times e_1$, &nbsp; and remove the half meridian $C = \{\, p \in \mathbb{S}^2 \mid \langle p - o, e_2 \rangle = 0,\ \langle p - o, e_1 \rangle \geq 0 \,\} \ni n, s$; define
+    - choose any $q \in \mathbb{S}^2$ and define
+
+        $$
+        \varphi_q : \mathbb{S}^2 - \{q\} \longrightarrow \mathbb{R}^2 \approx (q - o)^\perp \subseteq \mathbb{R}^3
+        $$
+
+        the stereographic projection based at $q$
+    - choose any $q \in \mathbb{S}^2$ ($= n$) and $e_1 \in (n - o)^\perp$, &nbsp; $e_2 = (n - o) \times e_1$, &nbsp; and remove the half meridian
+
+        $$
+        C = \{\, p \in \mathbb{S}^2 \mid \langle p - o, e_2 \rangle = 0,\ \langle p - o, e_1 \rangle \geq 0 \,\} \ni n, s
+        $$
+
+        define
 
     $$
     \phi : \mathbb{S}^2 - C \longrightarrow (0, \pi), \qquad \theta : \mathbb{S}^2 - C \longrightarrow (0, 2\pi)
     $$
 
     $$
-    \cos\phi(p) = \langle p - o,\ n - o \rangle, \qquad \cos\theta(p) = \frac{\langle p - o,\ e_1 \rangle}{\sin\phi(p)}, \quad \sin\theta(p) = \frac{\langle p - o,\ e_2 \rangle}{\sin\phi(p)} \qquad (\theta: \text{oriented angle})
+    \begin{gathered}
+    \cos\phi(p) = \langle p - o,\ n - o \rangle, \\[6pt]
+    \cos\theta(p) = \frac{\langle p - o,\ e_1 \rangle}{\sin\phi(p)}, \quad \sin\theta(p) = \frac{\langle p - o,\ e_2 \rangle}{\sin\phi(p)} \qquad (\theta: \text{oriented angle})
+    \end{gathered}
     $$
 
     the polar and azimuthal angles, giving
