@@ -253,6 +253,8 @@ def _(BLUE, GREY, RED, arrow, blank, definition, mo):
 
     **In this lecture:** the same construction for spacetime: Galilean spacetime and Newtonian mechanics
 
+    **References:** Schutz 1.1; Carroll 1.2; Sasane 12.1, 13.1
+
     ## I.2 &nbsp; Galilean geometry
 
     The geometry of spacetime in Newtonian physics

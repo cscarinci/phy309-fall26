@@ -162,6 +162,8 @@ def _(definition, mo):
 
     **In this lecture:** a new geometry for spacetime in which the speed of light is the same for every inertial observer
 
+    **References:** Schutz 1.1–1.7; Carroll 1.2; Sasane 12.2
+
     ## I.3 &nbsp; Minkowski geometry
 
     Geometry of special relativity

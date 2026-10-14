@@ -194,6 +194,8 @@ def _(corollary, definition, fig_decomp, mo, theorem):
 
     **In this lecture:** the Lorentz factor, photons as limits of particles, and relativistic dynamics
 
+    **References:** Schutz 2.3–2.7; Carroll 1.4, 1.9; Sasane 12.3–12.4
+
     ## I.5 &nbsp; Lorentz factor, photons, relativistic dynamics
 
     ### Lorentz factor

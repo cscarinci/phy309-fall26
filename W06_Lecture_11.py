@@ -164,6 +164,8 @@ def _(mo):
     - On a manifold the tangent space $T_pM$ takes the place of the vector space $\mathbb{V}$ of an affine space, but each point has its own.
 
     **In this lecture:** vector fields, integral curves and the tangent bundle.
+
+    **References:** Carroll 2.3; Sasane Ch. 3
     """)
     return
 

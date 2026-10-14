@@ -161,6 +161,8 @@ def _(definition, mo, postulate, theorem):
 
     **In this lecture:** why gravity is not one more force rule: the equivalence principle
 
+    **References:** Schutz 5.1; Carroll 2.1, 4.7
+
     ## II.1 &nbsp; The equivalence principle
 
     ### Universality of free fall

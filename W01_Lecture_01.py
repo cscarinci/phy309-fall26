@@ -294,6 +294,8 @@ def _(BLUE, GREEN, GREY, HALF, RED, arrow, blank, mo, theorem):
                 r"""
     ## I.1 &nbsp; Euclidean geometry
 
+    **References:** Sasane 5.1
+
     **Space** = set of all *locations* (points in space) $= \mathbb{E}^3$
 
     **Geometry** = study of the fundamental *structure of space* (relations between its points)

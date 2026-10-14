@@ -213,6 +213,8 @@ def _(fig_paths, mo):
     - For a smooth function $f : M \longrightarrow \mathbb{R}$, the affine structure of $\mathbb{R}$ gives $T_{f(p)}\mathbb{R} \approx \mathbb{R}$ and $Df_p(v_p) = \dfrac{d}{dt}\Big|_{t=0} f \circ \gamma(t)$, the directional derivative of $f$ at $p$ in the direction $v_p$.
 
     **In this lecture:** tangent vectors as derivations, the vector space structure of $T_pM$, and the coordinate basis $\partial_i|_p$.
+
+    **References:** Schutz 6.1; Carroll 2.3; Sasane 2.1–2.4
     """
             ),
             fig_paths,

@@ -161,6 +161,8 @@ def _(mo):
     - The tangent bundle $TM$ is the collection of all tangent spaces.
 
     **In this lecture:** a review of calculus on manifolds, from charts to differential equations, with every step carried out on $\mathbb{S}^2$.
+
+    **References:** Schutz 6.1; Carroll 2.2–2.3; Sasane Ch. 1–3
     """)
     return
 

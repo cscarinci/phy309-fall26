@@ -191,6 +191,8 @@ def _(BLUE, FULL, Figure, GREEN, GREY, arrow, fig_congruence, fig_surfaces, mo, 
                 r"""
     **In this lecture:** generalize geometry so that it does *not need congruence* (drop the affine structure)
 
+    **References:** Schutz 6.1; Carroll 2.2; Sasane 1.1–1.3
+
     ## II.2 &nbsp; Manifolds
 
     ### Charts and atlases

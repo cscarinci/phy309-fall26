@@ -158,6 +158,8 @@ def _(mo):
     - $f : M \longrightarrow N$ is smooth if every coordinate expression $\psi \circ f \circ \varphi^{-1}$, $x \longmapsto y^\alpha(x)\, e_\alpha$, is smooth.
 
     **In this lecture:** velocities of paths, the tangent space $T_pM$, and the derivative $Df_p$ of a smooth map.
+
+    **References:** Carroll 2.3; Sasane 2.2–2.5
     """)
     return
 

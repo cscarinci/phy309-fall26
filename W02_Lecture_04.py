@@ -196,6 +196,8 @@ def _(corollary, definition, fig_compare, mo, theorem):
 
     **In this lecture:** proper time along a particle, the reversed inequalities behind the twin paradox, and relative velocity in coordinates
 
+    **References:** Schutz 1.8–1.13; Carroll 1.2; Sasane 5.1–5.3, 12.3
+
     ## I.4 &nbsp; Proper time, reversed inequalities, relative velocity
 
     ### Proper time length

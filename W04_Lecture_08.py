@@ -158,6 +158,8 @@ def _(fig_angles, mo):
 
     **In this lecture:** the atlas of the sphere in full, smooth maps between manifolds, and tangent vectors
 
+    **References:** Schutz 6.1; Carroll 2.2–2.3; Sasane 1.3, 2.1
+
     ## II.3 &nbsp; Charts on the sphere, smooth maps, tangent vectors
 
     ### Charts on the sphere
