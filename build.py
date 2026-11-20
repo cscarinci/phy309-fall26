@@ -13,11 +13,11 @@ SITE = HERE / "site"
 
 PARTS = [  # (name, first lecture, last lecture)
     ("I. Flat geometry", 1, 5),
-    ("II. Manifolds", 6, 12),
-    ("III. Metrics", 13, 14),
-    ("IV. Connections", 15, 19),
-    ("V. Field equations", 20, 24),
-    ("VI. Applications", 25, 28),
+    ("II. Manifolds", 6, 13),
+    ("III. Metrics and tensors", 14, 17),
+    ("IV. Connections and curvature", 18, 22),
+    ("V. Field equations", 23, 24),
+    ("VI. Applications", 25, 27),
 ]
 
 TITLES = {  # lecture number -> title shown on the index
@@ -33,6 +33,12 @@ TITLES = {  # lecture number -> title shown on the index
     10: "Derivations",
     11: "Vector fields",
     12: "Review: calculus on manifolds",
+    14: "Metrics",
+    15: "Lorentzian metrics",
+    16: "Covectors and tensors",
+    17: "Tensor fields",
+    18: "Calculus of tensor fields on manifolds",
+    19: "Connections on manifolds",
 }
 
 PAGE = """<!doctype html>
