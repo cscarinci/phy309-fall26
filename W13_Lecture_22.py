@@ -9,6 +9,8 @@ async def _():
     import sys
 
     import marimo as mo
+
+    import matplotlib  # noqa: F401  (named here so the browser fetches it while Python starts)
     import numpy as np
 
     if sys.platform == "emscripten":
