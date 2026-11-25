@@ -284,7 +284,7 @@ def _(lk):
             r"$-$: difference between points = displacement vector",
         ),
         lk.aside(
-            r"with Euclidean inner-product $\mk{\langle\ ,\ \rangle}$",
+            r"with Euclidean inner product $\mk{\langle\ ,\ \rangle}$",
             r"$\langle\ ,\ \rangle$: measurements",
         ),
         r"Choice of &nbsp; $o\in\mathbb E^3$ origin &nbsp; and &nbsp; $\vec e_1,\vec e_2,\vec e_3\in\mathbb V$ orthonormal basis",
@@ -407,10 +407,10 @@ def _(causal_sketch, lk):
 @app.cell(hide_code=True)
 def _(lk):
     # module: Galilean spacetime
-    # the spatial inner-product
+    # the spatial inner product
     lk.prose(
-        r"**The spatial inner-product**",
-        lk.aside(r"iv′) &nbsp; there is a Euclidean inner-product on $\mk{\ker\tau}$", r"$\ker\tau$: $\dim=3$!"),
+        r"**The spatial inner product**",
+        lk.aside(r"iv′) &nbsp; there is a Euclidean inner product on $\mk{\ker\tau}$", r"$\ker\tau$: $\dim=3$"),
         r"$$\langle\ ,\ \rangle:\ker\tau\times\ker\tau\longrightarrow\mathbb R$$",
         r"$\leadsto$ &nbsp; we can define spatial length",
         r"> if &nbsp; $\tau(\vec u)=0$ &nbsp; $\Longrightarrow$ &nbsp; $\lVert\vec u\rVert=\sqrt{\langle\vec u,\vec u\rangle}$",
@@ -425,7 +425,7 @@ def _(lk):
     # module: Galilean spacetime
     # definition: Galilean spacetime (complete)
     lk.definition(
-        r"$\mathbb G^4=(\mathbb A,\mathbb V,-)$ &nbsp; 4-dimensional affine space together with a **universal time function** $\tau$ and a **spatial inner-product** $\langle\ ,\ \rangle$ on $\ker\tau$",
+        r"$\mathbb G^4=(\mathbb A,\mathbb V,-)$ &nbsp; 4-dimensional affine space together with a **universal time function** $\tau$ and a **spatial inner product** $\langle\ ,\ \rangle$ on $\ker\tau$",
         label="def-galilean-complete",
     )
     return
@@ -654,7 +654,7 @@ def _(lk):
     # module: gravity and electrodynamics
     # Coulomb and Maxwell
     lk.prose(
-        r"$\leadsto$ &nbsp; Coulomb's law of electrostatics can be written almost identically exchanging masses and charges!",
+        r"$\leadsto$ &nbsp; Coulomb's law of electrostatics looks almost the same, with charges for masses!",
         r"$\leadsto$ &nbsp; Maxwell's electrodynamics breaks down …",
         r"> in Cartesian coordinates we want something like",
         lk.aside(
@@ -720,7 +720,7 @@ def _(lk):
     lk.prose(
         r"triangle inequality &nbsp; $\Longrightarrow$ &nbsp; $\lVert\vec v(\gamma,\xi)\rVert\leq\lVert\vec v(\gamma,\sigma)\rVert+\lVert\vec v(\sigma,\xi)\rVert$",
         r"> with equality iff &nbsp; $\vec v(\sigma,\xi)=\lambda\,\vec v(\gamma,\sigma)$, &nbsp; $\lambda\geq0$",
-        r"$\gamma,\sigma$ are inertial particles and $\xi$ is a light particle moving along same direction",
+        r"$\gamma,\sigma$ are inertial particles and $\xi$ is a light particle moving along the same direction",
         lk.aside(
             r"> $\Longrightarrow$ &nbsp; $c=\lVert\vec v(\gamma,\sigma)\rVert+c$",
             r"contradiction unless $\gamma,\sigma$<br>have zero relative velocity",

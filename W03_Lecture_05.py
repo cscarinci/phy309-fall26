@@ -289,7 +289,7 @@ def _(lk):
     # corollary: photons move at the maximum speed
     lk.corollary(
         lk.aside(
-            r"$$\lVert\nu(\gamma,\xi)\rVert^2=\frac{\mk{\lVert w\rVert^2}}{\eta(u,w)^2}+2\,\mk{\frac{\eta(u,w)}{\eta(u,w)}}+\mk{\lVert u\rVert^2}=1\ !$$",
+            r"$$\lVert\nu(\gamma,\xi)\rVert^2=\frac{\mk{\lVert w\rVert^2}}{\eta(u,w)^2}+2\,\mk{\frac{\eta(u,w)}{\eta(u,w)}}+\mk{\lVert u\rVert^2}=1$$",
             r"$\lVert w\rVert^2=0$, &nbsp; $\lVert u\rVert^2=-1$,<br>$\eta(u,w)/\eta(u,w)=1$",
         ),
         label="cor-photon-speed",
@@ -403,7 +403,7 @@ def _(lk):
     # module: force
     # relativistic models
     lk.prose(
-        r"$\leadsto$ &nbsp; a relativistic model in $\mathbb M^4$ is the prescription of a 4-force $F(s)=\mathcal F(\sigma(s),\sigma'(s))$<br>along a particle $\sigma:\mathbb R\longrightarrow\mathbb M^4$ for some rule",
+        r"$\leadsto$ &nbsp; a relativistic model in $\mathbb M^4$ is the prescription of a 4-force $F(s)=\mathcal F(\sigma(s),\sigma'(s))$ along a particle $\sigma:\mathbb R\longrightarrow\mathbb M^4$ for some rule",
         r"$$\mathcal F:\mathbb M^4\times\mathbb V\longrightarrow\mathbb V$$",
         r"e.g. Maxwell: &nbsp; $\mathcal F$ anti-symmetric &plus; Maxwell's equations",
         lk.aside(
