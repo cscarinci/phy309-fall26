@@ -327,7 +327,7 @@ def _(lk):
 
         > $\mathbb V$ is a vector space (of displacements) &nbsp;&nbsp; (iii)
 
-        > $-:\mathbb A\times\mathbb A\longrightarrow\mathbb V$, &nbsp; $(q,p)\longmapsto q-p$ &nbsp; is an assignment of a vector to each ordered pair of points
+        > $-:\mathbb A\times\mathbb A\longrightarrow\mathbb V$, &nbsp; $(q,p)\longmapsto q-p$ &nbsp; assigns a vector to each ordered pair of points
 
         satisfying:
 
@@ -349,7 +349,7 @@ def _(lk):
         r"""
         $\leadsto$ &nbsp; affine spaces will give us the simplest mathematical model of spaces / spacetimes
 
-        $\leadsto$ &nbsp; but for now, we only have notions of locations and displacements, not of measurements
+        $\leadsto$ &nbsp; but for now, we only have locations and displacements, not measurements
         """
     )
     return
@@ -388,7 +388,7 @@ def _(lk, measures_sketch):
     # module: Euclidean inner product
     # measurements
     lk.prose(
-        r"$\leadsto$ &nbsp; every geometric measurement comes from the inner-product",
+        r"$\leadsto$ &nbsp; every geometric measurement comes from the inner product",
         r"$$\begin{array}{ll}\text{norms}&\lVert\vec u\rVert=\sqrt{\langle\vec u,\vec u\rangle}\\[0.5em]\text{distances}&d(p,q)=\lVert q-p\rVert\\[0.5em]\text{angles}&\theta(\vec u,\vec v)=\arccos\Big(\dfrac{\langle\vec u,\vec v\rangle}{\lVert\vec u\rVert\,\lVert\vec v\rVert}\Big)\\[1em]\text{areas}&A(\vec u,\vec v)=\dfrac12\left[\det\begin{pmatrix}\lVert\vec u\rVert^2&\langle\vec u,\vec v\rangle\\\langle\vec u,\vec v\rangle&\lVert\vec v\rVert^2\end{pmatrix}\right]^{1/2}\\[1.2em]\text{volumes}\quad&V(\vec u,\vec v,\vec w)=\dfrac16\left[\det\begin{pmatrix}\lVert\vec u\rVert^2&\langle\vec u,\vec v\rangle&\langle\vec u,\vec w\rangle\\\langle\vec u,\vec v\rangle&\lVert\vec v\rVert^2&\langle\vec v,\vec w\rangle\\\langle\vec u,\vec w\rangle&\langle\vec v,\vec w\rangle&\lVert\vec w\rVert^2\end{pmatrix}\right]^{1/2}\end{array}$$",
         lk.figure(measures_sketch()),
     )

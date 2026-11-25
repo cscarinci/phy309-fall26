@@ -435,7 +435,7 @@ def _(lk):
         r"""
         $\varphi_\beta\circ\varphi_\alpha^{-1}$ &nbsp; diffeomorphism
 
-        > $\Longrightarrow$ &nbsp; we can do calculus on each $U_\alpha\subseteq M$ using usual calculus on $V_\alpha\subseteq\mathbb R^m$<br>and every result agrees on $U_\alpha\cap U_\beta$
+        > $\Longrightarrow$ &nbsp; we can do calculus on each $U_\alpha\subseteq M$ using usual calculus on $V_\alpha\subseteq\mathbb R^m$ and every result agrees on $U_\alpha\cap U_\beta$
         """
     )
     return
@@ -467,7 +467,7 @@ def _(lk):
     # remark: technical conditions
     lk.remark(
         lk.aside(
-            r"We need to require a few <span class='lk-mark'>technical conditions</span> on this topology, but it will not be too important.",
+            r"This topology needs a few <span class='lk-mark'>technical conditions</span>, but they are not too important.",
             "Hausdorff + second countable",
         )
     )
@@ -529,7 +529,7 @@ def _(lk):
             r"smooth by assumption",
             at="last",
         ),
-        r"$\therefore$ &nbsp; the notion of smoothness for $f:M\to\mathbb R$ via charts is well-defined<br>because changes of charts are always smooth!",
+        r"$\therefore$ &nbsp; the notion of smoothness for $f:M\to\mathbb R$ via charts is well-defined because changes of charts are always smooth!",
     )
     return
 

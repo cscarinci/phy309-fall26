@@ -396,7 +396,7 @@ def _(lk):
     # what is needed next
     lk.prose(
         r"""
-        To define the notion of derivatives of smooth functions, we need a notion of “directions” on manifolds
+        To define derivatives of smooth functions, we need a notion of “directions” on manifolds
 
         > $\leadsto$ &nbsp; tangent vectors
         """
@@ -422,7 +422,7 @@ def _(curves_figure, lk):
             r"$\gamma'(0)=\displaystyle\lim_{s\to0}\frac{\gamma(s)-\gamma(0)}{s}$",
         ),
         lk.figure(curves_figure()),
-        r"> $\leadsto$ &nbsp; from the point of view of $Df_p(v)$ all paths through $p$ with velocity $v$ can be used equivalently!",
+        r"> $\leadsto$ &nbsp; for $Df_p(v)$, all paths through $p$ with velocity $v$ are equivalent!",
         lk.gap(),
         r"""
         On a manifold $(M,\mathcal A)$
