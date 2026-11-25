@@ -173,13 +173,13 @@ def _(lk, np):
             -30,
             18,
             "the worldline of a particle under a constant force, with u, v/m, the plane S_p and the line p + t u",
-            [lk.panel(1.3, surfaces=[sf], lines=lines, arrows=arrows, points=[(O3, K, 3.4)], texts=texts, box=((-2.0, 2.0), (-0.6, 1.8), (-0.65, 1.65)))],
+            [lk.panel(1.3, surfaces=[sf], lines=lines, arrows=arrows, points=[(O3, K, 3.4)], texts=texts, box=((-1.83, 2.17), (-0.31, 2.09), (-0.65, 1.65)))],
             height=lk.H3D,
             width=460,
             key="L02-force",
             apart=True,
             bias=0.15,
-            zoom=1.2,
+            zoom=1.35,
         )
 
     def gravity_scene():

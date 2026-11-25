@@ -70,7 +70,8 @@ def _(lk, math, np):
         # the sphere, the torus and the genus 2 surface
         t = np.linspace(0, 2 * np.pi, 241)
         u, w = np.meshgrid(np.linspace(0, 2 * np.pi, 61), np.linspace(0, 2 * np.pi, 31), indexing="ij")
-        torus = lk.sheet((1.0 + 0.42 * np.cos(w)) * np.cos(u), (1.0 + 0.42 * np.cos(w)) * np.sin(u), 0.42 * np.sin(w))
+        torus_xyz = ((1.0 + 0.42 * np.cos(w)) * np.cos(u), (1.0 + 0.42 * np.cos(w)) * np.sin(u), 0.42 * np.sin(w))
+        torus = lk.sheet(*torus_xyz)
         # genus 2: two tori smoothly joined, as z^2 = -S(a, b); the grid points just outside S < 0 are moved onto its rim
         az = math.radians(-30)
         ea, eb = np.array([-math.sin(az), math.cos(az)]), np.array([math.cos(az), math.sin(az)])
@@ -82,6 +83,7 @@ def _(lk, math, np):
 
         a, b = np.meshgrid(np.linspace(-2.0, 2.0, 101), np.linspace(-1.0, 1.0, 51), indexing="ij")
         inside = S(a, b) < 0
+        hole = ~inside & (np.minimum(np.hypot(a + 0.95, b), np.hypot(a - 0.95, b)) < 0.62)  # grid points in a hole
         rim = ~inside  # every grid point outside is moved onto the rim S = 0 (no gaps in the surface data)
         ra, rb = a[rim], b[rim]
         for _ in range(40):  # Newton steps onto S = 0
@@ -92,14 +94,23 @@ def _(lk, math, np):
         a[rim], b[rim] = ra, rb
         z = np.where(inside, np.sqrt(np.maximum(-S(a, b), 0.0)), 0.0)
         x, y = a * ea[0] + b * eb[0], a * ea[1] + b * eb[1]
+        # unit normals for the outlines: the torus from its angles, the genus 2 surface from the gradient of z^2 + S(a, b)
+        tn = (np.cos(w) * np.cos(u), np.cos(w) * np.sin(u), np.sin(w))
+        ga = (S(a + 1e-5, b) - S(a - 1e-5, b)) / 2e-5
+        gb = (S(a, b + 1e-5) - S(a, b - 1e-5)) / 2e-5
+        gx, gy, gz = ga * ea[0] + gb * eb[0], ga * ea[1] + gb * eb[1], 2 * z
+        gl = np.sqrt(gx**2 + gy**2 + gz**2)
+        gn = tuple(np.where(hole, np.nan, g / gl) for g in (gx, gy, gz))  # no outline across a hole
+        top, bot = (x, y, z), (x[:, ::-1], y[:, ::-1], -z[:, ::-1])
+        bn = (gn[0][:, ::-1], gn[1][:, ::-1], -gn[2][:, ::-1])
         return lk.turntable(
             -30,
             45,
             "the sphere, the torus and the genus 2 surface",
             [
                 lk.panel(1.0, surfaces=[_sphere(1.0)], outlines=[_EDGE], lines=[(np.cos(t), np.sin(t), 0 * t, "#000000", 1.0)], caption=r"\mathbb{S}^2"),
-                lk.panel(1.0, surfaces=[torus], caption=r"\mathbb{T}^2"),
-                lk.panel(1.0, surfaces=[lk.sheet(x, y, z), lk.sheet(x[:, ::-1], y[:, ::-1], -z[:, ::-1])], caption=r"\Sigma_2"),
+                lk.panel(1.0, surfaces=[torus], outlines=[("surface", torus_xyz, tn, lk.GREY, 1.2)], caption=r"\mathbb{T}^2"),
+                lk.panel(1.0, surfaces=[lk.sheet(*top), lk.sheet(*bot)], outlines=[("surface", top, gn, lk.GREY, 1.2), ("surface", bot, bn, lk.GREY, 1.2)], caption=r"\Sigma_2"),
             ],
             height=240,
             cols=3,
@@ -156,25 +167,34 @@ def _(lk, math, np):
 
     def atlas_figure():
         # two charts on the Earth, the pages V_alpha and V_beta of an atlas, and the change of charts
-        fig, ax = sk.sketch((-0.3, 12.3), (-1.7, 8.4))
-        sk.outline(ax, sk.shape(6.0, 5.6, 2.7, 2.7), name="Earth", at=(3.0, 8.0), size=13)
-        U = sk.shape(5.4, 5.45, 1.4, 1.1, egg=-0.05, tilt=8, bean=0.06)
-        V = sk.shape(6.6, 5.5, 1.4, 1.1, egg=0.05, tilt=-8)
+        sk = lk.sk
+        fig, ax = sk.sketch((-0.5, 14.2), (-1.9, 9.4))
+        # the Earth: a disc, with a short arc beside its rim to show it is a sphere
+        t = np.linspace(0, 2 * np.pi, 200)
+        E = np.c_[7.0 + 2.8 * np.cos(t), 6.2 + 2.8 * np.sin(t)]
+        sk.outline(ax, E, name="Earth", at=sk.rim(E, 165, 0.45), size=13, ha="right")
+        ta = np.radians(np.linspace(112, 152, 40))
+        ax.plot(7.0 + 3.05 * np.cos(ta), 6.2 + 3.05 * np.sin(ta), color=sk.INK, lw=1.0, zorder=2)
+        U = sk.shape(6.35, 6.0, 1.3, 1.0, waves=((2, 0.06, 1.0), (3, 0.03, 0.3)), tilt=8)
+        V = sk.shape(7.75, 6.1, 1.3, 1.0, waves=((2, 0.06, -0.6), (3, 0.03, 1.9)), tilt=-10)
         sk.overlap(ax, U, V)
-        sk.outline(ax, U, lk.RED, r"$U_\alpha$", (4.4, 6.85))
-        sk.outline(ax, V, lk.BLUE, r"$U_\beta$", (7.6, 6.85))
-        sk.label(ax, (6.0, 5.5), r"$U_\alpha \cap U_\beta$", size=12)
-        for x0, frame, cut, side, name, page, img in (
-            (0.0, lk.RED, lk.BLUE, 1, r"$V_\alpha \subseteq \mathbb{R}^2$", r"page $\alpha$ of a geographical atlas", r"$\varphi_\alpha(U_\alpha \cap U_\beta)$"),
-            (8.8, lk.BLUE, lk.RED, -1, r"$V_\beta \subseteq \mathbb{R}^2$", r"page $\beta$", r"$\varphi_\beta(U_\alpha \cap U_\beta)$"),
-        ):
-            B = sk.chart(ax, x0, 0.3, 3.2, 2.4, frame, name)
-            sk.label(ax, (x0 + 1.6, -0.75), page, frame, va="top", size=12)
-            xm = sk.band(ax, B, side, cut, width=2.3, depth=0.35)
-            sk.label(ax, (xm + side * 0.05, 1.5), img, size=12)
-        sk.maps(ax, (3.3, 4.4), (1.9, 2.95), r"chart $\varphi_\alpha$", lk.RED, bend=-0.25, side=-1, size=13, gap=0.75)
-        sk.maps(ax, (8.7, 4.4), (10.1, 2.95), r"$\varphi_\beta$", lk.BLUE, bend=0.25, side=1)
-        sk.maps(ax, (3.6, 1.5), (8.4, 1.5), r"$\varphi_\beta \circ \varphi_\alpha^{-1}$", side=-1, gap=0.4)
+        sk.outline(ax, U, lk.RED, r"$U_\alpha$", sk.rim(U, 130, 0.25), va="bottom")
+        sk.outline(ax, V, lk.BLUE, r"$U_\beta$", sk.rim(V, 50, 0.25), va="bottom")
+        Y = 2.0
+        L = sk.shape(2.3, 1.7, 1.75, 1.35, waves=((2, 0.06, 0.4), (3, 0.03, 1.3)))
+        R = sk.shape(11.5, 1.7, 1.75, 1.35, waves=((2, 0.06, 2.4), (3, 0.03, 0.2)))
+        Lo = sk.shape(3.55, 1.7, 1.75, 1.9, waves=((2, 0.05, 1.1),))
+        Ro = sk.shape(10.25, 1.7, 1.75, 1.9, waves=((2, 0.05, -0.8),))
+        for img, other, col, cut, name, ang, x0, page in ((L, Lo, lk.RED, lk.BLUE, r"$V_\alpha$", 128, 0.0, r"page $\alpha$ of a geographical atlas"),
+                                                         (R, Ro, lk.BLUE, lk.RED, r"$V_\beta$", 52, 9.4, r"page $\beta$")):
+            sk.axes(ax, x0, -0.55, 4.0, 3.9, r"$\mathbb{R}^2$")
+            sk.overlap(ax, other, img)
+            sk.outline(ax, img, col, name, sk.rim(img, ang, 0.4))
+            sk.cut(ax, other, img, cut)
+            sk.label(ax, (x0 + 2.0, -1.0), page, col, va="top", size=12)
+        sk.maps(ax, (sk.rim(L, 0, 0.35)[0], Y), (9.05, Y), r"$\varphi_\beta \circ \varphi_\alpha^{-1}$", side=1, gap=0.35)
+        sk.maps(ax, sk.rim(E, 215, 0.3), sk.rim(L, 75, 0.35), r"chart $\varphi_\alpha$", lk.RED, bend=-0.2, side=-1, size=13, gap=0.75)
+        sk.maps(ax, sk.rim(E, -35, 0.3), sk.rim(R, 105, 0.35), r"$\varphi_\beta$", lk.BLUE, bend=0.2, side=1)
         return fig
 
     def stereo_scene():

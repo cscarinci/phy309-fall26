@@ -137,7 +137,7 @@ def _(lk, math, np):
             [lk.panel(1.0, surfaces=cones + [sf], lines=[rim, ln], arrows=arrows, points=[(p, K, 3.4), (q, K, 3.4), (r, K, 3.4), (s, K, 3.4)], texts=texts, box=((-5.9, 5.9), (-5.9, 5.9), (-0.3, 10.4)))],
             height=400,
             key="L04-twins",
-            zoom=1.3,
+            zoom=1.42,
             apart=True,
             bias=0.12,
         )
@@ -408,7 +408,7 @@ def _(lk):
             > • &nbsp; $\sqrt{-\lVert u+v\rVert^2}\geq\sqrt{-\lVert u\rVert^2}+\sqrt{-\lVert v\rVert^2}$, &nbsp; with “$=$” iff $u,v$ are proportional
             """,
         ],
-        title="Cauchy–Schwarz & triangle inequalities",
+        title="Cauchy-Schwarz & triangle inequalities",
         label="thm-reversed",
     )
     return
@@ -445,7 +445,7 @@ def _(lk):
             r"""
             > $\lVert v\rVert^2=-(v^0)^2+\delta_{ij}v^iv^j<0$ &nbsp; $\Longrightarrow$ &nbsp; $\sqrt{\delta_{ij}v^iv^j}<v^0$
 
-            > Euclidean Cauchy–Schwarz &nbsp; $\Longrightarrow$ &nbsp; $\delta_{ij}u^iv^j\leq\sqrt{\delta_{k\ell}u^ku^\ell}\,\sqrt{\delta_{mn}v^mv^n}<u^0v^0$
+            > Euclidean Cauchy-Schwarz &nbsp; $\Longrightarrow$ &nbsp; $\delta_{ij}u^iv^j\leq\sqrt{\delta_{k\ell}u^ku^\ell}\,\sqrt{\delta_{mn}v^mv^n}<u^0v^0$
 
             > > $\Longrightarrow$ &nbsp; $-u^0v^0+\delta_{ij}u^iv^j<0$
             """,
@@ -468,7 +468,7 @@ def _(lk):
                 r"> > $\Longrightarrow$ &nbsp; $\lVert u\rVert^2\geq\dfrac{\eta(u,v)^2}{\mk{\lVert v\rVert^2}}$",
                 r"$\lVert v\rVert^2$ negative",
             ),
-            r"> > $\Longrightarrow$ &nbsp; $\lVert u\rVert^2\lVert v\rVert^2\leq\eta(u,v)^2$ &nbsp;&nbsp; reversed Cauchy–Schwarz ✓",
+            r"> > $\Longrightarrow$ &nbsp; $\lVert u\rVert^2\lVert v\rVert^2\leq\eta(u,v)^2$ &nbsp;&nbsp; reversed Cauchy-Schwarz ✓",
             lk.aside(
                 r"> > $\Longrightarrow$ &nbsp; $-\eta(u,v)\geq\sqrt{-\lVert u\rVert^2}\,\sqrt{-\lVert v\rVert^2}$",
                 r"positive: $-\eta(u,v)$, $\sqrt{-\lVert u\rVert^2}$, $\sqrt{-\lVert v\rVert^2}$",

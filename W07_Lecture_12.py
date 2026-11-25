@@ -43,29 +43,40 @@ def _(Figure, lk, math, np):
         return fig, ax
 
     def derivative_figure():
-        # the derivative of f at p computed through a chart (shared sketch style, lk.sk)
+        # the derivative of f at p computed through a chart
         sk = lk.sk
-        fig, ax = sk.sketch((-0.8, 15.0), (-1.2, 8.2))
-        sk.outline(ax, sk.shape(3.4, 5.4, 3.2, 2.3, egg=-0.04, bean=0.04), name="$M$", at=(0.4, 7.4))
-        sk.outline(ax, sk.shape(3.4, 5.2, 1.85, 1.35), lk.GREY, "$U$", (1.2, 5.2), tint=False)
-        P = (3.3, 5.35)
-        ax.plot(*sk.path(P, (1, 0.5), -0.3, np.linspace(-0.3, 0.95, 60)), color=lk.BLUE, lw=sk.LW, zorder=4)
-        sk.maps(ax, P, (P[0] + 1.0, P[1] + 0.5), color=lk.GREEN, lw=1.8)
-        sk.dot(ax, P, r"$p = \varphi^{-1}(x)$", at=(0, -0.3))
-        sk.label(ax, (3.4, 6.95), r"$[\gamma] = v^i \partial_i|_p = \gamma'(0)$", lk.GREEN, size=13)
-        sk.chart(ax, 10.0, 3.6, 3.8, 3.2, lk.GREY, "$V$", where="above")
-        Q = (11.4, 4.9)
-        sk.maps(ax, Q, (Q[0] + 1.0, Q[1] + 0.6), color=lk.GREEN, lw=1.8)
-        sk.dot(ax, Q, r"$x = \varphi(p)$", at=(0.3, -0.35))
-        sk.label(ax, (12.55, 5.25), "$v$", lk.GREEN, ha="left", va="top")
-        sk.maps(ax, (6.8, 6.4), (9.8, 6.4), r"$\varphi$", bend=0.2, side=1)
-        ax.plot([0.4, 7.0], [0.4, 0.4], color=sk.INK, lw=1.2)
-        sk.label(ax, (7.2, 0.4), r"$\mathbb{R}$", ha="left")
-        sk.maps(ax, (3.4, 0.4), (5.2, 0.4), color=lk.GREEN, lw=1.8)
-        sk.dot(ax, (3.4, 0.4), r"$f(p) = f \circ \varphi^{-1}(x)$", at=(0, -0.3))
-        sk.label(ax, (4.3, 0.75), r"$Df(p)[\gamma]$", lk.GREEN, va="bottom", size=13)
-        sk.maps(ax, (2.6, 3.0), (2.6, 1.1), "$f$", lk.BLUE, side=1)
-        sk.maps(ax, (10.6, 3.4), (6.0, 0.9), r"$f \circ \varphi^{-1}$", lk.RED, bend=-0.2, side=-1, gap=0.45)
+        fig, ax = sk.sketch((-0.1, 12.8), (0.1, 8.2))
+        Y = 5.3  # height of M and of the chart
+        M = sk.shape(3.0, Y, 2.75, 1.95, waves=((2, 0.06, 0.6), (3, 0.03, 2.2)))
+        sk.outline(ax, M, name="$M$", at=sk.rim(M, 205, 0.4))
+        U = sk.shape(2.9, Y - 0.1, 1.7, 1.15, waves=((2, 0.06, 1.0), (3, 0.03, 0.3)), tilt=8)
+        sk.outline(ax, U, lk.GREY, "$U$", sk.rim(U, 160, 0.3), tint=False, ha="right")
+        P = (2.2, Y + 0.2)
+        ax.plot(*sk.path(P, (1, 0.6), -0.35, np.linspace(-0.7, 1.2, 60)), color=lk.BLUE, lw=sk.LW, zorder=4)
+        sk.maps(ax, P, (P[0] + 1.2, P[1] + 0.72), color=lk.GREEN, lw=1.8)
+        sk.dot(ax, P, r"$p = \varphi^{-1}(x)$", at=(0.75, -0.35))
+        sk.label(ax, (3.0, Y + 2.2), r"$[\gamma] = v^i \partial_i|_p = \gamma'(0)$", lk.GREEN, size=13, va="bottom")
+        sk.axes(ax, 7.7, Y - 1.95, 4.0, 3.8)
+        V = sk.shape(9.7, Y, 1.65, 1.2, waves=((2, 0.06, 2.4),))
+        sk.outline(ax, V, lk.GREY, "$V$", sk.rim(V, 45, 0.35), tint=False)
+        Q = (9.0, Y + 0.05)
+        sk.maps(ax, Q, (Q[0] + 1.2, Q[1] + 0.72), color=lk.GREEN, lw=1.8)
+        sk.dot(ax, Q, r"$x = \varphi(p)$", at=(0.6, -0.35))
+        sk.label(ax, (Q[0] + 1.3, Q[1] + 0.45), "$v$", lk.GREEN, ha="left", va="center")
+        sk.maps(ax, (sk.rim(M, 0, 0.4)[0], Y + 0.3), (7.3, Y + 0.3), r"$\varphi$", bend=0.12, side=1)
+        # R below, between the two maps that reach it
+        ax.plot([2.6, 10.2], [1.3, 1.3], color=sk.INK, lw=1.2)
+        sk.label(ax, (10.4, 1.3), r"$\mathbb{R}$", ha="left")
+        F = (5.6, 1.3)
+        sk.maps(ax, F, (F[0] + 1.6, 1.3), color=lk.GREEN, lw=1.8)
+        sk.dot(ax, F, r"$f(p) = f \circ \varphi^{-1}(x)$", at=(0, -0.3))
+        sk.label(ax, (F[0] + 0.8, 1.6), r"$Df(p)[\gamma]$", lk.GREEN, va="bottom", size=13)
+        t1, h1 = sk.rim(M, 285, 0.35), (4.2, 1.8)
+        sk.maps(ax, t1, h1, color=lk.BLUE, bend=-0.15)
+        sk.label(ax, ((t1[0] + h1[0]) / 2 - 0.35, (t1[1] + h1[1]) / 2), "$f$", lk.BLUE, ha="right")
+        t2, h2 = (9.3, Y - 2.4), (8.3, 1.8)
+        sk.maps(ax, t2, h2, color=lk.RED, bend=0.15)
+        sk.label(ax, ((t2[0] + h2[0]) / 2 + 0.35, (t2[1] + h2[1]) / 2), r"$f \circ \varphi^{-1}$", lk.RED, ha="left")
         return fig
 
     def height_figure(u, v, a, b):
@@ -120,8 +131,11 @@ def _(Figure, lk, math, np):
             for a0, b0, p0, q0 in zip(A.ravel(), B.ravel(), P.ravel(), Q.ravel()):  # arrows scaled per panel
                 if p0 or q0:
                     lk.arrow(ax, (a0, b0), (a0 + 0.34 * p0 / m, b0 + 0.34 * q0 / m), lk.BLUE, lw=1.0)
-            ax.set_xticks([-2, 0, 2])
-            ax.set_yticks([-2, 0, 2])
+            ax.set_xticks([])
+            ax.set_yticks([])
+            xn, yn = ("u", "v") if ax is axes[0] else (r"\tilde{u}", r"\tilde{v}")
+            ax.set_xlabel(f"${xn}$", labelpad=2)
+            ax.set_ylabel(f"${yn}$", rotation=0, labelpad=8)
         return fig
 
     def integral_curve_figure():
@@ -224,8 +238,10 @@ def _(Figure, lk, math, np):
             dx, dy = math.cos(an), math.sin(an)
             off = 9 * abs(dx) + 5.5 * abs(dy) + 4
             ax.annotate(name, (px, py), textcoords="offset points", xytext=fix if small else (off * dx, off * dy), ha="center", va="center", color="#000000", fontsize=11, annotation_clip=True, zorder=8).set_in_layout(False)
-        ax.set_xticks([-3, 0, 3])
-        ax.set_yticks([-3, 0, 3])
+        ax.set_xticks([])
+        ax.set_yticks([])
+        ax.set_xlabel(r"$u$", labelpad=2)
+        ax.set_ylabel(r"$v$", rotation=0, labelpad=8)
         return fig
 
     return FIELDS, charts_figure, curves_chart, curves_scene, derivative_figure, height_figure, integral_curve_figure

@@ -105,7 +105,7 @@ def _(Figure, lk, np):
             [lk.panel(1.0, surfaces=surfaces, lines=lines, arrows=arrows, points=[(O3, K, 3.4)], texts=texts, outlines=[("cone", (0, 0, 0), _H, lk.GREY, 1.0)], box=((-1.15, 1.45), (-1.2, 2.2), (-1.15, 1.6)))],
             height=lk.H3D,
             bias=0.12,
-            zoom=1.2,
+            zoom=1.3,
         )
 
     def lorentz_figure():
@@ -113,14 +113,16 @@ def _(Figure, lk, np):
         x = np.linspace(0, 0.985, 300)
         fig = Figure(figsize=(3.6, 2.4), layout="constrained")
         ax = fig.subplots()
-        ax.plot(x, 1 / np.sqrt(1 - x**2), color=lk.BLUE, label=r"$\Gamma = 1/\sqrt{1-\|\nu\|^2}$")
-        ax.plot(x, 1 + 0.5 * x**2, "--", color=lk.RED, label=r"$1+\frac{1}{2}\|\nu\|^2$")
+        ax.plot(x, 1 / np.sqrt(1 - x**2), color=lk.BLUE)
+        ax.plot(x, 1 + 0.5 * x**2, "--", color=lk.RED)
+        # names at the curve ends, no legend
+        ax.text(0.80, 3.45, r"$\Gamma = 1/\sqrt{1-\|\nu\|^2}$", color=lk.BLUE, fontsize=11, ha="right", va="center")
+        ax.text(1.0, 1.22, r"$1+\frac{1}{2}\|\nu\|^2$", color=lk.RED, fontsize=11, ha="right", va="top")
         ax.set_xlim(0, 1)
         ax.set_ylim(0.9, 4)
         ax.set_xticks([0, 1])
         ax.set_yticks([1])
         ax.set_xlabel(r"$\|\nu\|$")
-        ax.legend(frameon=False, fontsize=11, loc="upper left")
         for s in ("top", "right"):
             ax.spines[s].set_visible(False)
         return fig
@@ -195,12 +197,12 @@ def _(decomposition_scene, lk):
 
             > $\Longrightarrow$ &nbsp; $\gamma(t)=\begin{bmatrix}t\\0\\0\\0\end{bmatrix}$, &nbsp;&nbsp; $\sigma(s)=\begin{bmatrix}s\,v^0\\s\,v^1\\s\,v^2\\s\,v^3\end{bmatrix}$
             """,
-            lk.figure(decomposition_scene()),
             r"$$\Gamma(\gamma,\sigma)=-\eta(u,v)=-(-1)\,v^0=v^0>0$$",
             lk.aside(
                 r"$$\nu(\gamma,\sigma)=\frac{1}{v^0}\begin{bmatrix}v^0\\v^1\\v^2\\v^3\end{bmatrix}-\begin{bmatrix}1\\0\\0\\0\end{bmatrix}=\frac{1}{v^0}\begin{bmatrix}0\\v^1\\v^2\\v^3\end{bmatrix}\in u^\perp$$",
                 r"$\nu(\gamma,\sigma)=\dfrac{\text{displacement along }u^\perp}{\text{displacement along }u}$",
             ),
+            lk.figure(decomposition_scene()),
         ],
         label="ex-inertial-pair",
     )

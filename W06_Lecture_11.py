@@ -105,8 +105,10 @@ def _(Figure, lk, math, np):
             dx, dy = (1.2 * nx - sg * ny) * w, (1.2 * ny + sg * nx) * w
             off = max(9 * abs(dx) + 5.5 * abs(dy) + 3, (9 * abs(nx) + 5.5 * abs(ny) + 3) / (1.2 * w), min(11 / (w * abs(ny) + 1e-9), 7.5 / (w * abs(nx) + 1e-9)))
             ax.annotate(name, (px, py), textcoords="offset points", xytext=(off * dx, off * dy), ha="center", va="center", color="#000000", fontsize=11, annotation_clip=False, zorder=8).set_in_layout(False)
-        ax.set_xticks([-3, 0, 3])
-        ax.set_yticks([-3, 0, 3])
+        ax.set_xticks([])
+        ax.set_yticks([])
+        ax.set_xlabel(r"$u$", labelpad=2)
+        ax.set_ylabel(r"$v$", rotation=0, labelpad=8)
         return fig
 
     def bundle_scene():

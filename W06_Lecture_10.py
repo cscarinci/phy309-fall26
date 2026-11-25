@@ -47,35 +47,38 @@ def _(Figure, lk, math, np):
         return 2 * u / r, 2 * v / r, (r - 2) / r
 
     def paths_figure():
-        # paths through p with the same velocity, seen on M and in a chart (shared sketch style, lk.sk)
+        # paths through p with the same velocity, seen on M and in a chart
         sk = lk.sk
-        fig, ax = sk.sketch((-2.6, 12.8), (-0.6, 8.4))
-        sk.outline(ax, sk.shape(5.0, 5.4, 3.2, 2.3, egg=0.05, bean=0.04), name="$M$", at=(2.0, 7.45))
-        sk.outline(ax, sk.shape(5.0, 5.4, 1.45, 1.05), lk.GREY, "$U$", (3.75, 6.55), tint=False)
-        P = (5.0, 5.35)
-        s, s2 = np.linspace(-0.95, 0.95, 80), np.linspace(-0.75, 0.75, 80)
-        for col, k in ((lk.BLUE, 0.0), (lk.RED, 0.75), (lk.ORANGE, -0.75)):
-            ax.plot(*sk.path(P, (1, 0.3), k, s), color=col, lw=sk.LW, zorder=4)
-        sk.maps(ax, P, (P[0] + 0.9, P[1] + 0.27), color=lk.GREEN, lw=1.8)
-        sk.dot(ax, P, "$p$", at=(-0.15, -0.3), ha="right")
-        sk.label(ax, (6.6, 5.0), r"$v_p = [\gamma]$", lk.GREEN, ha="left", size=13)
+        fig, ax = sk.sketch((-3.4, 15.6), (-0.9, 8.6))
+        Y = 5.6  # height of M and of the real line
         # the real line and the three paths as maps from it
-        ax.plot([-2.3, -0.1], [3.2, 3.2], color=sk.INK, lw=1.2)
-        sk.dot(ax, (-1.2, 3.2), "$0$", at=(0, -0.3))
-        sk.label(ax, (-0.2, 2.85), r"$\mathbb{R}$", va="top")
-        for col, dy, name in ((lk.BLUE, 1.2, r"$\gamma$"), (lk.RED, 0.75, r"$\tilde\gamma$"), (lk.ORANGE, 0.3, r"$\hat\gamma$")):
-            sk.maps(ax, (-0.9, 3.3 + dy), (1.75, 4.1 + dy), color=col, bend=0.15, lw=1.3)
-            sk.label(ax, (-1.05, 3.3 + dy), name, col, ha="right")
-        # the chart box
-        sk.chart(ax, 7.4, 0.4, 4.8, 2.6, lk.GREY)
-        sk.label(ax, (12.2, 0.15), r"$\varphi(U) \subseteq \mathbb{R}^m$", va="top", ha="right")
-        Q = (8.9, 1.85)
-        for col, k in ((lk.BLUE, 0.0), (lk.RED, 0.9), (lk.ORANGE, -0.9)):
-            ax.plot(*sk.path(Q, (1, 0.35), k, s2), color=col, lw=sk.LW, zorder=4)
-        sk.maps(ax, Q, (Q[0] + 0.95, Q[1] + 0.33), color=lk.GREEN, lw=1.8)
-        sk.dot(ax, Q, r"$\varphi(p)$", at=(-0.1, -0.85))
-        sk.label(ax, (9.95, 2.5), r"$(\varphi \circ \gamma)'(0)$", lk.GREEN, ha="left", size=13)
-        sk.maps(ax, (7.6, 3.7), (8.6, 3.15), r"$\varphi$", bend=-0.3, side=1)
+        ax.plot([-3.1, -0.9], [Y, Y], color=sk.INK, lw=1.2)
+        sk.dot(ax, (-2.3, Y), "$0$", at=(0, -0.3))
+        sk.label(ax, (-0.9, Y - 0.35), r"$\mathbb{R}$", va="top")
+        for col, dy, bend, name in ((lk.BLUE, 0.85, 0.2, r"$\gamma$"), (lk.RED, 0.0, 0.0, r"$\tilde\gamma$"), (lk.ORANGE, -0.85, -0.2, r"$\hat\gamma$")):
+            sk.maps(ax, (-0.2, Y + dy), (1.4, Y + dy), name, col, bend=bend, side=-1, gap=0.3, lw=1.3)
+        M = sk.shape(5.3, Y, 3.1, 2.25, waves=((2, 0.06, 0.6), (3, 0.03, 2.2)))
+        sk.outline(ax, M, name="$M$", at=sk.rim(M, 215, 0.4))
+        U = sk.shape(5.6, Y + 0.15, 1.95, 1.4, waves=((2, 0.06, 1.0), (3, 0.03, 0.3)), tilt=8)
+        sk.outline(ax, U, lk.GREY, "$U$", sk.rim(U, 155, 0.3), tint=False)
+        P = (5.5, Y + 0.65)
+        s = np.linspace(-1.4, 1.4, 80)
+        for col, k in ((lk.BLUE, 0.35), (lk.RED, -0.4), (lk.ORANGE, -0.9)):
+            ax.plot(*sk.path(P, (1, 0.1), k, s * (0.8 if k > 0 else 1.0 if k > -0.8 else 0.8)), color=col, lw=sk.LW, zorder=4)
+        sk.maps(ax, P, (P[0] + 1.2, P[1] + 0.12), color=lk.GREEN, lw=1.8)
+        sk.dot(ax, P, "$p$", at=(0, -0.45))
+        sk.label(ax, sk.rim(M, 40, 0.3), r"$v_p = [\gamma]$", lk.GREEN, ha="left", va="bottom", size=13)
+        # the chart: phi(U), an open set of R^m, below and to the right of M
+        sk.axes(ax, 8.2, Y - 6.3, 5.4, 4.0)
+        I = sk.shape(10.9, Y - 4.05, 1.95, 1.4, waves=((2, 0.06, 2.4),))
+        sk.outline(ax, I, lk.GREY, r"$\varphi(U)$", sk.rim(I, -35, 0.45), tint=False)
+        Q = (10.8, Y - 3.55)
+        for col, k in ((lk.BLUE, 0.4), (lk.RED, -0.45), (lk.ORANGE, -1.0)):
+            ax.plot(*sk.path(Q, (1, 0.1), k, s * (0.78 if k > 0 else 1.0 if k > -0.9 else 0.78)), color=col, lw=sk.LW, zorder=4)
+        sk.maps(ax, Q, (Q[0] + 1.2, Q[1] + 0.12), color=lk.GREEN, lw=1.8)
+        sk.dot(ax, Q, r"$\varphi(p)$", at=(0, -0.45))
+        sk.label(ax, (12.2, Y - 2.65), r"$(\varphi \circ \gamma)'(0)$", lk.GREEN, size=13, ha="left", va="bottom")
+        sk.maps(ax, sk.rim(M, -40, 0.3), sk.rim(I, 115, 0.35), r"$\varphi$", bend=0.2, side=1)
         return fig
 
     def height_scene():
@@ -196,8 +199,10 @@ def _(Figure, lk, math, np):
         lk.arrow(ax, (u, v), (u, v + 0.8), lk.RED)
         ax.plot(u, v, "o", color="#000000", ms=5)
         ax.annotate(r"$\varphi_n(p)$", (u, v), textcoords="offset points", xytext=(3, -3), ha="left", va="top", fontsize=12)
-        ax.set_xticks([-3, 0, 3])
-        ax.set_yticks([-3, 0, 3])
+        ax.set_xticks([])
+        ax.set_yticks([])
+        ax.set_xlabel(r"$u$", labelpad=2)
+        ax.set_ylabel(r"$v$", rotation=0, labelpad=8)
         return fig
 
     return basis_chart, basis_scene, height_chart, height_scene, paths_figure

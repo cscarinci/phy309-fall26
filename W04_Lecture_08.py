@@ -164,12 +164,12 @@ def _(Figure, lk, math, np):
                 ax.axhline(0, color="#000000", lw=0.6)
                 ax.axvline(0, color="#000000", lw=0.6)
                 ax.plot(np.cos(a), np.sin(a), color=lk.GREY, lw=0.8)
-                tk = math.floor(10 * lim) / 10  # a tick inside the axis
-                ax.set_xticks([-tk, 0, tk])
-                ax.set_yticks([-tk, 0, tk])
-                for axis in (ax.xaxis, ax.yaxis):
-                    axis.set_major_formatter(lambda t_, i_: f"${t_:.1f}$")
+                ax.set_xticks([])
+                ax.set_yticks([])
             ax.plot(*pt, "o", color=lk.BLUE, ms=6, clip_on=False, zorder=3)
+        for ax, (xn, yn) in ((axes[1], ("u", "v")), (axes[2], (r"\tilde{u}", r"\tilde{v}"))):
+            ax.set_xlabel(f"${xn}$", labelpad=2)
+            ax.set_ylabel(f"${yn}$", rotation=0, labelpad=8)
         axes[1].plot(r * np.cos(a), r * np.sin(a), color=lk.GREEN, lw=1.0)
         axes[2].plot(np.cos(a) / r, np.sin(a) / r, color=lk.GREEN, lw=1.0)
         axes[0].plot([ph, ph], [0, 2 * math.pi], color=lk.GREEN, lw=1.0)
@@ -179,25 +179,37 @@ def _(Figure, lk, math, np):
         return fig
 
     def smooth_figure():
-        # a map between manifolds and its coordinate expression in two charts (shared sketch style, lk.sk)
+        # a map between manifolds and its coordinate expression in two charts
         sk = lk.sk
-        fig, ax = sk.sketch((-0.2, 17.4), (-1.5, 8.0))
-        for cx, name, a, b, an, bn in ((3.4, "$M$", "$U$", "$f^{-1}(A)$", (2.0, 6.25), (4.6, 6.15)),
-                                       (13.8, "$N$", "$f(U)$", "$A$", (12.4, 6.25), (15.2, 6.25))):
-            sk.outline(ax, sk.shape(cx, 5.1, 2.8, 2.2, egg=0.05 if cx > 5 else -0.05, bean=0.04), name=name, at=(cx - 2.9, 7.3))
-            A = sk.shape(cx - 0.65, 4.75, 1.2, 0.95, tilt=6)
-            B = sk.shape(cx + 0.65, 4.75, 1.2, 0.95, tilt=-6)
-            sk.overlap(ax, A, B)
-            sk.outline(ax, A, lk.RED, a, an)
-            sk.outline(ax, B, lk.BLUE, b, bn)
-        sk.maps(ax, (6.7, 5.6), (10.5, 5.6), "$f$", bend=0.25, side=1)
-        sk.band(ax, sk.chart(ax, 1.4, -0.7, 3.0, 2.2, lk.RED, r"$\mathbb{R}^m$"), 1, lk.BLUE)
-        sk.band(ax, sk.chart(ax, 12.8, -0.7, 3.0, 2.2, lk.BLUE, r"$\mathbb{R}^n$"), -1, lk.RED)
-        sk.label(ax, (3.95, 1.85), r"$\varphi(U \cap f^{-1}(A))$", size=13, va="bottom")
-        sk.label(ax, (13.25, 1.85), r"$\psi(f(U) \cap A)$", size=13, va="bottom")
-        sk.maps(ax, (1.0, 3.5), (1.3, 1.75), r"$\varphi$", lk.RED, bend=-0.35, side=-1)
-        sk.maps(ax, (16.2, 3.5), (15.9, 1.75), r"$\psi$", lk.BLUE, bend=0.35, side=1)
-        sk.maps(ax, (4.8, 0.4), (12.4, 0.4), r"$\psi \circ f \circ \varphi^{-1}$", side=1, gap=0.4)
+        A = "A"
+        a, b, H = 3.7, 11.9, 6.4  # centres of M and N, and their height
+        fig, ax = sk.sketch((-1.2, 16.8), (-0.9, 8.5))
+        M = sk.shape(a, H, 2.6, 1.6, waves=((2, 0.06, 0.6), (3, 0.03, 2.2)))
+        N = sk.shape(b, H, 2.6, 1.6, waves=((2, 0.06, 2.0), (3, 0.03, 0.9)))
+        for Mx, name, ang, cx, u, v in ((M, "$M$", 160, a, "$U$", rf"$f^{{-1}}({A})$"), (N, "$N$", 20, b, "$f(U)$", f"${A}$")):
+            sk.outline(ax, Mx, name=name, at=sk.rim(Mx, ang, 0.4))
+            Ax = sk.shape(cx - 0.55, H - 0.3, 1.0, 0.7, waves=((2, 0.06, 1.0), (3, 0.03, 0.3)), tilt=10)
+            Bx = sk.shape(cx + 0.55, H - 0.35, 1.0, 0.7, waves=((2, 0.06, -0.6), (3, 0.03, 1.9)), tilt=-12)
+            sk.overlap(ax, Ax, Bx)
+            sk.outline(ax, Ax, lk.RED, u, sk.rim(Ax, 120, 0.25), va="bottom")
+            sk.outline(ax, Bx, lk.BLUE, v, sk.rim(Bx, 60, 0.25), va="bottom")
+        sk.maps(ax, sk.rim(M, 0, 0.45), sk.rim(N, 180, 0.45), "$f$", bend=0.15, side=1)
+        Y = 2.0
+        cL, cR = a - 2.3, b + 2.3
+        L = sk.shape(cL, Y, 1.1, 0.85, waves=((2, 0.06, 0.4), (3, 0.03, 1.3)))
+        Lo = sk.shape(cL + 0.8, Y, 1.1, 1.2, waves=((2, 0.05, 1.1),))
+        R = sk.shape(cR, Y, 1.1, 0.85, waves=((2, 0.06, 2.4), (3, 0.03, 0.2)))
+        Ro = sk.shape(cR - 0.8, Y, 1.1, 1.2, waves=((2, 0.05, -0.8),))
+        for img, other, col, cut, Rn, nm, cx in ((L, Lo, lk.RED, lk.BLUE, r"$\mathbb{R}^m$", rf"$\varphi(U \cap f^{{-1}}({A}))$", cL),
+                                                (R, Ro, lk.BLUE, lk.RED, r"$\mathbb{R}^n$", rf"$\psi(f(U) \cap {A})$", cR)):
+            sk.axes(ax, cx - 1.65, Y - 1.4, 3.0, 2.9, Rn)
+            sk.overlap(ax, other, img)
+            sk.outline(ax, img, col)
+            sk.cut(ax, other, img, cut)
+            sk.label(ax, (cx - 0.15, Y - 1.75), nm, size=13, va="top")
+        sk.maps(ax, (sk.rim(L, 0, 0.45)[0], Y), (cR - 1.65 - 0.45, Y), r"$\psi \circ f \circ \varphi^{-1}$", side=1, gap=0.35)
+        sk.maps(ax, sk.rim(M, 232, 0.3), sk.rim(L, 70, 0.35), r"$\varphi$", lk.RED, bend=-0.12, side=-1)
+        sk.maps(ax, sk.rim(N, -52, 0.3), sk.rim(R, 110, 0.35), r"$\psi$", lk.BLUE, bend=0.12, side=1)
         return fig
 
     def curves_figure():
