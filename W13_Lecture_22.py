@@ -245,7 +245,7 @@ def _(lk):
     lk.prose(
         r"On $(M,g)$, the geodesic equation (in a chart) is",
         lk.aside(
-            r"$$\mk{\ddot x^\mu}+\Gamma^\mu_{\nu\rho}\,\dot x^\nu\dot x^\rho=0$$",
+            r"$$\mk{\ddot x^\mu}+\Gamma^\mu_{\nu\rho}\,\dot x^\nu\dot x^\rho=0,$$",
             r"$\mu=0,1,2,3$",
         ),
         r"""
@@ -289,7 +289,7 @@ def _(lk):
             \gamma_1(t)&=(t,x_1(t))\\
             \gamma_2(t)&=(t,x_2(t))
             \end{aligned}
-            \right\rbrace\quad\mk{\delta(t)}=x_2(t)-x_1(t)
+            \right\rbrace\quad\mk{\delta(t)}=x_2(t)-x_1(t),
             $$
             """,
             r"$\delta(t)$ = coordinate displacement<br>vector at time $t$",
@@ -299,7 +299,7 @@ def _(lk):
             $$
             \begin{aligned}
             \Longrightarrow\quad\ddot\delta^i=\ddot x_2^i-\ddot x_1^i&=-\nabla^i\Phi(x_1+\delta)+\nabla^i\Phi(x_1)\\
-            &\approx-\nabla^i\partial_j\Phi(x_1)\,\delta^j\approx-R^i{}_{tjt}\,\delta^j
+            &\approx-\nabla^i\partial_j\Phi(x_1)\,\delta^j\approx-R^i{}_{tjt}\,\delta^j.
             \end{aligned}
             $$
             """,
@@ -360,7 +360,7 @@ def _(lk):
             $$
             \begin{aligned}
             \leadsto\quad\text{point source:}\quad\Phi(x)&=-\frac{M}{\lVert x\rVert}\\
-            \leadsto\quad\text{extended source:}\quad\Phi(x)&=-\int_{\mathbb R^3}\frac{\mk{\rho(y)}}{\lVert x-y\rVert}\,dV(y)
+            \leadsto\quad\text{extended source:}\quad\Phi(x)&=-\int_{\mathbb R^3}\frac{\mk{\rho(y)}}{\lVert x-y\rVert}\,dV(y),
             \end{aligned}
             $$
             """,
@@ -371,7 +371,7 @@ def _(lk):
         $$
         \begin{aligned}
         \Longrightarrow\quad&\underbrace{\int_{\partial V}\nabla\Phi\cdot dA}_{\mathllap{\footnotesize\begin{array}{c}\text{flux of gravitational field}\\\text{through a surface}\end{array}\kern-1.2em}}=4\pi\underbrace{\int_V\rho\,dV}_{\mathrlap{\kern-1.2em\footnotesize\begin{array}{c}\text{mass in the region}\\\text{bounded by the surface}\end{array}}}\qquad(\text{gravitational Gauss' law!})\\[1.6em]
-        \Longrightarrow\quad&\Delta\Phi(x)=4\pi\rho\qquad(\text{Poisson equation})
+        \Longrightarrow\quad&\Delta\Phi(x)=4\pi\rho.\qquad(\text{Poisson equation})
         \end{aligned}
         $$
         """,
@@ -390,7 +390,7 @@ def _(lk):
             $$
             \begin{aligned}
             4\pi\rho=\Delta\Phi&=\mk{\nabla}\cdot\nabla\Phi\\
-            &=\nabla^i\partial_i\Phi=\mk{R^i{}_{tit}}
+            &=\nabla^i\partial_i\Phi=\mk{R^i{}_{tit}}.
             \end{aligned}
             $$
             """,

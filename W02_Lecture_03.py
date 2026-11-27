@@ -235,14 +235,14 @@ def _(central_sketch, galilean_particle_sketch, lk):
     lk.recap(
         r"$\mathbb G^4=(\mathbb A^4,\mathbb V^4,-)$ &nbsp; 4d affine space",
         r"$\tau:\mathbb V^4\longrightarrow\mathbb R$ &nbsp; universal time function",
-        r"$\langle\ ,\ \rangle:\ker\tau\times\ker\tau\longrightarrow\mathbb R$ &nbsp; spatial inner-product",
+        r"$\langle\ ,\ \rangle:\ker\tau\times\ker\tau\longrightarrow\mathbb R$ &nbsp; spatial inner product",
         lk.aside(
             r"$\gamma:\mathbb R\longrightarrow\mathbb G^4$, &nbsp; $\tau(\gamma'(t))=1$ &nbsp; <span class='lk-mark'>particle</span>",
             "parameterized by absolute time",
         ),
         lk.figure(galilean_particle_sketch()),
         r"Newton's law",
-        r"$$\gamma''(t)=\frac{1}{m}\vec F(t),\qquad\vec F(t)\in\ker\tau$$",
+        r"$$\gamma''(t)=\frac{1}{m}\vec F(t),\qquad\vec F(t)\in\ker\tau.$$",
         lk.aside(r"> $\leadsto$ &nbsp; inertial motion", r"$\vec F(t)=0$"),
         r"> > $\gamma(t)=p+t\,\vec u$, &nbsp; $\tau(\vec u)=1$",
         lk.aside(r"> $\leadsto$ &nbsp; uniformly accelerating", r"$\vec F(t)=\vec g$"),
@@ -276,13 +276,12 @@ def _(lk):
     # module: Maxwell in Galilean spacetime
     # what central forces cover, and what they don't
     lk.prose(
-        r"""
-        $\leadsto$ &nbsp; central force motion covers Newton's gravity and Coulomb's electrostatics when $\sigma(t)$ is inertial
-
-        $\leadsto$ &nbsp; no problem, in principle, to consider non-inertial sources for Newton's gravity in Galilean spacetime
-
-        $\leadsto$ &nbsp; Maxwell's electrodynamics, however, cannot be formulated consistently in Galilean spacetime …
-        """
+        lk.aside(
+            r"$\leadsto$ &nbsp; central forces cover Newton's gravity and Coulomb's electrostatics",
+            r"for inertial $\sigma(t)$",
+        ),
+        r"$\leadsto$ &nbsp; in principle, Newton's gravity can have non-inertial sources in Galilean spacetime",
+        r"$\leadsto$ &nbsp; however, Maxwell's electrodynamics is incompatible with Galilean spacetime …",
     )
     return
 
@@ -302,7 +301,7 @@ def _(lk):
             "Maxwell's equations:<br>depend on the choice of inertial frame …",
         ),
         r"In the vacuum",
-        r"$$\Big(\Delta-\frac{1}{c^2}\partial_t^2\Big)\vec E=0=\Big(\Delta-\frac{1}{c^2}\partial_t^2\Big)\vec B$$",
+        r"$$\Big(\Delta-\frac{1}{c^2}\partial_t^2\Big)\vec E=0=\Big(\Delta-\frac{1}{c^2}\partial_t^2\Big)\vec B.$$",
         lk.aside(
             r"> $\Longrightarrow$ &nbsp; electromagnetic “waves” propagate at a <span class='lk-mark'>constant speed $c$</span> (speed of light)",
             r"experimentally: $c$ is independent<br>of choice of inertial frame",
@@ -318,7 +317,7 @@ def _(addition_sketch, lk):
     lk.theorem(
         [
             r"Given $\gamma,\sigma,\xi$ any three particles in $\mathbb G^4$",
-            r"$$\begin{aligned}\vec v(\gamma,\xi)&=\xi'-\gamma'=(\xi'-\sigma')+(\sigma'-\gamma')\\[0.3em]&=\vec v(\sigma,\xi)+\vec v(\gamma,\sigma)\end{aligned}$$",
+            r"$$\begin{aligned}\vec v(\gamma,\xi)&=\xi'-\gamma'=(\xi'-\sigma')+(\sigma'-\gamma')\\[0.3em]&=\vec v(\sigma,\xi)+\vec v(\gamma,\sigma).\end{aligned}$$",
             lk.figure(addition_sketch()),
         ],
         label="thm-galilean-addition",
@@ -359,12 +358,12 @@ def _(lk):
     lk.definition(
         [
             r"The **Minkowski spacetime** is a 4-dimensional affine space",
-            r"$$\mathbb M^4=(\mathbb A^4,\mathbb V^4,-)$$",
-            r"together with a **Minkowski inner-product**",
-            r"$$\eta:\mathbb V^4\times\mathbb V^4\longrightarrow\mathbb R$$",
+            r"$$\mathbb M^4=(\mathbb A^4,\mathbb V^4,-),$$",
+            r"together with a **Minkowski inner product**",
+            r"$$\eta:\mathbb V^4\times\mathbb V^4\longrightarrow\mathbb R,$$",
             lk.aside(
                 r"> symmetric, bilinear, <span class='lk-mark'>signature $(3,1)$</span>",
-                "replacement for positive definiteness<br>of the Euclidean inner-product",
+                "replacement for positive definiteness<br>of the Euclidean inner product",
             ),
         ],
         label="def-minkowski",
@@ -379,7 +378,7 @@ def _(lk):
     lk.definition(
         [
             r"A symmetric bilinear function",
-            r"$$\eta:\mathbb V^4\times\mathbb V^4\longrightarrow\mathbb R$$",
+            r"$$\eta:\mathbb V^4\times\mathbb V^4\longrightarrow\mathbb R,$$",
             r"has **signature $(3,1)$** if",
             r"> • &nbsp; there exists $\vec u\in\mathbb V$ with $\eta(\vec u,\vec u)<0$",
             lk.aside(
@@ -397,10 +396,10 @@ def _(lk):
     # module: Minkowski spacetime
     # copies of Euclidean space
     lk.prose(
-        r"$\leadsto$ &nbsp; in $\mathbb G^4$, $\ker(\tau)$ had a Euclidean inner-product",
+        r"$\leadsto$ &nbsp; in $\mathbb G^4$, $\ker(\tau)$ had a Euclidean inner product",
         r"> $\Longrightarrow$ &nbsp; we had copies of $\mathbb E^3$ through each $p\in\mathbb G^4$ &nbsp;&nbsp; $S_p=p+\ker(\tau)\approx\mathbb E^3$",
-        r"$\leadsto$ &nbsp; now, in $\mathbb M^4$, $\vec u^\perp$ has a Euclidean inner-product for each $\vec u\in\mathbb V^4$ with $\eta(\vec u,\vec u)=\lVert\vec u\rVert^2<0$",
-        r"> $\Longrightarrow$ &nbsp; we get copies of $\mathbb E^3$ through each $p\in\mathbb M^4$, for each such vector $\vec u\in\mathbb V^4$, $\lVert\vec u\rVert^2<0$",
+        r"$\leadsto$ &nbsp; in $\mathbb M^4$, for each $\vec u\in\mathbb V^4$ with $\eta(\vec u,\vec u)<0$, $\vec u^\perp$ has a Euclidean inner product",
+        r"> $\Longrightarrow$ &nbsp; we get copies of $\mathbb E^3$ through each $p\in\mathbb M^4$, for each such vector $\vec u$",
         r"$$S_p^{\vec u}=p+\vec u^\perp\approx\mathbb E^3$$",
     )
     return
@@ -410,13 +409,19 @@ def _(lk):
 def _(lk, s_u0, s_u1):
     # module: Minkowski spacetime
     # definition: timelike, spacelike, lightlike
-    lk.definition(
-        [
-            r"Non-zero 4-vectors $\vec u\in\mathbb V$ are called",
-            r"$$\begin{array}{lll}\textbf{timelike}&\text{if}&\lVert\vec u\rVert^2<0\\\textbf{spacelike}&\text{if}&\lVert\vec u\rVert^2>0\\\textbf{lightlike}&\text{if}&\lVert\vec u\rVert^2=0\end{array}$$",
-            lk.interactive(lk.frame("L03-cone", lk.H3D), controls=[s_u0, s_u1]),
-        ],
-        label="def-causal-character",
+    lk.module(
+        lk.definition(
+            [
+                r"Non-zero 4-vectors $\vec u\in\mathbb V$ are called",
+                lk.aside(
+                    r"$$\begin{array}{lll}\textbf{timelike}&\text{if}&\lVert\vec u\rVert^2<0\\\textbf{spacelike}&\text{if}&\lVert\vec u\rVert^2>0\\\textbf{lightlike}&\text{if}&\lVert\vec u\rVert^2=0.\end{array}$$",
+                    r"$\lVert\vec u\rVert^2=\eta(\vec u,\vec u)$",
+                    at="middle",
+                ),
+            ],
+            label="def-causal-character",
+        ),
+        lk.prose(lk.interactive(lk.frame("L03-cone", lk.H3D), controls=[s_u0, s_u1])),
     )
     return
 
@@ -488,15 +493,17 @@ def _(lk):
 def _(lk, particle_sketch):
     # module: particles and simultaneity
     # definition: particle
-    lk.definition(
-        [
-            lk.aside(
-                r"A **particle** in $\mathbb M^4$ is a parameterized curve &nbsp; $\gamma:\mathbb R\longrightarrow\mathbb M^4$ &nbsp; such that $\gamma'(s)$ is timelike and <span class='lk-mark'>future oriented</span>",
-                "always pointing to the<br>upper side of the cone",
-            ),
-            lk.figure(particle_sketch()),
-        ],
-        label="def-particle",
+    lk.module(
+        lk.definition(
+            [
+                lk.aside(
+                    r"A **particle** in $\mathbb M^4$ is a parameterized curve &nbsp; $\gamma:\mathbb R\longrightarrow\mathbb M^4$ &nbsp; such that $\gamma'(s)$ is timelike and <span class='lk-mark'>future oriented</span>.",
+                    "always pointing to the<br>upper side of the cone",
+                ),
+            ],
+            label="def-particle",
+        ),
+        lk.prose(lk.figure(particle_sketch())),
     )
     return
 
@@ -525,7 +532,7 @@ def _(lk):
     lk.definition(
         [
             r"Given $p\in\mathbb M^4$, and $\vec u\in\mathbb V^4$ timelike",
-            r"$$S_p^{\vec u}=\{q\in\mathbb M^4\mid q-p\in\vec u^\perp\}$$",
+            r"$$S_p^{\vec u}=\{q\in\mathbb M^4\mid q-p\in\vec u^\perp\},$$",
             r"is the **set of events simultaneous to $p$** relative to the inertial observer &nbsp; $\gamma(s)=p+s\,\vec u$",
         ],
         label="def-simultaneous",
@@ -548,7 +555,7 @@ def _(lk):
     # module: proper time
     # proposition: proper time parameterization
     lk.proposition(
-        r"Every particle $\gamma:\mathbb R\longrightarrow\mathbb M^4$ can be parameterized by a “proper time” parameter $t$ &nbsp; such that &nbsp; $\lVert\gamma'(t)\rVert^2=-1$",
+        r"Every particle $\gamma:\mathbb R\longrightarrow\mathbb M^4$ can be parameterized by a “proper time” parameter $t$ &nbsp; such that &nbsp; $\lVert\gamma'(t)\rVert^2=-1$.",
         label="prop-proper-time",
     )
     return
@@ -573,7 +580,7 @@ def _(lk):
         [
             r"The **proper time** along a particle $\gamma:\mathbb R\longrightarrow\mathbb M^4$ is",
             lk.aside(
-                r"$$\begin{aligned}\mathrm{time}_\gamma(\gamma(t_1),\gamma(t_2))&=\int_{t_1}^{t_2}\sqrt{-\lVert\gamma'(t)\rVert^2}\,dt\\[0.3em]&=t_2-t_1\ \mk{\leq}\ \sqrt{-\lVert\gamma(t_2)-\gamma(t_1)\rVert^2}\end{aligned}$$",
+                r"$$\begin{aligned}\mathrm{time}_\gamma(\gamma(t_1),\gamma(t_2))&=\int_{t_1}^{t_2}\sqrt{-\lVert\gamma'(t)\rVert^2}\,dt\\[0.3em]&=t_2-t_1\ \mk{\leq}\ \sqrt{-\lVert\gamma(t_2)-\gamma(t_1)\rVert^2}.\end{aligned}$$",
                 r"$\leq$: with equality iff $\gamma$ is inertial!",
                 at="last",
             ),
@@ -587,14 +594,16 @@ def _(lk):
 def _(lk, relvel_scene):
     # module: relative velocity
     # definition: relative velocity
-    lk.definition(
-        [
-            r"Given two particles $\gamma,\sigma$ &nbsp; (with $\lVert\gamma'\rVert^2=\lVert\sigma'\rVert^2=-1$)",
-            r"the **relative velocity** of $\sigma$ with respect to $\gamma$ is the spacelike vector orthogonal to $\gamma'$",
-            r"$$\vec v(\gamma,\sigma)=\frac{\sigma'}{-\eta(\gamma',\sigma')}-\gamma'\in(\gamma')^\perp$$",
-            lk.figure(relvel_scene()),
-        ],
-        label="def-relative-velocity",
+    lk.module(
+        lk.definition(
+            [
+                r"Given two particles $\gamma,\sigma$ &nbsp; (with $\lVert\gamma'\rVert^2=\lVert\sigma'\rVert^2=-1$)",
+                r"the **relative velocity** of $\sigma$ with respect to $\gamma$ is the spacelike vector orthogonal to $\gamma'$",
+                r"$$\vec v(\gamma,\sigma)=\frac{\sigma'}{-\eta(\gamma',\sigma')}-\gamma'\in(\gamma')^\perp.$$",
+            ],
+            label="def-relative-velocity",
+        ),
+        lk.prose(lk.figure(relvel_scene())),
     )
     return
 

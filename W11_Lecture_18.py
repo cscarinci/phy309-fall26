@@ -196,7 +196,7 @@ def _(lk):
         $$
         \begin{aligned}
         \frac{D}{dt}:\left\{\begin{matrix}\text{vector fields}\\\text{along }\gamma(t)\end{matrix}\right\}&\longrightarrow\left\{\begin{matrix}\text{vector fields}\\\text{along }\gamma(t)\end{matrix}\right\}\\[0.4em]
-        X(t)&\longmapsto\frac{D}{dt}X(t)
+        X(t)&\longmapsto\frac{D}{dt}X(t),
         \end{aligned}
         $$
 
@@ -210,13 +210,14 @@ def _(lk):
 
         > > $$
         > > \begin{aligned}
+        > > &\begin{aligned}
         > > \frac{D}{dt}X(t)&\overset{\varphi}{=}\frac{D}{dt}\big(X^i(t)\,\partial_i|_{\gamma(t)}\big)\\
         > > &=\frac{d}{dt}X^i(t)\,\partial_i|_{\gamma(t)}+X^i(t)\,\frac{D}{dt}\partial_i|_{\gamma(t)}\\
         > > &=\dot X^i(t)\,\partial_i|_{\gamma(t)}+X^i(t)\,\underbrace{\dot x^j(t)\,\Gamma^k_{ij}(\gamma(t))\,\partial_k|_{\gamma(t)}}_{\footnotesize\begin{array}{c}\frac{D}{dt}\partial_i|_{\gamma(t)}\text{ depends linearly}\\\text{on the velocity }\dot\gamma(t)\end{array}}\rule[-2.6em]{0pt}{0pt}
+        > > \end{aligned}\\[6pt]
+        > > &\Longrightarrow\quad \frac{D}{dt}X(t)\overset{\varphi}{=}\big(\dot X^k(t)+X^i(t)\,\dot x^j(t)\,\Gamma^k_{ij}(\gamma(t))\big)\,\partial_k|_{\gamma(t)}.
         > > \end{aligned}
         > > $$
-
-        > > > $\Longrightarrow$ &nbsp; $\displaystyle\frac{D}{dt}X(t)\overset{\varphi}{=}\big(\dot X^k(t)+X^i(t)\,\dot x^j(t)\,\Gamma^k_{ij}(\gamma(t))\big)\,\partial_k|_{\gamma(t)}$
 
         $\Gamma^k_{ij}(\gamma(t))$ are the **Christoffel symbols** of the covariant derivative with respect to $\varphi$ along $\gamma(t)$
         """,
@@ -274,7 +275,7 @@ def _(lk):
         [
             r"Given a metric $g\in\Gamma(TM^0_2)$, we can define in each chart $\varphi$ a collection $\Gamma^k_{ij}$ of Christoffel symbols via",
             lk.aside(
-                r"$$\mk{\Gamma^k_{ij}}=\frac12\,g^{kl}\,(\partial_ig_{lj}+\partial_jg_{il}-\partial_lg_{ij})$$",
+                r"$$\mk{\Gamma^k_{ij}}=\frac12\,g^{kl}\,(\partial_ig_{lj}+\partial_jg_{il}-\partial_lg_{ij}).$$",
                 r"Christoffel symbols of<br>the Levi-Civita connection",
             ),
         ],

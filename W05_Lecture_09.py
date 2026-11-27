@@ -398,7 +398,7 @@ def _(lk):
         r"Given &nbsp; $f:\mathbb A\to\mathbb B$ &nbsp; a map, &nbsp; $x\in\mathbb A$, &nbsp; $v\in\mathbb V$",
         lk.aside(
             r"> $\leadsto$ &nbsp; $Df_x(v)=\displaystyle\lim_{t\to0}\frac{\mk{f(x+tv)-f(x)}}{t}\in\mathbb W$ &nbsp; (directional derivative)",
-            r"uses affine structure<br>both on $\mathbb A$ and on $\mathbb B$!",
+            r"uses affine structure<br>both on $\mathbb A$ and on $\mathbb B$",
         ),
         r"""
         > $\leadsto$ &nbsp; $f$ is differentiable if
@@ -438,7 +438,7 @@ def _(lk):
         r"""
         Given $M$ $m$-manifold, &nbsp; $\gamma:\mathbb R\to M$, &nbsp; $\tilde\gamma:\mathbb R\to M$ &nbsp; two smooth paths with $\gamma(0)=\tilde\gamma(0)$ are said to have the **same velocity** at $p=\gamma(0)=\tilde\gamma(0)$ if for some chart $\varphi:U\subseteq M\to\varphi(U)\subseteq\mathbb R^m$ with $p\in U$ we have
 
-        $$(\varphi\circ\gamma)'(0)=(\varphi\circ\tilde\gamma)'(0)\in\mathbb R^m$$
+        $$(\varphi\circ\gamma)'(0)=(\varphi\circ\tilde\gamma)'(0)\in\mathbb R^m.$$
         """,
         label="def-same-velocity",
     )
@@ -457,7 +457,7 @@ def _(lk):
 def _(lk):
     # module: tangent space
     # remark: an equivalence relation
-    lk.remark(r"The condition $(\varphi\circ\gamma)'(0)=(\varphi\circ\tilde\gamma)'(0)$ defines an equivalence relation of paths through $p=\gamma(0)=\tilde\gamma(0)$!")
+    lk.remark(r"$(\varphi\circ\gamma)'(0)=(\varphi\circ\tilde\gamma)'(0)$ defines an equivalence relation of paths through $p=\gamma(0)=\tilde\gamma(0)$.")
     return
 
 
@@ -469,7 +469,7 @@ def _(lk):
         [
             r"Let $M$ be an $m$-manifold. Given $p\in M$, the **tangent space** of $M$ at $p$ is the set of all equivalence classes of smooth paths through $p$",
             lk.aside(
-                r"$$T_pM=\{\mk{[\gamma]}\mid\gamma:\mathbb R\to M,\ \gamma(0)=p\}$$",
+                r"$$T_pM=\{\mk{[\gamma]}\mid\gamma:\mathbb R\to M,\ \gamma(0)=p\}.$$",
                 r"equivalence class of $\gamma$<br>(all paths with same velocity at $p$)",
             ),
         ],
@@ -507,7 +507,7 @@ def _(charts_velocity_figure, lk, s_a, s_b, s_u0, s_v0, stereo_scene):
             r"$$(\varphi_n\circ\gamma)'(0)=\begin{bmatrix}u'(0)\\v'(0)\end{bmatrix}=\begin{bmatrix}a\\b\end{bmatrix}\in\mathbb R^2$$",
             lk.figure(stereo_scene()),
             r"Another &nbsp; $\tilde\gamma:\mathbb R\to\mathbb S^2$ &nbsp; is considered equivalent to $\gamma$ if",
-            r"$$\tilde\gamma(0)=\gamma(0)=p\qquad\text{and}\qquad(\varphi_n\circ\tilde\gamma)'(0)=\begin{bmatrix}a\\b\end{bmatrix}\in\mathbb R^2$$",
+            r"$$\tilde\gamma(0)=\gamma(0)=p\qquad\text{and}\qquad(\varphi_n\circ\tilde\gamma)'(0)=\begin{bmatrix}a\\b\end{bmatrix}\in\mathbb R^2.$$",
             lk.gap(),
             r"""
             If &nbsp; $(\varphi_n\circ\gamma)'(0)=(\varphi_n\circ\tilde\gamma)'(0)$ &nbsp; $\Longrightarrow$ &nbsp; $(\varphi_s\circ\gamma)'(0)=(\varphi_s\circ\tilde\gamma)'(0)$
@@ -533,9 +533,9 @@ def _(lk):
             r"""
             > $\leadsto$ &nbsp; $\gamma(t)=\varphi_n^{-1}\big(u(0)+t\,a,\ v(0)+t\,b\big)$
 
-            > > $\Longrightarrow$ &nbsp; $(\varphi_n\circ\gamma)'(0)=\begin{bmatrix}a\\b\end{bmatrix}$ !
+            > > $\Longrightarrow$ &nbsp; $(\varphi_n\circ\gamma)'(0)=\begin{bmatrix}a\\b\end{bmatrix}$
             """,
-            lk.aside(r"$\therefore$ &nbsp; $T_p\mathbb S^2\mathrel{\mk{\approx}}\mathbb R^2$", "as a vector space! (later)"),
+            lk.aside(r"$\therefore$ &nbsp; $T_p\mathbb S^2\mathrel{\mk{\approx}}\mathbb R^2$.", "as a vector space! (later)"),
         ]
     )
     return
@@ -545,13 +545,15 @@ def _(lk):
 def _(derivative_figure, lk):
     # module: derivative
     # definition: the derivative of a smooth map
-    lk.definition(
-        [
-            r"The **derivative** of a smooth map $f:M\to N$ at $p\in M$ is the map",
-            r"$$Df_p:T_pM\longrightarrow T_{f(p)}N,\qquad\underbrace{[\gamma]}_{\footnotesize\text{“velocity at }p\text{”}}\longmapsto Df_p[\gamma]=\underbrace{[f\circ\gamma]}_{\footnotesize\text{“velocity at }f(p)\text{”}}$$",
-            lk.figure(derivative_figure()),
-        ],
-        label="def-derivative",
+    lk.module(
+        lk.definition(
+            [
+                r"The **derivative** of a smooth map $f:M\to N$ at $p\in M$ is the map",
+                r"$$Df_p:T_pM\longrightarrow T_{f(p)}N,\qquad\underbrace{[\gamma]}_{\footnotesize\text{“velocity at }p\text{”}}\longmapsto Df_p[\gamma]=\underbrace{[f\circ\gamma]}_{\footnotesize\text{“velocity at }f(p)\text{”}}.$$",
+            ],
+            label="def-derivative",
+        ),
+        lk.prose(lk.figure(derivative_figure())),
     )
     return
 
@@ -564,7 +566,7 @@ def _(lk):
         [
             r"$f:M\to\mathbb R$ &nbsp; smooth, &nbsp; $p\in M$, &nbsp; $[\gamma]\in T_pM$",
             lk.aside(
-                r"$$Df_p[\gamma]=[\underbrace{f\circ\gamma}_{\footnotesize h:\mathbb R\to\mathbb R}]\mathrel{\text{“}{=}\text{”}}\mk{(f\circ\gamma)'(0)}$$",
+                r"$$Df_p[\gamma]=[\underbrace{f\circ\gamma}_{\footnotesize h:\mathbb R\to\mathbb R}]\mathrel{\text{“}{=}\text{”}}\mk{(f\circ\gamma)'(0)}.$$",
                 r"velocity of a single variable<br>scalar function",
             ),
             r"> $h\sim\tilde h$ &nbsp; $\Longleftrightarrow$ &nbsp; $h'(0)=\tilde h'(0)\in\mathbb R$",
@@ -611,7 +613,7 @@ def _(lk):
         r"""
         Using the ambient space $\mathbb R^3$
 
-        $$[\gamma]\mathrel{\text{“}{=}\text{”}}\begin{bmatrix}0\\1\\0\end{bmatrix},\qquad[\sigma]\mathrel{\text{“}{=}\text{”}}\begin{bmatrix}0\\0\\1\end{bmatrix}$$
+        $$[\gamma]\mathrel{\text{“}{=}\text{”}}\begin{bmatrix}0\\1\\0\end{bmatrix},\qquad[\sigma]\mathrel{\text{“}{=}\text{”}}\begin{bmatrix}0\\0\\1\end{bmatrix}.$$
         """
     )
     return

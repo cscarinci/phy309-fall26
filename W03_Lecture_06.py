@@ -110,7 +110,7 @@ def _(lk):
         r"$\sigma'':\mathbb R\longrightarrow\mathbb V^4$ &nbsp; 4-acceleration",
         r"relativistic equations of motion",
         lk.aside(
-            r"$$\underbrace{m\,\sigma''=\mk{\kappa}\,\mk{F}(\sigma,\sigma')}_{\text{2nd order system of ODEs}}$$",
+            r"$$\underbrace{m\,\sigma''=\mk{\kappa}\,\mk{F}(\sigma,\sigma')}_{\text{2nd order system of ODEs}}.$$",
             r"$\kappa$ = coupling constant (charge)<br>$F$ = force rule",
         ),
         topic="Relativistic dynamics",
@@ -171,7 +171,7 @@ def _(lk):
     # module: universality of free fall
     # definition: free-falling particle
     lk.definition(
-        r"A **free-falling particle** is a particle subject to no non-gravitational forces",
+        r"A **free-falling particle** is a particle subject to no non-gravitational forces.",
         label="def-free-falling",
     )
     return
@@ -185,7 +185,7 @@ def _(lk):
         r"$\leadsto$ &nbsp; in principle defined via",
         r"$$\begin{cases}\sigma''=G(\sigma,\sigma')\\\sigma(0)=p,\ \sigma'(0)=v\end{cases}$$",
         lk.aside(
-            r"> for the given gravitational force, but <span class='lk-mark'>independent</span> of the particle's “internal structure”",
+            r"> for the given gravitational force, <span class='lk-mark'>independent</span> of the particle's “internal structure”",
             "“universality of free fall”",
         ),
     )
@@ -201,7 +201,7 @@ def _(lk):
             r"Einstein's thought experiment",
             "an observer releases a test particle<br>and observes its evolution",
         ),
-        r"Consider $\gamma$ (the “observer”) and $\sigma$ (the “test particle”) two particles with &nbsp; $\begin{cases}\sigma(0)=\gamma(0)=p\\\sigma'(0)=\gamma'(0)=v\end{cases}$",
+        r"Consider $\gamma$ (the “observer”) and $\sigma$ (the “test particle”) two particles with &nbsp; $\begin{cases}\sigma(0)=\gamma(0)=p\\\sigma'(0)=\gamma'(0)=v\end{cases}$.",
         r"Suppose &nbsp; $\begin{aligned}m_\gamma\gamma''&=m_\gamma G(\gamma,\gamma')+\ell_\gamma H(\gamma,\gamma')\\m_\sigma\sigma''&=m_\sigma G(\sigma,\sigma')+\kappa_\sigma F(\sigma,\sigma')\end{aligned}$",
         r"> $\displaystyle\begin{aligned}\Longrightarrow\quad a(\gamma,\sigma)(p)&=\sigma''(0)-\gamma''(0)\\[0.3em]&=\frac{\kappa_\sigma}{m_\sigma}F(p,v)-\frac{\ell_\gamma}{m_\gamma}H(p,v)\end{aligned}$",
         lk.gap(),
@@ -259,7 +259,7 @@ def _(lk, s_t):
     # neighboring free-falling particles
     lk.prose(
         r"Consider now neighboring free-falling particles $\gamma,\sigma$",
-        r"$$\gamma''=G(\gamma,\gamma'),\qquad\sigma''=G(\sigma,\sigma')$$",
+        r"$$\gamma''=G(\gamma,\gamma'),\qquad\sigma''=G(\sigma,\sigma'),$$",
         r"> with &nbsp; $\sigma(0)=\gamma(0)+\delta$, &nbsp; $\sigma'(0)=\gamma'(0)=v$ &nbsp; and &nbsp; $\delta\in v^\perp$",
         lk.aside(
             r"> $\displaystyle\begin{aligned}\Longrightarrow\quad a(\gamma,\sigma)(0)&=G(p+\delta,v)-G(p,v)\\[0.3em]&=D_1G(p,v)[\delta]+O(\lVert\delta\rVert^2)\\[0.3em]&=\mk{\nu(\gamma,\sigma)'(0)}\quad\text{not zero in general!}\end{aligned}$",

@@ -241,7 +241,7 @@ def _(cone_sketch, lk):
             r"$(\mathbb A^4,\mathbb V^4,-)$ = affine space<br>$\eta$ symmetric, bilinear, signature $(3,1)$",
         ),
         lk.aside(
-            r"$\mk{u}\in\mathbb V^4$ &nbsp; $\leadsto$ &nbsp; $\begin{cases}\text{timelike}&\text{if }\lVert u\rVert^2<0\\\text{spacelike}&\text{if }\lVert u\rVert^2>0\\\text{lightlike}&\text{if }\lVert u\rVert^2=0\end{cases}$",
+            r"$\mk{u}\in\mathbb V^4$ &nbsp; $\leadsto$ &nbsp; $\begin{cases}\text{timelike},&\text{if }\lVert u\rVert^2<0,\\\text{spacelike},&\text{if }\lVert u\rVert^2>0,\\\text{lightlike},&\text{if }\lVert u\rVert^2=0\end{cases}$",
             r"$u$ non-zero",
         ),
         lk.figure(cone_sketch()),
@@ -315,7 +315,7 @@ def _(lk):
     # module: proper time length
     # definition: particle
     lk.definition(
-        r"A **particle** in $\mathbb M^4$ is a parameterized curve &nbsp; $\gamma:\mathbb R\longrightarrow\mathbb M^4$ &nbsp; such that $\gamma'(s)$ is timelike and future oriented",
+        r"A **particle** in $\mathbb M^4$ is a parameterized curve &nbsp; $\gamma:\mathbb R\longrightarrow\mathbb M^4$ &nbsp; such that $\gamma'(s)$ is timelike and future oriented.",
         label="def-particle",
     )
     return
@@ -326,7 +326,7 @@ def _(lk, particle_sketch):
     # module: proper time length
     # the tangent vector stays inside the upper cone
     lk.prose(
-        r"At every event in the history of the particle its tangent 4-vector is inside the upper light cone!",
+        r"The tangent 4-vector of a particle is always inside the upper light cone!",
         r"> $\Longrightarrow$ &nbsp; $\gamma(t_2)-\gamma(t_1)$ is also inside the upper cone &nbsp; $\forall\,t_2>t_1$",
         lk.figure(particle_sketch()),
     )
@@ -338,7 +338,7 @@ def _(lk):
     # module: proper time length
     # theorem: proper time parameterization
     lk.theorem(
-        r"Every particle in $\mathbb M^4$ can be parameterized by a “proper time length parameter” $t$ &nbsp; such that &nbsp; $\lVert\gamma'(t)\rVert^2=-1$",
+        r"Every particle in $\mathbb M^4$ can be parameterized by a “proper time length parameter” $t$ &nbsp; such that &nbsp; $\lVert\gamma'(t)\rVert^2=-1$.",
         label="thm-proper-time-parameter",
     )
     return
@@ -367,7 +367,7 @@ def _(lk):
         [
             r"The **proper time length** of a particle $\gamma:\mathbb R\longrightarrow\mathbb M^4$ is",
             lk.aside(
-                r"$$\begin{aligned}\mathrm{time}_\gamma(\gamma(t_1),\gamma(t_2))&=\int_{t_1}^{t_2}\sqrt{-\lVert\gamma'(t)\rVert^2}\,dt\\[0.3em]&=\mk{t_2-t_1}\ \mk{\leq}\ \sqrt{-\lVert\gamma(t_2)-\gamma(t_1)\rVert^2}\end{aligned}$$",
+                r"$$\begin{aligned}\mathrm{time}_\gamma(\gamma(t_1),\gamma(t_2))&=\int_{t_1}^{t_2}\sqrt{-\lVert\gamma'(t)\rVert^2}\,dt\\[0.3em]&=\mk{t_2-t_1}\ \mk{\leq}\ \sqrt{-\lVert\gamma(t_2)-\gamma(t_1)\rVert^2}.\end{aligned}$$",
                 r"$t_2-t_1$: proper time parameterization<br>$\leq$: equal only if $\gamma$ is an inertial particle",
                 at="last",
             ),
@@ -436,7 +436,7 @@ def _(lk):
 
             > $\leadsto$ &nbsp; Choose &nbsp; $e_\mu=e_0,e_i$ &nbsp; inertial frame
 
-            > > $\Longrightarrow$ &nbsp; $\begin{cases}u=u^0e_0+u^ie_i&\text{with }u^0>0\\v=v^0e_0+v^ie_i&\text{with }v^0>0\end{cases}$
+            > > $\Longrightarrow$ &nbsp; $\begin{cases}u=u^0e_0+u^ie_i,&\text{with }u^0>0,\\v=v^0e_0+v^ie_i,&\text{with }v^0>0\end{cases}$
             """,
             lk.aside(
                 r"> $\lVert u\rVert^2=-(u^0)^2+\delta_{ij}u^iu^j<0$ &nbsp; $\Longrightarrow$ &nbsp; $\mk{\sqrt{\delta_{ij}u^iu^j}}<u^0$",
@@ -451,7 +451,7 @@ def _(lk):
             """,
             lk.gap(),
             lk.aside(
-                r"Consider &nbsp; $\eta(u+tv,u+tv)=\lVert u\rVert^2+2t\,\eta(u,v)+t^2\lVert v\rVert^2$",
+                r"Consider &nbsp; $\eta(u+tv,u+tv)=\lVert u\rVert^2+2t\,\eta(u,v)+t^2\lVert v\rVert^2$.",
                 r"quadratic polynomial with negative leading coefficient<br>$\Longrightarrow$ achieves a maximum at $t=-\dfrac{\eta(u,v)}{\lVert v\rVert^2}$",
             ),
             r"Let &nbsp; $w=u-\dfrac{\eta(u,v)}{\lVert v\rVert^2}\,v$",
@@ -528,7 +528,7 @@ def _(lk):
     lk.definition(
         [
             r"Given a particle $\gamma:\mathbb R\longrightarrow\mathbb M^4$ &nbsp; ($\lVert\gamma'(t)\rVert^2=-1$)",
-            r"$$\begin{aligned}S_{\gamma(t)}&=\gamma(t)+\gamma'(t)^\perp\\[0.3em]&=\textbf{space of simultaneous events}\text{ to }\gamma(t)\text{ relative to }\gamma'(t)\end{aligned}$$",
+            r"$$\begin{aligned}S_{\gamma(t)}&=\gamma(t)+\gamma'(t)^\perp\\[0.3em]&=\textbf{space of simultaneous events}\text{ to }\gamma(t)\text{ relative to }\gamma'(t).\end{aligned}$$",
         ],
         label="def-simultaneous",
     )
@@ -556,7 +556,7 @@ def _(lk, s_beta):
         r"Given two particles $\gamma,\sigma$ &nbsp; $\left(\begin{matrix}\lVert\gamma'(t)\rVert^2=-1,\ \lVert\sigma'(s)\rVert^2=-1\\\gamma(0)=\sigma(0)=p,\ \gamma'(0)=u,\ \sigma'(0)=v\end{matrix}\right)$",
         r"The velocity of $\sigma$ relative to $\gamma$ at $p$ is the spacelike vector orthogonal to $u=\gamma'(0)$",
         lk.aside(
-            r"$$\nu(u,v)=\mk{\frac{v}{-\eta(u,v)}-u}\in u^\perp$$",
+            r"$$\nu(u,v)=\mk{\frac{v}{-\eta(u,v)}-u}\in u^\perp.$$",
             r"depends on $u$ and $v$",
         ),
         lk.interactive(lk.frame("L04-relvel", lk.H3D), controls=[s_beta]),
@@ -594,7 +594,7 @@ def _(lk):
     lk.definition(
         [
             r"A **photon** in $\mathbb M^4$ is a future oriented lightlike line",
-            r"$$\xi(s)=p+s\,w\qquad(\lVert w\rVert^2=0\ \text{in the future cone})$$",
+            r"$$\xi(s)=p+s\,w\qquad(\lVert w\rVert^2=0\ \text{in the future cone}).$$",
         ],
         label="def-photon",
     )
@@ -607,17 +607,21 @@ def _(lk):
     # the relative velocity of a photon
     lk.prose(
         r"The relative velocity of a photon relative to a particle $\gamma$ as above is",
-        r"$$\nu(u,w)=\frac{w}{-\eta(u,w)}-u\in u^\perp$$",
         lk.aside(
-            r"> $\Longrightarrow$ &nbsp; $\lVert\nu(u,w)\rVert^2=\mk{\dfrac{\lVert w\rVert^2}{\eta(u,w)^2}}+\lVert u\rVert^2+2\,\dfrac{\eta(u,w)}{\eta(u,w)}=1$ &nbsp; !",
-            r"$\lVert w\rVert^2/\eta(u,w)^2=0$",
+            r"$$\begin{aligned}&\nu(u,w)=\frac{w}{-\eta(u,w)}-u\in u^\perp\\[8pt]&\Longrightarrow\quad\lVert\nu(u,w)\rVert^2=\dfrac{\mk{\lVert w\rVert^2}}{\eta(u,w)^2}+\lVert u\rVert^2+2\,\dfrac{\eta(u,w)}{\eta(u,w)}=1.\end{aligned}$$",
+            r"$\lVert w\rVert^2=0$",
+            at=2,
+            rows=2,
         ),
         lk.gap(),
         lk.aside(
-            r"$\leadsto$ &nbsp; photons <span class='lk-mark'>achieve the maximal relative velocity</span>!",
-            "with respect to EVERY other particle!",
+            r"$\leadsto$ &nbsp; photons <span class='lk-mark'>achieve the maximal velocity</span>!",
+            "relative to any other particle!",
         ),
-        r"$\leadsto$ &nbsp; Minkowski geometry is not incompatible with Maxwell's electrodynamics (at least in principle)",
+        lk.aside(
+            r"$\leadsto$ &nbsp; Minkowski geometry is not incompatible with Maxwell's electrodynamics",
+            "at least in principle",
+        ),
     )
     return
 
@@ -630,15 +634,15 @@ def _(lk):
         [
             r"Maxwell's equations",
             lk.aside(
-                r"$$\begin{cases}\underbrace{\partial_iB^i}_{\nabla\cdot B}=0\qquad&\underbrace{\epsilon^{ijk}\partial_jE_k}_{\nabla\times E}+\partial_0B^i=0\\[0.6em]\partial_iE^i=\rho&\epsilon^{ijk}\partial_jB_k-\partial_0E^i=J^i\end{cases}$$",
+                r"$$\begin{cases}\underbrace{\partial_iB^i}_{\nabla\cdot B}=0\qquad&\underbrace{\epsilon^{ijk}\partial_jE_k}_{\nabla\times E}+\partial_0B^i=0,\\[0.6em]\partial_iE^i=\rho&\epsilon^{ijk}\partial_jB_k-\partial_0E^i=J^i,\end{cases}$$",
                 "not invariant under change of<br>Galilean inertial frames …<br>(Galilean transformations)",
             ),
             r"have a very “simple” formulation in Minkowski spacetime",
             lk.aside(
-                r"$$\begin{cases}\partial_\mu\tilde F^{\mu\nu}=0\\\partial_\mu F^{\mu\nu}=J^\nu\end{cases}$$",
+                r"$$\begin{cases}\partial_\mu\tilde F^{\mu\nu}=0\\\partial_\mu F^{\mu\nu}=J^\nu,\end{cases}$$",
                 "invariant under change of<br>Minkowski inertial frame!<br>(Poincaré transformations)",
             ),
-            r"$$F^{\mu\nu}=\begin{bmatrix}0&-E^1&-E^2&-E^3\\E^1&0&-B^3&B^2\\E^2&B^3&0&-B^1\\E^3&-B^2&B^1&0\end{bmatrix}\quad\tilde F^{\mu\nu}=\begin{bmatrix}0&-B^1&-B^2&-B^3\\B^1&0&E^3&-E^2\\B^2&-E^3&0&E^1\\B^3&E^2&-E^1&0\end{bmatrix}\quad J^\mu=\begin{bmatrix}\rho\\J^i\end{bmatrix}$$",
+            r"$$F^{\mu\nu}=\begin{bmatrix}0&-E^1&-E^2&-E^3\\E^1&0&-B^3&B^2\\E^2&B^3&0&-B^1\\E^3&-B^2&B^1&0\end{bmatrix}\quad\tilde F^{\mu\nu}=\begin{bmatrix}0&-B^1&-B^2&-B^3\\B^1&0&E^3&-E^2\\B^2&-E^3&0&E^1\\B^3&E^2&-E^1&0\end{bmatrix}\quad J^\mu=\begin{bmatrix}\rho\\J^i\end{bmatrix}.$$",
         ]
     )
     return

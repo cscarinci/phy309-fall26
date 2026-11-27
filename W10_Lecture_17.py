@@ -82,19 +82,19 @@ def _(lk):
         \alpha:\Gamma(TM)&\longrightarrow C^\infty(M,\mathbb R)\\
         \beta:\Gamma(TM)&\longrightarrow C^\infty(M,\mathbb R)
         \end{aligned}
-        \qquad C^\infty(M,\mathbb R)\text{-linear}
+        \qquad C^\infty(M,\mathbb R)\text{-linear},
         $$
 
         we define the **tensor product** of $\alpha$ and $\beta$
 
         $$
-        \alpha\otimes\beta:\Gamma(TM)\times\Gamma(TM)\longrightarrow C^\infty(M,\mathbb R)
+        \alpha\otimes\beta:\Gamma(TM)\times\Gamma(TM)\longrightarrow C^\infty(M,\mathbb R),
         $$
 
         as the $C^\infty(M,\mathbb R)$-bilinear functional on $\Gamma(TM)\times\Gamma(TM)$
 
         $$
-        (\alpha\otimes\beta)(X,Y)=\alpha(X)\cdot\beta(Y)
+        (\alpha\otimes\beta)(X,Y)=\alpha(X)\cdot\beta(Y).
         $$
         """,
         label="def-tensor-product",
@@ -129,16 +129,16 @@ def _(lk):
             r"In this “matrix of components” representation we are writing",
             lk.aside(
                 r"""$$
-                \partial_i=\begin{bmatrix}0\\\vdots\\0\\1\\0\\\vdots\\0\end{bmatrix}\begin{matrix}\\\\\\\leftarrow i\\\\\\\\\end{matrix}
+                \partial_i=\begin{bmatrix}0\\\vdots\\0\\1\\0\\\vdots\\0\end{bmatrix}\begin{matrix}\\\\\\\leftarrow i\\\\\\\\\end{matrix},
                 $$""",
                 r"local basis of coordinate vector fields",
             ),
             lk.aside(
-                r"$$dx^i=\begin{bmatrix}0&\cdots&0&\overset{\overset{\scriptstyle i}{\downarrow}}{1}&0&\cdots&0\end{bmatrix}$$",
+                r"$$dx^i=\begin{bmatrix}0&\cdots&0&\overset{\overset{\scriptstyle i}{\downarrow}}{1}&0&\cdots&0\end{bmatrix},$$",
                 r"local basis of coordinate covector fields<br>= linear form fields",
             ),
             lk.aside(
-                r"$$dx^i\otimes dx^j=\begin{bmatrix}0&\cdots&\cdots&\cdots&0\\\cdots&0&\overset{\overset{\scriptstyle ij}{\downarrow}}{1}&0&\cdots\\0&\cdots&\cdots&\cdots&0\end{bmatrix}$$",
+                r"$$dx^i\otimes dx^j=\begin{bmatrix}0&\cdots&\cdots&\cdots&0\\\cdots&0&\overset{\overset{\scriptstyle ij}{\downarrow}}{1}&0&\cdots\\0&\cdots&\cdots&\cdots&0\end{bmatrix}.$$",
                 r"local basis of coordinate bilinear form fields",
             ),
             r"""
@@ -151,7 +151,7 @@ def _(lk):
             > can be written in charts as
             """,
             lk.aside(
-                r"$$T\overset{\varphi}{=}\mk{T_{ij}\,dx^i\otimes dx^j},\qquad T_{ij}=T(\partial_i,\partial_j)$$",
+                r"$$T\overset{\varphi}{=}\mk{T_{ij}\,dx^i\otimes dx^j},\qquad T_{ij}=T(\partial_i,\partial_j).$$",
                 r"$C^\infty(M,\mathbb R)$-linear combinations<br>of tensor products of covector fields",
             ),
         ]
@@ -168,7 +168,7 @@ def _(lk):
         A $C^\infty(M,\mathbb R)$-bilinear functional of vector fields
 
         $$
-        T:\Gamma(TM)\times\Gamma(TM)\longrightarrow C^\infty(M,\mathbb R)
+        T:\Gamma(TM)\times\Gamma(TM)\longrightarrow C^\infty(M,\mathbb R),
         $$
 
         is called an **order 2 covariant tensor field**
@@ -245,7 +245,7 @@ def _(lk):
             For each $r,s\in\mathbb N$ pair of natural numbers, a **$(r,s)$-tensor field** ($r$-contravariant, $s$-covariant)<br>is a $C^\infty(M,\mathbb R)$-multilinear functional
 
             $$
-            T:\underbrace{\Gamma(T^*M)\times\cdots\times\Gamma(T^*M)}_{r}\times\underbrace{\Gamma(TM)\times\cdots\times\Gamma(TM)}_{s}\longrightarrow C^\infty(M,\mathbb R)
+            T:\underbrace{\Gamma(T^*M)\times\cdots\times\Gamma(T^*M)}_{r}\times\underbrace{\Gamma(TM)\times\cdots\times\Gamma(TM)}_{s}\longrightarrow C^\infty(M,\mathbb R).
             $$
             """,
             lk.aside(
@@ -258,7 +258,7 @@ def _(lk):
             $$
             \begin{aligned}
             \Gamma(\underbrace{TM\otimes\cdots\otimes TM}_{r}\otimes\underbrace{T^*M\otimes\cdots\otimes T^*M}_{s})&=\Gamma(TM^{\otimes r}\otimes T^*M^{\otimes s})\\
-            &=\Gamma(TM^r_s)
+            &=\Gamma(TM^r_s).
             \end{aligned}
             $$
             """,
@@ -307,15 +307,16 @@ def _(lk):
         In charts
 
         > $$
-        > \begin{alignedat}{2}
+        > \begin{aligned}
+        > &\begin{alignedat}{2}
         > g&\overset{\varphi}{=}g_{ij}\,dx^i\otimes dx^j&\qquad g(\cdot,Y)&\overset{\varphi}{=}\overbrace{g_{ij}Y^j}^{\footnotesize\text{denoted }Y_i}\,dx^i=\alpha_i\,dx^i\\[0.6em]
         > g^{-1}&\overset{\varphi}{=}g^{ij}\,\partial_i\otimes\partial_j&g^{-1}(\alpha,\cdot)&\overset{\varphi}{=}\underbrace{g^{ij}\alpha_i}_{\footnotesize\text{denoted }\alpha^j}\,\partial_j=Y^j\,\partial_j
-        > \end{alignedat}
+        > \end{alignedat}\\[6pt]
+        > &\Longleftrightarrow\quad g^{ik}g_{kj}=\delta^i{}_j\ \text{and}\ g_{ik}g^{kj}=\delta_i{}^j.
+        > \end{aligned}
         > $$
 
-        > > $\Longleftrightarrow$ &nbsp; $g^{ik}g_{kj}=\delta^i{}_j$ &nbsp; and &nbsp; $g_{ik}g^{kj}=\delta_i{}^j$
-
-        > > > $\leadsto$ &nbsp; $[g^{-1}]=[g]^{-1}$
+        > > $\leadsto$ &nbsp; $[g^{-1}]=[g]^{-1}$
 
         > > > <span class="lk-ghost">$\leadsto$ &nbsp; </span>$[g(\cdot,Y)]=([g][Y])^t$ &nbsp; and &nbsp; $[g^{-1}(\alpha,\cdot)]=([\alpha][g^{-1}])^t$
         """

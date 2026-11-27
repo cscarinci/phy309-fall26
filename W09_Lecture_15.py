@@ -293,7 +293,7 @@ def _(lk):
     lk.recap(
         r"$g:p\in M\longmapsto g_p:T_pM\times T_pM\to\mathbb R$",
         lk.aside(
-            r"assignment of <span class='lk-mark'>inner-product</span> on each tangent space",
+            r"assignment of <span class='lk-mark'>inner product</span> on each tangent space",
             "symmetric, bilinear<br>Euclidean or Minkowski",
         ),
         r"> $\leadsto$ &nbsp; given $X_p,Y_p\in T_pM$, &nbsp; $g_p(X_p,Y_p)\in\mathbb R$ is well-defined independent of charts",
@@ -352,11 +352,11 @@ def _(lk):
         $$
         \begin{aligned}
         g:\Gamma(TM)\times\Gamma(TM)&\longrightarrow C^\infty(M,\mathbb R)\\
-        (X,Y)&\longmapsto g(X,Y):p\mapsto g_p(X_p,Y_p)
+        (X,Y)&\longmapsto g(X,Y):p\mapsto g_p(X_p,Y_p).
         \end{aligned}
         $$
 
-        $\leadsto$ &nbsp; inner-product of smooth vector fields taking values on smooth functions
+        $\leadsto$ &nbsp; inner product of smooth vector fields taking values on smooth functions
         """,
     )
     return
@@ -406,7 +406,7 @@ def _(lk):
         Given a Riemannian metric $g$ on $M$ and a path segment $\gamma:[a,b]\to M$
 
         $$
-        \mathrm{length}_g(\gamma)=\int_a^b\sqrt{g_{\gamma(t)}(\gamma'(t),\gamma'(t))}\,dt
+        \mathrm{length}_g(\gamma)=\int_a^b\sqrt{g_{\gamma(t)}(\gamma'(t),\gamma'(t))}\,dt.
         $$
         """,
         label="def-length",
@@ -431,13 +431,14 @@ def _(latitude_scene, lk):
 
             $$
             \begin{aligned}
+            &\begin{aligned}
             g_{\gamma(t)}(\gamma'(t),\gamma'(t))&=\frac{4}{(1+u(t)^2+v(t)^2)^2}\,\big(u'(t)^2+v'(t)^2\big)\\
             &=\frac{4}{(1+\cot(\phi_0/2)^2)^2}\,\cot(\phi_0/2)^2=\sin(\phi_0)^2\\
             &=\phi'(t)^2+\sin(\phi(t))^2\,\theta'(t)^2
+            \end{aligned}\\[6pt]
+            &\Longrightarrow\quad \mathrm{length}_g(\gamma)=\int_0^{2\pi}\sqrt{\sin(\phi_0)^2}\,dt=2\pi\sin(\phi_0).
             \end{aligned}
             $$
-
-            > $\Longrightarrow$ &nbsp; $\displaystyle\mathrm{length}_g(\gamma)=\int_0^{2\pi}\sqrt{\sin(\phi_0)^2}\,dt=2\pi\sin(\phi_0)$
             """,
         ],
         label="ex-latitude-length",
@@ -509,7 +510,7 @@ def _(lk, orientation_figure):
             "we don't have yet a proper notion of time!",
         ),
         lk.figure(orientation_figure()),
-        r"$\leadsto$ &nbsp; some Lorentzian manifolds don't admit time orientation, but we will assume ours do!",
+        r"$\leadsto$ &nbsp; some Lorentzian manifolds don't admit time orientation, but we assume ours do!",
     )
     return
 
@@ -561,7 +562,7 @@ def _(lk):
     # module: particles
     # definition: lightlike particle
     lk.definition(
-        r"A **lightlike particle** in $(M,g)$ is a path $\gamma:\mathbb R\to M$ such that $\gamma'(t)$ is future oriented lightlike $\forall\,t\in\mathbb R$",
+        r"A **lightlike particle** in $(M,g)$ is a path $\gamma:\mathbb R\to M$ such that $\gamma'(t)$ is future oriented lightlike $\forall\,t\in\mathbb R$.",
         label="def-lightlike-particle",
     )
     return

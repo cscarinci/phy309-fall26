@@ -232,7 +232,7 @@ def _(lk):
         $$
         \begin{aligned}
         X\big(g(Y,Z)\big)&=g(\nabla_XY,Z)+g(Y,\nabla_XZ)\\
-        \overset{\varphi}{\Longleftrightarrow}\quad\partial_ig_{jk}&=\Gamma^l_{ij}\,g_{lk}+\Gamma^l_{ik}\,g_{jl}
+        \overset{\varphi}{\Longleftrightarrow}\quad\partial_ig_{jk}&=\Gamma^l_{ij}\,g_{lk}+\Gamma^l_{ik}\,g_{jl}.
         \end{aligned}
         $$
 
@@ -241,7 +241,7 @@ def _(lk):
         $$
         \begin{aligned}
         (\nabla_XY-\nabla_YX)\,f&=[X,Y]\,f=X(Y(f))-Y(X(f))\\
-        \overset{\varphi}{\Longleftrightarrow}\quad\Gamma^k_{ij}&=\Gamma^k_{ji}
+        \overset{\varphi}{\Longleftrightarrow}\quad\Gamma^k_{ij}&=\Gamma^k_{ji}.
         \end{aligned}
         $$
 
@@ -254,14 +254,14 @@ def _(lk):
         \leadsto\quad\frac{D}{dt}X_{\gamma(t)}&=\nabla_{\gamma'(t)}X\qquad\text{(covariant derivative)}\\
         &\overset{\varphi}{=}\big(\dot X^k(t)+\Gamma^k_{ij}(t)\,\dot x^i(t)\,X^j(t)\big)\,\partial_k|_{\gamma(t)}\\[0.5em]
         \leadsto\quad A(t)&=\frac{D}{dt}\gamma'(t)\qquad\text{(acceleration of }\gamma\text{)}\\
-        &\overset{\varphi}{=}\big(\ddot x^k(t)+\Gamma^k_{ij}(t)\,\dot x^i(t)\,\dot x^j(t)\big)\,\partial_k|_{\gamma(t)}
+        &\overset{\varphi}{=}\big(\ddot x^k(t)+\Gamma^k_{ij}(t)\,\dot x^i(t)\,\dot x^j(t)\big)\,\partial_k|_{\gamma(t)}.
         \end{aligned}
         $$
 
         Geodesics on $(M,g)$ = paths with zero acceleration
 
         $$
-        \frac{D}{dt}\gamma'(t)=0\quad\overset{\varphi}{\Longleftrightarrow}\quad\ddot x^k(t)+\Gamma^k_{ij}(t)\,\dot x^i(t)\,\dot x^j(t)=0,\quad\forall\,k=1,\dots,m
+        \frac{D}{dt}\gamma'(t)=0\quad\overset{\varphi}{\Longleftrightarrow}\quad\ddot x^k(t)+\Gamma^k_{ij}(t)\,\dot x^i(t)\,\dot x^j(t)=0,\quad\forall\,k=1,\dots,m.
         $$
         """,
         topic="Levi-Civita connection and geodesics",
@@ -390,7 +390,7 @@ def _(lk):
         $$
         \begin{aligned}
         \text{Newton:}\quad&L=r^2\dot\theta,\quad\mathcal E=\underbrace{\tfrac12\big((\dot r)^2+r^2\dot\theta^2\big)}_{\footnotesize\text{kinetic}}\underbrace{-\frac{M}{r}}_{\mathclap{\footnotesize\text{potential}}}\\[0.6em]
-        \text{Schwarzschild:}\quad&L=r^2\dot\theta,\quad\underbrace{\frac{E^2-1}{2}}_{=\,\mathcal E}=\tfrac12\big((\dot r)^2+r^2\dot\theta^2\big)-\frac{M}{r}\underbrace{-\frac{ML^2}{r^3}}_{\footnotesize\begin{matrix}\text{relativistic}\\\text{correction}\end{matrix}}
+        \text{Schwarzschild:}\quad&L=r^2\dot\theta,\quad\underbrace{\frac{E^2-1}{2}}_{=\,\mathcal E}=\tfrac12\big((\dot r)^2+r^2\dot\theta^2\big)-\frac{M}{r}\underbrace{-\frac{ML^2}{r^3}}_{\footnotesize\begin{matrix}\text{relativistic}\\\text{correction}\end{matrix}}.
         \end{aligned}
         $$
 
@@ -414,7 +414,7 @@ def _(e_s, lk, newton_orbit):
         \begin{aligned}
         \text{Newton:}\quad&\frac{L^2}{r^4}\Big(\frac{dr}{d\theta}\Big)^2=2\mathcal E+\frac{2M}{r}-\frac{L^2}{r^2}\\
         \Longrightarrow\quad&r(\theta)=\frac{L^2/M}{1+e\cos(\theta-\theta_0)},\qquad e^2=1+\frac{2\mathcal EL^2}{M^2}\\
-        &\leadsto\quad\begin{cases}\text{ellipse}&\text{if }0<e<1\\\text{parabola}&\text{if }e=1\\\text{hyperbola}&\text{if }e>1\end{cases}
+        &\leadsto\quad\begin{cases}\text{ellipse},&\text{if }0<e<1,\\\text{parabola},&\text{if }e=1,\\\text{hyperbola},&\text{if }e>1\end{cases}
         \end{aligned}
         $$
         """,
@@ -432,8 +432,8 @@ def _(lk, ml_s, precessing_orbit):
         $$
         \begin{aligned}
         \text{Schwarzschild:}\quad&\frac{L^2}{r^4}\Big(\frac{dr}{d\theta}\Big)^2=\underbrace{E^2-1}_{2\mathcal E}+\frac{2M}{r}-\frac{L^2}{r^2}+\underbrace{\frac{2ML^2}{r^3}}_{\footnotesize\begin{matrix}\text{relativistic}\\\text{correction}\end{matrix}}\\
-        \Longrightarrow\quad&r(\theta)\approx\frac{L^2/M}{1+e\cos\big(\theta-\theta_0-\frac{3M^2}{L^2}\theta\big)}\qquad\text{for }2M\ll r(\theta)\\
-        &\leadsto\quad\begin{cases}\text{“ellipses” with precessing major and minor axes}&\text{if }0<e<1\\\text{open orbits}&\text{if }e\geq1\end{cases}
+        \Longrightarrow\quad&r(\theta)\approx\frac{L^2/M}{1+e\cos\big(\theta-\theta_0-\frac{3M^2}{L^2}\theta\big)},\qquad\text{for }2M\ll r(\theta)\\
+        &\leadsto\quad\begin{cases}\text{“ellipses” with precessing major and minor axes},&\text{if }0<e<1,\\\text{open orbits},&\text{if }e\geq1\end{cases}
         \end{aligned}
         $$
         """,
@@ -452,16 +452,16 @@ def _(light_rays, lk, me_s):
         Lightlike orbits:
 
         $$
-        \frac{L^2}{r^4}\Big(\frac{dr}{d\theta}\Big)^2=E^2-\frac{L^2}{r^2}+\frac{2ML^2}{r^3}\qquad(\kappa=0)
+        \frac{L^2}{r^4}\Big(\frac{dr}{d\theta}\Big)^2=E^2-\frac{L^2}{r^2}+\frac{2ML^2}{r^3}\qquad(\kappa=0),
         $$
         """,
         lk.aside(
-            r"$$\Longrightarrow\quad\mk{r(\theta)\approx\frac{L/E}{\sin(\theta)+\frac{ME}{L}\big(1+\cos(\theta)^2\big)}}\qquad\text{for }M\ll r(\theta)$$",
+            r"$$\Longrightarrow\quad\mk{r(\theta)\approx\frac{L/E}{\sin(\theta)+\frac{ME}{L}\big(1+\cos(\theta)^2\big)}},\qquad\text{for }M\ll r(\theta),$$",
             r"for $M=0$, $r(\theta)={\large\tfrac{L/E}{\sin(\theta)}}$<br>is a straight line",
         ),
         r"""
         $$
-        \leadsto\quad r\to+\infty\quad\Longleftrightarrow\quad\theta\approx-\frac{2ME}{L}\quad\text{or}\quad\theta\approx\pi+\frac{2ME}{L}
+        \leadsto\quad r\to+\infty\quad\Longleftrightarrow\quad\theta\approx-\frac{2ME}{L}\quad\text{or}\quad\theta\approx\pi+\frac{2ME}{L}.
         $$
         """,
         lk.interactive(light_rays(me_s.value), controls=[me_s]),

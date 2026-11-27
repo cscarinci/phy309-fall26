@@ -451,7 +451,7 @@ def _(height_figure, lk, s_a, s_b, s_u, s_v):
         [
             r"$f:\mathbb S^2\to\mathbb R$, &nbsp; $f(x,y,z)=z$",
             lk.aside(
-                r"$$\begin{aligned}Dz(u,v)(a,b)&=\Big[\frac{\partial}{\partial u}z(u,v)\ \ \frac{\partial}{\partial v}z(u,v)\Big]\begin{bmatrix}a\\b\end{bmatrix}\\[0.3em]&=\Big[\frac{\partial}{\partial u}\Big(\frac{-1+u^2+v^2}{1+u^2+v^2}\Big)\ \ \frac{\partial}{\partial v}\Big(\frac{-1+u^2+v^2}{1+u^2+v^2}\Big)\Big]\begin{bmatrix}a\\b\end{bmatrix}\\[0.3em]&=a\frac{\partial}{\partial u}\Big(\frac{-1+u^2+v^2}{1+u^2+v^2}\Big)+b\frac{\partial}{\partial v}\Big(\frac{-1+u^2+v^2}{1+u^2+v^2}\Big)\\[0.3em]&=a\mk{\frac{\partial}{\partial u}}z(u,v)+b\mk{\frac{\partial}{\partial v}}z(u,v)\\[0.3em]&=a\,\mk{\partial_u|_{(x,y,z)}}z+b\,\mk{\partial_v|_{(x,y,z)}}z\\[0.3em]&=Dz(x,y,z)(\mk{[\gamma]})\\[0.3em]&=\frac{d}{dt}\Big|_{t=0}z(t)=\frac{d}{dt}\Big|_{t=0}\frac{-1+(u+ta)^2+(v+tb)^2}{1+(u+ta)^2+(v+tb)^2}\end{aligned}$$",
+                r"$$\begin{aligned}Dz(u,v)(a,b)&=\Big[\frac{\partial}{\partial u}z(u,v)\ \ \frac{\partial}{\partial v}z(u,v)\Big]\begin{bmatrix}a\\b\end{bmatrix}\\[0.3em]&=\Big[\frac{\partial}{\partial u}\Big(\frac{-1+u^2+v^2}{1+u^2+v^2}\Big)\ \ \frac{\partial}{\partial v}\Big(\frac{-1+u^2+v^2}{1+u^2+v^2}\Big)\Big]\begin{bmatrix}a\\b\end{bmatrix}\\[0.3em]&=a\frac{\partial}{\partial u}\Big(\frac{-1+u^2+v^2}{1+u^2+v^2}\Big)+b\frac{\partial}{\partial v}\Big(\frac{-1+u^2+v^2}{1+u^2+v^2}\Big)\\[0.3em]&=a\mk{\frac{\partial}{\partial u}}z(u,v)+b\mk{\frac{\partial}{\partial v}}z(u,v)\\[0.3em]&=a\,\mk{\partial_u|_{(x,y,z)}}z+b\,\mk{\partial_v|_{(x,y,z)}}z\\[0.3em]&=Dz(x,y,z)(\mk{[\gamma]})\\[0.3em]&=\frac{d}{dt}\Big|_{t=0}z(t)=\frac{d}{dt}\Big|_{t=0}\frac{-1+(u+ta)^2+(v+tb)^2}{1+(u+ta)^2+(v+tb)^2}.\end{aligned}$$",
                 [
                     (4.65, r"basis of derivations of $\mathbb R^2$ at $(u,v)$"),
                     (5, r"basis of derivations of $M$ at $(x,y,z)=\varphi_n^{-1}(u,v)$"),
@@ -509,14 +509,14 @@ def _(charts_figure, d_field, lk):
             lk.gap(),
             r"For &nbsp; $(x,y,z)\neq(0,0,\pm1)$, &nbsp; $(\tilde u,\tilde v)=\Big(\dfrac{u}{u^2+v^2},\ \dfrac{v}{u^2+v^2}\Big)$",
             lk.aside(
-                r"$$\begin{aligned}\partial_u&=\frac{\partial\tilde u}{\partial u}\,\partial_{\tilde u}+\frac{\partial\tilde v}{\partial u}\,\partial_{\tilde v}=\frac{-u^2+v^2}{(u^2+v^2)^2}\,\partial_{\tilde u}-\frac{2uv}{(u^2+v^2)^2}\,\partial_{\tilde v}\\[0.3em]&=\underbrace{-(\tilde u^2-\tilde v^2)\,\partial_{\tilde u}-2\tilde u\tilde v\,\partial_{\tilde v}}_{\footnotesize=0\text{ at }(0,0,1)}\\[0.8em]\partial_v&=\frac{\partial\tilde u}{\partial v}\,\partial_{\tilde u}+\frac{\partial\tilde v}{\partial v}\,\partial_{\tilde v}=-\frac{2uv}{(u^2+v^2)^2}\,\partial_{\tilde u}+\frac{u^2-v^2}{(u^2+v^2)^2}\,\partial_{\tilde v}\\[0.3em]&=\underbrace{-2\tilde u\tilde v\,\partial_{\tilde u}+(\tilde u^2-\tilde v^2)\,\partial_{\tilde v}}_{\footnotesize=0\text{ at }(0,0,1)}\end{aligned}$$",
+                r"$$\begin{aligned}\partial_u&=\frac{\partial\tilde u}{\partial u}\,\partial_{\tilde u}+\frac{\partial\tilde v}{\partial u}\,\partial_{\tilde v}=\frac{-u^2+v^2}{(u^2+v^2)^2}\,\partial_{\tilde u}-\frac{2uv}{(u^2+v^2)^2}\,\partial_{\tilde v}\\[0.3em]&=\underbrace{-(\tilde u^2-\tilde v^2)\,\partial_{\tilde u}-2\tilde u\tilde v\,\partial_{\tilde v}}_{\footnotesize=0\text{ at }(0,0,1)}\\[0.8em]\partial_v&=\frac{\partial\tilde u}{\partial v}\,\partial_{\tilde u}+\frac{\partial\tilde v}{\partial v}\,\partial_{\tilde v}=-\frac{2uv}{(u^2+v^2)^2}\,\partial_{\tilde u}+\frac{u^2-v^2}{(u^2+v^2)^2}\,\partial_{\tilde v}\\[0.3em]&=\underbrace{-2\tilde u\tilde v\,\partial_{\tilde u}+(\tilde u^2-\tilde v^2)\,\partial_{\tilde v}}_{\footnotesize=0\text{ at }(0,0,1)}.\end{aligned}$$",
                 [(2.5, r"well-defined at $(0,0,1)$<br>but don't form basis!")],
                 rows=4,
             ),
-            r"$\leadsto$ &nbsp; $X=\begin{cases}\partial_u&\text{for }(x,y,z)\neq(0,0,1)\\0&\text{for }(x,y,z)=(0,0,1)\end{cases}\in\Gamma(TM)$",
-            r"$\leadsto$ &nbsp; $X=\begin{cases}\partial_{\tilde v}&\text{for }(x,y,z)\neq(0,0,-1)\\0&\text{for }(x,y,z)=(0,0,-1)\end{cases}\in\Gamma(TM)$",
+            r"$\leadsto$ &nbsp; $X=\begin{cases}\partial_u,&\text{for }(x,y,z)\neq(0,0,1),\\0,&\text{for }(x,y,z)=(0,0,1)\end{cases}\in\Gamma(TM)$",
+            r"$\leadsto$ &nbsp; $X=\begin{cases}\partial_{\tilde v},&\text{for }(x,y,z)\neq(0,0,-1),\\0,&\text{for }(x,y,z)=(0,0,-1)\end{cases}\in\Gamma(TM)$",
             lk.aside(
-                r"$\leadsto$ &nbsp; $X=\begin{cases}-v\,\partial_u+u\,\partial_v&(x,y,z)\neq(0,0,1)\\-\tilde v\,\partial_{\tilde u}+\tilde u\,\partial_{\tilde v}&(x,y,z)\neq(0,0,-1)\end{cases}\in\Gamma(TM)$",
+                r"$\leadsto$ &nbsp; $X=\begin{cases}-v\,\partial_u+u\,\partial_v,&(x,y,z)\neq(0,0,1),\\-\tilde v\,\partial_{\tilde u}+\tilde u\,\partial_{\tilde v},&(x,y,z)\neq(0,0,-1)\end{cases}\in\Gamma(TM)$",
                 r"components agree for $(x,y,z)\neq(0,0,\pm1)$<br>under change of coordinates!",
             ),
             lk.interactive(charts_figure(d_field.value), controls=[d_field]),
@@ -538,24 +538,26 @@ def _(lk):
 def _(integral_curve_figure, lk):
     # module: differential equations
     # definition: integral curve
-    lk.definition(
-        [
-            r"$X\in\Gamma(TM)$ &nbsp; smooth vector field",
-            r"$\gamma:\mathbb R\to M$ &nbsp; smooth path",
-            r"> is **integral curve** of $X$ if",
-            r"> > $\gamma'(t)=X_{\gamma(t)}$ &nbsp; $\forall\,t\in\mathbb R$",
-            lk.figure(integral_curve_figure()),
-            r"""
-            > > > $\underset{\varphi}{\Longleftrightarrow}$ &nbsp; $\dfrac{d}{dt}\,x^i(t)=X^i(t)$ &nbsp; $\forall\,t,\ \forall\,i$
+    lk.module(
+        lk.definition(
+            [
+                r"$X\in\Gamma(TM)$ &nbsp; smooth vector field",
+                r"$\gamma:\mathbb R\to M$ &nbsp; smooth path",
+                r"> is **integral curve** of $X$ if",
+                r"> > $\gamma'(t)=X_{\gamma(t)}$ &nbsp; $\forall\,t\in\mathbb R$",
+                r"""
+                > > > $\underset{\varphi}{\Longleftrightarrow}$ &nbsp; $\dfrac{d}{dt}\,x^i(t)=X^i(t)$ &nbsp; $\forall\,t,\ \forall\,i$
 
-            > > > <span class="lk-ghost">$\underset{\varphi}{\Longleftrightarrow}$ &nbsp;</span> where &nbsp; $\gamma(t)=\varphi^{-1}(x^i(t)\,e_i)=\tilde\varphi^{-1}(\tilde x^i(t)\,e_i)$
+                > > > <span class="lk-ghost">$\underset{\varphi}{\Longleftrightarrow}$ &nbsp;</span> where &nbsp; $\gamma(t)=\varphi^{-1}(x^i(t)\,e_i)=\tilde\varphi^{-1}(\tilde x^i(t)\,e_i)$
 
-            > > > <span class="lk-ghost">$\underset{\varphi}{\Longleftrightarrow}$ &nbsp; where &nbsp;</span> $X_{\gamma(t)}=X^i(t)\,\partial_i|_{\gamma(t)}=\tilde X^i(t)\,\tilde\partial_i|_{\gamma(t)}$
+                > > > <span class="lk-ghost">$\underset{\varphi}{\Longleftrightarrow}$ &nbsp; where &nbsp;</span> $X_{\gamma(t)}=X^i(t)\,\partial_i|_{\gamma(t)}=\tilde X^i(t)\,\tilde\partial_i|_{\gamma(t)}$
 
-            > > > $\underset{\tilde\varphi}{\Longleftrightarrow}$ &nbsp; $\dfrac{d}{dt}\,\tilde x^i(t)=\tilde X^i(t)$ &nbsp; $\forall\,t,\ \forall\,i$
-            """,
-        ],
-        label="def-integral-curve",
+                > > > $\underset{\tilde\varphi}{\Longleftrightarrow}$ &nbsp; $\dfrac{d}{dt}\,\tilde x^i(t)=\tilde X^i(t)$ &nbsp; $\forall\,t,\ \forall\,i$
+                """,
+            ],
+            label="def-integral-curve",
+        ),
+        lk.prose(lk.figure(integral_curve_figure())),
     )
     return
 

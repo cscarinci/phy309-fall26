@@ -322,7 +322,7 @@ def _(lk, stereo_scene):
 
             > > > $\varphi_n\circ\varphi_s^{-1}(\tilde u,\tilde v)=\Big(\dfrac{\tilde u}{\tilde u^2+\tilde v^2},\ \dfrac{\tilde v}{\tilde u^2+\tilde v^2}\Big)$
 
-            $\therefore$ &nbsp; $\mathbb S^2$, &nbsp; $\mathcal A=\{\varphi_n,\varphi_s\}$ &nbsp; is a 2-manifold
+            $\therefore$ &nbsp; $\mathbb S^2$, &nbsp; $\mathcal A=\{\varphi_n,\varphi_s\}$ &nbsp; is a 2-manifold.
             """,
         ],
         label="ex-sphere-atlas",
@@ -337,7 +337,7 @@ def _(angles_scene, charts_figure, lk, s_phi, s_theta):
     lk.remark(
         [
             r"There are many more charts $\varphi:U\subseteq\mathbb S^2\to V\subseteq\mathbb R^2$ which are “compatible” with $\varphi_n$ and $\varphi_s$ in the sense",
-            r"$$\varphi_\alpha\circ\varphi^{-1}:\varphi(U\cap U_\alpha)\longrightarrow\varphi_\alpha(U\cap U_\alpha)\quad\text{is a diffeomorphism for }\alpha=n,s$$",
+            r"$$\varphi_\alpha\circ\varphi^{-1}:\varphi(U\cap U_\alpha)\longrightarrow\varphi_\alpha(U\cap U_\alpha)\quad\text{is a diffeomorphism for }\alpha=n,s.$$",
             lk.aside(
                 r"> $\leadsto$ &nbsp; choose any $q\in\mathbb S^2$ and define &nbsp; $\varphi_q:\mathbb S^2-\{q\}\to\mk{\mathbb R^2}$ &nbsp; the stereographic projection based at $q$",
                 r"$\mathbb R^2\approx(q-o)^\perp\subseteq\mathbb R^3$",
@@ -351,7 +351,7 @@ def _(angles_scene, charts_figure, lk, s_phi, s_theta):
 
             > > the polar and azimuthal angles, giving
 
-            $$\psi:\mathbb S^2-\{\text{half meridian through }e_1\}\longrightarrow(0,\pi)\times(0,2\pi)\subset\mathbb R^2$$
+            $$\psi:\mathbb S^2-\{\text{half meridian through }e_1\}\longrightarrow(0,\pi)\times(0,2\pi)\subset\mathbb R^2.$$
             """,
             lk.figure(angles_scene()),
             r"""
@@ -363,7 +363,7 @@ def _(angles_scene, charts_figure, lk, s_phi, s_theta):
             ),
             lk.interactive(charts_figure(s_phi.value, s_theta.value), controls=[s_phi, s_theta]),
             lk.aside(
-                r"$\therefore$ &nbsp; $\mathbb S^2$, &nbsp; $\mk{\mathcal A}=\{\varphi_n,\varphi_s,\varphi_q,\psi\}$ &nbsp; is also a 2-manifold",
+                r"$\therefore$ &nbsp; $\mathbb S^2$, &nbsp; $\mk{\mathcal A}=\{\varphi_n,\varphi_s,\varphi_q,\psi\}$ &nbsp; is also a 2-manifold.",
                 r"we assume $\mathcal A$ contains all possible<br>compatible charts (maximal atlas)",
             ),
         ]
@@ -375,17 +375,19 @@ def _(angles_scene, charts_figure, lk, s_phi, s_theta):
 def _(lk, smooth_figure):
     # module: smooth maps
     # definition: smooth maps between manifolds
-    lk.definition(
-        [
-            r"Given two manifolds $(M^m,\mathcal A)$ and $(N^n,\mathcal B)$ we can define smooth maps from $M$ to $N$ using their charts: &nbsp; $f:M\to N$ is called **smooth** (or differentiable) (or continuous) (or any adjective)",
-            r"if for any choices of charts",
-            r"$$\varphi:U\subseteq M\longrightarrow V\subseteq\mathbb R^m,\qquad\psi:A\subseteq N\longrightarrow B\subseteq\mathbb R^n$$",
-            r"the local representation of $f$ in those charts",
-            r"$$\psi\circ f\circ\varphi^{-1}:\underset{\begin{matrix}\cap\\\mathbb R^m\end{matrix}}{\varphi(U\cap f^{-1}(A))}\longrightarrow\underset{\begin{matrix}\cap\\\mathbb R^n\end{matrix}}{\psi(f(U)\cap A)}$$",
-            r"is smooth (or differentiable) (or continuous) (or any adjective)",
-            lk.figure(smooth_figure()),
-        ],
-        label="def-smooth-map",
+    lk.module(
+        lk.definition(
+            [
+                r"Given two manifolds $(M^m,\mathcal A)$ and $(N^n,\mathcal B)$ we can define smooth maps from $M$ to $N$ using their charts: &nbsp; $f:M\to N$ is called **smooth** (or differentiable) (or continuous) (or any adjective)",
+                r"if for any choices of charts",
+                r"$$\varphi:U\subseteq M\longrightarrow V\subseteq\mathbb R^m,\qquad\psi:A\subseteq N\longrightarrow B\subseteq\mathbb R^n,$$",
+                r"the local representation of $f$ in those charts",
+                r"$$\psi\circ f\circ\varphi^{-1}:\underset{\begin{matrix}\cap\\\mathbb R^m\end{matrix}}{\varphi(U\cap f^{-1}(A))}\longrightarrow\underset{\begin{matrix}\cap\\\mathbb R^n\end{matrix}}{\psi(f(U)\cap A)},$$",
+                r"is smooth (or differentiable) (or continuous) (or any adjective)",
+            ],
+            label="def-smooth-map",
+        ),
+        lk.prose(lk.figure(smooth_figure())),
     )
     return
 
@@ -445,11 +447,11 @@ def _(lk):
         [
             r"$M$ $m$-manifold, &nbsp; $p\in M$, &nbsp; a **tangent vector** to $M$ at $p$ is an equivalence class of smooth paths on $M$",
             lk.aside(
-                r"$$v_p=[\gamma]_p=\left\{\sigma:\mathbb R\to M\ \middle|\ \begin{matrix}\sigma(0)=\gamma(0)=p\ \text{ and}\\(\mk{\varphi}\circ\sigma)'(0)=(\varphi\circ\gamma)'(0)\end{matrix}\right\}$$",
+                r"$$v_p=[\gamma]_p=\left\{\sigma:\mathbb R\to M\ \middle|\ \begin{matrix}\sigma(0)=\gamma(0)=p\ \text{ and}\\(\mk{\varphi}\circ\sigma)'(0)=(\varphi\circ\gamma)'(0)\end{matrix}\right\}.$$",
                 r"for any chart $\varphi:U\subseteq M\to V\subseteq\mathbb R^m$<br>with $p\in U$",
             ),
             r"In other words, two smooth paths $\gamma,\sigma$ are considered equivalent if in a chart $\varphi$",
-            r"$$\begin{cases}(\varphi\circ\gamma)(0)=(\varphi\circ\sigma)(0)&\leadsto\quad\gamma(0)=\sigma(0)=p\\[0.3em](\varphi\circ\gamma)'(0)=(\varphi\circ\sigma)'(0)&\leadsto\quad\text{“}\gamma'(0)=\sigma'(0)=v\text{”}\end{cases}$$",
+            r"$$\begin{cases}(\varphi\circ\gamma)(0)=(\varphi\circ\sigma)(0)&\leadsto\quad\gamma(0)=\sigma(0)=p\\[0.3em](\varphi\circ\gamma)'(0)=(\varphi\circ\sigma)'(0)&\leadsto\quad\text{“}\gamma'(0)=\sigma'(0)=v\text{”}.\end{cases}$$",
         ],
         label="def-tangent-vector",
     )
@@ -482,7 +484,7 @@ def _(lk):
         r"""
         We denote by
 
-        $$\begin{aligned}T_pM&=\text{set of tangent vectors to }M\text{ at }p\\[0.3em]&=\textbf{tangent space}\text{ to }M\text{ at }p\end{aligned}$$
+        $$\begin{aligned}T_pM&=\text{set of tangent vectors to }M\text{ at }p\\[0.3em]&=\textbf{tangent space}\text{ to }M\text{ at }p.\end{aligned}$$
         """,
         label="def-tangent-space",
     )

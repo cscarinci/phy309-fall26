@@ -178,7 +178,7 @@ def _(lk, static_particle_scene):
 
             > $\leadsto$ &nbsp; $t$ is the proper time of static particles “at infinity”
 
-            Usually $2M\ll r_0$!
+            Usually $2M\ll r_0$.
 
             > $$
             > \begin{aligned}
@@ -228,7 +228,7 @@ def _(lk):
                 r"""$$
                 \begin{aligned}
                 &p\in M\longmapsto\alpha_p:T_pM\to\mathbb R\\
-                \leftrightsquigarrow\quad&p\in M\longmapsto\alpha_p\in T^*_pM=\mk{(T_pM)^*}
+                \leftrightsquigarrow\quad&p\in M\longmapsto\alpha_p\in T^*_pM=\mk{(T_pM)^*},
                 \end{aligned}
                 $$""",
                 [(2, r"dual space to $T_pM$")],
@@ -266,7 +266,7 @@ def _(lk):
         $$
         \begin{aligned}
         \alpha:\Gamma(TM)&\longrightarrow C^\infty(M,\mathbb R)\\
-        X&\longmapsto\alpha(X):p\longmapsto\alpha_p(X_p)
+        X&\longmapsto\alpha(X):p\longmapsto\alpha_p(X_p),
         \end{aligned}
         $$
         """,
@@ -340,7 +340,7 @@ def _(lk):
             $$
             \begin{aligned}
             df_p:T_pM&\longrightarrow T_{f(p)}\mathbb R=\mathbb R\\
-            X_p&\longmapsto df_p(X_p)=X_p(f)
+            X_p&\longmapsto df_p(X_p)=X_p(f).
             \end{aligned}
             $$
 
@@ -368,7 +368,7 @@ def _(height_fields_scene, lk):
             $f:\mathbb S^2\to\mathbb R$ &nbsp; height function
 
             $$
-            f(x,y,z)=z\overset{\varphi_n}{=}\frac{-1+u^2+v^2}{1+u^2+v^2}\overset{\psi}{=}\cos\phi
+            f(x,y,z)=z\overset{\varphi_n}{=}\frac{-1+u^2+v^2}{1+u^2+v^2}\overset{\psi}{=}\cos\phi,
             $$
 
             $$
@@ -376,14 +376,14 @@ def _(height_fields_scene, lk):
             df=dz&\overset{\varphi_n}{=}\partial_uz\,du+\partial_vz\,dv\\
             &=\frac{4u}{(1+u^2+v^2)^2}\,du+\frac{4v}{(1+u^2+v^2)^2}\,dv\\
             &\overset{\psi}{=}\partial_\phi z\,d\phi+\partial_\theta z\,d\theta\\
-            &=-\sin\phi\,d\phi
+            &=-\sin\phi\,d\phi,
             \end{aligned}
             $$
 
             $$
             \begin{aligned}
             X&\overset{\varphi_n}{=}-v\,\partial_u+u\,\partial_v&&\overset{\psi}{=}\partial_\theta\\
-            Y&\overset{\varphi_n}{=}u\,\partial_u+v\,\partial_v&&\overset{\psi}{=}-\sin\phi\,\partial_\phi
+            Y&\overset{\varphi_n}{=}u\,\partial_u+v\,\partial_v&&\overset{\psi}{=}-\sin\phi\,\partial_\phi,
             \end{aligned}
             $$
             """,
@@ -392,7 +392,7 @@ def _(height_fields_scene, lk):
                 \begin{aligned}
                 dz(X)&\overset{\varphi_n}{=}\frac{4}{(1+u^2+v^2)^2}\big(u\,du(-v\,\partial_u+u\,\cancel{\partial_v})+v\,dv(-v\,\cancel{\partial_u}+u\,\partial_v)\big)\\
                 &=\frac{4}{(1+u^2+v^2)^2}\,(-uv+uv)=0\\
-                &\overset{\psi}{=}-\sin\phi\,d\phi(\partial_\theta)=0
+                &\overset{\psi}{=}-\sin\phi\,d\phi(\partial_\theta)=0,
                 \end{aligned}
                 $$""",
                 [(1, r"$du(\partial_u)=dv(\partial_v)=1$<br>$du(\partial_v)=dv(\partial_u)=0$")],
@@ -402,7 +402,7 @@ def _(height_fields_scene, lk):
             $$
             \begin{aligned}
             dz(Y)&\overset{\varphi_n}{=}\frac{4}{(1+u^2+v^2)^2}\,(u^2+v^2)\overset{\psi}{=}(\sin\phi)^2\\
-            &=x^2+y^2=1-z^2\qquad(\text{on }x^2+y^2+z^2=1)
+            &=x^2+y^2=1-z^2\qquad(\text{on }x^2+y^2+z^2=1).
             \end{aligned}
             $$
             """,

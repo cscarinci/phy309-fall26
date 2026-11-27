@@ -211,7 +211,7 @@ def _(lk):
 
             > > $\partial_i|_p\in\mathrm{Der}_p(M)$, &nbsp; $\partial_i|_pf=\dfrac{\partial}{\partial x^i}(f\circ\varphi^{-1})\Big|_{\varphi(p)}$
 
-            > > > $\leadsto$ &nbsp; every $X_p=X^i(p)\,\partial_i|_p$ &nbsp; with &nbsp; $X^i(p)=X_p(x^i)$!
+            > > > $\leadsto$ &nbsp; every $X_p=X^i(p)\,\partial_i|_p$ &nbsp; with &nbsp; $X^i(p)=X_p(x^i)$.
 
             > > $\partial_i|_p\longleftrightarrow[t\mapsto\varphi^{-1}(\varphi(p)+t\,e_i)]$
 
@@ -250,7 +250,7 @@ def _(lk):
         [
             r"A **vector field** on $M$ is an assignment of a tangent vector to each point $p\in M$",
             lk.aside(
-                r"$$X:p\in M\longmapsto \mk{X_p}\in T_pM=\mathrm{Der}_p(M)$$",
+                r"$$X:p\in M\longmapsto \mk{X_p}\in T_pM=\mathrm{Der}_p(M).$$",
                 r"can be viewed as a velocity vector<br>or as a derivation at $p$",
             ),
             r"With respect to a chart &nbsp; $\varphi:U\subseteq M\to\mathbb R^m$",
@@ -282,7 +282,7 @@ def _(lk):
             r"$\mathbb S^2$ &nbsp; $\varphi_n(x,y,z)=\Big(\dfrac{x}{1-z},\ \dfrac{y}{1-z}\Big)=(u,v)$",
             r"<span class='lk-ghost'>$\mathbb S^2$ &nbsp;</span> $\varphi_s(x,y,z)=\Big(\dfrac{x}{1+z},\ \dfrac{y}{1+z}\Big)=(\tilde u,\tilde v)$",
             lk.aside(
-                r"$$X:p=(x,y,z)\longmapsto X_p=\begin{cases}-v(p)\,\partial_u|_p+u(p)\,\partial_v|_p,&p\neq(0,0,1)\\[0.3em]-\tilde v(p)\,\partial_{\tilde u}|_p+\tilde u(p)\,\partial_{\tilde v}|_p,&p\neq(0,0,-1)\end{cases}$$",
+                r"$$X:p=(x,y,z)\longmapsto X_p=\begin{cases}-v(p)\,\partial_u|_p+u(p)\,\partial_v|_p,&p\neq(0,0,1),\\[0.3em]-\tilde v(p)\,\partial_{\tilde u}|_p+\tilde u(p)\,\partial_{\tilde v}|_p,&p\neq(0,0,-1)\end{cases}$$",
                 [(1, r"not defined for $p=n$"), (2.2, r"defined for $p=n$, not defined for $p=s$<br>must agree on $\mathbb S^2-\{n,s\}$")],
                 rows=2,
             ),
@@ -292,7 +292,7 @@ def _(lk):
             \begin{aligned}
             X_p(f)&=-v(p)\,\partial_u|_pf+u(p)\,\partial_v|_pf\\[0.3em]
             &=-v(p)\frac{\partial}{\partial u}(f\circ\varphi_n^{-1})\Big|_{\varphi_n(p)}+u(p)\frac{\partial}{\partial v}(f\circ\varphi_n^{-1})\Big|_{\varphi_n(p)}\\[0.3em]
-            &=-\tilde v(p)\frac{\partial}{\partial\tilde u}(f\circ\varphi_s^{-1})\Big|_{\varphi_s(p)}+\tilde u(p)\frac{\partial}{\partial\tilde v}(f\circ\varphi_s^{-1})\Big|_{\varphi_s(p)}
+            &=-\tilde v(p)\frac{\partial}{\partial\tilde u}(f\circ\varphi_s^{-1})\Big|_{\varphi_s(p)}+\tilde u(p)\frac{\partial}{\partial\tilde v}(f\circ\varphi_s^{-1})\Big|_{\varphi_s(p)}.
             \end{aligned}
             $$
 
@@ -306,7 +306,7 @@ def _(lk):
             """,
             lk.gap(),
             r"""
-            $\Longrightarrow$ &nbsp; $X:p\longmapsto X_p=\begin{cases}-v(p)\,\partial_u|_p+u(p)\,\partial_v|_p,&p\neq n\\-\tilde v(p)\,\partial_{\tilde u}|_p+\tilde u(p)\,\partial_{\tilde v}|_p,&p\neq s\end{cases}$
+            $\Longrightarrow$ &nbsp; $X:p\longmapsto X_p=\begin{cases}-v(p)\,\partial_u|_p+u(p)\,\partial_v|_p,&p\neq n,\\-\tilde v(p)\,\partial_{\tilde u}|_p+\tilde u(p)\,\partial_{\tilde v}|_p,&p\neq s\end{cases}$
 
             > is well-defined and it is smooth since
 
@@ -342,7 +342,7 @@ def _(lk):
     lk.remark(
         [
             r"Given a vector field $X$ and a smooth function $f$ we can define another function $X(f):M\to\mathbb R$ via",
-            lk.aside(r"$$X(f)(p)=X_p(f)$$", r"well-defined since $f$ smooth"),
+            lk.aside(r"$$X(f)(p)=X_p(f).$$", r"well-defined since $f$ smooth"),
         ]
     )
     return
@@ -355,7 +355,7 @@ def _(lk):
     lk.theorem(
         [
             r"A vector field $X:p\longmapsto X_p$ is smooth iff it defines a linear differential operator on $M$",
-            r"$$X:C^\infty(M,\mathbb R)\longrightarrow C^\infty(M,\mathbb R),\qquad\underset{\text{smooth}}{f}\longmapsto\underset{\text{smooth}}{X(f)}:p\longmapsto X_p(f)$$",
+            r"$$X:C^\infty(M,\mathbb R)\longrightarrow C^\infty(M,\mathbb R),\qquad\underset{\text{smooth}}{f}\longmapsto\underset{\text{smooth}}{X(f)}:p\longmapsto X_p(f).$$",
             r"$\leadsto$ &nbsp; in a chart &nbsp; $\varphi:U\subseteq M\to\mathbb R^m$",
             lk.aside(
                 r"> $X(f)\circ\varphi^{-1}=\mk{X^i\circ\varphi^{-1}\,\dfrac{\partial}{\partial x^i}(f\circ\varphi^{-1})}$",
@@ -375,7 +375,7 @@ def _(lk):
         [
             r"The space of smooth vector fields on $M$ is denoted",
             lk.aside(
-                r"$$\Gamma(\mk{TM})=\text{space of smooth vector fields }X:C^\infty(M,\mathbb R)\to C^\infty(M,\mathbb R)$$",
+                r"$$\Gamma(\mk{TM})=\text{space of smooth vector fields }X:C^\infty(M,\mathbb R)\to C^\infty(M,\mathbb R).$$",
                 r"denotes the “collection” of all tangent<br>spaces of $M$ (the tangent bundle of $M$)",
             ),
         ],
@@ -410,7 +410,7 @@ def _(lk):
         Given a smooth path $\gamma:\mathbb R\to M$, a **vector field along** $\gamma$ is an assignment
 
         $$
-        X:t\in\mathbb R\longmapsto X_{\gamma(t)}\in T_{\gamma(t)}M
+        X:t\in\mathbb R\longmapsto X_{\gamma(t)}\in T_{\gamma(t)}M,
         $$
 
         of a tangent vector at $\gamma(t)$ for each $t\in\mathbb R$
@@ -429,7 +429,7 @@ def _(lk):
         The velocity vector field of $\gamma:\mathbb R\to M$ (smooth) is the assignment &nbsp; $\gamma':t\in\mathbb R\longmapsto\gamma'(t)\in T_{\gamma(t)}M$ &nbsp; such that
 
         $$
-        \gamma'(t)(f)=(f\circ\gamma)'(t)
+        \gamma'(t)(f)=(f\circ\gamma)'(t).
         $$
 
         > $\leadsto$ &nbsp; with respect to a chart $\varphi$: &nbsp; $\gamma'(t)=(x^i\circ\gamma)'(t)\,\partial_i|_{\gamma(t)}$
@@ -445,8 +445,8 @@ def _(lk):
     # definition: integral curve
     lk.definition(
         [
-            r"Given a smooth vector field $X\in\Gamma(TM)$, a path $\gamma:\mathbb R\to M$ is an **integral curve** of $X$ if",
-            lk.aside(r"$$\gamma'(t)=X_{\gamma(t)}\qquad\forall\,t\in\mathbb R$$", "the velocity vector equals<br>the vector field along $\\gamma$"),
+            r"Given a vector field $X\in\Gamma(TM)$, a path $\gamma:\mathbb R\to M$ is an **integral curve** of $X$ if",
+            lk.aside(r"$$\gamma'(t)=X_{\gamma(t)}\qquad\forall\,t\in\mathbb R.$$", "the velocity vector equals<br>the vector field along $\\gamma$"),
             lk.aside(r"> $\leadsto$ &nbsp; with respect to a chart $\varphi$: &nbsp; $(x^i\circ\gamma)'(t)=X^i(\gamma(t))$", "1st order system of ODEs!"),
         ],
         label="def-integral-curve",
@@ -475,7 +475,7 @@ def _(curve_chart, lk, mo, s_t, s_u0, s_v0):
     # example: integral curves of the rotation field of the sphere
     lk.example(
         [
-            r"on $\mathbb S^2$, &nbsp; $X=\begin{cases}-v\,\partial_u+u\,\partial_v&\text{on }\mathbb S^2-\{n\}\\-\tilde v\,\partial_{\tilde u}+\tilde u\,\partial_{\tilde v}&\text{on }\mathbb S^2-\{s\}\end{cases}$",
+            r"on $\mathbb S^2$, &nbsp; $X=\begin{cases}-v\,\partial_u+u\,\partial_v,&\text{on }\mathbb S^2-\{n\},\\-\tilde v\,\partial_{\tilde u}+\tilde u\,\partial_{\tilde v},&\text{on }\mathbb S^2-\{s\}\end{cases}$",
             r"""
             > $\gamma:\mathbb R\to\mathbb S^2$ &nbsp; integral curve of $X$
 
@@ -495,17 +495,19 @@ def _(curve_chart, lk, mo, s_t, s_u0, s_v0):
 def _(bundle_scene, lk):
     # module: tangent bundle
     # definition: tangent bundle
-    lk.definition(
-        [
-            r"The **tangent bundle** of an $m$-manifold $M$ is",
-            lk.aside(
-                r"$$\begin{aligned}TM&=\text{the collection of all tangent spaces}\\[0.3em]&\mathrel{\text{“}{=}\text{”}}\bigcup_{p\in M}T_pM\\[0.3em]&=\{(p,\mk{X_p})\mid p\in M,\ X_p\in T_pM\}\end{aligned}$$",
-                [(3, r"this notation is better than $[\gamma]$<br>equivalence class of paths with same velocity at $p$<br>derivations at $p$")],
-                rows=3,
-            ),
-            lk.figure(bundle_scene()),
-        ],
-        label="def-tangent-bundle",
+    lk.module(
+        lk.definition(
+            [
+                r"The **tangent bundle** of an $m$-manifold $M$ is",
+                lk.aside(
+                    r"$$\begin{aligned}TM&=\text{the collection of all tangent spaces}\\[0.3em]&\mathrel{\text{“}{=}\text{”}}\bigcup_{p\in M}T_pM\\[0.3em]&=\{(p,\mk{X_p})\mid p\in M,\ X_p\in T_pM\}.\end{aligned}$$",
+                    [(3, r"this notation is better than $[\gamma]$<br>equivalence class of paths with same velocity at $p$<br>derivations at $p$")],
+                    rows=3,
+                ),
+            ],
+            label="def-tangent-bundle",
+        ),
+        lk.prose(lk.figure(bundle_scene())),
     )
     return
 

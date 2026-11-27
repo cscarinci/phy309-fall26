@@ -44,7 +44,7 @@ def _(lk):
         $$
         \begin{aligned}
         4\pi\rho=\Delta\Phi&=\partial_x^2\Phi+\partial_y^2\Phi+\partial_z^2\Phi\\
-        &\approx R^x{}_{txt}+R^y{}_{tyt}+R^z{}_{tzt}=(\mathrm{Ric})_{tt}
+        &\approx R^x{}_{txt}+R^y{}_{tyt}+R^z{}_{tzt}=(\mathrm{Ric})_{tt}.
         \end{aligned}
         $$
         """,
@@ -158,7 +158,7 @@ def _(lk):
         $$
         \begin{aligned}
         \mathrm{Riem}&\overset{\varphi}{=}R^\mu{}_{\nu\rho\sigma}\,\partial_\mu\,dx^\nu dx^\rho dx^\sigma&&\in\Gamma(TM^1_3)\\
-        \leadsto\quad\mathrm{Ric}&\overset{\varphi}{=}\underbrace{R^\rho{}_{\mu\rho\nu}}_{\footnotesize R_{\mu\nu}}\,dx^\mu dx^\nu&&\in\Gamma(TM^0_2)
+        \leadsto\quad\mathrm{Ric}&\overset{\varphi}{=}\underbrace{R^\rho{}_{\mu\rho\nu}}_{\footnotesize R_{\mu\nu}}\,dx^\mu dx^\nu&&\in\Gamma(TM^0_2).
         \end{aligned}
         $$
         """,
@@ -186,7 +186,7 @@ def _(lk):
         \underbrace{g_{\mu\lambda}R^\lambda{}_{\nu\rho\sigma}}_{\footnotesize R_{\mu\nu\rho\sigma}}=-\underbrace{g_{\lambda\nu}R^\lambda{}_{\mu\rho\sigma}}_{\footnotesize -R_{\nu\mu\rho\sigma}}\\[0.6em]
         &R^\mu{}_{\nu\rho\sigma}+R^\mu{}_{\rho\sigma\nu}+R^\mu{}_{\sigma\nu\rho}=0\\[0.4em]
         \Longrightarrow\quad&R^\rho{}_{\mu\rho\nu}=-R^\rho{}_{\mu\nu\rho}=R_{\mu\nu}\qquad R^\rho{}_{\rho\mu\nu}=0\\
-        &\qquad \mk{R_{\mu\nu}+0-R_{\nu\mu}=0}
+        &\qquad \mk{R_{\mu\nu}+0-R_{\nu\mu}=0}.
         \end{aligned}
         $$
         """,
@@ -284,7 +284,7 @@ def _(lk):
     # lead-in: dust, 4-momentum density
     lk.prose(
         r"""
-        Consider a cloud of non-interacting particles (dust)
+        Consider a cloud of non-interacting particles (dust).
 
         For each observer $\gamma$ in $M$, $\lVert\gamma'(t)\rVert^2=-1$, let
         """,
@@ -313,14 +313,14 @@ def _(lk):
         for each observer $\gamma(t)$ and $X_{\gamma(t)}\in T_{\gamma(t)}M$
 
         $$
-        T(\gamma'(t),X)=-g(J_{\gamma(t)},X)
+        T(\gamma'(t),X)=-g(J_{\gamma(t)},X),
         $$
 
         $$
         \leadsto\quad
         \begin{cases}
         T(\gamma'(t),\gamma'(t))=\varepsilon_{\gamma(t)}\\
-        T(\gamma'(t),X)=-g(\pi_{\gamma(t)},X) & \text{for } g(\gamma'(t),X)=0
+        T(\gamma'(t),X)=-g(\pi_{\gamma(t)},X) & \text{for } g(\gamma'(t),X)=0.
         \end{cases}
         $$
         """,
@@ -395,12 +395,12 @@ def _(lk):
     # lead-in: Leibniz rule
     lk.prose(
         r"""
-        We can extend covariant derivatives from vector fields to tensor fields via the Leibniz rule.
+        Covariant derivatives extend from vector fields to tensor fields via the Leibniz rule.
 
         - For covector fields $\alpha\in\Gamma(T^*M)$ define $\nabla_X\alpha\in\Gamma(T^*M)$ so that
 
         $$
-        X(\alpha(Y))=(\nabla_X\alpha)(Y)+\alpha(\nabla_XY)
+        X(\alpha(Y))=(\nabla_X\alpha)(Y)+\alpha(\nabla_XY).
         $$
 
         <span class="lk-vconn"><span>$\varphi$</span><span class="lk-vconn-arrow">$\leadsto$</span></span>
@@ -408,7 +408,7 @@ def _(lk):
         $$
         \begin{aligned}
         X^\mu\partial_\mu(\alpha_\rho Y^\rho)&=(\nabla_X\alpha)_\mu Y^\mu+\alpha_\rho\big(X^\mu\partial_\mu Y^\rho+\Gamma^\rho_{\mu\nu}X^\mu Y^\nu\big)\\
-        \Longleftrightarrow\quad(\nabla_X\alpha)_\nu&=X^\mu\big(\underbrace{\partial_\mu\alpha_\nu-\Gamma^\rho_{\mu\nu}\,\alpha_\rho}_{\footnotesize \nabla_\mu\alpha_\nu}\big)
+        \Longleftrightarrow\quad(\nabla_X\alpha)_\nu&=X^\mu\big(\underbrace{\partial_\mu\alpha_\nu-\Gamma^\rho_{\mu\nu}\,\alpha_\rho}_{\footnotesize \nabla_\mu\alpha_\nu}\big).
         \end{aligned}
         $$
 
@@ -417,7 +417,7 @@ def _(lk):
         $$
         \begin{aligned}
         \nabla_X(\alpha\otimes\beta)&=(\nabla_X\alpha)\otimes\beta+\alpha\otimes(\nabla_X\beta)\\
-        \Longrightarrow\quad(\nabla_XT)_{\mu\nu}&=X^\rho\big(\underbrace{\partial_\rho T_{\mu\nu}-\Gamma^\lambda_{\rho\mu}T_{\lambda\nu}-\Gamma^\lambda_{\rho\nu}T_{\mu\lambda}}_{\footnotesize \nabla_\rho T_{\mu\nu}}\big)
+        \Longrightarrow\quad(\nabla_XT)_{\mu\nu}&=X^\rho\big(\underbrace{\partial_\rho T_{\mu\nu}-\Gamma^\lambda_{\rho\mu}T_{\lambda\nu}-\Gamma^\lambda_{\rho\nu}T_{\mu\lambda}}_{\footnotesize \nabla_\rho T_{\mu\nu}}\big).
         \end{aligned}
         $$
         """
@@ -434,7 +434,7 @@ def _(lk):
         For $T\in\Gamma(TM^r_s)$, $\nabla T\in\Gamma(TM^r_{s+1})$ is called the **covariant derivative** of $T$.
 
         $$
-        \leadsto\quad\nabla T\overset{\varphi}{=}\nabla_\rho T_{\mu\nu}\,dx^\rho dx^\mu dx^\nu\in\Gamma(TM^0_3)\quad\text{for }T\in\Gamma(TM^0_2)
+        \leadsto\quad\nabla T\overset{\varphi}{=}\nabla_\rho T_{\mu\nu}\,dx^\rho dx^\mu dx^\nu\in\Gamma(TM^0_3),\quad\text{for }T\in\Gamma(TM^0_2)
         $$
         """,
         label="def-covariant-tensor",
@@ -524,7 +524,7 @@ def _(lk):
         On any $(M,g)$
 
         $$
-        \nabla\cdot\mathrm{Ric}=\frac12\,dS
+        \nabla\cdot\mathrm{Ric}=\frac12\,dS.
         $$
 
         $\leadsto$ &nbsp; $\nabla\cdot\mathrm{Ric}\neq0$ unless $S$ is constant
@@ -543,7 +543,7 @@ def _(lk):
         The only divergence-free $(0,2)$-tensor constructed via contractions of $\mathrm{Riem}$ is
 
         $$
-        G=\mathrm{Ric}-\frac12\,S\,g\qquad(\text{the Einstein tensor})
+        G=\mathrm{Ric}-\frac12\,S\,g.\qquad(\text{the Einstein tensor})
         $$
 
         $\leadsto$ &nbsp; up to a constant factor and adding $\Lambda g$, $\Lambda\in\mathbb R$
@@ -562,7 +562,7 @@ def _(lk):
         Given an energy-momentum tensor $T$, the **Einstein equation** on $(M,g)$ is
 
         $$
-        \mathrm{Ric}-\frac12\,S\,g=8\pi T
+        \mathrm{Ric}-\frac12\,S\,g=8\pi T.
         $$
         """,
         label="def-einstein",

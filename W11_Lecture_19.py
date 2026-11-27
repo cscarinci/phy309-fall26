@@ -168,7 +168,7 @@ def _(lk):
 
         > $\displaystyle\begin{alignedat}{2}\Longleftrightarrow\quad\tilde x&=\tilde\varphi\circ\varphi^{-1}(x)&\qquad\dot{\tilde x}{}^l&=\frac{\partial\tilde x^l}{\partial x^k}\,\dot x^k\\[0.4em]\tilde X^l&=\frac{\partial\tilde x^l}{\partial x^k}\,X^k&\dot{\tilde X}{}^l&=\frac{\partial\tilde x^l}{\partial x^k}\,\dot X^k+\underbrace{\frac{\partial^2\tilde x^l}{\partial x^i\partial x^j}\,X^i\dot x^j}_{\footnotesize\text{non-tensorial}}\\[0.4em]\tilde\partial_l&=\frac{\partial x^k}{\partial\tilde x^l}\,\partial_k&\Gamma^k_{ij}&=\frac{\partial x^k}{\partial\tilde x^l}\,\tilde\Gamma^l_{mn}\,\frac{\partial\tilde x^m}{\partial x^i}\,\frac{\partial\tilde x^n}{\partial x^j}+\underbrace{\frac{\partial x^k}{\partial\tilde x^l}\,\frac{\partial^2\tilde x^l}{\partial x^i\partial x^j}}_{\footnotesize\text{non-tensorial}}\end{alignedat}$
 
-        > $\Longrightarrow$ &nbsp; Christoffel symbols are not components of tensors on $M$!
+        > $\Longrightarrow$ &nbsp; Christoffel symbols are not components of tensors on $M$.
         """,
         topic="Covariant derivatives on manifolds",
     )
@@ -202,7 +202,7 @@ def _(lk):
                 r"""$$
                 \begin{aligned}
                 \nabla:\Gamma(TM)\times\Gamma(TM)&\longrightarrow\Gamma(TM)\\
-                (X,Y)&\longmapsto\mk{\nabla_XY}
+                (X,Y)&\longmapsto\mk{\nabla_XY},
                 \end{aligned}
                 $$""",
                 r"derivative of $Y$<br>in the direction of $X$",
@@ -337,27 +337,29 @@ def _(lk):
 def _(lk, phi0_s):
     # module: geodesics
     # definition: acceleration, geodesic
-    lk.definition(
-        [
-            r"Given a path $\gamma$ on $M$, its **acceleration** is the vector field along $\gamma$ given by",
-            lk.aside(
-                r"""$$
-                \begin{aligned}
-                A_{\gamma(t)}&=\frac{D}{dt}\gamma'(t)=\mk{\nabla_{\gamma'(t)}X}\\
-                &\overset{\varphi}{=}\big(\ddot x^k(t)+\dot x^i(t)\,\dot x^j(t)\,\Gamma^k_{ij}(t)\big)\,\partial_k|_{\gamma(t)}
-                \end{aligned}
-                $$""",
-                [(1, r"where $\gamma$ is an integral<br>curve of $X\in\Gamma(TM)$")],
-                rows=2,
-            ),
-            r"A **geodesic** is a path with zero acceleration",
-            lk.aside(
-                r"$$\frac{D}{dt}\gamma'(t)=0\quad\overset{\varphi}{\Longleftrightarrow}\quad\mk{\ddot x^k+\dot x^i\dot x^j\,\Gamma^k_{ij}=0\quad\forall\,k}$$",
-                r"non-linear 2nd order<br>system of ODEs",
-            ),
-            lk.interactive(lk.frame("L19-latitude", 460), controls=[phi0_s]),
-        ],
-        label="def-geodesic",
+    lk.module(
+        lk.definition(
+            [
+                r"Given a path $\gamma$ on $M$, its **acceleration** is the vector field along $\gamma$ given by",
+                lk.aside(
+                    r"""$$
+                    \begin{aligned}
+                    A_{\gamma(t)}&=\frac{D}{dt}\gamma'(t)=\mk{\nabla_{\gamma'(t)}X}\\
+                    &\overset{\varphi}{=}\big(\ddot x^k(t)+\dot x^i(t)\,\dot x^j(t)\,\Gamma^k_{ij}(t)\big)\,\partial_k|_{\gamma(t)}.
+                    \end{aligned}
+                    $$""",
+                    [(1, r"where $\gamma$ is an integral<br>curve of $X\in\Gamma(TM)$")],
+                    rows=2,
+                ),
+                r"A **geodesic** is a path with zero acceleration",
+                lk.aside(
+                    r"$$\frac{D}{dt}\gamma'(t)=0\quad\overset{\varphi}{\Longleftrightarrow}\quad\mk{\ddot x^k+\dot x^i\dot x^j\,\Gamma^k_{ij}=0\quad\forall\,k}.$$",
+                    r"non-linear 2nd order<br>system of ODEs",
+                ),
+            ],
+            label="def-geodesic",
+        ),
+        lk.prose(lk.interactive(lk.frame("L19-latitude", 460), controls=[phi0_s])),
     )
     return
 
@@ -384,7 +386,7 @@ def _(lk):
         If $\gamma$ is a geodesic then
 
         $$
-        g_{\gamma(t)}\big(\gamma'(t),\gamma'(t)\big)=\text{constant along }\gamma
+        g_{\gamma(t)}\big(\gamma'(t),\gamma'(t)\big)=\text{constant along }\gamma.
         $$
         """,
         label="thm-geodesic-speed",
@@ -437,7 +439,7 @@ def _(L_s, lk, t_s):
                 r"<span class='lk-ghost'>For $L\neq0$ &nbsp; </span>$\Longleftrightarrow$ &nbsp; $\mk{z={\large\tfrac{\sqrt{\kappa-L^2}}{L}}\big(\cos\theta_0\,x+\sin\theta_0\,y\big)}$",
                 "plane through the origin",
             ),
-            r"$\therefore$ &nbsp; the geodesics on $(\mathbb S^2,g_{\mathbb S^2})$ are the great circles of $\mathbb S^2$!",
+            r"$\therefore$ &nbsp; the geodesics on $(\mathbb S^2,g_{\mathbb S^2})$ are the great circles of $\mathbb S^2$.",
             lk.interactive(lk.frame("L19-geodesics", 460), controls=[L_s, t_s]),
         ],
         label="ex-sphere-geodesics",

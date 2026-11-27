@@ -349,7 +349,7 @@ def _(lk):
         r"In $\mathbb R^m$ we have a preferred point &nbsp; $o=\begin{bmatrix}0\\0\\\vdots\\0\end{bmatrix}$",
         r"> and a preferred basis of vectors &nbsp; $e_i=\begin{bmatrix}0\\\vdots\\1\\\vdots\\0\end{bmatrix}$",
         r"In $\mathbb A^m$ each choice of $(o,e_i)\in\mathbb A^m\times\mathbb V^m$ defines",
-        r"$$\varphi_{(o,e_i)}:\mathbb A^m\longrightarrow\mathbb R^m,\qquad p=\underbrace{o+x^ie_i}_{\text{using }-\,:\,\mathbb A\times\mathbb A\to\mathbb V}\longmapsto\begin{bmatrix}x^1\\x^2\\\vdots\\x^m\end{bmatrix}$$",
+        r"$$\varphi_{(o,e_i)}:\mathbb A^m\longrightarrow\mathbb R^m,\qquad p=\underbrace{o+x^ie_i}_{\text{using }-\,:\,\mathbb A\times\mathbb A\to\mathbb V}\longmapsto\begin{bmatrix}x^1\\x^2\\\vdots\\x^m\end{bmatrix}.$$",
         r"""
         > $\leadsto$ &nbsp; importantly &nbsp; $\varphi_{(o,e_i)}:\mathbb A^m\longrightarrow\mathbb R^m$ &nbsp; is a global bijection!
 
@@ -362,7 +362,7 @@ def _(lk):
         ),
         lk.gap(),
         r"In a manifold $M^m$ we will keep the ability of producing coordinate charts",
-        r"$$\varphi_\alpha:U_\alpha\subseteq M^m\longrightarrow V_\alpha\subseteq\mathbb R^m$$",
+        r"$$\varphi_\alpha:U_\alpha\subseteq M^m\longrightarrow V_\alpha\subseteq\mathbb R^m.$$",
         r"""
         > $\leadsto$ &nbsp; now only local bijections
 
@@ -398,7 +398,7 @@ def _(lk):
     lk.definition(
         [
             r"An **$m$-dimensional manifold** ($m$-manifold) is a set of points $M^m\ni p$, with a collection of charts $\mathcal A\ni\varphi_\alpha$",
-            r"$$\varphi_\alpha:U_\alpha\subseteq M\longrightarrow V_\alpha\subseteq\mathbb R^m$$",
+            r"$$\varphi_\alpha:U_\alpha\subseteq M\longrightarrow V_\alpha\subseteq\mathbb R^m,$$",
             r"where",
             lk.aside(r"> • &nbsp; $U_\alpha$ <span class='lk-mark'>cover</span> $M$", r"$\textstyle\bigcup_\alpha U_\alpha=M$"),
             lk.aside(r"> • &nbsp; $V_\alpha$ are <span class='lk-mark'>open sets</span> of $\mathbb R^m$", r"given by union of open balls in $\mathbb R^m$"),
@@ -489,7 +489,7 @@ def _(lk):
             r"Given an $m$-manifold &nbsp; $M$, &nbsp; $\mathcal A=\{\varphi_\alpha:U_\alpha\longrightarrow V_\alpha\subseteq\mathbb R^m\}$",
             r"a function $f:M\longrightarrow\mathbb R$ is called **smooth** if, for every chart $\varphi_\alpha\in\mathcal A$, the composition",
             lk.aside(
-                r"$$\mk{f\circ\varphi_\alpha^{-1}}:\underset{\begin{matrix}\cap\\\mathbb R^m\end{matrix}}{V_\alpha}\longrightarrow\mathbb R$$",
+                r"$$\mk{f\circ\varphi_\alpha^{-1}}:\underset{\begin{matrix}\cap\\\mathbb R^m\end{matrix}}{V_\alpha}\longrightarrow\mathbb R,$$",
                 r"usual scalar function in $\mathbb R^m$",
             ),
             r"is smooth",
@@ -506,8 +506,8 @@ def _(lk):
     lk.prose(
         r"$\Longrightarrow$ &nbsp; we know how to calculate derivatives with respect to coordinates in $V_\alpha$",
         r"Let's simplify notation a bit here: &nbsp; $\varphi_\alpha:U_\alpha\longrightarrow V_\alpha$ &nbsp; $\leadsto$ &nbsp; $\varphi:U\longrightarrow V\subseteq\mathbb R^m\ni x$",
-        r"$$\frac{\partial}{\partial x^\mu}(f\circ\varphi^{-1})(x)=\lim_{h\to0}\frac{(f\circ\varphi^{-1})(x+he_\mu)-(f\circ\varphi^{-1})(x)}{h}$$",
-        r"$$\begin{aligned}D_x(f\circ\varphi^{-1})(v)&=\lim_{h\to0}\frac{(f\circ\varphi^{-1})(x+hv)-(f\circ\varphi^{-1})(x)}{h}\\[0.3em]&=v^\mu\frac{\partial}{\partial x^\mu}(f\circ\varphi^{-1})(x)\end{aligned}$$",
+        r"$$\frac{\partial}{\partial x^\mu}(f\circ\varphi^{-1})(x)=\lim_{h\to0}\frac{(f\circ\varphi^{-1})(x+he_\mu)-(f\circ\varphi^{-1})(x)}{h},$$",
+        r"$$\begin{aligned}D_x(f\circ\varphi^{-1})(v)&=\lim_{h\to0}\frac{(f\circ\varphi^{-1})(x+hv)-(f\circ\varphi^{-1})(x)}{h}\\[0.3em]&=v^\mu\frac{\partial}{\partial x^\mu}(f\circ\varphi^{-1})(x).\end{aligned}$$",
     )
     return
 
@@ -523,7 +523,7 @@ def _(lk):
             r"representations of $f$ in each chart",
         ),
         r"> are related via",
-        r"$$(f\circ\varphi^{-1})(x)=(f\circ\tilde\varphi^{-1})\circ\underbrace{(\tilde\varphi\circ\varphi^{-1})(x)}_{\tilde x(x)}\qquad\text{on }\varphi(U\cap\tilde U)\subseteq V$$",
+        r"$$(f\circ\varphi^{-1})(x)=(f\circ\tilde\varphi^{-1})\circ\underbrace{(\tilde\varphi\circ\varphi^{-1})(x)}_{\tilde x(x)},\qquad\text{on }\varphi(U\cap\tilde U)\subseteq V.$$",
         lk.aside(
             r"$\displaystyle\begin{aligned}\Longrightarrow\quad\frac{\partial}{\partial x^\mu}(f\circ\varphi^{-1})(x)&=\frac{\partial}{\partial\tilde x^\nu}(f\circ\tilde\varphi^{-1})(\tilde x(x))\,\frac{\partial\tilde x^\nu}{\partial x^\mu}(x)\\[0.3em]&=\underbrace{\frac{\partial\tilde x^\nu}{\partial x^\mu}(x)}_{\footnotesize\begin{matrix}\text{Jacobian matrix of the}\\\text{change of coordinates}\\\tilde x=\tilde\varphi\circ\varphi^{-1}(x)\end{matrix}}\frac{\partial}{\partial\tilde x^\nu}(f\circ\tilde\varphi^{-1})(\tilde x(x))\end{aligned}$",
             r"smooth by assumption",

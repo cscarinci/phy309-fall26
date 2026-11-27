@@ -291,10 +291,10 @@ def _(lk):
             A **metric** on a manifold $M$ is an assignment
 
             $$
-            g:p\in M\longmapsto g_p(\cdot,\cdot):T_pM\times T_pM\longrightarrow\mathbb R
+            g:p\in M\longmapsto g_p(\cdot,\cdot):T_pM\times T_pM\longrightarrow\mathbb R,
             $$
 
-            of an inner-product on each tangent space
+            of an inner product on each tangent space
             """,
             lk.aside(r"> • &nbsp; if $g_p$ is <span class='lk-mark'>Euclidean</span> for every $p\in M$", "positive definite"),
             r"> > $\leadsto$ &nbsp; $g$ is called a **Riemannian metric**",
@@ -337,7 +337,7 @@ def _(lk):
         $$
         """,
         lk.aside(
-            r"> $\Longrightarrow$ &nbsp; $\displaystyle\boxed{\ g_{ij}=\frac{\partial\tilde x^k}{\partial x^i}\,\tilde g_{kl}\,\frac{\partial\tilde x^l}{\partial x^j}\quad\text{on }U\cap\tilde U\ }$",
+            r"> $\Longrightarrow$ &nbsp; $\displaystyle\boxed{\ g_{ij}=\frac{\partial\tilde x^k}{\partial x^i}\,\tilde g_{kl}\,\frac{\partial\tilde x^l}{\partial x^j},\quad\text{on }U\cap\tilde U\ }$",
             r"transformation of components of $g$<br>under change of charts",
         ),
     )
@@ -351,7 +351,7 @@ def _(lk, plane_figure, polar_figure, polar_r):
     lk.example(
         [
             r"Euclidean plane $\mathbb E^2$",
-            r"> Choose &nbsp; $o\in\mathbb E^2$, &nbsp; $e_1,e_2\in\mathbb V^2$ orthonormal",
+            r"> Choose &nbsp; $o\in\mathbb E^2$, &nbsp; $e_1,e_2\in\mathbb V^2$ orthonormal.",
             lk.figure(plane_figure()),
             lk.aside(
                 r"> $p=o+x\,e_1+y\,e_2=o+r\cos\theta\,e_1+r\sin\theta\,e_2$",
@@ -360,13 +360,14 @@ def _(lk, plane_figure, polar_figure, polar_r):
             r"""
             $$
             \begin{aligned}
+            &\begin{aligned}
             X_p&=X^1\frac{\partial}{\partial x}+X^2\frac{\partial}{\partial y}=\tilde X^1\frac{\partial}{\partial r}+\tilde X^2\frac{\partial}{\partial\theta}\\[0.3em]
             &=\tilde X^1\Big(\frac{\partial x}{\partial r}\frac{\partial}{\partial x}+\frac{\partial y}{\partial r}\frac{\partial}{\partial y}\Big)+\tilde X^2\Big(\frac{\partial x}{\partial\theta}\frac{\partial}{\partial x}+\frac{\partial y}{\partial\theta}\frac{\partial}{\partial y}\Big)\\[0.3em]
             &=\big(\cos\theta\,\tilde X^1-r\sin\theta\,\tilde X^2\big)\frac{\partial}{\partial x}+\big(\sin\theta\,\tilde X^1+r\cos\theta\,\tilde X^2\big)\frac{\partial}{\partial y}
+            \end{aligned}\\[6pt]
+            &\Longrightarrow\quad \begin{bmatrix}X^1\\X^2\end{bmatrix}=\begin{bmatrix}\cos\theta&-r\sin\theta\\\sin\theta&r\cos\theta\end{bmatrix}\begin{bmatrix}\tilde X^1\\\tilde X^2\end{bmatrix}.
             \end{aligned}
             $$
-
-            > $\Longrightarrow$ &nbsp; $\begin{bmatrix}X^1\\X^2\end{bmatrix}=\begin{bmatrix}\cos\theta&-r\sin\theta\\\sin\theta&r\cos\theta\end{bmatrix}\begin{bmatrix}\tilde X^1\\\tilde X^2\end{bmatrix}$
 
             $$
             \begin{aligned}
@@ -393,12 +394,13 @@ def _(lk):
             r"""
             $$
             \begin{aligned}
+            &\begin{aligned}
             (x,y,z)&\overset{\varphi_n}{=}\Big(\frac{2u}{1+u^2+v^2},\ \frac{2v}{1+u^2+v^2},\ \frac{-1+u^2+v^2}{1+u^2+v^2}\Big)\\[0.3em]
             &\overset{\psi}{=}\big(\sin\phi\cos\theta,\ \sin\phi\sin\theta,\ \cos\phi\big)
+            \end{aligned}\\[6pt]
+            &\Longrightarrow\quad (u,v)=\big(\cot(\phi/2)\cos\theta,\ \cot(\phi/2)\sin\theta\big).
             \end{aligned}
             $$
-
-            > $\Longrightarrow$ &nbsp; $(u,v)=\big(\cot(\phi/2)\cos\theta,\ \cot(\phi/2)\sin\theta\big)$
 
             $\displaystyle X_p\overset{\varphi_n}{=}X^u\frac{\partial}{\partial u}+X^v\frac{\partial}{\partial v}\overset{\psi}{=}X^\phi\frac{\partial}{\partial\phi}+X^\theta\frac{\partial}{\partial\theta}$
 
@@ -424,7 +426,7 @@ def _(lk):
         Given a Riemannian metric $g$ on $M$ and given $\gamma:[a,b]\to M$ a path segment on $M$
 
         $$
-        \mathrm{length}_g(\gamma)=\int_a^b\sqrt{g_{\gamma(t)}(\gamma'(t),\gamma'(t))}\,dt
+        \mathrm{length}_g(\gamma)=\int_a^b\sqrt{g_{\gamma(t)}(\gamma'(t),\gamma'(t))}\,dt.
         $$
         """,
         label="def-length",
@@ -449,13 +451,14 @@ def _(latitude_scene, lk):
 
             $$
             \begin{aligned}
+            &\begin{aligned}
             g_{\gamma(t)}(\gamma'(t),\gamma'(t))&=\frac{4}{(1+u(t)^2+v(t)^2)^2}\,\big(u'(t)^2+v'(t)^2\big)\\
             &=\frac{4}{(1+\cot(\phi_0/2)^2)^2}\,\cot(\phi_0/2)^2=\sin(\phi_0)^2\\
             &=\phi'(t)^2+\sin(\phi(t))^2\,\theta'(t)^2
+            \end{aligned}\\[6pt]
+            &\Longrightarrow\quad \mathrm{length}_g(\gamma)=\int_0^{2\pi}\sqrt{\sin(\phi_0)^2}\,dt=2\pi\sin(\phi_0).
             \end{aligned}
             $$
-
-            > $\Longrightarrow$ &nbsp; $\displaystyle\mathrm{length}_g(\gamma)=\int_0^{2\pi}\sqrt{\sin(\phi_0)^2}\,dt=2\pi\sin(\phi_0)$
             """,
         ],
         label="ex-latitude-length",

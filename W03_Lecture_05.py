@@ -175,7 +175,7 @@ def _(lk):
         [
             r"Given two particles $\gamma,\sigma$, with &nbsp; $\gamma(t)=\sigma(s)=p$, &nbsp; $\gamma'(t)=u(t)$, &nbsp; $\sigma'(s)=v(s)$",
             r"the 4-velocity of $\sigma$ at $p$ decomposes uniquely as",
-            r"$$\begin{aligned}v&=\underbrace{-\eta(u,v)\,u}_{\text{parallel to }u}+\underbrace{\big(v+\eta(u,v)\,u\big)}_{\text{orthogonal to }u}\\[0.4em]&=\underbrace{\Gamma(\gamma,\sigma)}_{\footnotesize\begin{matrix}\text{Lorentz factor}\\\text{of }\sigma\text{ relative }\gamma\end{matrix}}\big(u+\underbrace{\nu(\gamma,\sigma)}_{\footnotesize\begin{matrix}\text{velocity of }\sigma\\\text{relative }\gamma\end{matrix}}\big)\qquad(\text{at }p)\end{aligned}$$",
+            r"$$\begin{aligned}v&=\underbrace{-\eta(u,v)\,u}_{\text{parallel to }u}+\underbrace{\big(v+\eta(u,v)\,u\big)}_{\text{orthogonal to }u}\\[0.4em]&=\underbrace{\Gamma(\gamma,\sigma)}_{\footnotesize\begin{matrix}\text{Lorentz factor}\\\text{of }\sigma\text{ relative }\gamma\end{matrix}}\big(u+\underbrace{\nu(\gamma,\sigma)}_{\footnotesize\begin{matrix}\text{velocity of }\sigma\\\text{relative }\gamma\end{matrix}}\big)\qquad(\text{at }p).\end{aligned}$$",
             r"> $\leadsto$ &nbsp; $\begin{cases}\Gamma(\gamma,\sigma)=-\eta(u,v)>0\\\nu(\gamma,\sigma)=\dfrac{v}{\Gamma(\gamma,\sigma)}-u\in u^\perp\end{cases}$ &nbsp;&nbsp; (at $p$)",
         ],
         label="thm-decomposition",
@@ -217,7 +217,7 @@ def _(lk):
         [
             r"For any two particles $\gamma,\sigma$",
             lk.aside(
-                r"$$\begin{aligned}\lVert\nu(\gamma,\sigma)\rVert^2&=\frac{\lVert v\rVert^2}{\Gamma(\gamma,\sigma)^2}+2\,\mk{\frac{\Gamma(\gamma,\sigma)}{\Gamma(\gamma,\sigma)}}+\mk{\lVert u\rVert^2}\\[0.3em]&=1+\frac{\lVert v\rVert^2}{\Gamma(\gamma,\sigma)^2}<1\end{aligned}$$",
+                r"$$\begin{aligned}\lVert\nu(\gamma,\sigma)\rVert^2&=\frac{\lVert v\rVert^2}{\Gamma(\gamma,\sigma)^2}+2\,\mk{\frac{\Gamma(\gamma,\sigma)}{\Gamma(\gamma,\sigma)}}+\mk{\lVert u\rVert^2}\\[0.3em]&=1+\frac{\lVert v\rVert^2}{\Gamma(\gamma,\sigma)^2}<1.\end{aligned}$$",
                 r"$\Gamma(\gamma,\sigma)/\Gamma(\gamma,\sigma)=1$, &nbsp; $\lVert u\rVert^2=-1$",
                 at=1,
                 rows=2,
@@ -248,7 +248,7 @@ def _(lk):
     lk.corollary(
         [
             r"For any two particles $\gamma,\sigma$",
-            r"$$\Gamma(\gamma,\sigma)=\frac{1}{\sqrt{1-\lVert\nu(\gamma,\sigma)\rVert^2}}\geq1\qquad(\text{at }p=\gamma(t)=\sigma(s))$$",
+            r"$$\Gamma(\gamma,\sigma)=\frac{1}{\sqrt{1-\lVert\nu(\gamma,\sigma)\rVert^2}}\geq1\qquad(\text{at }p=\gamma(t)=\sigma(s)).$$",
         ],
         label="cor-lorentz-factor",
     )
@@ -262,7 +262,7 @@ def _(lk):
     lk.definition(
         [
             r"A **photon** in $\mathbb M^4$ is a future oriented lightlike line",
-            r"$$\xi(s)=p+s\,w\qquad(\lVert w\rVert^2=0,\ \text{in the future cone})$$",
+            r"$$\xi(s)=p+s\,w\qquad(\lVert w\rVert^2=0,\ \text{in the future cone}).$$",
         ],
         label="def-photon",
     )
@@ -276,7 +276,7 @@ def _(lk):
     lk.theorem(
         [
             r"Given a particle $\gamma$ and a photon $\xi$ &nbsp; $\left(\begin{matrix}p=\gamma(t)=\xi(s)\\\gamma'(t)=u(t)\\\xi'(s)=w(s)\end{matrix}\right)$",
-            r"$$\begin{aligned}w&=\underbrace{-\eta(u,w)\,u}_{\text{parallel}}+\underbrace{\big(w+\eta(u,w)\,u\big)}_{\text{orthogonal}}\\[0.4em]&=-\eta(u,w)\big(u+\nu(\gamma,\xi)\big)\end{aligned}$$",
+            r"$$\begin{aligned}w&=\underbrace{-\eta(u,w)\,u}_{\text{parallel}}+\underbrace{\big(w+\eta(u,w)\,u\big)}_{\text{orthogonal}}\\[0.4em]&=-\eta(u,w)\big(u+\nu(\gamma,\xi)\big).\end{aligned}$$",
         ],
         label="thm-photon",
     )
@@ -325,7 +325,7 @@ def _(lk):
     lk.definition(
         [
             r"If a particle $\sigma(s)$ has mass $m>0$ its **4-momentum** at $\sigma(s)$ is",
-            r"$$P(s)=m\,\sigma'(s)=m\,v(s)$$",
+            r"$$P(s)=m\,\sigma'(s)=m\,v(s).$$",
         ],
         label="def-4-momentum",
     )
@@ -339,8 +339,7 @@ def _(lk):
     lk.prose(
         r"Given another particle $\gamma(t)$",
         r"> the 4-momentum of $\sigma$ at an event $\sigma(s)=\gamma(t)$",
-        r"$$\begin{aligned}P&=\underbrace{m\,\Gamma(\gamma,\sigma)}_{\footnotesize\begin{matrix}\text{energy of }\sigma\\\text{relative to }\gamma\end{matrix}}u+\underbrace{m\,\Gamma(\gamma,\sigma)\,\nu(\gamma,\sigma)}_{\footnotesize\begin{matrix}\text{spatial momentum}\\\text{of }\sigma\text{ relative to }\gamma\end{matrix}}\\[0.4em]&=\varepsilon(\gamma,\sigma)\,u+\underbrace{\pi(\gamma,\sigma)}_{\in\,u^\perp}\end{aligned}$$",
-        r"> > $\Longrightarrow$ &nbsp; $\begin{cases}\varepsilon=-\eta(P,u)\\\pi=P-\varepsilon\,u\end{cases}$",
+        r"$$\begin{aligned}&\begin{aligned}P&=\underbrace{m\,\Gamma(\gamma,\sigma)}_{\footnotesize\begin{matrix}\text{energy of }\sigma\\\text{relative to }\gamma\end{matrix}}u+\underbrace{m\,\Gamma(\gamma,\sigma)\,\nu(\gamma,\sigma)}_{\footnotesize\begin{matrix}\text{spatial momentum}\\\text{of }\sigma\text{ relative to }\gamma\end{matrix}}\\[0.4em]&=\varepsilon(\gamma,\sigma)\,u+\underbrace{\pi(\gamma,\sigma)}_{\in\,u^\perp}\end{aligned}\\[6pt]&\Longrightarrow\quad\begin{cases}\varepsilon=-\eta(P,u)\\\pi=P-\varepsilon\,u\end{cases}.\end{aligned}$$",
     )
     return
 
@@ -370,7 +369,7 @@ def _(lk, lorentz_figure):
         [
             r"For small relative speeds &nbsp; $\lVert\nu(\gamma,\sigma)\rVert^2\ll1$",
             lk.aside(
-                r"$$\begin{aligned}\varepsilon&=\sqrt{m^2+\lVert\pi\rVert^2}=m\sqrt{1+\frac{\lVert\nu\rVert^2}{1-\lVert\nu\rVert^2}}\approx m+\mk{\tfrac12m\lVert\nu\rVert^2}+O(\lVert\nu\rVert^4)\\[0.3em]\pi&=m\,\Gamma\,\nu=m\frac{\nu}{\sqrt{1-\lVert\nu\rVert^2}}\approx\mk{m\,\nu}+O(\lVert\nu\rVert^3)\end{aligned}$$",
+                r"$$\begin{aligned}\varepsilon&=\sqrt{m^2+\lVert\pi\rVert^2}=m\sqrt{1+\frac{\lVert\nu\rVert^2}{1-\lVert\nu\rVert^2}}\approx m+\mk{\tfrac12m\lVert\nu\rVert^2}+O(\lVert\nu\rVert^4)\\[0.3em]\pi&=m\,\Gamma\,\nu=m\frac{\nu}{\sqrt{1-\lVert\nu\rVert^2}}\approx\mk{m\,\nu}+O(\lVert\nu\rVert^3).\end{aligned}$$",
                 [(1, r"$\tfrac12m\lVert\nu\rVert^2$: Newtonian limit"), (2, r"$m\,\nu$: Newtonian limit")],
                 rows=2,
             ),
@@ -389,9 +388,9 @@ def _(lk):
     lk.definition(
         [
             r"The **4-acceleration** of a particle $\sigma:\mathbb R\longrightarrow\mathbb M^4$ &nbsp; ($\lVert\sigma'(s)\rVert^2=-1$) &nbsp; at $p=\sigma(s)$ is",
-            r"$$A(s)=\frac{d}{ds}v(s)=\sigma''(s)$$",
+            r"$$A(s)=\frac{d}{ds}v(s)=\sigma''(s).$$",
             r"The **4-force** acting on $\sigma$ at $p=\sigma(s)$ is",
-            r"$$F(s)=\frac{d}{ds}P(s)=m\,A(s)$$",
+            r"$$F(s)=\frac{d}{ds}P(s)=m\,A(s).$$",
         ],
         label="def-4-force",
     )

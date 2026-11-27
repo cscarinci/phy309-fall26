@@ -337,7 +337,7 @@ def _(lk):
     lk.definition(
         [
             r"The **Galilean spacetime** is a 4-dimensional affine space",
-            lk.aside(r"$$\mathbb G^4=(\mathbb A,\mathbb V,-)$$", r"assumptions (i), (ii), (iii) as before,<br>with $\dim\mathbb V=4$"),
+            lk.aside(r"$$\mathbb G^4=(\mathbb A,\mathbb V,-),$$", r"assumptions (i), (ii), (iii) as before,<br>with $\dim\mathbb V=4$"),
             lk.aside(r"together with <span class='lk-mark'>some extra structure</span>", "different assumptions needed"),
         ],
         label="def-galilean",
@@ -381,25 +381,27 @@ def _(lk):
 def _(causal_sketch, lk):
     # module: Galilean spacetime
     # definition: basic causal structure
-    lk.definition(
-        [
-            r"""
-            • &nbsp; $\vec u$ **future oriented** if &nbsp; $\tau(\vec u)>0$
+    lk.module(
+        lk.definition(
+            [
+                r"""
+                • &nbsp; $\vec u$ **future oriented** if &nbsp; $\tau(\vec u)>0$
 
-            > $\leadsto$ &nbsp; $q$ in future of $p$ if &nbsp; $\tau(q-p)>0$
+                > $\leadsto$ &nbsp; $q$ in future of $p$ if &nbsp; $\tau(q-p)>0$
 
-            • &nbsp; $\vec u$ **past oriented** if &nbsp; $\tau(\vec u)<0$
+                • &nbsp; $\vec u$ **past oriented** if &nbsp; $\tau(\vec u)<0$
 
-            > $\leadsto$ &nbsp; $q$ in past of $p$ if &nbsp; $\tau(q-p)<0$
+                > $\leadsto$ &nbsp; $q$ in past of $p$ if &nbsp; $\tau(q-p)<0$
 
-            • &nbsp; $\vec u$ **spatial** if &nbsp; $\tau(\vec u)=0$
+                • &nbsp; $\vec u$ **spatial** if &nbsp; $\tau(\vec u)=0$
 
-            > $\leadsto$ &nbsp; $p$ and $q$ are simultaneous if &nbsp; $\tau(q-p)=0$
-            """,
-            lk.figure(causal_sketch()),
-        ],
-        title=r"Basic causal structure in $\mathbb G^4$",
-        label="def-causal-galilean",
+                > $\leadsto$ &nbsp; $p$ and $q$ are simultaneous if &nbsp; $\tau(q-p)=0$
+                """,
+            ],
+            title=r"Basic causal structure in $\mathbb G^4$",
+            label="def-causal-galilean",
+        ),
+        lk.prose(lk.figure(causal_sketch())),
     )
     return
 
@@ -411,7 +413,7 @@ def _(lk):
     lk.prose(
         r"**The spatial inner product**",
         lk.aside(r"iv′) &nbsp; there is a Euclidean inner product on $\mk{\ker\tau}$", r"$\ker\tau$: $\dim=3$"),
-        r"$$\langle\ ,\ \rangle:\ker\tau\times\ker\tau\longrightarrow\mathbb R$$",
+        r"$$\langle\ ,\ \rangle:\ker\tau\times\ker\tau\longrightarrow\mathbb R.$$",
         r"$\leadsto$ &nbsp; we can define spatial length",
         r"> if &nbsp; $\tau(\vec u)=0$ &nbsp; $\Longrightarrow$ &nbsp; $\lVert\vec u\rVert=\sqrt{\langle\vec u,\vec u\rangle}$",
         r"$\leadsto$ &nbsp; each set of mutually simultaneous events in $\mathbb G^4$ is an identical copy of $\mathbb E^3$",
@@ -442,7 +444,7 @@ def _(frame_sketch, lk):
                 r"$o$ = origin<br>$\vec e_0,\vec e_1,\vec e_2,\vec e_3$ = inertial frame",
             ),
             lk.aside(
-                r"$$\begin{aligned}&\tau(\vec e_0)=1\\[0.2em]&\tau(\vec e_i)=0,\quad i=1,2,3\\[0.2em]&\langle\vec e_i,\vec e_j\rangle=\delta_{ij}=\begin{cases}1&i=j\\0&i\neq j\end{cases}\end{aligned}$$",
+                r"$$\begin{aligned}&\tau(\vec e_0)=1\\[0.2em]&\tau(\vec e_i)=0,\quad i=1,2,3\\[0.2em]&\langle\vec e_i,\vec e_j\rangle=\delta_{ij}=\begin{cases}1,&i=j,\\0,&i\neq j\end{cases}.\end{aligned}$$",
                 [(1, "unit future oriented"), (3, "spatial orthonormal basis")],
                 rows=3,
             ),
@@ -477,15 +479,17 @@ def _(lk):
 def _(lk, particle_sketch):
     # module: particles
     # definition: particle
-    lk.definition(
-        [
-            r"A **particle** in $\mathbb G^4$ is a parameterized curve",
-            lk.aside(r"$$\gamma:\mathbb R\longrightarrow\mathbb G^4,\qquad s\longmapsto\gamma(s)$$", "all events in the particle's history!"),
-            r"such that &nbsp; $\displaystyle\gamma'(s)=\lim_{\varepsilon\to0}\frac{\gamma(s+\varepsilon)-\gamma(s)}{\varepsilon}\in\mathbb V$",
-            r"is future oriented &nbsp; $\tau(\gamma'(s))>0$ &nbsp; $\forall\,s$",
-            lk.figure(particle_sketch()),
-        ],
-        label="def-particle-galilean",
+    lk.module(
+        lk.definition(
+            [
+                r"A **particle** in $\mathbb G^4$ is a parameterized curve",
+                lk.aside(r"$$\gamma:\mathbb R\longrightarrow\mathbb G^4,\qquad s\longmapsto\gamma(s),$$", "all events in the particle's history!"),
+                r"such that &nbsp; $\displaystyle\gamma'(s)=\lim_{\varepsilon\to0}\frac{\gamma(s+\varepsilon)-\gamma(s)}{\varepsilon}\in\mathbb V$",
+                r"is future oriented &nbsp; $\tau(\gamma'(s))>0$ &nbsp; $\forall\,s$",
+            ],
+            label="def-particle-galilean",
+        ),
+        lk.prose(lk.figure(particle_sketch())),
     )
     return
 
@@ -513,7 +517,7 @@ def _(lk):
 
         > $\leadsto$ &nbsp; it is a 4-dimensional vector …
 
-        > $\leadsto$ &nbsp; $s$ in $\gamma(s)$ is NOT related to physical time! &nbsp; (without other assumptions)
+        > $\leadsto$ &nbsp; $s$ in $\gamma(s)$ is not related to physical time! &nbsp; (without other assumptions)
         """
     )
     return
@@ -526,7 +530,7 @@ def _(lk):
     lk.proposition(
         [
             r"Every particle can be parameterized by an “absolute time” parameter $t$ &nbsp; such that",
-            r"$$\tau(\gamma(t_2)-\gamma(t_1))=t_2-t_1$$",
+            r"$$\tau(\gamma(t_2)-\gamma(t_1))=t_2-t_1.$$",
         ],
         label="prop-absolute-time",
     )
@@ -562,14 +566,16 @@ def _(lk):
 def _(lk, relvel_scene):
     # module: relative velocity
     # definition: relative velocity
-    lk.definition(
-        [
-            r"Given two particles $\gamma_1,\gamma_2$ &nbsp; (with $\tau(\gamma_1')=\tau(\gamma_2')=1$)",
-            r"the **relative velocity** of $\gamma_2$ with respect to $\gamma_1$ is the spatial vector",
-            r"$$\vec v(\gamma_1,\gamma_2)=\gamma_2'-\gamma_1'\in\ker(\tau)$$",
-            lk.figure(relvel_scene()),
-        ],
-        label="def-relative-velocity-galilean",
+    lk.module(
+        lk.definition(
+            [
+                r"Given two particles $\gamma_1,\gamma_2$ &nbsp; (with $\tau(\gamma_1')=\tau(\gamma_2')=1$)",
+                r"the **relative velocity** of $\gamma_2$ with respect to $\gamma_1$ is the spatial vector",
+                r"$$\vec v(\gamma_1,\gamma_2)=\gamma_2'-\gamma_1'\in\ker(\tau).$$",
+            ],
+            label="def-relative-velocity-galilean",
+        ),
+        lk.prose(lk.figure(relvel_scene())),
     )
     return
 
@@ -585,7 +591,7 @@ def _(lk):
                 "does not require other reference",
             ),
             lk.aside(
-                r"$$\vec a(\gamma)=\gamma''\ \mk{\in\ker(\tau)}$$",
+                r"$$\vec a(\gamma)=\gamma''\ \mk{\in\ker(\tau)}.$$",
                 r"$\in\ker(\tau)$: &nbsp; $\tau(\gamma'')=\dfrac{d}{dt}\tau(\gamma')=0$",
             ),
         ],
@@ -602,16 +608,16 @@ def _(lk):
         [
             r"In the absence of external forces, a particle's history is a *straight future oriented line*",
             lk.aside(
-                r"$$\gamma(t)=p+t\,\vec u,\qquad\tau(\vec u)=1$$",
+                r"$$\gamma(t)=p+t\,\vec u,\qquad\tau(\vec u)=1.$$",
                 r"solution of $\gamma''(t)=\vec0$, $\gamma(0)=p$, $\gamma'(0)=\vec u$<br>(inertial particle / inertial observer)",
             ),
             r"Deviation from inertial motion is determined by",
             lk.aside(
-                r"$$\mk{\gamma''(t)}=\frac1m\vec F(t),\qquad\text{where}\quad\begin{aligned}&m\in\mathbb R_+&&(\text{mass})\\&\vec F(t)\in\ker(\tau)&&(\text{force})\end{aligned}$$",
+                r"$$\mk{\gamma''(t)}=\frac1m\vec F(t),\qquad\text{where}\quad\begin{aligned}&m\in\mathbb R_+&&(\text{mass})\\&\vec F(t)\in\ker(\tau),&&(\text{force})\end{aligned}$$",
                 r"$\gamma''(t)=\dots$: system of second order ODEs",
             ),
             r"in Cartesian coordinates (choice of origin and inertial frame)",
-            r"$$\gamma''(t)=\begin{bmatrix}t\\x(t)\\y(t)\\z(t)\end{bmatrix}''=\begin{bmatrix}0\\x''(t)\\y''(t)\\z''(t)\end{bmatrix}=\frac1m\begin{bmatrix}0\\F^x(t)\\F^y(t)\\F^z(t)\end{bmatrix}$$",
+            r"$$\gamma''(t)=\begin{bmatrix}t\\x(t)\\y(t)\\z(t)\end{bmatrix}''=\begin{bmatrix}0\\x''(t)\\y''(t)\\z''(t)\end{bmatrix}=\frac1m\begin{bmatrix}0\\F^x(t)\\F^y(t)\\F^z(t)\end{bmatrix}.$$",
         ],
         title="Newton's first & second laws",
     )
@@ -640,7 +646,7 @@ def _(gravity_scene, lk):
     lk.prose(
         r"Newtonian gravity:",
         lk.aside(
-            r"$$\vec F(t)=-G\,m\,M\,\frac{\mk{\gamma(t)-\sigma(t)}}{\lVert\gamma(t)-\sigma(t)\rVert^3}\in\ker(\tau)$$",
+            r"$$\vec F(t)=-G\,m\,M\,\frac{\mk{\gamma(t)-\sigma(t)}}{\lVert\gamma(t)-\sigma(t)\rVert^3}\in\ker(\tau).$$",
             r"$\gamma(t),\sigma(t)$ simultaneous",
         ),
         lk.figure(gravity_scene()),
@@ -658,12 +664,12 @@ def _(lk):
         r"$\leadsto$ &nbsp; Maxwell's electrodynamics breaks down …",
         r"> in Cartesian coordinates we want something like",
         lk.aside(
-            r"$$\vec F(t)=q\big(\mk{\vec E_{\sigma(t)}}+\mk{\vec v_{\gamma(t)}}\times\mk{\vec B_{\sigma(t)}}\big)\qquad(\text{Lorentz force law})$$",
+            r"$$\vec F(t)=q\big(\mk{\vec E_{\sigma(t)}}+\mk{\vec v_{\gamma(t)}}\times\mk{\vec B_{\sigma(t)}}\big),\qquad(\text{Lorentz force law})$$",
             r"$\vec E_{\sigma(t)}$: electric field generated by $\sigma$,<br>depends on the inertial frame<br>$\vec v_{\gamma(t)}$: velocity of $\gamma$ relative to the inertial frame<br>$\vec B_{\sigma(t)}$: magnetic field generated by $\sigma$,<br>depends on the inertial frame",
         ),
         r"> with",
         lk.aside(
-            r"$$\begin{aligned}\vec\nabla\cdot\vec E_{\sigma(t)}&=\frac{\rho_{\sigma(t)}}{\varepsilon_0}&\qquad\vec\nabla\times\vec B_{\sigma(t)}-\frac{1}{c^2}\partial_t\vec E_{\sigma(t)}&=\mu_0\vec J_{\sigma(t)}\\[0.4em]\vec\nabla\cdot\vec B_{\sigma(t)}&=0&\qquad\vec\nabla\times\vec E_{\sigma(t)}+\partial_t\vec B_{\sigma(t)}&=0\end{aligned}$$",
+            r"$$\begin{aligned}\vec\nabla\cdot\vec E_{\sigma(t)}&=\frac{\rho_{\sigma(t)}}{\varepsilon_0}&\qquad\vec\nabla\times\vec B_{\sigma(t)}-\frac{1}{c^2}\partial_t\vec E_{\sigma(t)}&=\mu_0\vec J_{\sigma(t)}\\[0.4em]\vec\nabla\cdot\vec B_{\sigma(t)}&=0&\qquad\vec\nabla\times\vec E_{\sigma(t)}+\partial_t\vec B_{\sigma(t)}&=0.\end{aligned}$$",
             "Maxwell's equations:<br>depend on the choice of inertial frame!<br>not an intrinsic physical structure",
         ),
     )
@@ -677,7 +683,7 @@ def _(lk):
     lk.remark(
         [
             r"In the vacuum, Maxwell implies the wave equation",
-            r"$$\begin{cases}\vec\nabla\cdot\vec E=0&\vec\nabla\times\vec B-\frac{1}{c^2}\partial_t\vec E=0\\[0.3em]\vec\nabla\cdot\vec B=0&\vec\nabla\times\vec E+\partial_t\vec B=0\end{cases}\quad\Longrightarrow\quad\begin{cases}\big(\Delta-\frac{1}{c^2}\partial_t^2\big)\vec E=0\\[0.3em]\big(\Delta-\frac{1}{c^2}\partial_t^2\big)\vec B=0\end{cases}$$",
+            r"$$\begin{cases}\vec\nabla\cdot\vec E=0&\vec\nabla\times\vec B-\frac{1}{c^2}\partial_t\vec E=0,\\[0.3em]\vec\nabla\cdot\vec B=0&\vec\nabla\times\vec E+\partial_t\vec B=0\end{cases}\quad\Longrightarrow\quad\begin{cases}\big(\Delta-\frac{1}{c^2}\partial_t^2\big)\vec E=0\\[0.3em]\big(\Delta-\frac{1}{c^2}\partial_t^2\big)\vec B=0.\end{cases}$$",
             r"> $\Longrightarrow$ &nbsp; electromagnetic “waves” propagate at constant speed $c$ &nbsp; (the speed of light)",
         ]
     )
@@ -705,7 +711,7 @@ def _(addition_scene, lk):
     lk.theorem(
         [
             r"Given $\gamma,\sigma,\xi$ three particles in $\mathbb G^4$",
-            r"$$\vec v(\gamma,\xi)=\vec v(\gamma,\sigma)+\vec v(\sigma,\xi)$$",
+            r"$$\vec v(\gamma,\xi)=\vec v(\gamma,\sigma)+\vec v(\sigma,\xi).$$",
             lk.figure(addition_scene()),
         ],
         label="thm-addition-galilean",

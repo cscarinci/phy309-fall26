@@ -189,10 +189,10 @@ def _(displacement_sketch, lk):
             r"i) &nbsp; given points $p,q\in\mathbb E^3$, there exists a unique <span class='lk-mark'>“vector” $\vec u$</span> from $p$ to $q$",
             "here a vector is defined as<br>the “difference” between two points",
         ),
-        lk.aside(r"$$\vec u:=q-p\in\mk{\mathbb V_p}$$", r"$\mathbb V_p$ = vectors from $p$"),
+        lk.aside(r"$$\vec u:=q-p\in\mk{\mathbb V_p}.$$", r"$\mathbb V_p$ = vectors from $p$"),
         lk.figure(displacement_sketch()),
         r"> given $p\in\mathbb E^3$ and $\vec u\in\mathbb V_p$, there exists a unique “end point” $q\in\mathbb E^3$ such that",
-        r"$$\vec u=q-p\quad\overset{\text{notation}}{\leadsto}\quad q=p+\vec u$$",
+        r"$$\vec u=q-p\quad\overset{\text{notation}}{\leadsto}\quad q=p+\vec u.$$",
     )
     return
 
@@ -233,7 +233,7 @@ def _(addition_sketch, lk):
     lk.theorem(
         [
             r"Assumptions (i) and (ii) allow us to define",
-            r"$$+:\mathbb V^3\times\mathbb V^3\longrightarrow\mathbb V^3\qquad(\text{addition of vectors})$$",
+            r"$$+:\mathbb V^3\times\mathbb V^3\longrightarrow\mathbb V^3.\qquad(\text{addition of vectors})$$",
             lk.figure(addition_sketch()),
         ],
         label="thm-addition",
@@ -258,10 +258,10 @@ def _(lk):
     lk.remark(
         [
             r"We need extra assumptions to define",
-            r"$$\cdot:\mathbb R\times\mathbb V^3\longrightarrow\mathbb V^3\qquad(\text{scalar multiplication})$$",
+            r"$$\cdot:\mathbb R\times\mathbb V^3\longrightarrow\mathbb V^3,\qquad(\text{scalar multiplication})$$",
             r"idea: &nbsp; $a\in\mathbb R$, &nbsp; $\vec u\in\mathbb V^3$",
             lk.aside(
-                r"$$\begin{aligned}\text{if }a=n\in\mathbb N\quad&\leadsto\quad n\cdot\vec u=\underbrace{\vec u+\dots+\vec u}_{n\text{ times}}\\[0.3em]a=0\quad&\leadsto\quad0\cdot\vec u=\vec0\ \text{ such that }\ p+\vec0=p\\[0.3em]a=-1\quad&\leadsto\quad(-1)\cdot\vec u=\vec v\ \text{ such that }\ \vec u+\vec v=\vec0\\[0.3em]a=1/n\quad&\leadsto\quad\tfrac1n\cdot\vec u=\vec v\ \text{ such that }\ \mk{\vec u=n\cdot\vec v}\end{aligned}$$",
+                r"$$\begin{aligned}\text{if }a=n\in\mathbb N\quad&\leadsto\quad n\cdot\vec u=\underbrace{\vec u+\dots+\vec u}_{n\text{ times}}\\[0.3em]a=0\quad&\leadsto\quad0\cdot\vec u=\vec0\ \text{ such that }\ p+\vec0=p\\[0.3em]a=-1\quad&\leadsto\quad(-1)\cdot\vec u=\vec v\ \text{ such that }\ \vec u+\vec v=\vec0\\[0.3em]a=1/n\quad&\leadsto\quad\tfrac1n\cdot\vec u=\vec v\ \text{ such that }\ \mk{\vec u=n\cdot\vec v}.\end{aligned}$$",
                 "here we need more than (i) and (ii)",
                 at=4,
                 rows=4,
@@ -362,7 +362,7 @@ def _(lk):
     lk.prose(
         r"**Euclidean inner product**",
         r"iv) &nbsp; there exists a function &nbsp; $\langle\ ,\ \rangle:\mathbb V\times\mathbb V\longrightarrow\mathbb R$ &nbsp; such that",
-        r"$$\begin{array}{ll}\text{bilinear}&\langle a\vec u+b\vec v,\vec w\rangle=a\langle\vec u,\vec w\rangle+b\langle\vec v,\vec w\rangle\\&\langle\vec u,b\vec v+c\vec w\rangle=b\langle\vec u,\vec v\rangle+c\langle\vec u,\vec w\rangle\\[0.5em]\text{symmetric}&\langle\vec u,\vec v\rangle=\langle\vec v,\vec u\rangle\\[0.5em]\text{positive-definite}\quad&\langle\vec u,\vec u\rangle\geq0\ \text{ with }\ \langle\vec u,\vec u\rangle=0\ \text{ iff }\ \vec u=\vec0\end{array}$$",
+        r"$$\begin{array}{ll}\text{bilinear}&\langle a\vec u+b\vec v,\vec w\rangle=a\langle\vec u,\vec w\rangle+b\langle\vec v,\vec w\rangle\\&\langle\vec u,b\vec v+c\vec w\rangle=b\langle\vec u,\vec v\rangle+c\langle\vec u,\vec w\rangle\\[0.5em]\text{symmetric}&\langle\vec u,\vec v\rangle=\langle\vec v,\vec u\rangle\\[0.5em]\text{positive-definite}\quad&\langle\vec u,\vec u\rangle\geq0,\ \text{ with }\ \langle\vec u,\vec u\rangle=0\ \text{ iff }\ \vec u=\vec0.\end{array}$$",
     )
     return
 
@@ -374,9 +374,9 @@ def _(lk):
     lk.definition(
         [
             lk.aside(r"The **Euclidean space** is a <span class='lk-mark'>3-dimensional</span> affine space", r"3-dimensional: $\dim\mathbb V=3$"),
-            r"$$\mathbb E^3=(\mathbb A,\mathbb V,-)$$",
+            r"$$\mathbb E^3=(\mathbb A,\mathbb V,-),$$",
             r"together with a Euclidean inner product on $\mathbb V$",
-            r"$$\langle\ ,\ \rangle:\mathbb V\times\mathbb V\longrightarrow\mathbb R$$",
+            r"$$\langle\ ,\ \rangle:\mathbb V\times\mathbb V\longrightarrow\mathbb R.$$",
         ],
         label="def-euclidean",
     )
@@ -416,13 +416,13 @@ def _(coordinates_sketch, lk):
         [
             lk.aside(r"Choosing &nbsp; $\mk{o}\in\mathbb E^3$ &nbsp; and &nbsp; $\vec e_1,\vec e_2,\vec e_3\in\mathbb V$ &nbsp; such that", r"$o$ = origin"),
             lk.aside(
-                r"$$\langle\vec e_i,\vec e_j\rangle=\delta_{ij}=\begin{cases}1&\text{if }i=j\\0&\text{if }i\neq j\end{cases}$$",
+                r"$$\langle\vec e_i,\vec e_j\rangle=\delta_{ij}=\begin{cases}1,&\text{if }i=j,\\0,&\text{if }i\neq j,\end{cases}$$",
                 "orthonormal basis",
             ),
             r"we can define Cartesian coordinates",
-            r"$$x^i:\mathbb E^3\longrightarrow\mathbb R,\qquad p\longmapsto x^i(p)=\langle\vec e_i,p-o\rangle$$",
+            r"$$x^i:\mathbb E^3\longrightarrow\mathbb R,\qquad p\longmapsto x^i(p)=\langle\vec e_i,p-o\rangle,$$",
             r"and identify &nbsp; $\mathbb R^3\approx\mathbb E^3$",
-            r"$$(x,y,z)\longleftrightarrow p=o+x\,\vec e_1+y\,\vec e_2+z\,\vec e_3$$",
+            r"$$(x,y,z)\longleftrightarrow p=o+x\,\vec e_1+y\,\vec e_2+z\,\vec e_3.$$",
             lk.figure(coordinates_sketch()),
         ],
         label="thm-euclidean-coordinates",

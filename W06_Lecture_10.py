@@ -230,7 +230,7 @@ def _(lk, paths_figure):
     lk.recap(
         r"$M$ &nbsp; $m$-manifold, &nbsp; $p\in M$ &nbsp; point on $M$",
         lk.aside(
-            r"$$\begin{aligned}T_pM&=\text{tangent space to }M\text{ at }p\\[0.3em]&=\big\{[\gamma]\mid\gamma:\mathbb R\to M\text{ smooth path with }\gamma(0)=p\\[0.1em]&\phantom{=\big\{}\text{ and }\gamma\sim\tilde\gamma\text{ if }(\mk{\varphi}\circ\gamma)'(0)=(\varphi\circ\tilde\gamma)'(0)\big\}\end{aligned}$$",
+            r"$$\begin{aligned}T_pM&=\text{tangent space to }M\text{ at }p\\[0.3em]&=\big\{[\gamma]\mid\gamma:\mathbb R\to M\text{ smooth path with }\gamma(0)=p\\[0.1em]&\phantom{=\big\{}\text{ and }\gamma\sim\tilde\gamma\text{ if }(\mk{\varphi}\circ\gamma)'(0)=(\varphi\circ\tilde\gamma)'(0)\big\}.\end{aligned}$$",
             r"for some chart $\varphi$<br>(therefore for every chart)",
             at="last",
         ),
@@ -239,7 +239,7 @@ def _(lk, paths_figure):
             r"Given &nbsp; $f:M\to N$ &nbsp; <span class='lk-mark'>smooth at $p\in M$</span>",
             r"$\psi\circ f\circ\varphi^{-1}:\varphi(U\cap f^{-1}(V))\to\psi(f(U)\cap V)$<br>smooth $\forall\,\varphi,\psi$ $\ (p\in U\cap f^{-1}(V))$",
         ),
-        r"$$Df_p:T_pM\longrightarrow T_{f(p)}N,\qquad Df_p\underbrace{[\gamma]}_{\footnotesize\begin{matrix}\text{velocity vector}\\\text{at }p\in M\end{matrix}}\qquad\quad=\qquad\quad\underbrace{[f\circ\gamma]}_{\footnotesize\begin{matrix}\text{velocity vector}\\\text{at }f(p)\in N\end{matrix}}$$",
+        r"$$Df_p:T_pM\longrightarrow T_{f(p)}N,\qquad Df_p\underbrace{[\gamma]}_{\footnotesize\begin{matrix}\text{velocity vector}\\\text{at }p\in M\end{matrix}}\qquad\quad=\qquad\quad\underbrace{[f\circ\gamma]}_{\footnotesize\begin{matrix}\text{velocity vector}\\\text{at }f(p)\in N\end{matrix}}.$$",
         topic="Tangent vectors & the derivative",
     )
     return
@@ -337,9 +337,9 @@ def _(lk):
                 r"Given $p\in M$, the space of **derivations** of $M$ at $p$ is the space of linear <span class='lk-mark'>functionals</span>",
                 "functions of functions",
             ),
-            lk.aside(r"$$X_p:\mk{C^\infty(M,\mathbb R)}\longrightarrow\mathbb R$$", r"space of smooth functions on $M$"),
+            lk.aside(r"$$X_p:\mk{C^\infty(M,\mathbb R)}\longrightarrow\mathbb R,$$", r"space of smooth functions on $M$"),
             lk.aside(r"satisfying the <span class='lk-mark'>Leibniz rule</span>", "product rule"),
-            r"$$X_p(fg)=X_p(f)\,g(p)+f(p)\,X_p(g)$$",
+            r"$$X_p(fg)=X_p(f)\,g(p)+f(p)\,X_p(g).$$",
             lk.aside(
                 r"$\mk{\mathrm{Der}_p(M)}=$ space of derivations of $M$ at $p$",
                 r"= space of functionals that “behave”<br>like derivatives at $p\in M$",
@@ -381,7 +381,7 @@ def _(lk):
 
             > $\displaystyle\begin{alignedat}{2}\Longrightarrow\quad&X_p(f\cdot g)&&=\frac{d}{dt}\Big|_{t=0}\big((f\cdot g)\circ\gamma\big)\\[0.3em]&&&=(f\circ\gamma)'(0)\,g(\gamma(0))+f(\gamma(0))\,(g\circ\gamma)'(0)\\[0.3em]&&&=X_p(f)\,g(p)+f(p)\,X_p(g)\end{alignedat}$
 
-            > > $\therefore$ &nbsp; $X_p\in\mathrm{Der}_p(M)$
+            > > $\therefore$ &nbsp; $X_p\in\mathrm{Der}_p(M)$.
             """,
             lk.gap(),
             r"""
@@ -432,7 +432,7 @@ def _(lk):
 
         > > $\Longrightarrow$ &nbsp; $\alpha X_p+\beta Y_p\in\mathrm{Der}_p(M)$
 
-        > $\Longrightarrow$ &nbsp; the bijection above defines a vector space structure on the tangent space $T_pM$!
+        > $\Longrightarrow$ &nbsp; the bijection above defines a linear structure on the tangent space $T_pM$.
         """
     )
     return
@@ -467,17 +467,17 @@ def _(basis_chart, lk, mo, s_u, s_v):
             $$
             \begin{aligned}
             \partial_u|_p&=\big[t\longmapsto\varphi_n^{-1}(1+t,0)\big]\\[0.3em]
-            &=\Big[t\longmapsto\Big(\frac{2(1+t)}{1+(1+t)^2},\ 0,\ \frac{-1+(1+t)^2}{1+(1+t)^2}\Big)\Big]=[\sigma]
+            &=\Big[t\longmapsto\Big(\frac{2(1+t)}{1+(1+t)^2},\ 0,\ \frac{-1+(1+t)^2}{1+(1+t)^2}\Big)\Big]=[\sigma],
             \end{aligned}
             $$
 
-            $$\partial_u|_p(f)=\frac{\partial}{\partial u}\Big|_{(u,v)=(1,0)}(f\circ\varphi_n^{-1})(u,v)$$
+            $$\partial_u|_p(f)=\frac{\partial}{\partial u}\Big|_{(u,v)=(1,0)}(f\circ\varphi_n^{-1})(u,v),$$
 
             $$
             \begin{aligned}
             \partial_u|_p(h)&=\frac{\partial}{\partial u}\Big|_{(1,0)}\frac{-1+u^2+v^2}{1+u^2+v^2}\\[0.3em]
             &=\frac{2u(1+u^2+v^2)-(-1+u^2+v^2)\,2u}{(1+u^2+v^2)^2}\Big|_{(1,0)}\\[0.3em]
-            &=\frac{2+2}{2^2}=1
+            &=\frac{2+2}{2^2}=1.
             \end{aligned}
             $$
             """,
@@ -497,7 +497,7 @@ def _(lk):
     # conclusion and outlook
     lk.prose(
         r"""
-        $\therefore$ &nbsp; On manifolds, tangent vectors at a point are defined as equivalence classes of paths through that point, and can be identified with derivations of smooth functions at that point!
+        $\therefore$ &nbsp; On manifolds, tangent vectors at a point are defined as equivalence classes of paths through it, and can be identified with derivations of smooth functions at that point!
 
         Moreover, a choice of chart defines a basis of tangent vectors at a point in terms of partial derivatives with respect to the local coordinates!
 

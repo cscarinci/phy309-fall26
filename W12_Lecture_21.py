@@ -211,12 +211,12 @@ def _(lk):
     # definition: parallel vector field
     lk.definition(
         r"""
-        A vector field $X_{\gamma(t)}$ along a path $\gamma(t)$ is called **parallel** if its covariant derivative is equal to zero
+        A vector field $X_{\gamma(t)}$ along a path $\gamma(t)$ is called **parallel** if its covariant derivative is zero
 
         $$
         \begin{aligned}
         \frac{D}{dt}X_{\gamma(t)}&=0\qquad\leadsto\quad X_{\gamma(t)}\text{ is covariantly constant}\\
-        &\overset{\varphi}{=}\big(\underbrace{\dot X^k(t)+\Gamma^k_{ij}(t)\,\dot x^i(t)\,X^j(t)}_{\mathclap{\footnotesize\text{1st order linear system of ODEs}}}\big)\,\partial_k|_{\gamma(t)}
+        &\overset{\varphi}{=}\big(\underbrace{\dot X^k(t)+\Gamma^k_{ij}(t)\,\dot x^i(t)\,X^j(t)}_{\mathclap{\footnotesize\text{1st order linear system of ODEs}}}\big)\,\partial_k|_{\gamma(t)}.
         \end{aligned}
         $$
 
@@ -231,16 +231,18 @@ def _(lk):
 def _(lk, transport_sketch):
     # module: parallel transport
     # definition: parallel transport
-    lk.definition(
-        [
-            r"Given $\gamma(t)$ path, the **parallel transport** along $\gamma$ from $\gamma(a)$ to $\gamma(b)$ is the map",
-            lk.aside(
-                r"$$P^\gamma_{a,b}:T_{\gamma(a)}M\longrightarrow T_{\gamma(b)}M,\qquad\mk{X_0}\longmapsto P^\gamma_{a,b}(X_0)=X_{\gamma(b)}$$",
-                r"$X_0=X_{\gamma(a)}$",
-            ),
-            lk.figure(transport_sketch()),
-        ],
-        label="def-transport",
+    lk.module(
+        lk.definition(
+            [
+                r"Given $\gamma(t)$ path, the **parallel transport** along $\gamma$ from $\gamma(a)$ to $\gamma(b)$ is the map",
+                lk.aside(
+                    r"$$P^\gamma_{a,b}:T_{\gamma(a)}M\longrightarrow T_{\gamma(b)}M,\qquad\mk{X_0}\longmapsto P^\gamma_{a,b}(X_0)=X_{\gamma(b)}.$$",
+                    r"$X_0=X_{\gamma(a)}$",
+                ),
+            ],
+            label="def-transport",
+        ),
+        lk.prose(lk.figure(transport_sketch())),
     )
     return
 
@@ -333,14 +335,14 @@ def _(lk, np, phi0_s, t_s):
             \begin{cases}
             X^\phi(t)=A\cos(t\cos\phi_0)+B\sin(t\cos\phi_0)\\
             X^\theta(t)=-{\large\tfrac{A}{\sin\phi_0}}\sin(t\cos\phi_0)+{\large\tfrac{B}{\sin\phi_0}}\cos(t\cos\phi_0)
-            \end{cases}
+            \end{cases},
             \end{aligned}
             $$
 
             $$
             \begin{aligned}
             \Longrightarrow\quad X^\phi(2\pi)&=A\cos(2\pi\cos\phi_0)+B\sin(2\pi\cos\phi_0)\neq A=X^\phi(0)\\
-            X^\theta(2\pi)&=-\frac{A}{\sin\phi_0}\sin(2\pi\cos\phi_0)+\frac{B}{\sin\phi_0}\cos(2\pi\cos\phi_0)\neq\frac{B}{\sin\phi_0}=X^\theta(0)
+            X^\theta(2\pi)&=-\frac{A}{\sin\phi_0}\sin(2\pi\cos\phi_0)+\frac{B}{\sin\phi_0}\cos(2\pi\cos\phi_0)\neq\frac{B}{\sin\phi_0}=X^\theta(0).
             \end{aligned}
             $$
             """,
@@ -363,7 +365,7 @@ def _(lk):
         The **Riemann curvature tensor** of $(M,g)$ is the $(1,3)$-tensor field $\mathrm{Riem}\in\Gamma(TM^1_3)$
 
         $$
-        \mathrm{Riem}(X,Y)\,Z=\nabla_X(\nabla_YZ)-\nabla_Y(\nabla_XZ)-\nabla_{[X,Y]}Z
+        \mathrm{Riem}(X,Y)\,Z=\nabla_X(\nabla_YZ)-\nabla_Y(\nabla_XZ)-\nabla_{[X,Y]}Z,
         $$
 
         measuring the non-commutativity of the connection
@@ -428,7 +430,7 @@ def _(lk, parallelogram_sketch):
         \gamma_1(t)&=\varphi^{-1}(t\,X^ie_i),&t&\in[0,\varepsilon]\\
         \gamma_2(t)&=\varphi^{-1}(\varepsilon X^ie_i+t\,Y^je_j),&t&\in[0,\delta]\\
         \gamma_3(t)&=\varphi^{-1}((\varepsilon-t)\,X^ie_i+\delta\,Y^je_j),&t&\in[0,\varepsilon]\\
-        \gamma_4(t)&=\varphi^{-1}((\delta-t)\,Y^je_j),&t&\in[0,\delta]
+        \gamma_4(t)&=\varphi^{-1}((\delta-t)\,Y^je_j),&t&\in[0,\delta],
         \end{aligned}
         $$
 
@@ -448,13 +450,13 @@ def _(lk):
         Given $Z_p\in T_pM$, let
 
         $$
-        Z_1=P^{\gamma_1}_{0,\varepsilon}(Z_p),\quad Z_2=P^{\gamma_2}_{0,\delta}(Z_1),\quad Z_3=P^{\gamma_3}_{0,\varepsilon}(Z_2),\quad Z_4=P^{\gamma_4}_{0,\delta}(Z_3)
+        Z_1=P^{\gamma_1}_{0,\varepsilon}(Z_p),\quad Z_2=P^{\gamma_2}_{0,\delta}(Z_1),\quad Z_3=P^{\gamma_3}_{0,\varepsilon}(Z_2),\quad Z_4=P^{\gamma_4}_{0,\delta}(Z_3).
         $$
 
         Then
 
         $$
-        \lim_{\varepsilon,\delta\to0}\frac{Z_4-Z_p}{\varepsilon\delta}=-\mathrm{Riem}(X_p,Y_p)\,Z_p
+        \lim_{\varepsilon,\delta\to0}\frac{Z_4-Z_p}{\varepsilon\delta}=-\mathrm{Riem}(X_p,Y_p)\,Z_p.
         $$
         """,
         label="thm-holonomy",
@@ -493,19 +495,19 @@ def _(lk):
         $\Gamma^\phi_{ij}=\begin{bmatrix}0&0\\0&-\sin\phi\cos\phi\end{bmatrix}$, &nbsp; $\Gamma^\theta_{ij}=\begin{bmatrix}0&\cot\phi\\\cot\phi&0\end{bmatrix}$
 
         $$
-        \underbrace{R^k{}_{lij}}_{\mathclap{\footnotesize 2^4\text{ components}}}=\underbrace{\partial_i\Gamma^k_{jl}-\partial_j\Gamma^k_{il}+\Gamma^k_{im}\Gamma^m_{jl}-\Gamma^k_{jm}\Gamma^m_{il}}_{\footnotesize\text{anti-symmetric in }ij\text{!}}
+        \underbrace{R^k{}_{lij}}_{\mathclap{\footnotesize 2^4\text{ components}}}=\underbrace{\partial_i\Gamma^k_{jl}-\partial_j\Gamma^k_{il}+\Gamma^k_{im}\Gamma^m_{jl}-\Gamma^k_{jm}\Gamma^m_{il}}_{\footnotesize\text{anti-symmetric in }ij\text{!}},
         $$
 
         $$
         \begin{aligned}
         \Longrightarrow\quad&R^k{}_{lij}=-R^k{}_{lji}\\
-        \Longrightarrow\quad&R^k{}_{lij}=0\quad\text{if }i=j\\
+        \Longrightarrow\quad&R^k{}_{lij}=0,\quad\text{if }i=j\\
         \Longrightarrow\quad&\underbrace{R^k{}_{l\phi\theta}}_{\mathclap{\footnotesize 2^2\text{ components!}}}=-R^k{}_{l\theta\phi}\quad\text{can be non-zero!}
         \end{aligned}
         $$
 
         $$
-        R^k{}_{l\phi\theta}=\partial_\phi\Gamma^k_{\theta l}-\partial_\theta\Gamma^k_{\phi l}+\Gamma^k_{\phi m}\Gamma^m_{\theta l}-\Gamma^k_{\theta m}\Gamma^m_{\phi l}
+        R^k{}_{l\phi\theta}=\partial_\phi\Gamma^k_{\theta l}-\partial_\theta\Gamma^k_{\phi l}+\Gamma^k_{\phi m}\Gamma^m_{\theta l}-\Gamma^k_{\theta m}\Gamma^m_{\phi l},
         $$
 
         $$
@@ -513,7 +515,7 @@ def _(lk):
         &\leadsto\quad(k,l)=(\phi,\phi):\quad&R^\phi{}_{\phi\phi\theta}&=\partial_\phi\underbrace{\Gamma^\phi_{\theta\phi}}_{0}-\partial_\theta\underbrace{\Gamma^\phi_{\phi\phi}}_{0}+\underbrace{\Gamma^\phi_{\phi m}}_{0}\Gamma^m_{\theta\phi}-\Gamma^\phi_{\theta m}\underbrace{\Gamma^m_{\phi\phi}}_{0}=0\\[1.2em]
         &\leadsto\quad(k,l)=(\theta,\theta):\quad&R^\theta{}_{\theta\phi\theta}&=\partial_\phi\underbrace{\Gamma^\theta_{\theta\theta}}_{0}-\underbrace{\partial_\theta\Gamma^\theta_{\phi\theta}}_{0}+\underbrace{\Gamma^\theta_{\phi m}\Gamma^m_{\theta\theta}}_{\substack{\Gamma^\theta_{\phi\theta}\Gamma^\theta_{\theta\theta}\\\mathrlap{\;\;=0}\hphantom{\Gamma^\theta_{\phi\theta}\Gamma^\theta_{\theta\theta}}}}-\underbrace{\Gamma^\theta_{\theta m}\Gamma^m_{\phi\theta}}_{\substack{\Gamma^\theta_{\theta\phi}\Gamma^\phi_{\phi\theta}\\\mathrlap{\;\;=0}\hphantom{\Gamma^\theta_{\theta\phi}\Gamma^\phi_{\phi\theta}}}}=0\\[1.2em]
         &\leadsto\quad(k,l)=(\phi,\theta):\quad&R^\phi{}_{\theta\phi\theta}&=\underbrace{\partial_\phi\Gamma^\phi_{\theta\theta}}_{-(\cos\phi)^2+(\sin\phi)^2}-\partial_\theta\underbrace{\Gamma^\phi_{\phi\theta}}_{0}+\underbrace{\Gamma^\phi_{\phi m}\Gamma^m_{\theta\theta}}_{\substack{\Gamma^\phi_{\phi\phi}\Gamma^\phi_{\theta\theta}\\\mathrlap{\;\;=0}\hphantom{\Gamma^\phi_{\phi\phi}\Gamma^\phi_{\theta\theta}}}}-\underbrace{\Gamma^\phi_{\theta m}\Gamma^m_{\phi\theta}}_{\substack{\Gamma^\phi_{\theta\theta}\Gamma^\theta_{\phi\theta}\\\mathrlap{\;\;=-(\cos\phi)^2}\hphantom{\Gamma^\phi_{\theta\theta}\Gamma^\theta_{\phi\theta}}}}=(\sin\phi)^2\\[1.2em]
-        &\leadsto\quad(k,l)=(\theta,\phi):\quad&R^\theta{}_{\phi\phi\theta}&=\underbrace{\partial_\phi\Gamma^\theta_{\theta\phi}}_{-(\sin\phi)^{-2}}-\partial_\theta\underbrace{\Gamma^\theta_{\phi\phi}}_{0}+\underbrace{\Gamma^\theta_{\phi m}\Gamma^m_{\theta\phi}}_{\substack{\Gamma^\theta_{\phi\theta}\Gamma^\theta_{\theta\phi}\\\mathrlap{\;\;=(\cot\phi)^2}\hphantom{\Gamma^\theta_{\phi\theta}\Gamma^\theta_{\theta\phi}}}}-\Gamma^\theta_{\theta m}\underbrace{\Gamma^m_{\phi\phi}}_{0}=-1
+        &\leadsto\quad(k,l)=(\theta,\phi):\quad&R^\theta{}_{\phi\phi\theta}&=\underbrace{\partial_\phi\Gamma^\theta_{\theta\phi}}_{-(\sin\phi)^{-2}}-\partial_\theta\underbrace{\Gamma^\theta_{\phi\phi}}_{0}+\underbrace{\Gamma^\theta_{\phi m}\Gamma^m_{\theta\phi}}_{\substack{\Gamma^\theta_{\phi\theta}\Gamma^\theta_{\theta\phi}\\\mathrlap{\;\;=(\cot\phi)^2}\hphantom{\Gamma^\theta_{\phi\theta}\Gamma^\theta_{\theta\phi}}}}-\Gamma^\theta_{\theta m}\underbrace{\Gamma^m_{\phi\phi}}_{0}=-1.
         \end{alignedat}
         $$
         """
